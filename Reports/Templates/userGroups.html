@@ -1,0 +1,82 @@
+<div id="user-groups-wrapper">
+    <div class="row">
+        <div class="col s12">
+            <div class="ap-card z-depth-2">
+                    <div class="ap-card-title ap-blue">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col s3">
+                                    <form class="select-group-form">
+                                        <div class="row" style="margin-bottom: 5px;">
+                                            <div class="input-field col s12  white-text white-drop-down">
+                                                <select id="user-group-selector">
+                                                    <% var current = 0; %>
+                                                    <% _.each(userGroups, function(currentUserGroup) { %>
+                                                        <option value="<%= currentUserGroup.id %>" <%= current === 0 ? 'selected' : '' %>><%= currentUserGroup.name %></option>
+                                                    <% current++; %>
+                                                    <% }); %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </form>
+                                    <div class="create-group-title" style="display: none; padding-top: 12px; padding-bottom: 20px">
+                                        Create a New User Group
+                                    </div>
+                                    
+                                </div>
+                                <div class="col s2">
+                                    <i class="material-icons tooltipped select-group-tooltip" style="padding-top: 12px" data-position="bottom" data-tooltip="This is the User Group that you're now editting.<br>You can choose another User Group from the list">help_outline</i>
+                                </div>
+                                <div class="col s3 right-align">
+                                    <i class="material-icons tooltipped" style="padding-top: 12px" data-position="bottom" data-tooltip="Toggle between editing Point of Sale permissions and<br>Web Management permissions for users assigned to this group">help_outline</i>
+                                </div>
+                                <div class="col s4 right">
+                                    <form>
+                                        <div class="input-field col s12 white-text white-drop-down">
+                                            <select id="permission-type-selector">
+                                                <option value="management" selected>Web Management Permissions</option>
+                                                <option value="pos">Point of Sale Permissions</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ap-card-content white" id="user-group-form">
+
+                        </div>
+                        <div class="ap-card-footer grey lighten-4">
+                            <a class="waves-effect waves-light btn red delete-button">DELETE</a>
+                            <a class="waves-effect waves-light btn green right update-button">UPDATE</a>
+                        </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light green floating-action-button-fixed add-user-group-button">
+    <i class="material-icons">add</i>
+</a>
+
+<div class="modal delete-modal">
+    <div class="modal-content">
+        <h4>Confirm Deletion</h4>
+        <p>Are you sure that you would like to delete this user group?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+        <a href="javascript:void(0)" class="waves-effect waves-white btn red confirm-deletion">Delete</a>
+    </div>
+</div>
+
+<div class="modal cancel-modal">
+    <div class="modal-content">
+        <h4>Confirm Cancellation</h4>
+        <p>Are you sure that you would like to cancel this action?</p>
+        <p>This will ignore any changes you've made to this new group.</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+        <a href="javascript:void(0)" class="waves-effect waves-white btn red confirm-cancellation">Confirm</a>
+    </div>
+</div>

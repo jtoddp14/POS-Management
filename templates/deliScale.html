@@ -1,0 +1,96 @@
+<div id="deli-scale-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div class="row">
+        <div class="col s12">
+            <div class="ap-card-content white z-depth-1" id="deli-scale-form" style="display: none; margin-top: 25px">
+                <div id="deli-scale-form-content">
+                    <form>
+                        <div class="row" style="padding-top: 25px">
+                            <div class="col s12">   
+                                <div class="input-field col s12 m4">
+                                    <input id="prefix" type="text" value="<%= deliScale.prefix %>" maxLength="40">
+                                    <label class="active" for="prefix">{Literal}Prefix{/Literal}</label>
+                                    <h8>{Literal}Leave 'Prefix' blank to disable Embedded Barcodes.{/Literal}</h8>
+                                </div>
+
+                                <div class="input-field col s12 m4">
+                                    <input id="itemLength" type="number" value="<%= deliScale.itemLength %>">
+                                    <label class="active" for="itemLength">{Literal}Item Length{/Literal}</label>
+                                </div>
+
+                                <div class="input-field col s12 m4">
+                                    <input id="itemStart" type="number" value="<%= deliScale.itemStart %>">
+                                    <label class="active" for="itemStart">{Literal}Item Start{/Literal}</label>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div id="embeddedPriceRow" class="row" style="display: none;">
+                            <div class="col s12">   
+                                <div class="input-field col s12 m4">
+                                    <input id="priceLength" type="number" value="<%= deliScale.priceLength %>">
+                                    <label class="active" for="priceLength">{Literal}Price Length{/Literal}</label>
+                                </div>
+
+                                <div class="input-field col s12 m4">
+                                    <input id="priceStart" type="number" value="<%= deliScale.priceStart %>">
+                                    <label class="active" for="priceStart">{Literal}Price Start{/Literal}</label>
+                                </div>
+
+                                <div class="input-field col s12 m4">
+                                    <input id="priceDivisor" type="number" value="<%= deliScale.priceDivisor %>">
+                                    <label class="active" for="priceDivisor">{Literal}Price Divisor{/Literal}</label>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div id="embeddedWeightRow" class="row" style="display: none;">
+                            <div class="col s12">   
+                                <div class="input-field col s12 m4">
+                                    <input id="weightLength" type="number" value="<%= deliScale.weightLength %>">
+                                    <label class="active" for="weightLength">{Literal}Weight Length{/Literal}</label>
+                                </div>
+
+                                <div class="input-field col s12 m4">
+                                    <input id="weightStart" type="number" value="<%= deliScale.weightStart %>">
+                                    <label class="active" for="weightStart">{Literal}Weight Start{/Literal}</label>
+                                </div>
+
+                                <div class="input-field col s12 m4">
+                                    <input id="weightDivisor" type="number" value="<%= deliScale.weightDivisor %>">
+                                    <label class="active" for="weightDivisor">{Literal}Weight Divisor{/Literal}</label>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="row">
+                            <div class="col s12">   
+                                <div class="input-field col s12 m1">
+                                    <p style="top: 40px; font-size: 20px;"><strong>{Literal}Barcode Type:{/Literal} </p>
+                                </div>
+                                <div class="checkBoxes">
+                                    <div class="input-field col s12 m4">
+                                        <label>
+                                            <input type="checkbox" id="embeddedPrice" class="filled-in"/>
+                                            <span>{Literal}Embedded Price{/Literal}</span>
+                                        </label>
+                                    </div>
+                    
+                                    <div class="input-field col s12 m4">
+                                        <label>
+                                            <input type="checkbox" id="embeddedWeight" class="filled-in"/>
+                                            <span>{Literal}Embedded Weight{/Literal}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                
+                        <div class="save white lighten-4" align="left">
+                            <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                        </div>
+                    </form>
+                </div>       
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="modal-content" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div style="padding-bottom: 50px">
+        <h4 style="font-size: 1.2rem">{Literal}Edit POS User{/Literal}</h4>
+    </div>
+    <div id="pos-user-form-content">
+        <form>
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <input id="username" placeholder="Enter user name" type="text" class="validate" value="<%= posUser.id %>" required="" aria-required="true">
+                    <label class="active" for="username">{Literal}User name{/Literal}</label>
+                    <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+                </div>
+                <div class="input-field col s12 m6">
+                    <select id="user-group-form-dropdown" required>
+                        <option value="" disabled <%= (posUser.group == null ? 'selected' : '') %>>{Literal}Select user group{/Literal}</option>
+                        <% _.each(userGroups, function(userGroup) { %>
+                            <option value="<%= userGroup.id %>" <%= (posUser.group == userGroup.id ? 'selected' : '') %>><%= userGroup.name %></option>
+                        <% }); %>
+                    </select>
+                    <label>{Literal}User Group{/Literal}</label>
+                    <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                </div>
+
+                <div class="input-field col s12 m6">
+                    <select id="auto-till-form-dropdown">
+                        <option value="*" disabled <%= (posUser.till == null ? 'selected' : '') %>>{Literal}Select auto till{/Literal}</option>
+                        <% _.each(tills, function(till) { %>
+                            <option value="<%= till.id %>" <%= (posUser.till == till.name.id ? 'selected' : '') %>><%= till.name.id %></option>
+                        <% }); %>
+                    </select>
+                    <label>{Literal}Auto Till{/Literal}</label>
+                    <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                </div>
+                <div class="input-field col s12 m6">
+                    <select id="idle-timeout-form-dropdown">
+                        <option value="0" <%= (posUser.logOutTime == 0 ? 'selected' : '') %>>{Literal}Never{/Literal}</option>
+                        <option value="5" <%= (posUser.logOutTime == 5 ? 'selected' : '') %>>{Literal}5 Seconds{/Literal}</option>
+                        <option value="10" <%= (posUser.logOutTime == 10 ? 'selected' : '') %>>{Literal}10 Seconds{/Literal}</option>
+                        <option value="30" <%= (posUser.logOutTime == 30 ? 'selected' : '') %>>{Literal}30 Seconds{/Literal}</option>
+                        <option value="60" <%= (posUser.logOutTime == 60 ? 'selected' : '') %>>{Literal}1 Minute{/Literal}</option>
+                        <option value="120" <%= (posUser.logOutTime == 120 ? 'selected' : '') %>>{Literal}2 Minutes{/Literal}</option>
+                    </select>
+                    <label>{Literal}Idle Timeout{/Literal}</label>
+                    <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="password-reset" type="password" class="validate">
+                    <label for="password-reset">{Literal}Reset Password{/Literal}</label>
+                    <span class="helper-text" data-error="This field cannot contain special characters" data-success=""></span>
+                </div>
+                <div class="input-field col s12 m6">
+                    <div class="row checkboxes">
+                    <% if (isFoodService === true) { %>
+                        <div class="col s6">
+                            <p>
+                                <label>
+                                    <input id="server" type="checkbox" <%= posUser.isServer ? 'checked' : '' %> class="filled-in" />
+                                    <span>{Literal}Server{/Literal}</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col s6">
+                            <p>
+                                <label>
+                                    <input id="driver" type="checkbox" <%= posUser.isDriver ? 'checked' : '' %> class="filled-in" />
+                                    <span>{Literal}Driver{/Literal}</span>
+                                </label>
+                            </p>
+                        </div>
+                    <% } else { %>
+                        <div class="col s6">
+                            <p>
+                                <label>
+                                    <input id="salesRep" type="checkbox" <%= posUser.isServer ? 'checked' : '' %> class="filled-in" />
+                                    <span>{Literal}Sales Representative{/Literal}</span>
+                                </label>
+                            </p>
+                        </div> 
+                    <% } %>
+                    </div>
+                </div>
+                <div class="col s12 m6" style="display:none;">
+                    <input id="openOrderCount" type="text" value="<%= posUser.openOrderCount %>">
+                </div>
+                <div class="col s12 m6" style="display:none;">
+                    <input id="serverId" type="text" value="<%= posUser.serverId %>">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <a href="#delete-pos-user-modal" class="waves-effect waves-light btn red left modal-trigger delete-button">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green right save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light right btn-flat">{Literal}Cancel{/Literal}</a>
+</div>
+
+<div id="delete-pos-user-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this POS User{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+        <a href="javascript:void(0)" id="delete-pos-user-confirm" class="waves-effect waves-green btn red" data-pos-user-id="<%= posUser.id %>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-pos-user-id" />
+    </div>
+</div>

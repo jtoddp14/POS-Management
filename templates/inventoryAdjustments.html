@@ -1,0 +1,56 @@
+<div id="inventory-adjustments-wrapper">
+    <div class="row">
+        <div class="col s8">
+            <div class="input-field searchField">
+                {Literal}Scan or search item code{/Literal}: 
+                <div class="input-field inline searchText">
+                    <input id="itemSearch" type="text"  class="autocomplete">
+                </div>
+                &nbsp;&nbsp;
+                <a href="javascript:void(0)" class="btn waves-effect waves-light green add-item">
+                    <i class="material-icons">add</i>
+                </a>
+            </div>
+        </div>
+        <div class="col s4 updateButton" style="padding-top: 22px;">
+            <a class="waves-effect waves-light green btn-large update-inventory-adjustments">{Literal}Update Inventory{/Literal}</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <% _.each(inventoryAdjustments, function(inventoryAdjustments) { %>
+            <div class="col s12 m3 xl2">
+                <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light" style="background-color: #ffffff" data-id="<%= inventoryAdjustments.id %>" data-selected='0'>
+                    <div>
+                        <div class="row truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                            {Literal}Id{/Literal}: 
+                            <%= inventoryAdjustments.id %>
+                        </div>
+                        <div class="row description truncate" style="color: #3970b7;">
+                            <%= inventoryAdjustments.description %>
+                        </div>
+                        <div class="row truncate" style="font-size: .95rem; color: gray; margin-bottom: 0px;">
+                            {Literal}Qty on Hand{/Literal}:
+                            <%= inventoryAdjustments.qtyOnHand %>
+                        </div>
+                        <div class="row truncate" style="font-size: .95rem; color: gray; margin-bottom: 0px;">
+                            {Literal}This Session{/Literal}:
+                            <%= inventoryAdjustments.total %>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="edit" style="display: none">
+                        <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-inventory-adjustments-trigger"
+                            data-id="<%= inventoryAdjustments.id %>">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+        
+<div id="inventory-adjustments-form-modal" class="modal modal-fixed-footer inventory-adjustments-form-modal" style="max-height: 100%">
+    
+</div>

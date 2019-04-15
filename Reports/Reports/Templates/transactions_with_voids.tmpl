@@ -1,0 +1,212 @@
+{HeaderBlock}
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+      -->
+    </style>
+		
+		<title>{Literal}AccuPOS Transaction History{/Literal}</title>
+  </Head>
+		
+<Body>
+<div align="center"><br>
+  <span class="size11"><strong>Transactions 
+  with Voids Report</strong></span><br>
+  <br>
+</div>
+<div align="center">
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+{CompanyAddress1} {CompanyAddress2}<br>
+{CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span></div></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><div align="center"><span class="size11"><strong>{Range}</strong> <br>
+        {Literal}Report was run on{/Literal}</span><span class="size11"> {DateRun}</span></div></td>
+    </tr>
+  </table>
+  <br>
+  <table width="404" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="34"><div align="right"><img src="images/green_square.aci" alt="Void" width="10" height="10" align="absmiddle"></div></td>
+      <td width="102"><span class="size11">{Literal}=Below Retail{/Literal}</span></td>
+      <td width="35"><div align="right"><img src="images/red_square.aci" alt="Over Retail" width="10" height="10" align="absmiddle"></div></td>
+      <td width="100"><span class="size11">{Literal}=Void{/Literal} </span></td>
+      <td width="32"><div align="right"><img src="images/blue_square.aci" alt="Below Retail" width="10" height="10" align="absmiddle"></div></td>
+      <td width="101"><span class="size11">{Literal}=Over Retail{/Literal}</span></td>
+    </tr>
+  </table>
+</div>
+{/HeaderBlock}
+
+{TransactionBlock}
+<hr align="center" width="630" size="1">
+<table width="629" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="219"><span class="size11"><img src="images/spacer.aci" width="133" height="1"></span></td>
+    <td width="219"><span class="size11"><img src="images/spacer.aci" width="133" height="1"></span></td>
+    <td width="261"><span class="size11"><img src="images/spacer.aci" width="163" height="1"></span></td>
+    <td width="176"><span class="size11"><img src="images/spacer.aci" width="201" height="1"></span></td>
+  </tr>
+  <tr>
+    <td valign="top" class="size11"><strong>{Literal}Trans:{/Literal} </strong>{TransactionNumber}</td>
+    <td valign="top" class="size11"><strong>{Literal}Invoice:{/Literal} </strong>{InvoiceNumber}</td>
+    <td valign="top" class="size11"><strong>{Literal}Date:{/Literal} </strong> {DateInvoiced}</td>
+    <td valign="top" class="size11"><strong>{Literal}Customer:{/Literal} </strong>{CustomerCode}</td>
+  </tr>
+</table>
+<div align="center">
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><img src="images/spacer.aci" width="114" height="8"></td>
+      <td><img src="images/spacer.aci" width="114" height="8"></td>
+      <td><img src="images/spacer.aci" width="80" height="8"></td>
+      <td><img src="images/spacer.aci" width="80" height="8"></td>
+      <td><img src="images/spacer.aci" width="80" height="8"></td>
+      <td><img src="images/spacer.aci" width="80" height="8"></td>
+      <td><img src="images/spacer.aci" width="80" height="8"></td>
+    </tr>
+    <tr>
+      <td width="114" valign="top" class="size11"><div align="" ><strong>{Literal}Item:{/Literal}</strong></div></td>
+      <td width="114" valign="top" class="size11"><div align=""><strong>{Literal}Description:{/Literal}</strong></div></td>
+      <td width="80" valign="top" class="size11"><div align=""><strong>{Literal}Quantity:{/Literal}</strong></div></td>
+      <td width="80" valign="top" class="size11"><div align="" ><span class="size11"><strong>{Literal}Price:{/Literal}</strong></div></td>
+      <td width="80" valign="top" class="size11"><div align="" ><span class="size11"><strong>{Literal}Sub-Total:{/Literal}</strong></div></td>
+      <td width="80" valign="top" class="size11"><div align="" ><span class="size11"><strong>{Literal}Tax:{/Literal}</strong></div></td>
+      <td width="80" valign="top" class="size11"><div align="" ><span class="size11"><strong>{Literal}User:{/Literal}</strong></div></td>
+    </tr>
+  </table>
+  {LineItemsBlock}
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><img src="images/spacer.aci" width="114" height="1"></td>
+      <td><img src="images/spacer.aci" width="114" height="1"></td>
+      <td><img src="images/spacer.aci" width="80" height="1"></td>
+      <td><img src="images/spacer.aci" width="80" height="1"></td>
+      <td><img src="images/spacer.aci" width="80" height="1"></td>
+      <td><img src="images/spacer.aci" width="80" height="1"></td>
+      <td><img src="images/spacer.aci" width="80" height="1"></td>
+    </tr>
+    <tr  {ExtentionColor}>
+      <td valign="top" class="size11"><div align="">{ItemCode}</font></div></td>
+      <td valign="top" class="size11"><div align="">{ItemDescription}</font></div></td>
+      <td><div align=""><span class="size11">{Quantity}</span></div></td>
+      <td valign="top" class="size11"><div align=""><div align="">{Price}</div></div></td>
+      <td valign="top" class="size11"><div align=""><div align="">{Extention}</div></div></td>
+      <td valign="top" class="size11"><div align=""><div align="">{Taxable}</div></div></td>
+      <td valign="top" class="size11"><div align=""><div align="">{User}</div></div></td>
+    </tr>
+  </table>
+  {/LineItemsBlock}
+  {TenderingBlock}
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="175"><span class="size11"><img src="images/spacer.aci" width="195" height="12"></span></td>
+      <td width="116"><span class="size11"><img src="images/spacer.aci" width="75" height="12"></span></td>
+      <td width="85"><span class="size11"><img src="images/spacer.aci" width="72" height="12"></span></td>
+      <td width="109"><span class="size11"><img src="images/spacer.aci" width="61" height="12"></span></td>
+      <td width="31"><span class="size11"><img src="images/spacer.aci" width="30" height="12"></span></td>
+      <td width="114"><span class="size11"><img src="images/spacer.aci" width="71" height="12"></span></td>
+    </tr>
+    <tr>
+      <td valign="top" class="size11"><div align="left"><strong>{Literal}Type{/Literal} </strong>&amp;<strong> <strong>{Literal}Amount{/Literal}</strong>:</strong> {TenderDescription}</div></td>
+      <td valign="top" class="size11"><table width="71" border="0" align="left" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><div align="right" class="size11">{TenderAmount}</div></td>
+        </tr>
+      </table></td>
+      <td valign="top" class="size11"><div align="right"><strong>{Literal}Approval:{/Literal}</strong></div></td>
+      <td valign="top" class="size11"><div align="left">&nbsp;{TenderApproval}</div></td>
+      <td valign="top" class="size11"><div align="right"><strong>{Literal}Ref:{/Literal}&nbsp;</strong></div></td>
+      <td valign="top" class="size11"><div align="left">{TenderReference}</div></td>
+    </tr>
+  </table>
+  {/TenderingBlock}
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="152"><span class="size11"><img src="images/spacer.aci" width="164" height="12"></span></td>
+      <td width="72"><span class="size11"><img src="images/spacer.aci" width="100" height="12"></span></td>
+      <td width="110"><span class="size11"><img src="images/spacer.aci" width="58" height="12"></span></td>
+      <td width="144"><span class="size11"><img src="images/spacer.aci" width="133" height="12"></span></td>
+      <td width="449"><span class="size11"><img src="images/spacer.aci" width="124" height="12"></span></td>
+    </tr>
+    <tr {TransactionColor}>
+      <td valign="top" class="size11"><strong>{Literal}Taxable Total:{/Literal}</strong>&nbsp;{TaxableTotal}<strong>&nbsp;&nbsp;</strong></td>
+      <td valign="top" class="size11"><strong>{Literal}Non-Tax Total:{/Literal}</strong></td>
+      <td valign="top" class="size11">{NontaxableTotal}<strong>&nbsp;</strong></td>
+      <td valign="top" class="size11"><strong>{Literal}Tax Total:{/Literal}</strong> {TaxTotal}</td>
+      <td valign="top" class="size11"><strong>{Literal}Trans Total:{/Literal} </strong>{TransactionTotal}</td>
+    </tr>
+  </table>
+</div>
+<span class="size11"></span>
+{/TransactionBlock}
+
+{FooterBlock}
+<hr align="center" width="630" size="1">
+<div align="center"><span class="size11">{Errors}</span>
+    <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><span class="size11"><strong>{Literal}Taxable Total:{/Literal}</strong></span></td>
+        <td><span class="size11"><strong>{Literal}Nontaxable Total:{/Literal}</strong></span></td>
+        <td><span class="size11"><strong>{Literal}Tax Total:{/Literal}</strong></span></td>
+        <td><span class="size11"><strong>{Literal}Total:{/Literal}</strong></span></td>
+      </tr>
+      <tr>
+        <td><span class="size11">{ReportTaxableTotal}</span></td>
+        <td><span class="size11">{ReportNontaxableTotal}</span></td>
+        <td><span class="size11">{ReportTaxTotal}</span></td>
+        <td><span class="size11">{ReportTotal}</span></td>
+      </tr>
+    </table>
+</div>
+<hr align="center" width="630" size="1" noshade>
+<div align="center"><span class="minitype">&nbsp;&nbsp;&nbsp;{Literal}Powered by AccuPOS Point Of Sale rev04{/Literal}</span></div>
+</Body>
+</Html>
+{DateFormat}MM-dd-yy HH:mm{/DateFormat}
+{CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+{PriceFormat}###0.00;-###0.00{/PriceFormat}
+{QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}<br>
+{Errors}<br>
+{TaxableText}Yes{/TaxableText}<br>
+{NontaxableText}No{/NontaxableText}
+{NegativeColor}style="color: #FF0000"{/NegativeColor}
+{PositiveColor}style="color: #000000"{/PositiveColor}
+{DiscountColor}style="color: #00FF00"{/DiscountColor}
+{IncreaseColor}style="color: #0000FF"{/IncreaseColor}
+{/FooterBlock}

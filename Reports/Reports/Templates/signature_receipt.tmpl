@@ -1,0 +1,337 @@
+<Html {RightToLeft}>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="Cache-control" content="public">
+
+    <link href="css/manage.css.gz" rel="stylesheet" type="text/css">    
+    <link href="css/bootstrap.min.css.gz" rel="stylesheet">
+    <link href="css/style.css.gz" rel="stylesheet">
+    <script src="js/jquery-1.11.3.min.js.gz"></script>
+    <script src="js/included.js.gz"></script>
+    
+    <link rel="stylesheet" href="css/font-awesome.min.css.gz">
+    <link rel="stylesheet" href="css/main.css.gz">
+    <link rel="stylesheet" href="css/accupos.css.gz">
+
+		<style type="text/css">
+		<!--
+			body
+			{
+				background-color: #FFFFFF;
+				margin: 0;
+				padding: 0;
+				font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+			}
+
+			table, th, td {
+					border-collapse:collapse;
+			}
+
+			th, td {
+					padding-left:10px;
+					padding-right:10px;
+			}			
+			
+			.size11 {font-size: 11px;}
+			
+			.PopupMessage-content {
+				z-index: 2;
+				padding: 10px 10px;
+				width: 400px;
+				position: relative;
+				min-height: 120px;
+				margin: 5% auto 0;
+				background: #fff;
+			}
+
+			.PopupEmail-content {
+				z-index: 2;
+				padding: 10px 10px;
+				width: 400px;
+				position: relative;
+				min-height: 150px;
+				margin: 5% auto 0;
+				background: #fff;
+			}
+			
+		-->
+		</style>
+	</head>
+    
+  <Body>
+    <title>{Literal}AccuPOS Signature Receipt{/Literal}</title><Body>
+		<div align="center">
+			<br>
+			<input name="edit" type="button" class="blue-small-btn" value="{Literal}Email this Report{/Literal}" style="font-weight: bold;" onClick="openEmailPopup();">
+			<br>
+		</div>
+			
+		<div align="center" id="divReportContent">
+		  <br>
+
+			<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td>
+						<div align="center">
+							<span class="size11"></br>
+								<strong>Credit Card</strong>
+							</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div align="center">
+							<span class="size11">
+								<strong>{CompanyName}</strong>
+							</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div align="center">
+							<span class="size11">
+								{CompanyAddress1} {CompanyAddress2}<br>
+								{CompanyCity}, {CompanyState}&nbsp;{CompanyZip}
+							</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+
+			<hr align="center" width="400" size="1" noshade>
+
+			<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="40%" align="left"><span class="size11">{ReceiptDateTime}</span></td>
+					<td width="30%" align="center"><span class="size11">{TransactionNumber}</span></td>
+					<td width="30%" align="right"><span class="size11">{Server}</span></td>
+				</tr>
+			</table>
+
+			<hr align="center" width="400" size="1" noshade>
+
+			{CustomerAccountBlock}
+				<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="center"><span class="size11">{CustomerCompany}</span></td>
+					</tr>
+					<tr>
+						<td align="center"><span class="size11">{CustomerAddress1}</span></td>
+					</tr>
+					<tr>
+						<td align="center"><span class="size11">{CustomerAddress2}</span></td>
+					</tr>
+					<tr>
+						<td align="center"><span class="size11">{CustomerCity}, {CustomerState} {CustomerZip}</span></td>
+					</tr>
+					<tr>
+						<td align="center"><span class="size11">{CustomerCountry}</span></td>
+					</tr>
+					<tr>
+						<td align="center"><span class="size11">{CustomerPhone}</span></td>
+					</tr>
+					<tr>
+						<td align="center"><span class="size11">&nbsp;</span></td>
+					</tr>
+				</table>
+				
+				<table width="400" border="1" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="45%" align="left"><span class="size11">{Literal}Account Number:{/Literal}</span></td>
+						<td width="50%" align="right"><span class="size11">{AccountNumber}</span></td>
+					</tr>
+					<tr>
+						<td width="45%" align="left"><span class="size11">{Literal}Customer Name:{/Literal}</span></td>
+						<td width="50%" align="right"><span class="size11">{CustomerName}</span></td>
+					</tr>
+					<tr>
+						<td width="45%" align="left"><span class="size11">{Literal}Account Type:{/Literal}</span></td>
+						<td width="50%" align="right"><span class="size11">{AccountType}</span></td>
+					</tr>
+				</table>
+			{/CustomerAccountBlock}
+					
+			{CreditCardBlock}
+				<table width="400" border="1" align="center" cellspacing="10">
+					<tr>
+						<td width="45%" align="left"><span class="size11">{Literal}Card Holder:{/Literal}</span></td>
+						<td width="50%" align="right"><span class="size11">{CardHolder}</span></td>
+					</tr>
+					<tr>
+						<td align="left"><span class="size11">{Literal}Card Type:{/Literal}</span></td>
+						<td align="right"><span class="size11">{TenderDescription}</span></td>
+					</tr>
+					<tr>
+						<td align="left"><span class="size11">{Literal}Last 4 of card:{/Literal}</span></td>
+						<td align="right"><span class="size11">{TenderCardNumber}</span></td>
+					</tr>
+					<tr>
+						<td align="left"><span class="size11">{Literal}Card Expire Date:{/Literal}</span></td>
+						<td align="right"><span class="size11">{TenderCardExpire}</span></td>
+					</tr>
+					<tr>
+						<td align="left"><span class="size11">{Literal}Reference Number:{/Literal}</span></td>
+						<td align="right"><span class="size11">{TenderReference}</span></td>
+					</tr>
+					<tr>
+						<td align="left"><span class="size11">{Literal}Authorization Number:{/Literal}</span></td>
+						<td align="right"><span class="size11">{TenderCardAuthorization}</span></td>
+					</tr>
+			{/CreditCardBlock}
+
+				{TipBlock}
+					<tr>
+						<td align="left"><span class="size11">{Literal}Subtotal Amount:{/Literal}</span></td>
+						<td align="right"><span class="size11">{SubtotalAmount}</span></td>
+					</tr>
+					<tr>
+						<td align="left"><span class="size11">{Literal}Tip Amount:{/Literal}</span></td>
+						<td align="right"><span class="size11">{TipAmount}</span></td>
+					</tr>
+				{/TipBlock}
+
+				<tr>
+					<td align="left"><span class="size11">{Literal}Total:{/Literal}</span></td>
+					<td align="right"><span class="size11">{TotalAmount}</span></td>
+				</tr>
+			</table>
+
+			<hr align="center" width="400" size="1" noshade>
+
+			<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td align="left"><span class="size11">{Literal}Signature{/Literal}</span></td>
+				</tr>
+			</table>
+				
+			<table width="400" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:20px;">
+				<tr style="border: 1px solid #888888;">
+					<input type="hidden" id='signatureFileName' value='{SignatureFileName}'>
+					<td align="center"><img id="displaySignature" src="{SignatureFileName}"><img src="cid:Signature.png" alt=""></td>
+				</tr>
+			</table>
+				
+			<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td align="center"><span class="size11">&nbsp;</span></td>
+				</tr>
+				<tr>
+					<td align="center"><span class="size11">{Literal}I agree to pay the above total amount{/Literal}</span></td>
+				</tr>
+				<tr>
+					<td align="center"><span class="size11">{Literal}according to card issuer agreement{/Literal}</span></td>
+				</tr>
+				<tr>
+					<td align="center"><span class="size11">{Literal}(merchant agreement if credit voucher){/Literal}</span></td>
+				</tr>
+			</table>
+		</div>
+
+		
+		<!-- popup ErrorMsg START-->
+		<div class="overlay is-hidden" id="messageOverlay">
+		<div class="PopupMessage-content">
+				<p style="text-align: center; font-weight: bold; color: red;">{Literal}Error Message{/Literal}</p>
+
+				<p id="divErrorMessage" style="text-align: center; font-weight: bold;">
+				</p>
+
+				<input name="cancel" type="button" class="grey-small-btn" value="{Literal}OK{/Literal}" style="float: right; margin-left: 10px; width: 70px;" onClick="closePopupMessage();">
+			</div>
+		</div>
+		<!-- popup ErrorMsg END-->
+
+		
+		<script type="text/javascript">
+			var messageOverlay = document.getElementById('messageOverlay');
+
+			function openPopupMessage()
+			{
+				messageOverlay.classList.remove("is-hidden");
+			}
+
+			function closePopupMessage()
+			{
+				messageOverlay.classList.add("is-hidden");
+			}
+		</script>
+
+
+		<!-- emailMessage popup START-->
+		<div class="overlay is-hidden" id="emailOverlay">
+			<div class="PopupEmail-content PopupMessage-content">
+				<p style="text-align: center;"><b>{Literal}Email Address{/Literal}</b></p>
+				<p style="text-align: center;">
+					<input name="emailAddress" id='emailAddress' type="text" style="text-align: left; padding-left: 5px; border: 1px solid lightgrey; background-color: white; width: 280px; height: 25px; font-size: 12px;" />
+				</p>
+				<br>
+				<input name="cancel" type="button" class="grey-small-btn" id="cancel-btn" value="{Literal}Cancel{/Literal}" style="float: left; margin-left: 40px; width: 70px;" onClick="closeEmailPopup(false);">
+				<input name="save" type="button" class="blue-small-btn" id="email-btn" value="{Literal}Email{/Literal}" style="float: right; margin-right: 40px; width: 70px;" onClick="closeEmailPopup(true);">
+			</div>
+		</div>
+		<!-- emailMessage popup END-->
+
+		<script type="text/javascript">
+
+			var emailOverlay = document.getElementById('emailOverlay');
+
+			function openEmailPopup()
+			{
+				emailOverlay.classList.remove("is-hidden");
+				document.getElementById('emailAddress').select();
+			}
+
+			function closeEmailPopup(submit)
+			{
+				emailOverlay.classList.add("is-hidden");
+				
+				if (submit)
+				{
+					var errorMsg = "";
+					var emailAddress = document.getElementById('emailAddress').value;
+					var signatureFileName = document.getElementById('signatureFileName').value;
+					if (emailAddress.trim() == "")
+						errorMsg = "Email is a required field";
+					else if (!emailAddress.includes("@") || !emailAddress.includes("."))
+						errorMsg = "Email address is invalid, must contain '@' and '.'";
+					
+					if (errorMsg != "")
+					{
+						document.getElementById('divErrorMessage').innerHTML = errorMsg;
+						openPopupMessage();
+					}
+					else
+					{
+						document.getElementById('displaySignature').style.display = 'none';
+						var reportContent = document.getElementById('divReportContent').innerHTML;
+						
+						$.post("email_report.html",
+						{
+							reportTitle: document.title,
+							reportContent: reportContent,
+							emailAddress: emailAddress,
+							signatureFileName: signatureFileName
+						})
+
+						.done(function(data)
+						{
+							document.getElementById('displaySignature').style.display = 'inline-block';
+						});
+					}
+				}
+			}
+
+		</script>
+    
+  </Body>
+</Html>
+
+{DateFormat}yyyy-MM-dd HH:mm{/DateFormat}
+{CurrencyFormat}$#####0.00;-$#####0.00{/CurrencyFormat}
+{Errors}

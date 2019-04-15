@@ -1,0 +1,22 @@
+
+<div class="row" align="center" style="max-width: 100%;">
+    <img class="apLogInLogo" src="img/WebManagementLogo.png" alt="">
+    <img class="israCardLogInLogo" src="img/israCardLogInLogo.png" alt="" style="display: none;">
+</div>
+
+<div class="log-in-card" align="center" style="padding-top: 6%;" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+<form id="log-in-form-content">
+    <div class="row" style="margin-bottom: 0px;">
+        <div align="center">
+            <div class="input-field col s12 m12">
+                <input placeholder="{Literal}Password{/Literal}" id="password" type="password" class="validate" autofocus="autofocus" style="border-bottom: 1px solid #4abd98; -webkit-box-shadow: 0 1px 0 0 #4abd98; box-shadow: 0 1px 0 0 #4abd98;">
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="logInButtons">
+        <div align="center" style="padding-left: 125px; padding-right: 125px;">
+            <a class="waves-effect waves-light btn-large round green save-button" style="background-color: #4abd98 !important; border-radius: 5px; font-weight: bold;">{Literal}LOG IN{/Literal}</a>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,41 @@
+<div id="tills-wrapper">
+    <div class="row">
+        <% _.each(tills, function(tills) { %>
+            <div class="col s12 m3 xl2">
+                <div class="card-panel card-panel-entity z-depth-2 sequence-card hoverable white-text waves-effect waves-light <%= tills.cardStyleClass %>" style="background-color: #3970b7" data-id="<%= tills.id %>" data-selected='0'>
+                    <div>
+                        <div class="row description truncate" style="position: relative; right: 12px; bottom: 4px; width: 150%; height: 48px;">
+                                &nbsp;&nbsp;<%= tills.name %>
+                        </div>
+                        <div class="row cash truncate">
+                            Starting Cash:
+                            <%= tills.cash %>
+                        </div>
+                        <div class="row glDept truncate">
+                            GL Dept:
+                            <%= tills.glDept %>
+                        </div>
+                        <div class="row autoZ truncate">
+                            Auto Z:
+                            <%= tills.autoZ %>
+                        </div>
+                    </div>
+                    <div class="edit" style="display: none">
+                        <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-tills-trigger"
+                            data-id="<%= tills.id %>">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <div id="tills-form-modal" class="modal modal-fixed-footer tills-form-modal" style="max-height: 100%">
+        
+    </div>
+    
+    <a href="javascript:void(0)" id="add-tills-button" class="btn-floating btn-large waves-effect waves-light green floating-action-button-fixed">
+        <i class="material-icons">add</i>
+    </a>

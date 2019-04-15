@@ -1,0 +1,119 @@
+<Html {RightToLeft}>
+        <Head>
+          <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+      
+          <style type="text/css">
+            <!--
+            body {
+              background-color: #FFFFFF;
+              margin: 0;
+              padding: 0;
+              font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+            }
+            .size11 {
+              font-size: 11px;
+            }
+            .minitype {font-size: 9px}
+            .greendis {
+              font-size: 11px;
+              color: 00ff00;
+            }
+            .redneg {
+              font-size: 11px;
+              color: #FF0000;
+            }
+            .blueinc {
+              font-size: 11px;
+              color: 0000FF;
+            }
+            .blackreg {
+              font-size: 11px;
+              color: #000000;
+            }
+            .truncate {
+              display: block;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            -->
+          </style>
+      
+              <title>{Literal}AccuPOS Transactions by Customer Report{/Literal}</title>
+        </Head>
+              
+      <Body>
+      <div align="center"><br>
+        <span class="size11"><strong>{Literal}Transactions by Customer Summary Report{/Literal}</strong></span><br>
+        <br>
+      </div>
+      <div align="center">
+        <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td><div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+      {CompanyAddress1} {CompanyAddress2}<br>
+      {CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span></div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="center"><span class="size11"><strong>{Range}</strong> <br>
+              {Literal}Report was run on{/Literal}</span><span class="size11"> {DateRun}</span></div></td>
+          </tr>
+        </table>
+        <p>&nbsp;</p>
+      </div>
+      {CustomerBlock} <br>
+        <table width="685" border="0" align="center" cellpadding="0" cellspacing="0">
+      
+      <tr>
+        <td height="14" class="size11"><img src="images/spacer.gif" width="250" height="9"></td>
+        <td width="123" class="size11"><img src="images/spacer.gif" width="130" height="9"></td>
+        <td width="123" class="size11"><img src="images/spacer.gif" width="110" height="9"></td>
+        <td width="110" class="size11"><img src="images/spacer.gif" width="110" height="9"></td>
+        <td width="112" class="size11"><img src="images/spacer.gif" width="110" height="9"></td>
+      </tr>
+      <tr>
+        <td class="size11"><div><strong >{Literal}Company Name:{/Literal}&nbsp;</strong><p>{CustomerCompanyName}</div></td>
+        <td class="size11"><div><strong class="truncate">{Literal}Cust. Code:{/Literal}&nbsp;</strong><p>{CustomerCode}</p></div></td>
+        <td class="size11"><div><strong class="truncate">{Literal}Sub:{/Literal}&nbsp;</strong>{CustomerSubtotal}</div></td>
+        <td class="size11"><div><strong class="truncate">{Literal}Tax:{/Literal}&nbsp;</strong>{CustomerTax}</div></td>
+        <td class="size11"><div><strong class="truncate">{Literal}Total:{/Literal}&nbsp;</strong>{CustomerTotal}</div></td>
+      </tr>
+      </table>
+        <br>
+      {/CustomerBlock}
+      <hr align="center" width="685" size="1">
+      <div align="center"><span class="size11">{Errors}</span>
+        <table width="685" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="200" height="14" class="size11"><img src="images/spacer.gif" width="200" height="9"></td>
+            <td width="199" class="size11"><img src="images/spacer.gif" width="195" height="9"></td>
+            <td width="170" class="size11"><img src="images/spacer.gif" width="170" height="9"></td>
+            <td width="116" class="size11"><img src="images/spacer.gif" width="115" height="9"></td>
+          </tr>
+          <tr>
+            <td><span class="size11"><strong>{Literal}Taxable Total:{/Literal}</strong></span>&nbsp;<span class="size11">{ReportTaxableTotal}</span></td>
+            <td class="size11"><strong>{Literal}Nontaxable Total:{/Literal}&nbsp;</strong>{ReportNontaxableTotal}</td>
+            <td class="size11"><strong>{Literal}Tax Total:{/Literal}&nbsp;</strong>{ReportTaxTotal}</td>
+            <td class="size11"><strong>{Literal}Total:{/Literal}&nbsp;</strong>{ReportTotal}</td>
+          </tr>
+        </table>
+      </div>
+      <hr align="center" width="630" size="1" noshade>
+      <div align="center"><span class="minitype">&nbsp;&nbsp;&nbsp;{Literal}rev04{/Literal}</span></div>
+      </Body>
+      </Html>
+      {DateFormat}MM-dd-yy HH:mm{/DateFormat}
+      {CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+      {PriceFormat}###0.00;-###0.00{/PriceFormat}
+      {QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+      {Errors}
+      {TaxableText}Yes{/TaxableText}
+      {NontaxableText}No{/NontaxableText}
+      {NegativeColor}style="color: #FF0000"{/NegativeColor}
+      {PositiveColor}style="color: #000000"{/PositiveColor}
+      {DiscountColor}style="color: #00FF00"{/DiscountColor}
+      {IncreaseColor}style="color: #0000FF"{/IncreaseColor}
+      

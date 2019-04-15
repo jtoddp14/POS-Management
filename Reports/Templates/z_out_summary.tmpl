@@ -1,0 +1,744 @@
+<Html {RightToLeft}>
+  <Head>
+	
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="Cache-control" content="public">
+
+    <link href="css/manage.css.gz" rel="stylesheet" type="text/css">    
+    <link href="css/bootstrap.min.css.gz" rel="stylesheet">
+    <link href="css/style.css.gz" rel="stylesheet">
+    <script src="js/jquery-1.11.3.min.js.gz"></script>
+    <script src="js/included.js.gz"></script>
+    
+    <link rel="stylesheet" href="css/font-awesome.min.css.gz">
+    <link rel="stylesheet" href="css/main.css.gz">
+    <link rel="stylesheet" href="css/accupos.css.gz">
+	
+	
+  <style type="text/css">
+		
+    body {
+      background-color: #FFFFFF;
+      margin: 0;
+      padding: 0;
+      font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+    }
+
+    .minitype {font-size: 9px}
+
+    .size11 {font-size: 11px}
+
+
+    .greendis {
+      font-size: 11px;
+      color: 00ff00;
+    }
+    .redneg {
+      font-size: 11px;
+      color: #FF0000;
+    }
+    .blueinc {
+      font-size: 11px;
+      color: 0000FF;
+    }
+    .blackreg {
+      font-size: 11px;
+      color: #000000;
+    }
+
+    .is-hidden {
+      display: none;
+    }
+
+    .overlay {
+      z-index: 2;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .PopupMessage-content {
+      z-index: 2;
+      padding: 10px 10px;
+      width: 400px;
+      position: relative;
+      min-height: 120px;
+      margin: 5% auto 0;
+      background: #fff;
+    }
+
+		.PopupEmail-content {
+      z-index: 2;
+      padding: 10px 10px;
+      width: 400px;
+      position: relative;
+      min-height: 150px;
+      margin: 5% auto 0;
+      background: #fff;
+		}
+		
+  </style>
+
+  <script src="js/Chart.js"></script>
+  
+  <script type="text/javascript">
+
+    var itemTypeChartData =
+    {
+      {ItemTypeChartData}
+    };
+
+    function loadCharts()
+    {
+        var ctx2 = document.getElementById("itemType-chart-area").getContext("2d");
+        window.barChart = new Chart(ctx2).Bar(itemTypeChartData);
+    }
+
+  </script>
+
+  
+  <script type="text/javascript">
+    
+    function checkErrorMessage()
+    {
+      var errorMessage = document.getElementById('errorMessage');
+      if (errorMessage && errorMessage.value)
+        openPopupMessage();
+    }
+    
+  </script>
+
+  
+  {XOutTitleBlock}
+    <title>{Literal}X Read Summary Report{/Literal}</title>
+  {/XOutTitleBlock}
+
+
+  {ZOutTitleBlock}
+    <title>{Literal}Z Reset Summary Report{/Literal}</title>
+  {/ZOutTitleBlock}
+
+  </Head>
+
+  <Body onLoad="checkErrorMessage(); loadCharts();">
+    <input type="hidden" id="errorMessage" name="errorMessage" value='{ErrorMessage}' />
+
+		<div align="center">
+			<br>
+			<input name="edit" type="button" class="blue-small-btn" value="{Literal}Email this Report{/Literal}" style="font-weight: bold;" onClick="openEmailPopup();">
+			<br>
+		</div>
+			
+		<div align="center" id="divReportContent">
+		  <br>
+
+			<div align="center">
+				<strong>{Literal}Report for Till{/Literal} {Till}</strong>
+				<br>
+				<br>
+
+				<table width="660" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="center"><strong>{CompanyName}</strong><br>
+								{CompanyAddress1} {CompanyAddress2} {CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</td>
+					</tr>
+					<tr>
+						<td></td>
+					</tr>
+					<tr>
+						<td align="center"><br>
+											{Literal}Report was run on{/Literal} {DateRun}<br>
+							{Literal}Transactions from{/Literal} <strong>{StartTime}</strong> {Literal}through{/Literal} <strong>{EndTime}</strong>
+						</td>
+					</tr>
+					<tr>
+						<td align="center"><hr width="660" size="1"></td>
+					</tr>
+				</table>
+				
+				<table width="660" border="0" align="center" cellpadding="0" cellspacing="0">
+
+					<tr>
+						<td colspan="5" valign="top" class="size11"></td>
+					</tr>
+
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Tender Name{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11"><strong>{Literal}Amount{/Literal}</strong></td>
+						<td colspan="3" valign="top" class="size11"></td>
+					</tr>
+
+					<tr>
+						<td colspan="5">
+							<table width="660" border="0" align="center" cellpadding="0" cellspacing="0">
+								{TenderBlock}
+									<tr>
+										<td colspan="3" valign="top" class="size11"><img src="images/spacer.aci" height="8"></td>
+									</tr>
+									<tr>
+										<td width=" 150
+" valign="top" class="size11"><div  >{TenderName}</div></td>
+										<td width="76" valign="top" class="size11"><div align="right">{TenderAmount}</div></td>
+										<td valign="top" class="size11"></td>
+									</tr>
+								{/TenderBlock}
+							</table>
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="10"></td>
+					</tr>
+					<tr>
+						<td width="150" valign="top" class="size11"><strong>{Literal}Tendering Total{/Literal}</strong></td>
+						<td width="76" align="right" valign="top" class="size11"><strong>{TenderTotal}</strong></td>
+						<td colspan="3" valign="top" class="size11"></td>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="size11"><hr size="1"></td>
+						<td colspan="3" valign="top" class="size11"></td>
+					</tr>
+
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="5"></td>
+					</tr>
+					<tr>
+						<td               valign="top" class="size11"><strong>{Literal}Starting Cash{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{StartingCash}</td>
+						<td align="left" valign="top" class="size11"></td>
+						<td align="right" valign="top" class="size11" {DisplayTipData}><strong>{Literal}Credit Card Tips:{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11" {DisplayTipData}>{CreditCardTips}</td>
+					</tr>
+					<tr>
+						<td               valign="top" class="size11"><strong>{Literal}Total Cash{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{TotalCash} </td>
+						<td align="left" valign="top" class="size11"></td>
+						<td align="right" valign="top" class="size11" {DisplayTipData}><strong>{Literal}AutoGratuity:{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11" {DisplayTipData}>{AutoGratuity}</td>
+					</tr>
+					<tr>
+						<td               valign="top" class="size11"><strong>{Literal}Ending Cash{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{EndingCash} </td>
+						<td align="left" valign="top" class="size11"></td>
+						<td align="right" valign="top" class="size11" {DisplayTipData}><strong>{Literal}Other Tips:{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11" {DisplayTipData}>{TotalOtherTips}</td>
+					</tr>
+					<tr>
+						<td               valign="top" class="size11"><strong>{ShortOverText} {Literal}Cash{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{ShortCash} </td>
+						<td align="left" valign="top" class="size11"></td>
+						<td align="right" valign="top" class="size11" {DisplayTipData}><strong>{Literal}Total Tips:{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11" {DisplayTipData}>{TotalCreditCardTips}</td>
+					</tr>
+
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="10"></td>
+					</tr>
+
+					<tr>
+						<td               valign="top" class="size11"><strong>{Literal}Payments on Accounts{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{CustomerPayments}</td>
+						<td colspan="3" valign="top" class="size11">&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Cash Paid Out{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{PayoutsTotal} </td>
+						<td colspan="3" valign="top" class="size11">&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Net Cash{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{NetCash} </td>
+						<td colspan="3" valign="top" class="size11">&nbsp;</td>
+					</tr>
+					
+					<tr>
+						<td colspan="5"valign="top" class="size11">&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td colspan="5" align="center" valign="top" class="size11">&nbsp;</td>
+					</tr>
+
+					{ChartDataBlock2}
+					<div align="left" id="divChartData2">
+						<tr>
+							<td colspan="5" valign="top">
+
+								<div id="canvas-holder2"   >
+									<canvas id="itemType-chart-area" width="630" height="300"/>
+								</div>
+							</td>
+						</tr>
+					</div>
+					{/ChartDataBlock2}
+
+					<tr>
+						<td colspan="3" align="center" valign="top" class="size11">&nbsp;</td>
+						<td colspan="2" align="right" valign="top" class="size11">&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td colspan="3" align="center" valign="top" class="size11" height="20"><strong>------------------{Literal}SALES SUMMARY{/Literal}------------------</strong></td>
+						<td colspan="2" align="right" valign="top" class="size11" height="20"><strong>----{Literal}RETURNS/VOIDS SUMMARY{/Literal}----</strong></td>
+					</tr>
+
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Item Types{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11"><strong>{Literal}Quantity{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11"><strong>{Literal}Total Sales{/Literal} </strong></td>
+						<td align="right" valign="top" class="size11"><strong>{Literal}Quantity{/Literal}</strong></td>
+						<td width="146" align="right" valign="top" class="size11"><strong><strong>{Literal}Total{/Literal}</strong></strong></td>
+					</tr>
+
+					{ItemBlock}
+					<tr>
+						<td valign="top" class="size11">{ItemType} </td>
+						<td align="right" valign="top" class="size11">{Quantity} </td>
+						<td align="right" valign="top" class="size11">{Total} </td>
+						<td align="right" valign="top" class="size11">{Void} </td>
+						<td align="right" valign="top" class="size11">{VoidAmount}</td>
+					</tr>
+					{/ItemBlock}
+
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="1"><hr size="1" align="left"></td>
+					</tr>
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Item Totals{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{QuantityTotal}</td>
+						<td align="right" valign="top" class="size11">{ItemTotal} </td>
+						<td align="right" valign="top" class="size11">{VoidTotal} </td>
+						<td align="right" valign="top" class="size11">{VoidAmountTotal} </td>
+					</tr>
+
+					{USTaxBlock}
+						<tr>
+							<td colspan="5" valign="top" class="size11" height="20"></td>
+						</tr>
+						<tr>
+							<td colspan="3" align="center" valign="top" class="size11" height="20"><strong>------------------{Literal}TAX DETAIL{/Literal}------------------</strong></td>
+							<td colspan="2" align="right" valign="top" class="size11" height="20"></td>
+						</tr>
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Tax Authority{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11"><strong>{Literal}Authority{/Literal} </strong></td>
+						<td align="right" valign="top" class="size11"><strong>{Literal}Amount{/Literal}</strong></td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					{TaxBlock}
+					<tr>
+						<td valign="top" class="size11">{TaxAuthority}</td>
+						<td align="right" valign="top" class="size11">{AuthorityName} </td>
+						<td align="right" valign="top" class="size11">{TaxAmount} </td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					{/TaxBlock}
+					<tr>
+						<td colspan="5" valign="top" class="size11"><hr size="1" align="left"></td>
+					</tr>
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Taxes Total{/Literal}</strong></td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td align="right" valign="top" class="size11">{TaxesTotal}</td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="15"></td>
+					</tr>
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Taxable{/Literal}</strong></td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td align="right" valign="top" class="size11">{Taxable} </td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Nontaxable{/Literal}</strong></td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td align="right" valign="top" class="size11">{Nontaxable} </td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Tax Total{/Literal}</strong></td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td align="right" valign="top" class="size11">{TaxesTotal} </td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="5"></td>
+					</tr>
+					<tr>
+						<td valign="top" class="size11" {DisplayTipData}><strong>{Literal}Auto Gratuity Total{/Literal}</strong></td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td align="right" valign="top" class="size11" {DisplayTipData}>{AutoGratuityTotal} </td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Customer Payment Total{/Literal}</strong></td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td align="right" valign="top" class="size11">{CustomerPaymentsTotal} </td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="5"></td>
+					</tr>
+					<tr>
+						<td valign="top" class="size11"><strong>{Literal}Total{/Literal}</strong></td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td align="right" valign="top" class="size11"><strong>{Total}</strong></td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					{/USTaxBlock}
+
+					{VATBlock}
+						<tr>
+							<td colspan="5" valign="top" class="size11" height="20"></td>
+						</tr>
+						<tr>
+							<td colspan="3" align="center" valign="top" class="size11" height="20"><strong>------------------{Literal}VAT DETAIL{/Literal}------------------</strong></td>
+							<td colspan="2" align="right" valign="top" class="size11" height="20"></td>
+						</tr>
+						<tr>
+							<td valign="top" class="size11"></td>
+							<td valign="top" align="right" class="size11"><strong>{Literal}Total{/Literal}</strong></td>
+							<td valign="top" align="right" class="size11"><strong>{Literal}Amount{/Literal}</strong></td>
+							<td colspan="2" class="size11">&nbsp;</td>
+						</tr>
+
+						{VATDetailBlock}
+						<tr>
+							<td align="left" valign="top" class="size11">{VatCode} - {VatDescription}</td>
+							<td align="right" valign="top" class="size11">{VatTotal}</td>
+							<td align="right" valign="top" class="size11">{VatAmount}</td>
+							<td colspan="2" class="size11">&nbsp;</td>
+						</tr>
+						{/VATDetailBlock}
+
+						<tr>
+							<td colspan="5" valign="top" class="size11" height="5"></td>
+						</tr>
+						<tr>
+							<td valign="top" class="size11"><strong>{Literal}VAT Total{/Literal}</strong></td>
+							<td valign="top" class="size11">&nbsp;</td>
+							<td align="right" valign="top" class="size11"><strong>{VATTotal}</strong></td>
+							<td valign="top" class="size11">&nbsp;</td>
+							<td valign="top" class="size11">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" class="size11" {DisplayTipData}><strong>{Literal}Auto Gratuity Total{/Literal}</strong></td>
+							<td valign="top" class="size11">&nbsp;</td>
+							<td align="right" valign="top" class="size11" {DisplayTipData}>{AutoGratuityTotal} </td>
+							<td valign="top" class="size11">&nbsp;</td>
+							<td valign="top" class="size11">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" class="size11"><strong>{Literal}Customer Payment Total{/Literal}</strong></td>
+							<td valign="top" class="size11">&nbsp;</td>
+							<td align="right" valign="top" class="size11">{CustomerPaymentsTotal} </td>
+							<td valign="top" class="size11">&nbsp;</td>
+							<td valign="top" class="size11">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="5" valign="top" class="size11" height="15"><hr width="360" size="1" align="left"></td>
+						</tr>
+						<tr>
+							<td valign="top" class="size11"><strong>{Literal}Total{/Literal}</strong></td>
+							<td valign="top" class="size11">&nbsp;</td>
+							<td align="right" valign="top" class="size11"><strong>{Total}</strong></td>
+							<td valign="top" class="size11">&nbsp;</td>
+							<td valign="top" class="size11">&nbsp;</td>
+						</tr>
+					{/VATBlock}
+
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="15"></td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center" valign="top" class="size11" height="20"><strong>------------------{Literal}DISCOUNTS{/Literal}------------------</strong></td>
+						<td colspan="2" align="right" valign="top" class="size11" height="20"></td>
+					</tr>
+
+					{CompTotalBlock}
+					<tr>
+						<td colspan="2" valign="top" class="size11"><strong>{Literal}Comp Total{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{CompTotal}</td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					{/CompTotalBlock}
+
+					<tr>
+						<td colspan="2" valign="top" class="size11"><strong>{Literal}Sales Discount Total{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{SalesDiscountTotal} </td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="size11"><strong>{Literal}Price Change Total{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{PriceChangeTotal} </td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="5"></td>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="size11"><strong>{Literal}Discounts Total{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11"><strong>{DiscountsTotal}</strong></td>
+						<td valign="top" class="size11">&nbsp;</td>
+						<td valign="top" class="size11">&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td colspan="5" valign="top" class="size11"><hr width="360" size="1" align="left"></td>
+					</tr>
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="5">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2"                valign="top" class="size11"><strong>{Literal}Transaction Count{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{TransactionCount}</td>
+						<td colspan="2" valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2"                valign="top" class="size11"><strong>{Literal}No Sale Count{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{NoSaleCount}</td>
+						<td colspan="2" valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2"                valign="top" class="size11"><strong>{Literal}Credit Transactions{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{CreditCardCount}</td>
+						<td colspan="2" valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2"                valign="top" class="size11"><strong>{Literal}Debit Transactions{/Literal}</strong></td>
+						<td align="right" valign="top" class="size11">{DebitCardCount}</td>
+						<td colspan="2" valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="5" valign="top" class="size11" height="5">&nbsp;</td>
+					</tr>
+
+					{FoodServiceBlock}
+						<tr>
+							<td colspan="2"                valign="top" class="size11"><strong>{Literal}Guest Count{/Literal}</strong></td>
+							<td align="right" valign="top" class="size11">{GuestCount} </td>
+							<td colspan="2" valign="top" class="size11">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2"                valign="top" class="size11"><strong>{Literal}Avg. Check Amount:{/Literal}</strong></td>
+							<td align="right" valign="top" class="size11">{AvgCheckAmount}</td>
+							<td colspan="2" valign="top" class="size11">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2"                valign="top" class="size11"><strong>{Literal}Avg. Guest Amount:{/Literal}</strong></td>
+							<td align="right" valign="top" class="size11">{AvgGuestAmount}</td>
+							<td colspan="2" valign="top" class="size11">&nbsp;</td>
+						</tr>
+					
+						<tr>
+							<td colspan="5" valign="top" class="size11" height="5">&nbsp;</td>
+						</tr>
+
+						<tr>
+							<td colspan="5" valign="top">
+								<table width="740" border="0" align="center" cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="19%"               valign="top" class="size11"><strong>{Literal}Dine In Count:{/Literal}</strong></td>
+										<td width="10%" align="right" valign="top" class="size11">{DineInCount}</td>
+										<td width="04%" align="right" valign="top" class="size11">&nbsp;</td>
+										<td width="22%"               valign="top" class="size11"><strong>{Literal}Take Out Count:{/Literal}</strong></td>
+										<td width="10%" align="right" valign="top" class="size11">{TakeOutCount}</td>
+										<td width="04%" align="right" valign="top" class="size11">&nbsp;</td>
+										<td width="20%"               valign="top" class="size11"><strong>{Literal}Delivery Count:{/Literal}</strong></td>
+										<td width="10%" align="right" valign="top" class="size11">{DeliveryCount}</td>
+										<td width="01%" align="right" valign="top" class="size11">&nbsp;</td>
+									</tr>
+
+									<tr>
+										<td               valign="top" class="size11"><strong>{Literal}Dine In Amount:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{DineInTotal}</td>
+										<td align="right" valign="top" class="size11">&nbsp;</td>
+										<td               valign="top" class="size11"><strong>{Literal}Take Out Amount:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{TakeOutTotal}</td>
+										<td align="right" valign="top" class="size11">&nbsp;</td>
+										<td               valign="top" class="size11"><strong>{Literal}Delivery Amount:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{DeliveryTotal}</td>
+										<td align="right" valign="top" class="size11">&nbsp;</td>
+									</tr>
+
+									<tr>
+										<td               valign="top" class="size11"><strong>{Literal}Dine In % of Total:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{DineInPercent}</td>
+										<td align="left" valign="top" class="size11">  </td>
+										<td              valign="top" class="size11"><strong>{Literal}Take Out % of Total:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{TakeOutPercent}</td>
+										<td align="left" valign="top" class="size11">  </td>
+										<td              valign="top" class="size11"><strong>{Literal}Delivery % of Total:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{DeliveryPercent}</td>
+										<td align="left" valign="top" class="size11"></td>
+									</tr>
+
+									<tr>
+										<td               valign="top" class="size11"><strong>{Literal}Dine In % of Checks:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{DineInCheckPct}</td>
+										<td align="left" valign="top" class="size11">  </td>
+										<td              valign="top" class="size11"><strong>{Literal}Take Out % of Checks:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{TakeOutCheckPct}</td>
+										<td align="left" valign="top" class="size11">  </td>
+										<td              valign="top" class="size11"><strong>{Literal}Delivery % of Checks:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{DeliveryCheckPct}</td>
+										<td align="left" valign="top" class="size11"></td>
+									</tr>
+
+									<tr>
+										<td               valign="top" class="size11"><strong>{Literal}Dine In % of Guests:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{DineInGuestPct}</td>
+										<td align="left" valign="top" class="size11">  </td>
+										<td              valign="top" class="size11"><strong>{Literal}Take Out % of Guests:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{TakeOutGuestPct}</td>
+										<td align="left" valign="top" class="size11">  </td>
+										<td              valign="top" class="size11"><strong>{Literal}Delivery % of Guests:{/Literal}</strong></td>
+										<td align="right" valign="top" class="size11">{DeliveryGuestPct}</td>
+										<td align="left" valign="top" class="size11"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					{/FoodServiceBlock}
+
+					<tr>
+						<td colspan="5" valign="top" class="size11">&nbsp;</td>
+					</tr>
+					<tr>
+						<td align="left" valign="top" class="size11"><strong>{Literal}Sequence{/Literal}</strong></td>
+						<td align="left" valign="top" class="size11">{SequenceNumber} </td>
+						<td colspan="3" valign="top" class="size11">&nbsp;</td>
+					</tr>
+				</table>
+
+				<hr align="center" width="660" size="1">
+				<span class="minitype">Powered by AccuPOS Point of Sale - rev04
+			</div>
+		</div>
+
+		<!-- errorMessage popup START-->
+		<div class="overlay is-hidden" id="messageOverlay">
+			<div class="PopupMessage-content">
+				<p style="text-align: center; font-weight: bold; color: red;">{Literal}Error Message{/Literal}</p>
+				<p id="divErrorMessage" style="text-align: center; font-weight: bold;">{ErrorMessage}</p>
+				<input name="save" type="button" class="grey-small-btn" id="save-btn" value="{Literal}OK{/Literal}" style="float: right; margin-right: 10px;" onClick="closePopupMessage();">
+			</div>
+		</div>
+		<!-- errorMessage popup END-->
+
+		<script type="text/javascript">
+
+			var messageOverlay = document.getElementById('messageOverlay');
+
+			function openPopupMessage()
+			{
+				messageOverlay.classList.remove("is-hidden");
+			}
+
+			function closePopupMessage()
+			{
+				messageOverlay.classList.add("is-hidden");
+			}
+
+		</script>
+
+		<!-- emailMessage popup START-->
+		<div class="overlay is-hidden" id="emailOverlay">
+			<div class="PopupEmail-content PopupMessage-content">
+				<p style="text-align: center;"><b>{Literal}Email Address{/Literal}</b></p>
+				<p style="text-align: center;">
+					<input name="emailAddress" id='emailAddress' type="text" style="text-align: left; padding-left: 5px; border: 1px solid lightgrey; background-color: white; width: 280px; height: 25px; font-size: 12px;" />
+				</p>
+				<br>
+				<input name="cancel" type="button" class="grey-small-btn" id="cancel-btn" value="{Literal}Cancel{/Literal}" style="float: left; margin-left: 40px; width: 70px;" onClick="closeEmailPopup(false);">
+				<input name="save" type="button" class="blue-small-btn" id="email-btn" value="{Literal}Email{/Literal}" style="float: right; margin-right: 40px; width: 70px;" onClick="closeEmailPopup(true);">
+			</div>
+		</div>
+		<!-- emailMessage popup END-->
+
+		<script type="text/javascript">
+
+			var emailOverlay = document.getElementById('emailOverlay');
+
+			function openEmailPopup()
+			{
+				emailOverlay.classList.remove("is-hidden");
+				document.getElementById('emailAddress').select();
+			}
+
+			function closeEmailPopup(submit)
+			{
+				emailOverlay.classList.add("is-hidden");
+				
+				if (submit)
+				{
+					var errorMsg = "";
+					var emailAddress = document.getElementById('emailAddress').value;
+					if (emailAddress.trim() == "")
+						errorMsg = "Email is a required field";
+					else if (!emailAddress.includes("@") || !emailAddress.includes("."))
+						errorMsg = "Email address is invalid, must contain '@' and '.'";
+					
+					if (errorMsg != "")
+					{
+						document.getElementById('divErrorMessage').innerHTML = errorMsg;
+						openPopupMessage();
+					}
+					else
+					{
+						var reportContent = document.getElementById('divReportContent').innerHTML;
+						var xmlhttp = new XMLHttpRequest();
+						 
+						xmlhttp.onreadystatechange = function() {
+							if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+								if (xmlhttp.status == 200) {
+									document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+								}
+								else if (xmlhttp.status == 400) {
+									alert('There was an error 400');
+								}
+								else {
+									alert('something else other than 200 was returned');
+								}
+							}
+						};
+						xmlhttp.open("GET", "email_report.html", true);
+						xmlhttp.send();
+
+						
+					}
+				}
+			}
+
+		</script>
+
+  </Body>
+</Html>
+
+{DateFormat}MM/dd/yy HH:mm:ss{/DateFormat}
+{CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+{PriceFormat}#####0.00;-#####0.00{/PriceFormat}
+{QuantityFormat}#####0;-#####0{/QuantityFormat}
+{PercentFormat}#0.0;-#0.0{/PercentFormat}
+{Errors}

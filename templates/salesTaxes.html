@@ -1,0 +1,66 @@
+<div id="sales-taxes-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <% _.each(salesTaxes, function(salesTaxes) { %>
+            <div class="col s12 m3 xl2">
+                <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light" style="background-color: #ffffff" data-id="<%= salesTaxes.id %>" data-selected='0'>
+                    <div>
+                        <div class="row description truncate" style="color: #3970b7;">
+                            <%= salesTaxes.code %>
+                        </div>
+                        <div class="row truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                            <%= salesTaxes.description %>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div class="edit" style="display: none">
+                        <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-sales-tax-trigger"
+                            data-id="<%= salesTaxes.id %>">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+      
+<div id="sales-taxes-form-modal" class="modal modal-fixed-footer sales-taxes-form-modal" style="max-height: 100%">
+    
+</div>
+
+<a href="javascript:void(0)" id="add-sales-tax-button" class="btn-floating btn-large waves-effect waves-light ap-blue z-depth-4 floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>
+    
+<div id="add-tax-code-modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px">
+            <h4>{Literal}Add Tax Code{/Literal}</h4>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="taxCodeId" type="text" value="">
+                        <label class="active" for="taxCodeId">{Literal}Tax Code Id{/Literal}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="taxCodeName" type="text" value="">
+                        <label class="active" for="taxCodeName">{Literal}Tax Code Description{/Literal}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-green btn green right save-new-tax-button">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light right btn-flat">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

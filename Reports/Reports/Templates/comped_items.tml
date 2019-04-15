@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+
+  {ReportStylesBlock}
+
+  <Worksheet ss:Name="Report">
+    <Table>
+
+      <Column ss:AutoFitWidth="0" ss:Width="25"/>
+      <Column ss:AutoFitWidth="0" ss:Width="100"/>
+      <Column ss:AutoFitWidth="0" ss:Width="175"/>
+      <Column ss:AutoFitWidth="0" ss:Width="100"/>
+
+      <Row>
+        <Cell ss:StyleID="reportTitle" ss:MergeAcross="3">
+          <Data ss:Type="String">{Literal}AccuPOS Comps Report{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="3">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="3">
+          <Data ss:Type="String">{CompanyName}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="3">
+          <Data ss:Type="String">{CompanyAddress1} {CompanyAddress2}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="3">
+          <Data ss:Type="String">{CompanyCity}, {CompanyState} {CompanyZip}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="3">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="3">
+          <Data ss:Type="String">{Range}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="3">
+          <Data ss:Type="String">{Literal}Report was run on{/Literal} {DateRun}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="3">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="tableTitle" ss:MergeAcross="3">
+          <Data ss:Type="String">{Literal}COMPS BY ITEMS{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="3">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      {CompedItemTableBlock}
+        <Row>
+          <Cell ss:StyleID="itemLabelLeft" ss:Index="2" ss:MergeAcross="2">
+            <Data ss:Type="String">{Literal}Comp Reason:{/Literal} {CompedItemReason}</Data>
+          </Cell>
+        </Row>
+
+        {CompedItemBlock}
+          <Row>
+            <Cell ss:Index="2">
+              <Data ss:Type="String">{CompedItemId}</Data>
+            </Cell>
+            <Cell>
+              <Data ss:Type="String">{CompedItemDesc}</Data>
+            </Cell>
+            <Cell ss:StyleID="currencyRight">
+              <Data ss:Type="Number">{CompedItemAmount}</Data>
+            </Cell>
+          </Row>
+        {/CompedItemBlock}
+
+        <Row>
+          <Cell ss:StyleID="tenderLabel" ss:Index="2" ss:MergeAcross="1">
+            <Data ss:Type="String">{Literal}Comp Reason Total:{/Literal}</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight">
+            <Data ss:Type="Number">{CompedItemTotal}</Data>
+          </Cell>
+        </Row>
+
+        <Row>
+          <Cell ss:StyleID="topBorder" ss:Index="2" ss:MergeAcross="2">
+            <Data ss:Type="String"></Data>
+          </Cell>
+        </Row>
+      {/CompedItemTableBlock}
+
+      <Row>
+        <Cell ss:MergeAcross="3">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="tableTitle" ss:MergeAcross="3">
+          <Data ss:Type="String">{Literal}COMPS BY ITEM TYPES{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="3">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="itemLabelLeft" ss:Index="2" ss:MergeAcross="1">
+          <Data ss:Type="String">{Literal}Item Type{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel" >
+          <Data ss:Type="String">{Literal}Comped Amount{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      {CompedTypeBlock}
+        <Row>
+          <Cell ss:StyleID="topBorder" ss:Index="2" ss:MergeAcross="1">
+            <Data ss:Type="String">{CompedType}</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRightTopBorder">
+            <Data ss:Type="Number">{CompedTypeAmount}</Data>
+          </Cell>
+        </Row>
+
+        <Row>
+          <Cell ss:MergeAcross="3">
+            <Data ss:Type="String"></Data>
+          </Cell>
+        </Row>
+      {/CompedTypeBlock}
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:Index="2" ss:MergeAcross="2">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+    </Table>
+
+    {DateFormat}MM-dd-yy HH:mm{/DateFormat}
+    {CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+    {PriceFormat}###0.00;-###0.00{/PriceFormat}
+    {QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+    {Errors}
+
+    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+      <PageSetup>
+        <Layout x:Orientation="Portrait"/>
+      </PageSetup>
+      <FitToPage/>
+      <Print>
+        <FitHeight>0</FitHeight>
+      </Print>
+    </WorksheetOptions>
+
+  </Worksheet>
+</Workbook>

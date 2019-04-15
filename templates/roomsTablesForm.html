@@ -1,0 +1,332 @@
+<div class="modal-content" <%= (App.rtl ? 'style="direction:rtl"' : '') %>
+        <form id="selectButton">
+            <h4>{Literal}Select Button Type{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 1 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div id="itemCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light " style="background-color: #3970b7; max-height: 150px">
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Item{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Add attached item to your invoice{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pageCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Page{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}This button will display the page attached to it{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="labelCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Label{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Used to label sections of items or a message on your page screes{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="priceLevelCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Price Level{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Changes all items on order to a different price level{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="saleDiscountCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 7px; bottom: 8px; height: 30px;">
+                                    {Literal}Sale Reprice Discont{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Changes the price of the items percentage instead of the total{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="changeKeySetCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;{Literal}Change Key Set{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Change to display a specific Key Set{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tareCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Tare{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Zero out the scale weight to account for the weight of a container{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div id="item-form-modal" class="modal modal-fixed-footer item-form-modal" style="min-height: 100%; min-width: 100%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Select Item{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field" >
+                        <input type="text" id="itemSearch" class="autocomplete">
+                        <label for="itemSearch"><i class="material-icons left">filter_list</i>{Literal}Search Item{/Literal}</label>  
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <% _.each(items, function(items) { %>
+                <div id ="itemsCards" description-id="<%= items.description %>" price-id="<%= items.price %>">
+                    <div class="col s12 m4 xl4">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light " style="background-color: #3970b7" data-id="<%= items.id %>" data-selected='0' > 
+                            <div class="row description truncate" style="position: relative; right: 13px; bottom: 8px; height: 48px;">
+                                &nbsp;&nbsp;<%= items.description %>
+                            </div>
+                            <div class="row itemDescription truncate">
+                                {Literal}Id{/Literal}:
+                                <%= items.id %>
+                            </div>
+                            <div class="row price truncate">
+                                {Literal}Price{/Literal}: $ 
+                                <%= items.price %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="waves-effect waves-light red btn-flat cancel-items-button">Cancel</a>
+        </div>
+    </div>
+    
+    <div id="page-form-modal" class="modal modal-fixed-footer page-form-modal" style="min-height: 100%; min-width: 100%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create Page{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <% _.each(pages, function(pages) { %>
+                <div id ="pagesCards" description-id="<%= pages %>">
+                    <div class="col s12 m4 xl4">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light " style="background-color: #3970b7" data-id="<%= pages.id %>" data-selected='0' > 
+                            <div class="row description truncate" style="position: relative; right: 13px; bottom: 8px; height: 48px; ">
+                                &nbsp;&nbsp;<%=pages%>
+                            </div>
+                        </div>
+                        <div class="row itemDescription truncate">
+    
+                        </div>
+                        <div class="row price truncate">
+    
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light red btn-flat cancel-pages-button">Cancel</a>
+        </div>
+    </div>
+    
+    <div id="label-form-modal" class="modal modal-fixed-footer label-form-modal" style="min-height: 100%; min-width: 100%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create Label{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div id ="labelCards">
+                    <div class="col s12 m6 offset-m3">
+                        <div class="input-field">
+                            <input id="label" type="text">
+                            <label class="active" for="label">{Literal}Button Label{/Literal}: </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light red btn-flat cancel-label-button">Cancel</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light green btn-flat save-label-button">Save</a>
+        </div>
+    </div>
+    
+    <div id="price-level-form-modal" class="modal modal-fixed-footer price-level-form-modal" style="min-height: 100%; min-width: 100%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Choose Price Level{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="priceLevelText" type="text">
+                        <label class="active" for="priceLevelText">{Literal}Button Label{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <label class="active" for="price-level-dropdown">{Literal}Default Price Level{/Literal}</label>
+                        <select id="price-level-dropdown" required>
+                            <option value="0">1</option>
+                            <option value="1">2</option>
+                            <option value="2">3</option>
+                            <option value="3">4</option>
+                            <option value="4">5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light red btn-flat cancel-price-level-button">Cancel</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light green btn-flat save-price-level-button">Save</a>
+        </div>
+    </div>
+    
+    <div id="key-set-form-modal" class="modal modal-fixed-footer page-form-modal" style="min-height: 100%; min-width: 100%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Choose Key Set{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <% _.each(keyset, function(keyset) { %>
+                <div id ="keysetCards" description-id="<%= keyset.name %>">
+                    <div class="col s12 m4 xl4">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light " style="background-color: #3970b7" data-id="<%= keyset %>" data-selected='0' > 
+                            <div class="row description truncate" style="position: relative; right: 13px; bottom: 8px; height: 48px;">
+                                &nbsp;&nbsp;<%= keyset %>
+                            </div>
+                        </div>
+                        <div class="row itemDescription truncate">
+    
+                        </div>
+                        <div class="row price truncate">
+    
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light red btn-flat cancel-key-set-button">Cancel</a>
+        </div>
+    </div>
+    
+    <div id="tare-form-modal" class="modal modal-fixed-footer tare-form-modal" style="min-height: 100%; min-width: 100%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create Tare Button{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="tareText" type="text">
+                        <label class="active" for="tareText">{Literal}Button Label{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="tareWeight" type="number">
+                        <label class="active" for="tareWeight">{Literal}Tare Weight{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light red btn-flat cancel-tare-button">Cancel</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light green btn-flat save-tare-button">Save</a>
+        </div>
+    </div>
+    
+    <div id="sale-reprice-form-modal" class="modal modal-fixed-footer sale-reprice-form-modal" style="min-height: 100%; min-width: 100%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create Sale Reprice Discount{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="saleRepriceText" type="text">
+                        <label class="active" for="saleRepriceText">{Literal}Button Label{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="saleRepricePercent" type="number">
+                        <label class="active" for="saleRepricePercent">{Literal}Reprice Discount {/Literal}%: </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light red btn-flat cancel-sale-reprice-button">Cancel</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light green btn-flat save-sale-reprice-button">Save</a>
+        </div>
+    </div>
+    
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light red btn-flat">Cancel</a>
+    </div>
+    

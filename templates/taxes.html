@@ -1,0 +1,40 @@
+<div id="taxes-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <% _.each(taxes, function(taxes) { %>
+            <div class="col s12 m3 xl2">
+                <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light white" data-id="<%= taxes.id %>" data-selected='0'>
+                    <div>
+                        <div class="row description truncate" style="color: #3970b7;">
+                            <%= taxes.code %>
+                        </div>
+                        <div class="row truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                            <%= taxes.description %>
+                        </div>
+                        <div class="row truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                            {Literal}Rate 1{/Literal}: <%= taxes.rate %> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            {Literal}Rate 2{/Literal}: <%= taxes.rate2 %>
+                        </div>
+                        <div class="row truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                            {Literal}Piggyback{/Literal}: 
+                            <%= taxes.isPiggyBack %>
+                        </div>
+                    </div>
+                    <div class="edit" style="display: none">
+                        <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-tax-trigger"
+                            data-id="<%= taxes.id %>">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+        
+<div id="taxes-form-modal" class="modal modal-fixed-footer taxes-form-modal" style="max-height: 100%">
+    
+</div>
+
+<a href="javascript:void(0)" id="add-tax-button" class="btn-floating btn-large waves-effect waves-light ap-blue z-depth-4 floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>

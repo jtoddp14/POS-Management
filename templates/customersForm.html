@@ -1,0 +1,314 @@
+<div class="modal-content" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <form id="customer_info">
+        <div style="padding-bottom: 50px">
+            <h4>{Literal}Customer Details{/Literal}</h4> 
+        </div>
+        <div class="ap-card-title-text">
+            {Literal}Page 1 of 3{/Literal}
+        </div>
+        <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white company-info-arrow-button2"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input id="id" type="text" value="<%= customers.id %>" disabled="disabled" class="validate" maxlength="20">
+                        <label class="active" for="id">{Literal}Customer Code{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't be empty or contains invalid characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input id="phone" type="number" value="<%= customers.phone %>" class="validate">
+                        <label class="active" for="phone">{Literal}Phone{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <%if(!this.israCardBuild) {%>
+                    <div class="col s12 m4">
+                        <div class="input-field">
+                            <input id="first" type="text" value="<%= customers.first %>" class="validate" maxlength="20">
+                            <label class="active" for="first">{Literal}First Name{/Literal}</label>
+                            <span class="helper-text" data-error="{Literal}This field can't contain invalid characters{/Literal}" data-success=""></span>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4">
+                        <div class="input-field">
+                            <input id="middle" type="text" value="<%= customers.middle %>" class="validate" maxlength="20">
+                            <label class="active" for="middle">{Literal}Middle Name{/Literal}</label>
+                            <span class="helper-text" data-error="{Literal}This field can't contain invalid characters{/Literal}" data-success=""></span>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4">
+                        <div class="input-field">
+                            <input id="last" type="text" value="<%= customers.last %>" class="validate" maxlength="20">
+                            <label class="active" for="last">{Literal}Last Name{/Literal}</label>
+                            <span class="helper-text" data-error="{Literal}This field can't contain invalid characters{/Literal}" data-success=""></span>
+                        </div>
+                    </div>
+                <% } %>
+                <%if(this.israCardBuild) {%>
+                    <div class="col s12 m6">
+                        <div class="input-field">
+                            <input id="first" type="text" value="<%= customers.first %>" class="validate" maxlength="20">
+                            <label class="active" for="first">{Literal}First Name{/Literal}</label>
+                            <span class="helper-text" data-error="{Literal}This field can't contain invalid characters{/Literal}" data-success=""></span>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4">
+                        <div class="input-field" style="display: none;">
+                            <input id="middle" type="text" value="" class="validate" maxlength="20">
+                            <label class="active" for="middle">{Literal}Middle Name{/Literal}</label>
+                            <span class="helper-text" data-error="{Literal}This field can't contain invalid characters{/Literal}" data-success=""></span>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m6">
+                        <div class="input-field">
+                            <input id="last" type="text" value="<%= customers.last %>" class="validate" maxlength="20">
+                            <label class="active" for="last">{Literal}Last Name{/Literal}</label>
+                            <span class="helper-text" data-error="{Literal}This field can't contain invalid characters{/Literal}" data-success=""></span>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="email" type="text" value="<%= customers.email %>" maxlength="40">
+                        <label class="active" for="email">{Literal}Email{/Literal}</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="address1" type="text" value="<%= customers.address1 %>" class="validate" maxlength="40">
+                        <label class="active" for="address1">{Literal}Address{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="address2" type="text" value="<%= customers.address2 %>" class="validate" maxlength="40">
+                        <label class="active" for="address2">{Literal}Address 2{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="city" type="text" value="<%= customers.city %>" class="validate" maxlength="40">
+                        <label class="active" for="city">{Literal}City{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="state" type="text" value="<%= customers.state %>" class="validate" maxlength="20">
+                        <label class="active" for="state">{Literal}State{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="zip" type="number" value="<%= customers.zip %>" class="validate">
+                        <label class="active" for="zip">{Literal}ZIP{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form id="company_info" style="display: none;">
+        <div style="padding-bottom: 50px">
+            <h4>{Literal}Customer Details{/Literal}</h4> 
+        </div>
+        <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white customer-info-button"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a> 
+        <div class="ap-card-title-text">
+            {Literal}Page 2 of 3{/Literal}
+        </div>
+        <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white notes-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="companyName" type="text" value="<%= customers.companyName %>" class="validate" maxlength="20">
+                        <label class="active" for="companyName">{Literal}Company{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="fax" type="text" value="<%= customers.fax %>" class="validate" maxlength="20">
+                        <label class="active" for="fax">{Literal}Fax{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m4" style="margin-top:10px;" align="center">
+                    <div class="input-field">
+                        <div class="switch">
+                            <label>
+                                <input type="checkbox" class="taxable" data-type="customers.taxable"<%= customers.taxable ? 'checked': '' %>>
+                                <span class="lever"></span>{Literal}Taxable{/Literal}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="creditLimit" type="number" value="<%= customers.creditLimit %>" class="validate" max= "999999.00">
+                        <label class="active" for="creditLimit">{Literal}Credit Limit{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m2">
+                    <div class="input-field">
+                        <% _.each(customerDiscounts, function(customerDiscounts) { %>
+                            <% if (customers.discountItemId == customerDiscounts.description) { %>
+                                <input id="discountItemId" disabled="disabled" value="<%= customers.discountItemId %>">
+                            <% } %>
+                        <% current++; %>
+                        <% }); %>
+                        <label class="active" for="discountItemId">{Literal}Discount Item Id{/Literal}</label>
+                    </div>
+                </div>
+ 
+                <div class="col s12 m2">
+                    <div class="input-field">
+                        <% var current = 0; %>
+                        <% _.each(customerDiscounts, function(customerDiscounts) { %>
+                            <% if (customers.discount == customerDiscounts.percent) { %>
+                                <input id="discount" disabled="disabled" value="<%= customers.discount %>">
+                            <% } %>
+                        <% current++; %>
+                        <% }); %>
+                        <label class="active" for="discount">{Literal}Discount {/Literal}%</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <label class="active">{Literal}Tax Code{/Literal}</label>
+                        <select id="tax-form-dropdown" required>
+                            <% var current = 0; %>
+                            <% _.each(taxCodes, function(taxCode) { %>
+                            <option value="<%= customers.taxCode %>" <%= customers.taxCode == taxCode.code ? 'selected' : '' %>><%= taxCode.code %></option>
+                            <% current++; %>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="balance" type="number" value="<%= customers.balance %>" class="validate" max= "999,999.00">
+                        <label class="active" for="balance">{Literal}Balance{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field must be less than $999,999.00 and can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <label class="active" for="price-level-dropdown">{Literal}Price Level{/Literal}</label>
+                        <select id="price-level-dropdown" required>
+                            <option value="1" <%= (customers.priceLevel == '1' ? 'selected' : '') %>>1</option>
+                            <option value="2" <%= (customers.priceLevel == '2' ? 'selected' : '') %>>2</option>
+                            <option value="3" <%= (customers.priceLevel == '3' ? 'selected' : '') %>>3</option>
+                            <option value="4" <%= (customers.priceLevel == '4' ? 'selected' : '') %>>4</option>
+                            <option value="5" <%= (customers.priceLevel == '5' ? 'selected' : '') %>>5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="dueDays" type="text" value="<%= customers.dueDays %>" class="validate" >
+                        <label class="active" for="dueDays">{Literal}Days Past Due{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="discountDays" type="text" value="<%= customers.discountDays %>" class="validate" >
+                        <label class="active" for="discountDays">{Literal}Days of Discounts{/Literal}</label>
+                        <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m4" style="margin-top:10px;" align="center">
+                    <div class="input-field">
+                        <div class="switch">
+                            <label>
+                                <input type="checkbox" class="uploaded" disabled="disabled" data-type="customers.uploaded "<%= customers.uploaded  ? 'checked': '' %>>
+                                <span class="lever"></span>{Literal}Uploaded{/Literal}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form id="customer_notes" style="display: none;">
+        <div style="padding-bottom: 50px">
+            <h4>{Literal}Customer Details{/Literal}</h4> 
+        </div>
+        <div class="ap-card-title-text">
+            {Literal}Page 3 of 3{/Literal}
+        </div>
+        <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white customer-advanced-details"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a> 
+
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <textarea id="notes" class="materialize-textarea"><%= customers.notes %></textarea>
+                    <label class="active" for="notes">{Literal}Notes{/Literal}</label>
+                    <span class="helper-text" data-error="{Literal}This field can't contain special characters{/Literal}" data-success=""></span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>

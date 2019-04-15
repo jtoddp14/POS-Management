@@ -1,0 +1,143 @@
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+      -->
+    </style>
+
+		<title>{Literal}AccuPOS Customer Loyalty Report{/Literal}</title>
+  </Head>
+		
+<Body>
+<div align="center"><br>
+  <span class="size11"><strong>{Literal}Customer Loyalty Report{/Literal}</strong></span><br>
+  <br>
+</div>
+<div align="center">
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+{CompanyAddress1} {CompanyAddress2}<br>
+{CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span></div></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><div align="center"><span class="size11">        {Literal}Report was run on{/Literal}</span><span class="size11"> {DateRun}</span></div></td>
+    </tr>
+  </table>
+</div>
+<hr align="center" width="630" size="1">
+<div align="center">
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="100"><img src="images/spacer.aci" width="145" height="12"></td>
+      <td width="120"><img src="images/spacer.aci" width="145" height="1"></td>
+      <td width="240"><img src="images/spacer.aci" width="170" height="1"></td>
+      <td width="170"><img src="images/spacer.aci" width="170" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="size11"><strong>{Literal}Purchase quantity:{/Literal}</strong></td>
+      <td valign="top" class="size11"><strong>{Literal}Purchase total:{/Literal}</strong></td>
+      <td valign="top" class="size11"><strong>{Literal}Purchase types:{/Literal}</strong></td>
+      <td valign="top" class="size11"><strong>{Literal}Reward Types:{/Literal}</strong></td>
+    </tr>
+    <tr>
+      <td valign="top" class="size11">{ProgramBuyQuantity}</td>
+      <td valign="top" class="size11"><div align="left">{ProgramBuyTotal}</div></td>
+      <td valign="top" class="size11">{ProgramBuyTypes}</td>
+      <td valign="top" class="size11">{ProgramRewardTypes}</td>
+    </tr>
+  </table>
+    <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="100"><img src="images/spacer.aci" width="120" height="12"></td>
+        <td width="100"><img src="images/spacer.aci" width="125" height="12"></td>
+        <td width="120"><img src="images/spacer.aci" width="125" height="1"></td>
+        <td width="240"><img src="images/spacer.aci" width="120" height="1"></td>
+        <td width="170"><img src="images/spacer.aci" width="130" height="1"></td>
+      </tr>
+      <tr>
+        <td valign="top" class="size11"><strong>{Literal}Customer Code:{/Literal}</strong></td>
+        <td valign="top" class="size11"><strong>{Literal}Contact:{/Literal}</strong></td>
+        <td valign="top" class="size11"><strong>{Literal}Loyalty Quantity:{/Literal}</strong></td>
+        <td valign="top" class="size11"><strong>{Literal}Loyalty Total:{/Literal}</strong></td>
+        <td valign="top" class="size11"><strong>{Literal}Last Reward:{/Literal}</strong></td>
+      </tr>
+    </table>
+    {LoyaltyBlock}
+    <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="100"><img src="images/spacer.aci" width="120" height="1"></td>
+        <td width="100"><img src="images/spacer.aci" width="125" height="1"></td>
+        <td width="120"><img src="images/spacer.aci" width="125" height="1"></td>
+        <td width="240"><img src="images/spacer.aci" width="120" height="1"></td>
+        <td width="170"><img src="images/spacer.aci" width="130" height="1"></td>
+      </tr>
+      
+      <tr>
+        <td valign="top" class="size11">{CustomerCode}</td>
+        <td valign="top" class="size11">{CustomerContact}</td>
+        <td valign="top" class="size11"><div align="left">{CustomerQuantity}</div></td>
+        <td valign="top" class="size11">{CustomerTotal}</td>
+        <td valign="top" class="size11">{CustomerLastReward}</td>
+      </tr>
+    </table>
+    {/LoyaltyBlock}
+    <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="100"><img src="images/spacer.aci" width="145" height="12"></td>
+        <td width="120"><img src="images/spacer.aci" width="145" height="1"></td>
+        <td width="240"><img src="images/spacer.aci" width="170" height="1"></td>
+        <td width="170"><img src="images/spacer.aci" width="170" height="1"></td>
+      </tr>
+      <tr>
+        <td valign="top" class="size11"><strong>{Literal}Customers:{/Literal}</strong></td>
+        <td valign="top" class="size11"></td>
+        <td valign="top" class="size11"></td>
+        <td valign="top" class="size11"></td>
+      </tr>
+      <tr>
+        <td colspan="4" valign="top" class="size11">{LoyaltyCount} {Literal}customers{/Literal}</td>
+      </tr>
+    </table>
+</div>
+<hr align="center" width="630" size="1" noshade>
+<div align="center"><span class="minitype">&nbsp;&nbsp;{Literal}Powered by AccuPOS Point Of Sale rev02{/Literal}</span></div>
+</Body>
+</Html>
+{DateFormat}MM-dd-yy HH:mm{/DateFormat}
+{CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+{PriceFormat}#####0.00;-#####0.00{/PriceFormat}
+{QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+{Errors}

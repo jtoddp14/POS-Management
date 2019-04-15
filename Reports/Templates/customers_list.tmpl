@@ -1,0 +1,126 @@
+{HeaderBlock}
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+      -->
+    </style>
+
+		<title>{Literal}AccuPOS Customers Report{/Literal}</title>
+  </Head>
+		
+<Body>
+<div align="center"><br>
+  <span class="size11"><strong> {Literal}Customers List Report{/Literal}</strong></span><br>
+  <br>
+</div>
+<div align="center">
+  <table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+{CompanyAddress1} {CompanyAddress2}<br>
+{CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span></div></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><div align="center"><span class="size11">        {Literal}Report was run on{/Literal}</span><span class="size11"> {DateRun}</span></div></td>
+    </tr>
+  </table>
+</div>
+<hr align="center" width="1000" size="1">
+<div align="center">
+  <table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><img src="images/spacer.aci" width="175" height="8"></td>
+      <td><img src="images/spacer.aci" width="150" height="8"></td>
+
+      <td><img src="images/spacer.aci" width="150" height="8"></td>
+      <td><img src="images/spacer.aci" width="100" height="8"></td>
+      <td><img src="images/spacer.aci" width="100" height="8"></td>
+      <td><img src="images/spacer.aci" width="100" height="8"></td>
+      <td><img src="images/spacer.aci" width="75" height="8"></td>
+
+
+      <td><img src="images/spacer.aci" width="75" height="8"></td>
+      <td><img src="images/spacer.aci" width="75" height="8"></td>
+    </tr>
+    
+    <tr>
+      <td width="112" valign="top" class="size11"><strong>{Literal}Code{/Literal}</strong></td>
+      <td width="112" valign="top" class="size11"><div ><strong>{Literal}Contact{/Literal}</strong></div></td>
+
+      <td width="112" valign="top" class="size11"><div ><strong>{Literal}Address1{/Literal}</strong></div></td>
+      <td width="112" valign="top" class="size11"><div ><strong>{Literal}Address2{/Literal}</strong></div></td>
+      <td width="112" valign="top" class="size11"><div ><strong>{Literal}City{/Literal}</strong></div></td>
+      <td width="112" valign="top" class="size11"><div ><strong>{Literal}State{/Literal}</strong></div></td>
+      <td width="112" valign="top" class="size11"><div ><strong>{Literal}Postal Code{/Literal}</strong></div></td>
+
+      <td width="107" valign="top" class="size11"><div align="right"><strong>{Literal}Credit Limit{/Literal}</strong></div></td>
+      <td width="105" valign="top" class="size11"><div align="right"><strong>{Literal}Balance{/Literal}</strong></div></td>	  
+    </tr>
+{/HeaderBlock}
+   
+  {CustomerBlock}
+      <tr>
+         <td colspan="9"><hr size="1"></td>
+      </tr>
+
+      <tr>
+        <td valign="top" class="size11">{Code}</td>
+        <td valign="top" class="size11"><div >{Contact}</div></td>
+
+        <td valign="top" class="size11"><div >{Address1}</div></td>
+        <td valign="top" class="size11"><div >{Address2}</div></td>
+        <td valign="top" class="size11"><div >{City}</div></td>
+        <td valign="top" class="size11"><div >{State}</div></td>
+        <td valign="top" class="size11"><div >{PostalCode}</div></td>
+
+        <td valign="top" class="size11"><div align="right">{CreditLimit}</div></td>
+        <td valign="top" class="size11"><div align="right">{Balance}</div></td>
+      </tr>
+  {/CustomerBlock}
+
+{FooterBlock}
+
+  </table>
+
+</div>
+
+<hr align="center" width="1000" size="1" noshade>
+<div align="center"><span class="minitype">&nbsp;&nbsp;&nbsp;{Literal}Powered by AccuPOS Point Of Sale rev04{/Literal}</span></div>
+</Body>
+</Html>
+{CurrencyFormat}#####0.00;#####0.00{/CurrencyFormat}
+{Errors}
+{/FooterBlock}

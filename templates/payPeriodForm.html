@@ -1,0 +1,363 @@
+<div id="pay-periods-form-modal" class="modal modal-fixed-footer" style="max-height: 100%" <%= (App.rtl ? 'style="direction:rtl"' : '') %>></div>
+    <div class="modal-content">
+        <div id="pay-periods-form-content">
+            <div style="padding-bottom: 50px">
+                <h4>{Literal}Pay Period Details{/Literal} - <%= chosenDate %></h4>
+            </div>
+            <form>
+                <div class="row" id="errors">
+                    {Literal}ERRORS{/Literal} <hr size=2>
+                    <% _.each(dates, function(date) { %>
+                        <% 
+                            var count = 0;
+                            var dateIn = new Date(date.in);
+                            var h = dateIn.getHours();
+                            var m = dateIn.getMinutes();
+                            m = (10 > m) ? "0" + m : m;
+                            var clockIn = moment().hours(h).minutes(m);
+
+                            var dateOut = new Date(date.out);
+                            var h = dateOut.getHours();
+                            var m = dateOut.getMinutes();
+                            m = (10 > m) ? "0" + m : m;
+                            var clockOut = moment().hours(h).minutes(m);
+                        %>
+                        <% if (date.in == "") { %>
+                            <% if (date.out != "") { %>
+                                <% count++ %>
+                                <div id ="itemsCards">
+                                    <div class="col s12 m4 l2">
+                                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable black-text waves-effect waves-light " style="background-color: #fff" data-id="<%= date.employeeId %>" employee-name-id="<%= date.employeeName %>" clock-out-id="<%= date.out %>" clock-in-id="<%= date.in %>" time-id="<%= date.timeId %>" data-selected='0'>
+                                            <div class="row description truncate" employee-name-id="<%= date.employeeName %>" style="color: #3970b7;">
+                                                <%= date.employeeName %>
+                                            </div>
+                                            <div class="row item truncate" clock-in-id="<%= date.in %>" style="font-size: .95rem; margin-bottom: 0px; color: red;">
+                                                {Literal}Clock In:{/Literal}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---
+                                            </div>
+                                            <div class="row item truncate" clock-out-id="<%= date.out %>" style="font-size: .95rem; margin-bottom: 0px; color: black;">
+                                                {Literal}Clock Out:{/Literal}&nbsp;&nbsp;  <%= clockOut.format("hh:mm A") %>
+                                            </div>
+                                            <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px;">
+                                                {Literal}Total:{/Literal}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---
+                                            </div>
+                                            <!--<table class="table highlight responsive-table" id="itemTable">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="noTotal" style="color:red;">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="noClock" style="color:red;">Clock In:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="clockOut">Clock Out:&nbsp;&nbsp; <%= clockOut.format("hh:mm A") %></td>
+                                                    </tr>
+                                                <tbody>
+                                            </table>-->
+
+                                            <div class="edit" style="display: none">
+                                                <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue choose-item-trigger" data-id="<%= date.employeeId %>">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                            <% if (date.out == "") { %>
+                                <% count++ %>
+                                <div id ="itemsCards">
+                                    <div class="col s12 m4 l2">
+                                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable black-text waves-effect waves-light " style="background-color: #fff" data-id="<%= date.employeeId %>" employee-name-id="<%= date.employeeName %>" clock-out-id="<%= date.out %>" clock-in-id="<%= date.in %>" time-id="<%= date.timeId %>" data-selected='0'>
+                                            <div class="row description truncate" employee-name-id="<%= date.employeeName %>" style="color: #3970b7;">
+                                                <%= date.employeeName %>
+                                            </div>
+                                            <div class="row item truncate" clock-in-id="<%= date.in %>" style="font-size: .95rem; margin-bottom: 0px; color: red;">
+                                                {Literal}Clock In:{/Literal}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---
+                                            </div>
+                                            <div class="row item truncate" clock-out-id="<%= date.out %>" style="font-size: .95rem; margin-bottom: 0px; color: red;">
+                                                {Literal}Clock Out:{/Literal}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---
+                                            </div>
+                                            <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px;">
+                                                {Literal}Total:{/Literal}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---
+                                            </div>
+                                            <!--<table class="table highlight responsive-table" id="itemTable">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="noTotal" style="color:red;">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="noClock" style="color:red;">Clock In:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="noClock" style="color:red;">Clock Out:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---</td>
+                                                    </tr>
+                                                <tbody>
+                                            </table>-->
+
+                                            <div class="edit" style="display: none">
+                                                <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue choose-item-trigger" data-id="<%= date.employeeId %>">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+
+                        <% if (date.out == "") { %>
+                            <% if (date.in != "") { %>
+                                <% count++ %>
+                                <div id ="itemsCards">
+                                    <div class="col s12 m4 l2">
+                                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable black-text waves-effect waves-light " style="background-color: #fff" data-id="<%= date.employeeId %>" employee-name-id="<%= date.employeeName %>" clock-out-id="<%= date.out %>" clock-in-id="<%= date.in %>" time-id="<%= date.timeId %>" data-selected='0'>
+                                            <div class="row description truncate" employee-name-id="<%= date.employeeName %>" style="color: #3970b7;">
+                                                <%= date.employeeName %>
+                                            </div>
+                                            <div class="row item truncate" clock-in-id="<%= date.in %>" style="font-size: .95rem; margin-bottom: 0px; color: black;">
+                                                {Literal}Clock In:{/Literal}&nbsp;&nbsp;&nbsp;&nbsp; <%= clockIn.format("hh:mm A") %>
+                                            </div>
+                                            <div class="row item truncate" clock-out-id="<%= date.out %>" style="font-size: .95rem; margin-bottom: 0px; color: red;">
+                                                {Literal}Clock Out:{/Literal}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---
+                                            </div>
+                                            <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px;">
+                                                {Literal}Total{/Literal}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---
+                                            </div>
+                                            <!--<table class="table highlight responsive-table" id="itemTable">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="noTotal" style="color:red;">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="clockIn">Clock In:&nbsp;&nbsp;&nbsp;&nbsp; <%= clockIn.format("hh:mm A") %></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="noClock" style="color:red;">Clock Out:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---</td>
+                                                    </tr>
+                                                <tbody>
+                                            </table>-->
+
+                                            <div class="edit" style="display: none">
+                                                <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue choose-item-trigger" data-id="<%= date.employeeId %>">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+                        <% if (count == 0) { %>
+                            <p style="color: green;">{Literal}NO ERRORS AT THIS TIME{/Literal}</p>
+                        <% } %>
+                    <% }); %>
+                    
+                </div>
+
+                <div class="row" id="approved">
+                    {Literal}APPROVED{/Literal} <hr size=2>
+                    <% _.each(dates, function(date) { %>
+                        <% 
+                            var dateIn = new Date(date.in);
+                            var h = dateIn.getHours();
+                            var m = dateIn.getMinutes();
+                            m = (10 > m) ? "0" + m : m;
+                            var clockIn = moment().hours(h).minutes(m);
+
+                            var dateOut = new Date(date.out);
+                            var h = dateOut.getHours();
+                            var m = dateOut.getMinutes();
+                            m = (10 > m) ? "0" + m : m;
+                            var clockOut = moment().hours(h).minutes(m);
+                        %>
+                        <% if (date.in != "") { %>
+                            <% if (date.out != "") { %>
+                                <div id ="itemsCards">
+                                    <div class="col s12 m4 l2">
+                                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable black-text waves-effect waves-light " style="background-color: #fff" data-id="<%= date.employeeId %>" employee-name-id="<%= date.employeeName %>" clock-out-id="<%= date.out %>" clock-in-id="<%= date.in %>" time-id="<%= date.timeId %>" data-selected='0'>
+                                            <div class="row description truncate"  style="color: #3970b7;">
+                                                <%= date.employeeName %>
+                                            </div>
+                                            <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px; color: black;">
+                                                {Literal}Clock In:{/Literal}&nbsp;&nbsp;&nbsp;&nbsp; <%= clockIn.format("hh:mm A") %>
+                                            </div>
+                                            <div class="row item truncate"  style="font-size: .95rem; margin-bottom: 0px; color: black;">
+                                                {Literal}Clock Out:{/Literal}&nbsp; <%= clockOut.format("hh:mm A") %>
+                                            </div>
+                                            <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px; color: black;">
+                                                {Literal}Total{/Literal}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= date.total %>
+                                            </div>
+
+                                            <div class="edit" style="display: none">
+                                                <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue choose-item-trigger" data-id="<%= date.employeeId %>">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    <% }); %>
+                </div>
+            </form>
+        </div>     
+    </div>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large green">
+        <i class="large material-icons">format_line_spacing</i>
+    </a>
+    <ul>
+        <% if (App.serverInfo.hasAccounting) { %>
+            <li><a id="send-times-to-accounting" class="btn-floating" style="background-color: #FFD167"><i class="material-icons tooltipped" data-position="left" data-tooltip="{Literal}Send to payroll{/Literal}">send</i></a></li>
+        <% } %>
+        <li><a id="add-break-times" class="btn-floating" style="background-color: #4B9CD6"><i class="material-icons tooltipped"  data-position="left" data-tooltip="{Literal}Add new break time{/Literal}">free_breakfast</i></a></li>
+        <li><a id="add-clock-in" class="btn-floating" style="background-color: #EF486F"><i class="material-icons tooltipped"  data-position="left" data-tooltip="{Literal}Add new clock in/out{/Literal}">access_time</i></a></li>
+    </ul>
+</div>
+
+<div id="employee-times-modal" class="modal modal-fixed-footer" style="z-index: 1000;">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px">
+            <h4>{Literal}Employee's Times{/Literal} - <%= chosenDate %></h4>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="total" type="text" value="" disabled>
+                        <label class="active" for="total">{Literal}Total Hours{/Literal}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input class="timepicker" id="clockIn" type="text" value="">
+                        <label class="active" for="clockIn" id="clockInLabel" >{Literal}Clock In{/Literal}</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input class="timepicker" id="clockOut" type="text" value="">
+                        <label class="active" for="clockOut" id="clockOutLabel">{Literal}Clock Out{/Literal}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input class="timepicker" id="break" type="text" value="">
+                        <label class="active" for="break">{Literal}Break Time{/Literal}</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input class="timepicker" id="lunch" type="text" value="">
+                        <label class="active" for="lunch">{Literal}Lunch Time{/Literal}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#delete-pay-period-modal" class="waves-effect waves-light btn red left modal-trigger delete-pay-period-button">{Literal}Delete{/Literal}</a>
+        <a href="javascript:void(0)" class="waves-effect waves-green btn green right save-pay-period-button">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="close-employee-time-modal waves-effect waves-light right btn-flat">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div id="new-employee-times-modal" class="modal modal-fixed-footer" style="z-index: 1000;">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px">
+            <h4>{Literal}New Employee Times{/Literal} - <%= chosenDate %></h4>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m6">
+                    <select id="employee-dropdown" required>
+                            <option value="employee0">{Literal}Select Employee{/Literal}</option>
+                            <% _.each(employees, function(employee) { %>
+                                <option value="<%= employee.id %>"><%= employee.name %></option>
+                            <% }); %>
+                    </select>
+                    <label>{Literal}Employee{/Literal}</label>
+                    <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                </div>
+                <div class="col s12 m6">
+                    <select id="payLevel-dropdown" required>
+                            <option value="payLevel0">{Literal}Select Pay Level{/Literal}</option>
+                            <% var count=0 %>
+                            <% _.each(payTypes, function(payType) { %>
+                                <option value="<%= count %>"><%= payType %></option>
+                                <% count++ %>
+                            <% }); %>
+                    </select>
+                    <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input class="timepicker" id="newClockIn" type="text" value="">
+                        <label class="active" for="newClockIn">{Literal}Clock In{/Literal}</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input class="timepicker" id="newClockOut" type="text" value="">
+                        <label class="active" for="newClockOut">{Literal}Clock Out{/Literal}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input class="timepicker" id="newBreak" type="text" value="">
+                        <label class="active" for="newBreak">{Literal}Break Time{/Literal}</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input class="timepicker" id="newLunch" type="text" value="">
+                        <label class="active" for="newLunch">{Literal}Lunch Time{/Literal}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-new-pay-period-button">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="close-new-employee-time-modal waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div id="delete-pay-period-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this time{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-pay-period-confirm" class="modal-close waves-effect waves-green btn red left">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-pay-period-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

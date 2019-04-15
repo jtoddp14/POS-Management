@@ -1,0 +1,357 @@
+<div class="modal-content" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+        <div style="padding-bottom: 50px">
+            <h4 style="font-size: 1.2rem">{Literal}Edit Employee{/Literal}</h4>
+        </div>
+        <div id="employees-form-content">
+            <form>
+                <div class="row form-no-margin">
+                    <div class="input-field col s12 m3" style="margin-top:10px; padding-bottom: 50px;" align="center" >
+                        <label>
+                            <input type="checkbox" id="posUserSwitch" class="scale filled-in advanced" <%= employee.isPosUser ? 'checked': '' %>>
+                            <span>{Literal}POS User{/Literal}</span>
+                        </label>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="input-field col s1" style="display: none;">
+                        <input id="id" type="text" value="<%= employee.id %>">
+                    </div>
+                    
+                    <% if (employee.name != "") {%>
+                        <div class="input-field col s12 m6">
+                            <input id="name" type="text" class="validate" value="<%= employee.name %>" required="" aria-required="true"  maxlength="50">
+                            <label class="active" for="name">{Literal}Employee Name{/Literal}</label>
+                            <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+                        </div>
+                    <% } %>
+                    <% if (employee.name == "") { %>
+                        <div class="input-field col s12 m6">
+                            <input id="name" type="text" class="validate" value="<%= employee.posUserId %>" required="" aria-required="true"  maxlength="50">
+                            <label class="active" for="name">{Literal}Employee Name{/Literal}</label>
+                            <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+                        </div>
+                    <% } %>
+
+                    <div class="input-field col s12 m6">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">{Literal}Set Password{/Literal}</label>
+                        <span class="helper-text" data-error="This field cannot contain special characters" data-success=""></span>
+                    </div>
+                </div>
+               
+                <div class="row" <%= (App.serverInfo.hasAccuShift ? '' : 'style="display:none;"') %>>
+                    <div class="input-field col s12 m6">
+                        <select id="pay-level-dropdown" required>
+                                <option value="payLevel0">{Literal}Select Pay Level{/Literal}</option>
+                                <% _.each(payTypes, function(payType) { %>
+                                    <option value="<%= payType %>"><%= payType %></option>
+                                <% }); %>
+                        </select>
+                        <label>{Literal}Pay Level{/Literal}</label>
+                        <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                    </div>
+
+                    <div id="show1" class="input-field col s12 m6" <%= (employee.payLevelNumber == 1 ? '' : 'style=display:none; padding-left: 25%') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel1" type="checkbox" <%= employee.payLevel1 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show2" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 2 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel2" type="checkbox" <%= employee.payLevel2 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show3" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 3 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel3" type="checkbox" <%= employee.payLevel3 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show4" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 4 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel4" type="checkbox" <%= employee.payLevel4 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    
+                    <div id="show5" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 5 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel5" type="checkbox" <%= employee.payLevel5 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show6" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 6 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel6" type="checkbox" <%= employee.payLevel6 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show7" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 7 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel7" type="checkbox" <%= employee.payLevel7 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show8" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 8 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel8" type="checkbox" <%= employee.payLevel8 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show9" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 9 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel9" type="checkbox" <%= employee.payLevel9 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show10" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 10 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel10" type="checkbox" <%= employee.payLevel10 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show11" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 11 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel11" type="checkbox" <%= employee.payLevel11 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show12" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 12 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel12" type="checkbox" <%= employee.payLevel12 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show13" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 13 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel13" type="checkbox" <%= employee.payLevel13 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show14" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 14 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel14" type="checkbox" <%= employee.payLevel14 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show15" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 15 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel15" type="checkbox" <%= employee.payLevel15 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show16" class="input-field col s12 m6" <%= (employee.payLevelNumber == 16 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel16" type="checkbox" <%= employee.payLevel16 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show17" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 17 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel17" type="checkbox" <%= employee.payLevel17 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show18" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 18 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel18" type="checkbox" <%= employee.payLevel18 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show19" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 19 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel19" type="checkbox" <%= employee.payLevel19 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div id="show20" class="input-field col s12 m6"  <%= (employee.payLevelNumber == 20 ? '' : 'style=display:none;') %>>
+                        <p style="padding-left: 175px;">
+                            <label>
+                                <input id="payLevel20" type="checkbox" <%= employee.payLevel20 != "" ? 'checked' : '' %> class="filled-in" />
+                                <span>{Literal}Active{/Literal}</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row"  id="posUserOptions" <%= (employee.isPosUser ? '' : 'style=display:none; padding-left: 25%') %>> 
+                    <div class="input-field col s12 m4">
+                        <select id="auto-till-form-dropdown">
+                            <option value="*" disabled <%= (employee.till == null ? 'selected' : '') %>>{Literal}Select auto till{/Literal}</option>
+                            <% _.each(tills, function(till) { %>
+                                <option value="<%= till.id %>" <%= (employee.till == till.id ? 'selected' : '') %>><%= till.id %></option>
+                            <% }); %>
+                        </select>
+                        <label>{Literal}Auto Till{/Literal}</label>
+                        <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                    </div>
+                    <div class="input-field col s12 m4">
+                        <select id="idle-timeout-form-dropdown">
+                            <option value="0" <%= (employee.logOutTime == 0 ? 'selected' : '') %>>{Literal}Never{/Literal}</option>
+                            <option value="5" <%= (employee.logOutTime == 5 ? 'selected' : '') %>>{Literal}5 Seconds{/Literal}</option>
+                            <option value="10" <%= (employee.logOutTime == 10 ? 'selected' : '') %>>{Literal}10 Seconds{/Literal}</option>
+                            <option value="30" <%= (employee.logOutTime == 30 ? 'selected' : '') %>>{Literal}30 Seconds{/Literal}</option>
+                            <option value="60" <%= (employee.logOutTime == 60 ? 'selected' : '') %>>{Literal}1 Minute{/Literal}</option>
+                            <option value="120" <%= (employee.logOutTime == 120 ? 'selected' : '') %>>{Literal}2 Minutes{/Literal}</option>
+                        </select>
+                        <label>{Literal}Idle Timeout{/Literal}</label>
+                        <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                    </div>
+                    <div class="input-field col s12 m4">
+                        <select id="user-group-form-dropdown" required>
+                            <option value="" disabled <%= (employee.group == '' ? 'selected' : '') %>>{Literal}Select user group{/Literal}</option>
+                            <% _.each(userGroups, function(userGroup) { %>
+                                <option value="<%= userGroup %>" <%= (employee.group == userGroup ? 'selected' : '') %>><%= userGroup %></option>
+                            <% }); %>
+                        </select>
+                        <label>{Literal}User Group{/Literal}</label>
+                        <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                    </div>
+                </div>
+                
+                <div class="row" <%= (App.serverInfo.hasAccuShift ? '' : 'style=display:none;') %>>
+                    <div class="input-field col s12">
+                        <div class="row checkboxes">
+                            <div class="col s12 m3" style="padding-left: 50px;">
+                                <p>
+                                    <label>
+                                        <input id="overtimeOver8" type="checkbox" <%= employee.overtimeOver8 ? 'checked' : '' %> class="filled-in" />
+                                        <span>{Literal}Overtime Over 8 Hours{/Literal}</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s12 m3" <%= (App.serverInfo.hasAccuShift ? 'style="padding-left: 50px;"' : 'style="display:none; padding-left: 50px;"') %>>
+                                <p>
+                                    <label>
+                                        <input id="manager" type="checkbox" <%= employee.manager ? 'checked' : '' %> class="filled-in" />
+                                        <span>{Literal}Manager{/Literal}</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s12 m3" style="padding-left: 50px;">
+                                <p>
+                                    <label>
+                                        <input id="isClockedIn" type="checkbox" disabled <%= employee.isClockedIn ? 'checked' : '' %> class="filled-in" />
+                                        <span>{Literal}Is Clocked In{/Literal}</span>
+                                    </label>
+                                </p>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="posUserSwitches" <%= (employee.isPosUser ? '' : 'style=display:none; padding-left: 25%') %>>
+                    <div class="input-field col s12">
+                        <div class="row checkboxes">
+                        <% if (App.serverInfo.isFoodService === true) { %>
+                            <div class="col s12 m3" style="padding-left: 50px;">
+                                <p>
+                                    <label>
+                                        <input id="server" type="checkbox" <%= employee.isServer ? 'checked' : '' %> class="filled-in" />
+                                        <span>{Literal}Server{/Literal}</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s12 m3" style="padding-left: 50px;">
+                                <p>
+                                    <label>
+                                        <input id="driver" type="checkbox" <%= employee.isDriver ? 'checked' : '' %> class="filled-in" />
+                                        <span>{Literal}Driver{/Literal}</span>
+                                    </label>
+                                </p>
+                            </div>
+                        <% } else { %>
+                            <div class="col s12 m3" style="padding-left: 50px;">
+                                <p>
+                                    <label>
+                                        <input id="salesRep" type="checkbox" <%= employee.isServer ? 'checked' : '' %> class="filled-in" />
+                                        <span>{Literal}Sales Representative{/Literal}</span>
+                                    </label>
+                                </p>
+                            </div> 
+                        <% } %>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-employee-modal" class="waves-effect waves-light btn-flat red-text right modal-trigger delete-button">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-green btn green left save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>
+
+<div id="delete-employee-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this Employee{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-employee-confirm" class="waves-effect waves-green btn red left" data-employee-id="<%= employee.id %>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-employee-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

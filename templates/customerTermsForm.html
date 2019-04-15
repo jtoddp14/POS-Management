@@ -1,0 +1,53 @@
+<div id="customer-terms-form-modal" class="modal modal-fixed-footer" style="max-height: 100%" ><%= (App.rtl ? 'style="direction:rtl"' : '') %></div>
+    <div class="modal-content">
+        <div id="customer-terms-form-content">
+            <div style="padding-bottom: 50px">
+                <h4 style="font-size: 1.2rem">{Literal}Customer Terms{/Literal}</h4>
+            </div>
+            <form>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="col s12 m4 offset-m2">
+                            <div class="input-field">
+                                <input id="terms" type="text"  value="<%= customerTerms.terms %>" class="validate" disabled="disabled" maxlength="50"></input>
+                                <label class="active" for="terms">{Literal}Terms{/Literal}</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m4">
+                            <div class="input-field">
+                                <input id="dueDayOfMonth" type="number"  value="<%= customerTerms.dueDayOfMonth %>" class="validate" max="31"></input>
+                                <label class="active" for="dueDayOfMonth">{Literal}Due Day of Month{/Literal}</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m1" style="display: none;">
+                            <div class="input-field">
+                                <input id="id" type="text" value="<%= customerTerms.id %>" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="col s12 m4 offset-m2">
+                            <div class="input-field">
+                                <input id="daysUntilDue" type="number"  value="<%= customerTerms.daysUntilDue %>" class="validate" max="100"></input>
+                                <label class="active" for="daysUntilDue">{Literal}Minimum Days Until Due{/Literal}</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m4">
+                            <div class="input-field">
+                                <input id="discountDays" type="number"  value="<%= customerTerms.discountDays %>"  class="validate" max="31"></input>
+                                <label class="active" for="discountDays">{Literal}Days Until Due{/Literal}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>

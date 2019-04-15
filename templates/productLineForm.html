@@ -1,0 +1,214 @@
+<div class="modal-content" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <form <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input id="description" placeholder="Enter product line description" type="text" class="validate" value="<%= productLine.description %>">
+                <label class="active" for="description">{Literal}Product Line Description{/Literal}</label>
+                <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+            </div>
+            <div class="input-field col s12 m6">
+                <select id="item-type">
+                        <option value="Create New Item Type">{Literal}Create New Item Type{/Literal}</option>
+                        <option value="<%= productLine.type %>" selected><%= productLine.type %></option>
+                    <% _.each(itemTypes, function(itemType) { %>
+                        <option value="<%= itemType.id %>" <%= productLine.type == itemType.name || productLine.itemType == itemType.name ? 'selected' : '' %>><%= itemType.name %></option>
+                    <% }); %>
+                </select>
+                <label>{Literal}Select Item Type{/Literal}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6" >
+                <select id="item-category">
+                        <option value="Create New Item Category" selected>{Literal}Create New Item Category{/Literal}</option>
+                    <% _.each(category, function(category) { %>
+                        <option value="<%= category.id %>" <%= productLine.category == category.name ? 'selected' : '' %>><%= category.name %></option>
+                    <% }); %>
+                </select>
+                <label>{Literal}Select Item Category{/Literal}</label>
+            </div>
+            <% if (App.serverInfo.hasAccounting == true) { %>
+                <div class="input-field col s12 m6" <%= (!App.serverInfo.hasAccounting ? '"style="display:none;"' : '') %>>
+                    <select id="sales-account">
+                        <% _.each(salesAccounts, function(salesAccounts) { %>
+                            <option value="<%= salesAccounts.id %>" <%= productLine.salesAccount == salesAccounts.name ? 'selected' : '' %>><%= salesAccounts.name %></option>
+                        <% }); %>
+                    </select>
+                    <label>{Literal}Select Sales Account{/Literal}</label>
+                </div>
+            <% } %>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <select id="menu-page">
+                    <% var current = 0; %>
+                    <option value="Create New Menu Page">{Literal}Create New Menu Page{/Literal}</option>
+                    <option value="noMenuButton" <%= productLine.menuKeyPage == '' ? 'selected' : '' %>>{Literal}No Menu Button{/Literal}</option>
+                    <% _.each(menuPages, function(menuPages) { %>
+                        <option value="<%= current %>" <%= productLine.menuKeyPage == menuPages ? 'selected' : '' %>><%= menuPages %></option>
+                    <% current++; %>
+                    <% }); %>
+                </select>
+                <label>{Literal}Select Menu Page{/Literal}</label>
+            </div>
+            <% if (App.serverInfo.hasAccounting == true) { %>
+                <div class="input-field col s12 m6" <%= (!App.serverInfo.isFoodService ? 'style="display:none;"' : '')%>>
+                    <select id="choice-page">
+                        <% var current = 0; %>
+                        <% _.each(choiceGroup, function(choiceGroups) { %>
+                            <option value="<%= current %>" <%= productLine.choiceGroup == choiceGroups.name ? 'selected' : '' %>><%= choiceGroups.name %></option>
+                        <% current++; %>
+                        <% }); %>
+                    </select>
+                    <label>{Literal}Select Choice Group{/Literal}</label>
+                </div>
+            <% } %>
+            <div class="input-field col s12 m6" <%= (!App.serverInfo.hasVatTax ? 'style="display:none;"' : '')%>>
+                <select id="vatCode">
+                    <% _.each(vatCode, function(vatCode) { %>
+                        <option value="<%= vatCode.id %>" <%= productLine.vatCode == vatCode.code ? 'selected' : '' %>><%= vatCode.code %></option>
+                    <% }); %>
+                </select>
+                <label>{Literal}Select Vat Code{/Literal}</label>
+            </div>
+        </div>
+        <div class="row checkboxes">
+            <div class="col s12 m6" <%= (App.serverInfo.hasVatTax ? 'style="display:none;"' : 'style="padding-top: 20px;"')%></div>
+                <p>
+                    <label>
+                        <input type="checkbox" id="taxable" class="filled-in" data-type="productLine.taxable"<%= productLine.taxable ? 'checked': '' %>>
+                        <span>{Literal}Taxable{/Literal}</span>
+                    </label>
+                </p>
+            </div>
+            <div class="col s12 m6" style="padding-top: 20px;">
+                <p>
+                    <label>
+                        <input type="checkbox" id="allow-discounts" class="filled-in" data-type="productLine.allowDiscount"<%= productLine.allowDiscount ? 'checked': '' %>>
+                        <span>{Literal}Allow Discount{/Literal}</span>
+                    </label>
+                </p>
+            </div>
+            <div class="col s12 m6" style="padding-top: 20px;">
+                <p>
+                    <label>
+                        <input type="checkbox" id="scale" class="filled-in" data-type="productLine.scale"<%= productLine.scale ? 'checked': '' %>>
+                        <span>{Literal}Weighable Item{/Literal}</span>
+                    </label>
+                </p>
+            </div>
+            <div class="col s12 m6" style="padding-top: 20px;">
+                <p>
+                    <label>
+                        <input type="checkbox" id="isStock" class="filled-in" data-type="productLine.isStock"<%= productLine.isStock ? 'checked': '' %>>
+                        <span>{Literal}Track Stock{/Literal}</span>
+                    </label>
+                </p>
+            </div>
+            <div class="col s12 m6" style="padding-top: 20px;">
+                <% if(israCardBuild == false) {%>
+                    <p>
+                        <label>
+                            <input type="checkbox" id="serialized" class="filled-in" data-type="productLine.serialized"<%= productLine.serialized ? 'checked': '' %>>
+                            <span>{Literal}Has Serial #{/Literal}</span>
+                        </label>
+                    </p>
+                <% }%>
+            </div>
+            <div class="col s12 m6" style="padding-top: 20px;">
+                <p>
+                    <label>
+                        <input type="checkbox" id="noPartialQuantity" class="filled-in" data-type="productLine.noPartialQuantity"<%= productLine.noPartialQuantity ? 'checked': '' %>>
+                        <span>{Literal}No Partial QTY{/Literal}</span>
+                    </label>
+                </p>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="item-category-form-modal" class="modal modal-fixed-footer item-category-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <h4>{Literal}Create New Item Category{/Literal}</h4> 
+        <div class="row">
+            <div class="col s12 m6 offset-m3" style="padding-top: 25px">
+                <div class="input-field">
+                    <input id="itemCategoryName" type="text">
+                    <label class="active" for="itemCategoryName">{Literal}New Item Category Name{/Literal}: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-light green btn-flat save-item-category-button left">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat cancel-item-category-button left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div id="item-type-form-modal" class="modal modal-fixed-footer item-type-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <h4>{Literal}Create New Item Type{/Literal}</h4> 
+        <div class="row">
+            <div class="col s12 m6 offset-m3" style="padding-top: 25px">
+                <div class="input-field">
+                    <input id="itemTypeName" type="text">
+                    <label class="active" for="itemTypeName">{Literal}New Item Type Name{/Literal}: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-light green btn save-item-type-button left">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat cancel-item-type-button left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-product-line-modal" class="waves-effect waves-light btn-flat red-text right modal-trigger delete-button">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>
+
+<div id="menu-page-form-modal" class="modal modal-fixed-footer menu-page-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <h4>{Literal}Create New Menu Page{/Literal}</h4> 
+        <div class="row">
+            <div class="col s12 m6 offset-m3" style="padding-top: 25px">
+                <div class="input-field">
+                    <input id="menuPageName" type="text">
+                    <label class="active" for="menuPageName">{Literal}New Item Menu Page{/Literal}: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-light green btn-flat save-menu-page-button left">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat cancel-menu-page-button left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-product-line-modal" class="waves-effect waves-light btn-flat red-text right modal-trigger delete-button">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>
+
+
+<div id="delete-product-line-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <% if(App.rtl){ %>
+            <p>האם אתה בטוח שברצונך להסיר את קו המוצרים הזה?</p>
+        <%}%>
+        <%if(App.rtl != true){%>
+            <p>{Literal}Are you sure that you would like to remove this product line?{/Literal}</p>
+        <%}%>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-product-line-confirm" class="modal-close waves-effect waves-green btn red left" data-product-line-id="<%= productLine.id %>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-product-line-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

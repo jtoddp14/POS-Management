@@ -1,0 +1,101 @@
+<div id="tender-types-form-modal" class="modal modal-fixed-footer" style="max-height: 100%"></div>
+    <div class="modal-content">
+        <div id="tender-types-form-content">
+            <div style="padding-bottom: 50px;">
+                <h4 style="font-size: 1.2rem">{Literal}Tender Type Details{/Literal}</h4>
+            </div>
+            <form>
+                <div class="firstRow">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="col s12 m4">
+                                <div class="input-field idClass">
+                                    <input id="id" type="text" value="<%= tenderTypes.id %>" class="validate" disabled maxlength="2">
+                                    <label class="active" for="id">{Literal}Tender Code{/Literal}</label>
+                                    <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+                                </div>
+                            </div>
+
+                            <div class="col s12 m4">
+                                <div class="input-field">
+                                    <input id="tenderName" type="text" value="<%= tenderTypes.tenderName %>" class="validate" maxlength="20">
+                                    <label class="active" for="tenderTypesName">{Literal}Tender Name{/Literal}</label>
+                                    <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+                                </div>
+                            </div>
+
+                            <!--<div class="col s12 m4">
+                                <div class="input-field">
+                                    <input id="buttonText" type="text" value="<%= tenderTypes.buttonText %>" class="validate" maxlength="20">
+                                    <label class="active" for="buttonText">{Literal}Button Text{/Literal}</label>
+                                    <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+                                </div>
+                            </div>-->
+
+                            <div class="col s12 m4">
+                                <div class="input-field">
+                                    <input id="maxChange" type="number" value="<%= tenderTypes.maxChange %>" class="validate" max="9999.99">
+                                    <label class="active" for="maxChange">{Literal}Max Change Allowed{/Literal}</label>
+                                    <span class="helper-text" data-error="A number from 0.00 to 9999999.99 is mandatory" data-success=""></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="secondRow">
+                    <div class="row">
+                        <div class="col s12">
+                            
+                            <div class="col s12 m4" <%= (App.serverInfo.hasAccounting ? '' : 'style=display:none;') %>>
+                                <div class="input-field">
+                                    <input id="glAccount" type="text" value="<%= tenderTypes.glAccount %>" maxlength="20">
+                                    <label class="active" for="glAccount">{Literal}GL Account{/Literal}</label>
+                                </div>
+                            </div>
+
+                            <div class="col s12 m4">
+                                <div class="input-field">
+                                    <label class="active">{Literal}Payment Type{/Literal}</label>
+                                    <select id="payment-type-form-dropdown" required>
+                                        <% _.each(paymentTypes, function(paymentType) { %>
+                                        <option value="<%= paymentType.id %>" <%= (tenderTypes.paymentType === paymentType.id ? 'selected' : '') %>><%= paymentType.name %></option>    
+                                        <% }); %>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col s12 m4" style="padding-top: 25px;">
+                                <label>
+                                    <input id="openCash" type="checkbox" class="openCash filled-in" class="filled-in" data-type="tenderTypes.openCash" <%= tenderTypes.openCash ? 'checked': '' %> />
+                                    <span>{Literal}Open Cash Drawer{/Literal}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-tender-types-modal" class="waves-effect waves-light btn-flat red-text right modal-trigger delete-button">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>
+
+
+<div id="delete-tender-types-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this tender type{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-tender-types-confirm" class="modal-close waves-effect waves-green btn red left" data-tender-types-id="<%= tenderTypes.id%>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-tender-types-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect left waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

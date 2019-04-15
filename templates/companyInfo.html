@@ -1,0 +1,484 @@
+<div id="company-info-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <div class="col s12">
+            <div class="ap-card-content white z-depth-1" id="company-info-form" style="display: none;">
+                <div id="company-info-form-content">
+                    <!--<form id="receipt-setup">
+                        <div class="ap-card-title ap-blue" style="height: 75px;">
+                            <p>{Literal}Company Basics{/Literal}</p> 
+                            <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white registration-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a>
+                            <% if (hasAccounting == true) { %>
+                                <div class="ap-card-title-text">
+                                    Page 1 of 3 
+                                </div>
+                                <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white accounting-integration-arrow-button2"><i class="large material-icons icon-blue test">keyboard_arrow_right</i></a>
+                            <% } %>
+                            <%if (hasAccounting == false) { %>
+                                <div class="ap-card-title-text">
+                                    Page 1 of 2 
+                                </div>
+                            <% } %>
+                        </div>
+                    </form>-->
+                    <form id="company_info" style="display: none;">
+                        <div class="ap-card-title ap-blue" style="height: 75px;">
+                            <p>{Literal}Transaction Info{/Literal}</p> 
+                            <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white registration-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a>
+                            <% if (hasAccounting == true) { %>
+                                <div class="ap-card-title-text">
+                                    {Literal}Page 2 of 4{/Literal} 
+                                </div>
+                            <% } %>
+                            <%if (hasAccounting == false) { %>
+                                <div class="ap-card-title-text">
+                                    {Literal}Page 2 of 3{/Literal}
+                                </div>
+                            <% } %>
+                            <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white credit-card-arrow-button"><i class="large material-icons icon-blue test">keyboard_arrow_right</i></a>
+                        </div>
+                
+                        <% if(!App.israCardBuild) { %>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="col s12 m2 offset-m1">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Country Code{/Literal}</label>
+                                            <select id="countryCode" required>
+                                                <option value="0" <%= (companyInfo.countryCode == "US" ? 'selected' : '') %>>US</option>
+                                                <option value="1" <%= (companyInfo.countryCode == "CA" ? 'selected' : '') %>>CA</option>
+                                                <option value="2" <%= (companyInfo.countryCode == "FR" ? 'selected' : '') %>>FR</option>
+                                                <option value="3" <%= (companyInfo.countryCode == "IL" ? 'selected' : '') %>>IL</option>
+                                                <option value="4" <%= (companyInfo.countryCode == "UK" ? 'selected' : '') %>>UK</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 m2">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Food Service or Retail{/Literal}</label>
+                                            <select id="businessType" required>
+                                                <option value="0" <%= (companyInfo.businessType == "RT" ? 'selected' : '') %>>{Literal}RT{/Literal}</option>
+                                                <option value="1" <%= (companyInfo.businessType == "FS" ? 'selected' : '') %>>{Literal}FS{/Literal}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 m2">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Print Reports Right to Left{/Literal}</label>
+                                            <select id="reportDirection" required>
+                                                <option value="0" <%= (companyInfo.reportDirection == "Yes" ? 'selected' : '') %>>{Literal}Yes{/Literal}</option>
+                                                <option value="1" <%= (companyInfo.reportDirection == "No" ? 'selected' : '') %>>{Literal}No{/Literal}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col s12 m2">
+                                        <div class="input-field">
+                                            <input id="priceLimit" type="number" value="<%= companyInfo.company_info.priceLimit %>" onchange="this.validateForm" class="validate"  min= "1.00" max="99999.00">
+                                            <label class="active" for="priceLimit">{Literal}Price Limit{/Literal}</label>
+                                            <span class="helper-text" data-error="A number from 1.00 to 99999.00 is mandatory and cannot contain special characters" data-success=""></span>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col s12 m2">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Day Start Time{/Literal}</label>
+                                            <select id="day-start-form-dropdown" required>
+                                                <option value="0" <%= (companyInfo.company_info.dayStart == "0" ? 'selected' : '') %>>12AM</option>
+                                                <option value="1" <%= (companyInfo.company_info.dayStart == "1" ? 'selected' : '') %>>1AM</option>
+                                                <option value="2" <%= (companyInfo.company_info.dayStart == "2" ? 'selected' : '') %>>2AM</option>
+                                                <option value="3" <%= (companyInfo.company_info.dayStart == "3" ? 'selected' : '') %>>3AM</option>
+                                                <option value="4" <%= (companyInfo.company_info.dayStart == "4" ? 'selected' : '') %>>4AM</option>
+                                                <option value="5" <%= (companyInfo.company_info.dayStart == "5" ? 'selected' : '') %>>5AM</option>
+                                                <option value="6" <%= (companyInfo.company_info.dayStart == "6" ? 'selected' : '') %>>6AM</option>
+                                                <option value="7" <%= (companyInfo.company_info.dayStart == "7" ? 'selected' : '') %>>7AM</option>
+                                                <option value="8" <%= (companyInfo.company_info.dayStart == "8" ? 'selected' : '') %>>8AM</option>
+                                                <option value="9" <%= (companyInfo.company_info.dayStart == "9" ? 'selected' : '') %>>9AM</option>
+                                                <option value="10" <%= (companyInfo.company_info.dayStart == "10" ? 'selected' : '') %>>10AM</option>
+                                                <option value="11" <%= (companyInfo.company_info.dayStart == "11" ? 'selected' : '') %>>11AM</option>
+                                                <option value="12" <%= (companyInfo.company_info.dayStart == "12" ? 'selected' : '') %>>12PM</option>
+                                                <option value="13" <%= (companyInfo.company_info.dayStart == "13" ? 'selected' : '') %>>1PM</option>
+                                                <option value="14" <%= (companyInfo.company_info.dayStart == "14" ? 'selected' : '') %>>2PM</option> 
+                                                <option value="15" <%= (companyInfo.company_info.dayStart == "15" ? 'selected' : '') %>>3PM</option>
+                                                <option value="16" <%= (companyInfo.company_info.dayStart == "16" ? 'selected' : '') %>>4PM</option>
+                                                <option value="17" <%= (companyInfo.company_info.dayStart == "17" ? 'selected' : '') %>>5PM</option>
+                                                <option value="18" <%= (companyInfo.company_info.dayStart == "18" ? 'selected' : '') %>>6PM</option>
+                                                <option value="19" <%= (companyInfo.company_info.dayStart == "19" ? 'selected' : '') %>>7PM</option>
+                                                <option value="20" <%= (companyInfo.company_info.dayStart == "20" ? 'selected' : '') %>>8PM</option>
+                                                <option value="21" <%= (companyInfo.company_info.dayStart == "21" ? 'selected' : '') %>>9PM</option>
+                                                <option value="22" <%= (companyInfo.company_info.dayStart == "22" ? 'selected' : '') %>>10PM</option>
+                                                <option value="23" <%= (companyInfo.company_info.dayStart == "23" ? 'selected' : '') %>>11PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="col s12 m2 offset-m1">
+                                        <div class="input-field">
+                                            <input id="transactionNumber" type="number" value="<%= companyInfo.company_info.transactionNumber %>" onchange="this.validateForm" class="validate" min= "1" max="99999">
+                                            <label class="active" for="transactionNumber">{Literal}Next Transaction Number{/Literal}</label>
+                                            <span class="helper-text" data-error="A number from 1.00 to 999,999,999.00 is mandatory and cannot contain special characters" data-success=""></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 m2">
+                                        <div class="input-field">
+                                            <input id="invoiceNumber" type="number" class="validate" value="<%= companyInfo.company_info.invoiceNumber %>" onchange="this.validateForm" min="1" max="99999" >
+                                            <label class="active" for="invoiceNumber">{Literal}Next Invoice Number{/Literal}</label>
+                                            <span class="helper-text" data-error="A number from 1.00 to 999,999,999.00 is mandatory and cannot contain special characters" data-success=""></span>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col s12 m2">
+                                        <div class="input-field">
+                                            <input id="quantityLimit" type="number" class="validate" value="<%= companyInfo.company_info.quantity %>" onchange="this.validateForm" min="1" max="99999.00">
+                                            <label class="active" for="quantityLimit">{Literal}Quantity Limit{/Literal}</label>
+                                            <span class="helper-text" data-error="A number from 1.00 to 99999.00 is mandatory and cannot contain special characters"data-success=""></span>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col s12 m2">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Default Tax Code{/Literal}</label>
+                                            <select id="default-tax-form-dropdown" required>
+                                                <% var current = 0; %>
+                                                <% _.each(taxCodes, function(taxCode) { %>
+                                                <option value="<%= taxCode.id %>" <%= companyInfo.company_info.taxCode === taxCode.id ? 'selected' : '' %>><%= taxCode.value %></option>
+                                                <% current++; %>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 m2">
+                                        <div class="input-field">
+                                            <label class="active" for="default-price-form-dropdown">{Literal}Default Price Level{/Literal}</label>
+                                            <select id="default-price-form-dropdown" required>
+                                                <option value="1" <%= (companyInfo.credit_card.defaultPrice == 1 ? 'selected' : '') %>>1</option>
+                                                <option value="2" <%= (companyInfo.credit_card.defaultPrice == 2 ? 'selected' : '') %>>2</option>
+                                                <option value="3" <%= (companyInfo.credit_card.defaultPrice == 3 ? 'selected' : '') %>>3</option>
+                                                <option value="4" <%= (companyInfo.credit_card.defaultPrice == 4 ? 'selected' : '') %>>4</option>
+                                                <option value="5" <%= (companyInfo.credit_card.defaultPrice == 5 ? 'selected' : '') %>>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div> 
+                        <% } %>
+
+                        <% if(App.israCardBuild) { %>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="col s12 m2 offset-m1" style="display: none;">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Country Code{/Literal}</label>
+                                            <select id="countryCode" required>
+                                                <option value="0">US</option>
+                                                <option value="1">CA</option>
+                                                <option value="2">FR</option>
+                                                <option value="3" selected>IL</option>
+                                                <option value="4">UK</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 m2" style="display: none;">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Food Service or Retail{/Literal}</label>
+                                            <select id="businessType" required>
+                                                <option value="0" selected>>{Literal}RT{/Literal}</option>
+                                                <option value="1">{Literal}FS{/Literal}</option>
+                                                <option value="2">{Literal}Combination{/Literal}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="col s12 m2" style="display: none;">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Print Reports Right to Left{/Literal}</label>
+                                            <select id="reportDirection" required>
+                                                <option value="0" selected>{Literal}Yes{/Literal}</option>
+                                                <option value="1">{Literal}No{/Literal}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 m4">
+                                        <div class="input-field">
+                                            <input id="transactionNumber" type="number" value="<%= companyInfo.company_info.transactionNumber %>" onchange="this.validateForm" class="validate" min= "1" max="99999">
+                                            <label class="active" for="transactionNumber">{Literal}Next Transaction Number{/Literal}</label>
+                                            <span class="helper-text" data-error="A number from 1.00 to 99999.00 is mandatory and cannot contain special characters" data-success=""></span>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col s12 m4">
+                                        <div class="input-field">
+                                            <input id="priceLimit" type="number" value="<%= companyInfo.company_info.priceLimit %>" onchange="this.validateForm" class="validate"  min= "1.00" max="99999.00">
+                                            <label class="active" for="priceLimit">{Literal}Price Limit{/Literal}</label>
+                                            <span class="helper-text" data-error="A number from 1.00 to 99999.00 is mandatory and cannot contain special characters" data-success=""></span>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col s12 m4">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Day Start Time{/Literal}</label>
+                                            <select id="day-start-form-dropdown" required>
+                                                <option value="0" <%= (companyInfo.company_info.dayStart == "0" ? 'selected' : '') %>>12AM</option>
+                                                <option value="1" <%= (companyInfo.company_info.dayStart == "1" ? 'selected' : '') %>>1AM</option>
+                                                <option value="2" <%= (companyInfo.company_info.dayStart == "2" ? 'selected' : '') %>>2AM</option>
+                                                <option value="3" <%= (companyInfo.company_info.dayStart == "3" ? 'selected' : '') %>>3AM</option>
+                                                <option value="4" <%= (companyInfo.company_info.dayStart == "4" ? 'selected' : '') %>>4AM</option>
+                                                <option value="5" <%= (companyInfo.company_info.dayStart == "5" ? 'selected' : '') %>>5AM</option>
+                                                <option value="6" <%= (companyInfo.company_info.dayStart == "6" ? 'selected' : '') %>>6AM</option>
+                                                <option value="7" <%= (companyInfo.company_info.dayStart == "7" ? 'selected' : '') %>>7AM</option>
+                                                <option value="8" <%= (companyInfo.company_info.dayStart == "8" ? 'selected' : '') %>>8AM</option>
+                                                <option value="9" <%= (companyInfo.company_info.dayStart == "9" ? 'selected' : '') %>>9AM</option>
+                                                <option value="10" <%= (companyInfo.company_info.dayStart == "10" ? 'selected' : '') %>>10AM</option>
+                                                <option value="11" <%= (companyInfo.company_info.dayStart == "11" ? 'selected' : '') %>>11AM</option>
+                                                <option value="12" <%= (companyInfo.company_info.dayStart == "12" ? 'selected' : '') %>>12PM</option>
+                                                <option value="13" <%= (companyInfo.company_info.dayStart == "13" ? 'selected' : '') %>>1PM</option>
+                                                <option value="14" <%= (companyInfo.company_info.dayStart == "14" ? 'selected' : '') %>>2PM</option> 
+                                                <option value="15" <%= (companyInfo.company_info.dayStart == "15" ? 'selected' : '') %>>3PM</option>
+                                                <option value="16" <%= (companyInfo.company_info.dayStart == "16" ? 'selected' : '') %>>4PM</option>
+                                                <option value="17" <%= (companyInfo.company_info.dayStart == "17" ? 'selected' : '') %>>5PM</option>
+                                                <option value="18" <%= (companyInfo.company_info.dayStart == "18" ? 'selected' : '') %>>6PM</option>
+                                                <option value="19" <%= (companyInfo.company_info.dayStart == "19" ? 'selected' : '') %>>7PM</option>
+                                                <option value="20" <%= (companyInfo.company_info.dayStart == "20" ? 'selected' : '') %>>8PM</option>
+                                                <option value="21" <%= (companyInfo.company_info.dayStart == "21" ? 'selected' : '') %>>9PM</option>
+                                                <option value="22" <%= (companyInfo.company_info.dayStart == "22" ? 'selected' : '') %>>10PM</option>
+                                                <option value="23" <%= (companyInfo.company_info.dayStart == "23" ? 'selected' : '') %>>11PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="col s12 m4">
+                                        <div class="input-field">
+                                            <input id="invoiceNumber" type="number" class="validate" value="<%= companyInfo.company_info.invoiceNumber %>" onchange="this.validateForm" min="1" max="99999" >
+                                            <label class="active" for="invoiceNumber">{Literal}Next Invoice Number{/Literal}</label>
+                                            <span class="helper-text" data-error="A number from 1.00 to 99999.00 is mandatory and cannot contain special characters" data-success=""></span>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col s12 m4">
+                                        <div class="input-field">
+                                            <input id="quantityLimit" type="number" class="validate" value="<%= companyInfo.company_info.quantity %>" onchange="this.validateForm" min="1" max="99999.00">
+                                            <label class="active" for="quantityLimit">{Literal}Quantity Limit{/Literal}</label>
+                                            <span class="helper-text" data-error="A number from 1.00 to 99999.00 is mandatory and cannot contain special characters"data-success=""></span>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col s12 m4">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Default Tax Code{/Literal}</label>
+                                            <select id="default-tax-form-dropdown" required>
+                                                <% var current = 0; %>
+                                                <% _.each(taxCodes, function(taxCode) { %>
+                                                <option value="<%= taxCode.id %>" <%= companyInfo.company_info.taxCode === taxCode.id ? 'selected' : '' %>><%= taxCode.value %></option>
+                                                <% current++; %>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div> 
+                        <% } %>
+                
+                        <div class="save white lighten-4" align="left">
+                            <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                        </div>
+                    </form>
+                
+                    <form id="accounting_integration" style="display: none">
+                        <div class="ap-card-title ap-blue" style="height: 75px;">
+                            <p>{Literal}Accounting Integration{/Literal}</p> 
+                            <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white company-info-arrow-button2"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a>
+                            <div class="ap-card-title-text">
+                                {Literal}Page 4 of 4{/Literal}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="col s12 m4">
+                                    <div class="input-field">
+                                        <input id="tenderSummaryAccount" type="text" value="<%= companyInfo.accounting_integration.tenderSummary %>" class="validate">
+                                        <label class="active" for="tenderSummaryAccount">{Literal}Tender Summary Account{/Literal}</label>
+                                        <span class="helper-text" data-error="This field cannot contain special characters" data-success=""></span>
+                                    </div>
+                                </div>
+                    
+                                <div class="col s12 m4">
+                                    <div class="input-field">
+                                        <input id="siteName" placeholder="Site Name" value="<%= companyInfo.accounting_integration.siteName %>" class="validate" type="text" maxlength="20">
+                                        <span class="helper-text" data-error="This field cannot contain special characters" data-success=""></span>
+                                    </div>
+                                </div>
+                            
+                                <div class="col s12 m4" style="margin-top:30px;" align="center">
+                                    <div class="switch">
+                                        <label>
+                                            <input type="checkbox" class="sendTips" data-type="companyInfo.accountingIntegration.sendTips"<%= companyInfo.accounting_integration.sendTips ? 'checked': '' %>>
+                                            <span class="lever"></span>{Literal}Send Tips to Accounting{/Literal}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="col s12 m4">
+                                    <div class="input-field">
+                                        <input id="classExports" placeholder="Class for Sales Exports" type="text" value="<%= companyInfo.accounting_integration.classSales %>"  class="validate" maxlength="10">
+                                        <span class="helper-text" data-error="This field cannot contain special characters" data-success=""></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="save white lighten-4" align="left">
+                                <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                        </div>
+                    </form>
+                        
+                    <form id="credit_card" style="display: none"> 
+                        <div class="ap-card-title ap-blue" style="height: 75px;">
+                            <p>{Literal}Credit Card Settings{/Literal}</p>
+                            <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white company-info-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a>
+                            <% if (hasAccounting == true) { %>
+                                <div class="ap-card-title-text">
+                                    {Literal}Page 3 of 4{/Literal}
+                                </div>
+                                <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white accounting-integration-arrow-button2"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+                            <% } %>
+                            <%if (hasAccounting == false) { %>
+                                <div class="ap-card-title-text">
+                                    {Literal}Page 3 of 3{/Literal}
+                                </div>
+                            <% } %>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="col s12 m4">
+                                    <div class="input-field">
+                                        <label class="active" for="credit-slip-dropdown">{Literal}Credit Slip Limit{/Literal}</label>
+                                        <select id="credit-slip-dropdown" required>
+                                            <option value="0" <%= (companyInfo.credit_card.creditSlip == 0 ? 'selected' : '') %>>1</option>
+                                            <option value="1" <%= (companyInfo.credit_card.creditSlip == 1 ? 'selected' : '') %>>2</option>
+                                            <option value="2" <%= (companyInfo.credit_card.creditSlip == 2 ? 'selected' : '') %>>3</option>
+                                            <option value="3" <%= (companyInfo.credit_card.creditSlip == 3 ? 'selected' : '') %>>4</option>
+                                            <option value="4" <%= (companyInfo.credit_card.creditSlip == 4 ? 'selected' : '') %>>5</option>
+                                            <option value="5" <%= (companyInfo.credit_card.creditSlip == 5 ? 'selected' : '') %>>6</option>
+                                            <option value="6" <%= (companyInfo.credit_card.creditSlip == 6 ? 'selected' : '') %>>7</option>
+                                            <option value="7" <%= (companyInfo.credit_card.creditSlip == 7 ? 'selected' : '') %>>8</option>
+                                            <option value="8" <%= (companyInfo.credit_card.creditSlip == 8 ? 'selected' : '') %>>9</option>
+                                            <option value="9" <%= (companyInfo.credit_card.creditSlip == 9 ? 'selected' : '') %>>10</option>
+                                        </select>
+                                    </div>
+                                </div>  
+                        
+                                <div class="col s12 m4" style="margin-top:15px; padding-bottom: 25px;" align="center">
+                                    <label>
+                                        <input type="checkbox" class="gratHandling filled-in" data-type="companyInfo.credit_card.gratuityHandling" <%= companyInfo.credit_card.gratuityHandling ? 'checked': '' %>>
+                                        <span>{Literal}Gratuity Handling{/Literal}&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="col s12 m4">
+                                    <div class="input-field">
+                                        <input id="autoGrat" type="number" class="validate" value="<%= companyInfo.credit_card.gratutityInclusion %>" onchange="this.validateForm">
+                                        <label class="active" for="autoGrat">{Literal}Automatically include Gratutity for parties greater than{/Literal}: </label>
+                                        <span class="helper-text" data-error="This field contains invalid characters" data-success=""></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="col s12 m4" style="margin-top:30px;" >
+                                    <label>
+                                        <input id="changeCurrencyConversionRate" type="checkbox" class="alwaysInclude filled-in" data-type="companyInfo.credit_card.alwaysInclude " <%= companyInfo.credit_card.alwaysInclude  ? 'checked': '' %> >
+                                        <span>{Literal}Change Currency Conversion Rate{/Literal}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="save white lighten-4" align="left">
+                            <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                        </div>
+                    </form>
+                    <form id="registration" style="display: none"> 
+                        <div class="ap-card-title ap-blue" style="height: 75px;">
+                            <p>{Literal}Server Registration{/Literal}</p>
+                            <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white company-info-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+                            <%if (hasAccounting) {%>
+                                <div class="ap-card-title-text">
+                                    {Literal}Page 1 of 4 {/Literal}
+                                </div>
+                            <% }%>
+                            <%if (hasAccounting == false) {%>
+                                <div class="ap-card-title-text">
+                                    {Literal}Page 1 of 3 {/Literal}
+                                </div>
+                            <% }%>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>{Literal}Step 1{/Literal}:</td>
+                                            <td><a class="waves-effect waves-light btn green agreement-button">{Literal}Click Here{/Literal}</a>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{Literal}and read the AccuPOS Terms{/Literal} &amp; {Literal}Conditions{/Literal} 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{Literal}Step 2{/Literal}:</td>
+                                            <td>{Literal}Check Agreement box{/Literal}:</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td> 
+                                                <label>
+                                                    <input id="agreeCheckbox" type="checkbox" class="filled-in" disabled="disabled" />
+                                                    <span style="left: 0px !important;">{Literal}I agree to the AccuPOS Terms{/Literal} &amp; {Literal}Conditions{/Literal}.</span>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{Literal}Step 3{/Literal}:</td>
+                                            <td>
+                                                <div class="col s12 m4">
+                                                    {Literal}Enter your serial number{/Literal}
+                                                    <input id="serialNumber" type="number" class="validate" disabled="disabled" value="<%= companyInfo.serialNumber %>">
+                                                    <span class="helper-text" data-error="This field is required" data-success=""></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="save white lighten-4" align="left">
+                            <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                        </div>
+                    </form>
+                </div>         
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="navigation-keys">
+    <a class="dot button waves-effect waves-light company-info-button"></a>
+</div>

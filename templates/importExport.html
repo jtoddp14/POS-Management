@@ -1,0 +1,96 @@
+<div class="row">
+    <div id="clearDataCards" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+        <div class="col s12 m3">
+            <div class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light importItems" style="background-color: #ffffff; max-height: 167px; min-height: 167px;">
+                <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;  color: #3970b7;">shopping_basket</i>
+                <p style="font-size: 20px; font-weight: bold; color: #3970b7;" align="center">{Literal}Import Items{/Literal}</p>
+            </div>
+        </div>
+
+        <div class="col s12 m3">
+            <div class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light importCustomers" style="background-color: #ffffff; max-height: 167px; min-height: 167px;">
+                <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;  color: #3970b7;">people</i>
+                <p style="font-size: 20px; font-weight: bold; color: #3970b7;" align="center">{Literal}Import Customers{/Literal}</p>
+            </div>
+        </div>
+
+        <div class="col s12 m3">
+            <div class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light importEmployees" style="background-color: #ffffff; max-height: 167px; min-height: 167px;">
+                <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;  color: #3970b7;" align="center">assignment_ind</i>
+                <p style="font-size: 20px; font-weight: bold; color: #3970b7;" align="center">{Literal}Import Employees{/Literal}</p>
+            </div>
+        </div>
+
+        <div class="col s12 m3">
+            <div class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light importReset" style="background-color: #ffffff; max-height: 167px; min-height: 167px;">
+                <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;  color: #3970b7;" align="center">replay</i>
+                <p style="font-size: 20px; font-weight: bold; color: #3970b7;" align="center">{Literal}Import Reset{/Literal}</p>
+            </div>
+        </div>
+        
+        <div class="col s12 m3">
+            <div class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light exportItems" style="background-color: #ffffff; max-height: 167px; min-height: 167px;">
+                <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;  color: #3970b7;" align="center">shop_two</i>
+                <p style="font-size: 20px; font-weight: bold; color: #3970b7;" align="center">{Literal}Export Items{/Literal}</p>
+            </div>
+        </div>
+
+        <div class="col s12 m3">
+            <div class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light exportSales" style="background-color: #ffffff; max-height: 167px; min-height: 167px;">
+                <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;  color: #3970b7;" align="center">file_upload</i>
+                <p style="font-size: 20px; font-weight: bold; color: #3970b7;" align="center">{Literal}Export Sales{/Literal}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="import-sequence-modal" class="modal modal-fixed-footer item-type-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <div style="padding-bottom: 100px">
+            <h4>{Literal}Item Details{/Literal}</h4>
+        </div>
+        <div class="row">
+            <% _.each(sequences, function(sequence) { %>
+                <div class="col s12 m3">
+                    <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light sendSequence" style="background-color: #ffffff" till-id="<%= sequence.till %>" data-id="<%= sequence.id %>" data-selected='0'>
+                        <div class="card-panel-content">
+                            <div class="row sequence-title-badge">
+                                <%= sequence.id %>
+                            </div>
+                            <div class="row">
+                                {Literal}Seq{/Literal}. #<%= sequence.id %>
+                            </div>
+                            <div class="row">
+                                {Literal}Till:{/Literal} <%= sequence.till %>
+                            </div>
+                            <div class="row">
+                                {Literal}Start{/Literal}: <%=  moment(sequence.start).format('YYYY-MM-DD HH:mm') %>
+                            </div>
+                            <div class="row">
+                                {Literal}End{/Literal}: <%= moment(sequence.endTime).format('YYYY-MM-DD HH:mm') %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat cancel-item-type-button">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div id="import-employee-modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Import Employees{/Literal}</h6>
+        </div>
+        <p style="text-align: center;  color: #3970b7;">{Literal}Reset Pay Types on import{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="reset-employee-pay-type-deny" class="modal-close waves-effect waves-green btn green left">{Literal}Import Without Reset{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+        <a href="javascript:void(0)" id="reset-employee-pay-type-confirm" class="modal-close waves-effect waves-green btn-flat red-text right">{Literal}Import with Reset{/Literal}</a>
+        <input type="hidden" id="delete-price-level-times-id" />
+    </div>
+</div>

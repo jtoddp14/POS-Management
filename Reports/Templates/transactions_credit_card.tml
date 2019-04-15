@@ -1,0 +1,210 @@
+{HeaderBlock}
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+
+  {ReportStylesBlock}
+
+  <Worksheet ss:Name="Report">
+    <Table>
+
+      <Column ss:AutoFitWidth="0" ss:Width="25"/>
+      <Column ss:AutoFitWidth="0" ss:Width="50"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="50"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="50"/>
+      <Column ss:AutoFitWidth="0" ss:Width="50"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="25"/>
+
+      <Row>
+        <Cell ss:StyleID="reportTitle" ss:MergeAcross="11">
+          <Data ss:Type="String">{Literal}AccuPOS Credit Card Transaction Report{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="11">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="11">
+          <Data ss:Type="String">{CompanyName}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="11">
+          <Data ss:Type="String">{CompanyAddress1} {CompanyAddress2}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="11">
+          <Data ss:Type="String">{CompanyCity}, {CompanyState} {CompanyZip}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="11">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="11">
+          <Data ss:Type="String">{Range}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="11">
+          <Data ss:Type="String">{Literal}Report was run on{/Literal} {DateRun}</Data>
+        </Cell>
+      </Row>
+{/HeaderBlock}
+
+      {TransactionBlock}
+        <Row>
+          <Cell ss:StyleID="topBorder" ss:MergeAcross="11">
+            <Data ss:Type="String"></Data>
+          </Cell>
+        </Row>
+
+        <Row>
+          <Cell ss:StyleID="transLabel" ss:Index="2">
+            <Data ss:Type="String">{Literal}Trans:{/Literal}</Data>
+          </Cell>
+          <Cell>
+            <Data ss:Type="String">{TransactionNumber}</Data>
+          </Cell>
+          <Cell ss:StyleID="transLabel">
+            <Data ss:Type="String">{Literal}Invoice:{/Literal}</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight">
+            <Data ss:Type="String">{InvoiceNumber}</Data>
+          </Cell>
+          <Cell ss:StyleID="transLabel">
+            <Data ss:Type="String">{Literal}Date:{/Literal}</Data>
+          </Cell>
+          <Cell ss:StyleID="cellRight">
+            <Data ss:Type="String">{DateInvoiced}</Data>
+          </Cell>
+        </Row>
+
+        <Row>
+          <Cell ss:MergeAcross="11">
+            <Data ss:Type="String"></Data>
+          </Cell>
+        </Row>
+
+        {TenderingBlock}
+          <Row>
+            <Cell ss:StyleID="tenderLabel" ss:Index="3">
+              <Data ss:Type="String">{Literal}Approval:{/Literal}</Data>
+            </Cell>
+            <Cell>
+              <Data ss:Type="String">{TenderApproval}</Data>
+            </Cell>
+            <Cell ss:StyleID="tenderLabel">
+              <Data ss:Type="String">{Literal}Ref:{/Literal}</Data>
+            </Cell>
+            <Cell>
+              <Data ss:Type="String">{TenderReference}</Data>
+            </Cell>
+            <Cell ss:StyleID="tenderLabel">
+              <Data ss:Type="String">{Literal}Card Last 4:{/Literal}</Data>
+            </Cell>
+            <Cell>
+              <Data ss:Type="String">{TenderCardNumber}</Data>
+            </Cell>
+            <Cell ss:StyleID="tenderLabel">
+              <Data ss:Type="String">{Literal}Type:{/Literal}</Data>
+            </Cell>
+            <Cell>
+              <Data ss:Type="String">{TenderDescription}</Data>
+            </Cell>
+            <Cell ss:StyleID="currencyRight">
+              <Data ss:Type="Number">{TenderAmount}</Data>
+            </Cell>
+
+          </Row>
+
+        {/TenderingBlock}
+      {/TransactionBlock}
+
+{FooterBlock}
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="11">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="reportLabel" ss:MergeAcross="3">
+          <Data ss:Type="String">{Literal}Taxable Total{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="reportLabel" ss:MergeAcross="1">
+          <Data ss:Type="String">{Literal}Non-Tax Total{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="reportLabel" ss:MergeAcross="2">
+          <Data ss:Type="String">{Literal}Tax Total{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="reportLabel" ss:MergeAcross="1">
+          <Data ss:Type="String">{Literal}Total{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="currencyCenter" ss:MergeAcross="3">
+          <Data ss:Type="Number">{ReportTaxableTotal}</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyCenter" ss:MergeAcross="1">
+          <Data ss:Type="Number">{ReportNontaxableTotal}</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyCenter" ss:MergeAcross="2">
+          <Data ss:Type="Number">{ReportTaxTotal}</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyCenter" ss:MergeAcross="1">
+          <Data ss:Type="Number">{ReportTotal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="11">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+    </Table>
+
+    {DateFormat}MM-dd-yy HH:mm{/DateFormat}
+    {CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+    {PriceFormat}###0.00;-###0.00{/PriceFormat}
+    {QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+    {Errors}
+
+    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+      <PageSetup>
+        <Layout x:Orientation="Portrait"/>
+      </PageSetup>
+      <FitToPage/>
+      <Print>
+        <FitHeight>0</FitHeight>
+      </Print>
+    </WorksheetOptions>
+
+  </Worksheet>
+</Workbook>
+{/FooterBlock}

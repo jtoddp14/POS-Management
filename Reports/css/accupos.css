@@ -1,0 +1,14 @@
+.login-img{text-align:center;padding:20px 0;}
+.flag-icon-us {background-image: url(../images/us.jpg)!important;}
+.flag-icon-il {background-image: url(../images/il.jpg)!important;}
+.site-header .dropdown.dropdown-lang .dropdown-menu {width: 160px!important;}
+.widget.widget-simple-sm-fill.white {color: #00a8ff; -webkit-border-radius: .25rem; border-radius: .25rem; text-align: center; background: #fff;}
+ article.statistic-box.white {background: #FFF!important;color:#22222F!important}
+.statistic-box{box-shadow: 0px 1px 2px rgba(0,0,0,0.3)}
+a,a:focus,a:hover{color:#22222F;text-decoration:none;cursor:pointer}
+.statistic-box>form,.statistic-box>div {height: 142px; }
+.statistic-box.red a,.statistic-box.purple a,.statistic-box.yellow a,.statistic-box.green a{color:#fff!important;}
+.site-header-collapsed-in {padding-left: 15px;font-weight:bold;}
+.theme-side-caesium-dark-caribbean .side-menu .side-menu-list a:hover, .theme-side-caesium-dark-caribbean .side-menu .side-menu-list>li.opened, .theme-side-caesium-dark-caribbean .side-menu .side-menu-list>li>span:hover {background-color: #3654a1; }
+@media (max-width: 767px){.site-header .site-logo img {height: auto; width: auto; top: 0px; } }
+@media (max-width: 990px){.site-header .site-header-content{width:60%;} }

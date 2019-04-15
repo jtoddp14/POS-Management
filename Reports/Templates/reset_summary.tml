@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+
+  {ReportStylesBlock}
+
+  <Worksheet ss:Name="Report">
+    <Table>
+
+      <Column ss:AutoFitWidth="0" ss:Width="25"/>
+      <Column ss:AutoFitWidth="0" ss:Width="150"/>
+      <Column ss:AutoFitWidth="0" ss:Width="100"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="25"/>
+
+      <Row>
+        <Cell ss:StyleID="reportTitle" ss:MergeAcross="5">
+          <Data ss:Type="String">{Literal}AccuPOS Reset Summary Report{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="5">
+          <Data ss:Type="String">{CompanyName}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="5">
+          <Data ss:Type="String">{CompanyAddress1} {CompanyAddress2}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="5">
+          <Data ss:Type="String">{CompanyCity}, {CompanyState} {CompanyZip}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="5">
+          <Data ss:Type="String">{Range}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="5">
+          <Data ss:Type="String">{Literal}Report was run on{/Literal} {DateRun}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="itemLabel" ss:Index="2">
+          <Data ss:Type="String">{Literal}Tender Summary{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">{Literal}Amount{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      {TenderBlock}
+        <Row>
+          <Cell ss:Index="2">
+            <Data ss:Type="String">{TenderName}</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight">
+            <Data ss:Type="Number">{TenderAmount}</Data>
+          </Cell>
+        </Row>
+      {/TenderBlock}
+
+      <Row>
+        <Cell ss:MergeAcross="6">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="transTotalLabel" ss:MergeAcross="1">
+          <Data ss:Type="String">{Literal}Tendering Total:{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRightBold">
+          <Data ss:Type="Number">{TenderTotal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="itemLabel" ss:Index="2">
+          <Data ss:Type="String">{Literal}Item Types{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">{Literal}Quantity{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">{Literal}Amount{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      {ItemTypeBlock}
+        <Row>
+          <Cell ss:Index="2">
+            <Data ss:Type="String">{ItemType}</Data>
+          </Cell>
+          <Cell ss:StyleID="cellCenter">
+            <Data ss:Type="Number">{ItemQuantity}</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight">
+            <Data ss:Type="Number">{ItemAmount}</Data>
+          </Cell>
+        </Row>
+      {/ItemTypeBlock}
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="itemLabel" ss:Index="2">
+          <Data ss:Type="String">{Literal}Voids / Returns{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">{Literal}Quantity{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">{Literal}Amount{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      {VoidBlock}
+        <Row>
+          <Cell ss:Index="2">
+            <Data ss:Type="String">{VoidItemType}</Data>
+          </Cell>
+          <Cell ss:StyleID="cellCenter">
+            <Data ss:Type="Number">{VoidItemQuantity}</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight">
+            <Data ss:Type="Number">{VoidItemAmount}</Data>
+          </Cell>
+        </Row>
+      {/VoidBlock}
+
+      <Row>
+        <Cell ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="transTotalLabel" ss:MergeAcross="1">
+          <Data ss:Type="String">{Literal}Void Item Totals:{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenterBold">
+          <Data ss:Type="Number">{VoidItemQuantityTotal}</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRightBold">
+          <Data ss:Type="Number">{VoidItemTotal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="itemLabel" ss:Index="2">
+          <Data ss:Type="String">{Literal}Sales Taxes{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel" ss:Index="4">
+          <Data ss:Type="String">{Literal}Amount{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      {TaxBlock}
+        <Row>
+          <Cell ss:Index="2">
+            <Data ss:Type="String">{TaxAuthority}</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight" ss:Index="4">
+            <Data ss:Type="Number">{TaxAmount}</Data>
+          </Cell>
+        </Row>
+      {/TaxBlock}
+
+      {VatTaxBlock}
+        <Row>
+          <Cell ss:StyleID="transTotalLabel" ss:MergeAcross="1">
+            <Data ss:Type="String">{Literal}Vat1 Total:{/Literal}</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRightBold" ss:Index="4">
+            <Data ss:Type="Number">{Vat1Tax}</Data>
+          </Cell>
+        </Row>
+        <Row>
+          <Cell ss:StyleID="transTotalLabel" ss:MergeAcross="1">
+            <Data ss:Type="String">{Literal}Vat2 Total:{/Literal}</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRightBold" ss:Index="4">
+            <Data ss:Type="Number">{Vat2Tax}</Data>
+          </Cell>
+        </Row>
+      {/VatTaxBlock}
+
+      <Row>
+        <Cell ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="itemLabel" ss:Index="2">
+          <Data ss:Type="String">{Literal}Taxable Total{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">{Literal}Nontaxable Total{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">{Literal}Tax Total{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">{Literal}Total{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="currencyCenter" ss:Index="2">
+          <Data ss:Type="Number">{ReportTaxableTotal}</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyCenter">
+          <Data ss:Type="Number">{ReportNontaxableTotal}</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyCenter">
+          <Data ss:Type="Number">{ReportTaxTotal}</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyCenter">
+          <Data ss:Type="Number">{ReportTotal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="bottomBorder" ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      {CompTotalBlock}
+        <Row>
+          <Cell ss:StyleID="cellBold" ss:Index="2">
+            <Data ss:Type="String">{Literal}Comp Total:{/Literal} {CompTotal}</Data>
+          </Cell>
+        </Row>
+
+        <Row>
+          <Cell ss:MergeAcross="5">
+            <Data ss:Type="String"></Data>
+          </Cell>
+        </Row>
+      {/CompTotalBlock}
+
+      <Row>
+        <Cell ss:StyleID="cellBold" ss:Index="2">
+          <Data ss:Type="String">{Literal}Servers:{/Literal} {TillsList}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="5">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+    </Table>
+
+    {DateFormat}MM-dd-yy HH:mm{/DateFormat}
+    {CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+    {PriceFormat}#####0.0000;-#####0.0000{/PriceFormat}
+    {QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+    {TaxableText}Yes{/TaxableText}
+    {NontaxableText}No{/NontaxableText}
+    {Errors}
+
+    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+      <PageSetup>
+        <Layout x:Orientation="Portrait"/>
+      </PageSetup>
+      <FitToPage/>
+      <Print>
+        <FitHeight>0</FitHeight>
+      </Print>
+    </WorksheetOptions>
+
+  </Worksheet>
+</Workbook>

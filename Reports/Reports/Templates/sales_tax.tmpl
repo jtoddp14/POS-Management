@@ -1,0 +1,202 @@
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+      -->
+    </style>
+
+		<title>{Literal}AccuPOS Sales by User Report{/Literal}</title>
+  </Head>
+		
+<Body>
+<div align="center"><br>
+  <span class="size11"><strong>{Literal}Sales Tax Report{/Literal}</strong></span><br>
+  <br>
+</div>
+<div align="center">
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+{CompanyAddress1} {CompanyAddress2}<br>
+{CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span></div></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><div align="center"><span class="size11">        <span class="style4 style2"><strong>{Range}</strong></span> <br>
+        {Literal}Report was run on{/Literal}</span><span class="size11"> {DateRun}</span></div></td>
+    </tr>
+  </table>
+</div>
+<hr align="center" width="630" size="1">
+<div align="center">
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="106"><img src="images/spacer.aci" width="105" height="8"></td>
+      <td width="110"><img src="images/spacer.aci" width="105" height="8"></td>
+      <td><img src="images/spacer.aci" width="220" height="8"></td>
+      <td width="359"><img src="images/spacer.aci" width="200" height="8"></td>
+    </tr>
+    
+    <tr>
+      <td colspan="2" valign="top" class="size11">
+        <div ><strong>{Literal}Taxable Sales{/Literal}</strong>:</div></td>
+      <td valign="top" class="size11"><strong>{Literal}Taxable Type{/Literal}</strong>:      </td>
+      <td valign="top" class="size11"><strong>{Literal}Taxable Total{/Literal}</strong>:</td>
+    </tr>
+  </table>
+  {TaxableBlock}{TaxableTypeBlock}
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="106"><img src="images/spacer.aci" width="105" height="2"></td>
+      <td width="110"><img src="images/spacer.aci" width="105" height="2"></td>
+      <td width="55"><img src="images/spacer.aci" width="220" height="2"></td>
+      <td width="359"><img src="images/spacer.aci" width="200" height="2"></td>
+    </tr>
+  <tr>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"><div >{TaxableTypeName}</div></td>
+    <td valign="top" class="size11">{TaxableTypeTotal}</td></tr>
+  </table>
+{/TaxableTypeBlock}
+<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="106"><img src="images/spacer.aci" width="105" height="2"></td>
+    <td width="110"><img src="images/spacer.aci" width="105" height="2"></td>
+    <td width="55"><img src="images/spacer.aci" width="220" height="2"></td>
+    <td width="359"><img src="images/spacer.aci" width="200" height="2"></td>
+  </tr>
+  <tr>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"><div align="right">{Literal}Total for taxable:{/Literal}&nbsp;</div></td>
+    <td valign="top" class="size11">{TaxableTotal}</td>
+  </tr>
+</table>
+{/TaxableBlock}
+<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="106"><img src="images/spacer.aci" width="105" height="30"></td>
+    <td width="110"><img src="images/spacer.aci" width="105" height="8"></td>
+    <td width="55"><img src="images/spacer.aci" width="220" height="8"></td>
+    <td width="359"><img src="images/spacer.aci" width="200" height="8"></td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top" class="size11"><div ><strong>{Literal}Non-Taxable Sales{/Literal}</strong>:</div></td>
+    <td valign="top" class="size11"><strong>{Literal}Taxable Type{/Literal}</strong>: </td>
+    <td valign="top" class="size11"><strong>{Literal}Taxable Total{/Literal}</strong>:</td>
+  </tr>
+</table>
+{NonTaxableBlock}{NonTaxableTypeBlock}
+<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="106"><img src="images/spacer.aci" width="105" height="2"></td>
+    <td width="110"><img src="images/spacer.aci" width="105" height="2"></td>
+    <td width="55"><img src="images/spacer.aci" width="220" height="2"></td>
+    <td width="359"><img src="images/spacer.aci" width="200" height="2"></td>
+  </tr>
+  <tr>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"><div align="left">{NonTaxableTypeName}</div></td>
+    <td valign="top" class="size11">{NonTaxableTypeTotal}</td>
+  </tr>
+</table>
+{/NonTaxableTypeBlock}
+<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="106"><img src="images/spacer.aci" width="105" height="2"></td>
+    <td width="110"><img src="images/spacer.aci" width="105" height="2"></td>
+    <td width="55"><img src="images/spacer.aci" width="220" height="2"></td>
+    <td width="359"><img src="images/spacer.aci" width="200" height="2"></td>
+  </tr>
+  <tr>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"><div align="right">{Literal}Total for Non-Taxable:{/Literal}&nbsp;</div></td>
+    <td valign="top" class="size11">{NonTaxableTotal}</td>
+  </tr>
+</table>
+{/NonTaxableBlock}
+<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="106"><img src="images/spacer.aci" width="105" height="30"></td>
+    <td width="110"><img src="images/spacer.aci" width="105" height="8"></td>
+    <td width="55"><img src="images/spacer.aci" width="220" height="8"></td>
+    <td width="359"><img src="images/spacer.aci" width="200" height="8"></td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top" class="size11"><div align="left"><strong>{Literal}Sales Tax:{/Literal}</strong></div></td>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"></td>
+  </tr>
+</table>
+{TaxBlock}{TaxAuthorityBlock}
+<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="106"><img src="images/spacer.aci" width="105" height="2"></td>
+    <td width="110"><img src="images/spacer.aci" width="105" height="2"></td>
+    <td width="55"><img src="images/spacer.aci" width="220" height="2"></td>
+    <td width="359"><img src="images/spacer.aci" width="200" height="2"></td>
+  </tr>
+  <tr>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"><div align="left">{TaxAuthority}</div></td>
+    <td valign="top" class="size11">{TaxAuthorityTotal}</td>
+  </tr>
+</table>
+{/TaxAuthorityBlock}
+<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="106"><img src="images/spacer.aci" width="105" height="2"></td>
+    <td width="110"><img src="images/spacer.aci" width="105" height="2"></td>
+    <td width="55"><img src="images/spacer.aci" width="220" height="2"></td>
+    <td width="359"><img src="images/spacer.aci" width="200" height="2"></td>
+  </tr>
+  <tr>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"></td>
+    <td valign="top" class="size11"><div align="right">{Literal}Total Tax:{/Literal}&nbsp;</div></td>
+    <td valign="top" class="size11">{TaxTotal}</td>
+  </tr>
+</table>
+{/TaxBlock} </div>
+<hr align="center" width="630" size="1" noshade>
+<div align="center"><span class="minitype">&nbsp;&nbsp;Powered by AccuPOS Point Of Sale&nbsp;rev04</span></div>
+</Body>
+</Html>
+{CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+{QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+{Errors}

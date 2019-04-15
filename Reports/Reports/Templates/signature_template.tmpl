@@ -1,0 +1,82 @@
+<Html {RightToLeft}>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+<meta http-equiv="Content-Language" content="en-us">
+
+<style type="text/css">
+<!--
+.style1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.style2 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
+#apDiv1 {
+	position:absolute;
+	width:317;
+	height:400;
+	z-index:0;
+	left: 10;
+	top: 10;
+}
+#apDiv2 {
+	position:absolute;
+	width:317;
+	height:400;
+	z-index:1;
+	left: 10;
+	top: 10;
+}
+#apDiv3 {
+	position:absolute;
+	width:301px;
+	height:29px;
+	z-index:2;
+	left: 11px;
+	top: 354px;
+}
+-->
+</style>
+</head>
+<body>
+<div id="apDiv2">
+  <table width="302" height="359" border="0" cellpadding="0" cellspacing="0" background="screens/images/receipt_back.aci">
+    <tr>
+      <td height="64" colspan="3"><div align="center" class="style1"><br>
+              <strong><br>
+              {CompanyName}<br>
+              </strong>{CompanyAddress1}{CompanyAddress2}<br>
+        {CompanyCity}, {CompanyState}{CompanyZip} </div></td>
+    </tr>
+    <tr>
+      <td width="15" height="124">&nbsp;</td>
+      <td width="280" valign="top"><p align="center"><span class="style2"><br>
+        </span><span class="style1">{Date}</span><span class="style2"><br>
+          </span><span class="style1">{Literal}Invoice:{/Literal} {Invoice} {Literal}Trans:{/Literal} {Transaction}<br>
+            {Literal}Clerk:{/Literal} {Clerk}<br>
+            {CardNumber} {TenderDescription}<br>
+            {Literal}Reference:{/Literal} {Reference}<br>
+          {Literal}Approval:{/Literal} {Approval}</span><br>
+      <br>
+      <span class="style1"><span class="style1">{Literal}Total Charge:{/Literal} </span></span><span class="style2">{Amount}</span></p></td>
+      <td width="17">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="45">&nbsp;</td>
+      <td valign="top"><div align="center"><span class="style1"><br>
+            <em>{Literal}I agree to pay the above total amount{/Literal}<br>
+        {Literal}according to card issuer agreement{/Literal}<br>
+        {Literal}(merchant agreement if credit voucher){/Literal}</em></span></div></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="107" colspan="3" valign="top"><div align="right"><img border="0" src="signatureImage.png" width="229" height="107"></div></td>
+    </tr>
+  </table>
+</div>
+<div id="apDiv1"><img src="../screens/images/receipt_back.jpg" width="317" height="424"></div>
+<div id="apDiv3">
+  <div align="center"><span class="style2">{CardHolder}</span></div>
+</div>
+</body>
+</html>

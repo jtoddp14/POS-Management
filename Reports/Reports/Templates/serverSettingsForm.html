@@ -1,0 +1,172 @@
+<div id="server-settings-form-content"<%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <form id="main_settings" style="display: none;">
+        <div class="ap-card-title ap-blue" style="height: 75px;">
+            <p>Main Settings</p> 
+            <div class="ap-card-title-text">
+                Page 1 of 7 
+            </div>
+            <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white database-options-arrow-button2"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+        </div>
+        <h6>Main Server Settings</h6>
+        <div class="row">
+            <div class="input-field col s4">
+                <label class="active">Country Code</label>
+                <select id="country-code-form-dropdown" required>
+                    <option value="0" <%= (serverSettings.main_settings.countryCode == 0 ? 'selected' : '') %>>US</option>
+                    <option value="1" <%= (serverSettings.main_settings.countryCode == 1 ? 'selected' : '') %>>CA</option>
+                    <option value="2" <%= (serverSettings.main_settings.countryCode == 2 ? 'selected' : '') %>>FR</option>
+                    <option value="3" <%= (serverSettings.main_settings.countryCode == 3 ? 'selected' : '') %>>IL</option>
+                    <option value="4" <%= (serverSettings.main_settings.countryCode == 4 ? 'selected' : '') %>>UK</option>
+                </select>
+            </div>
+
+            <div class="input-field col s3" style="font-weight: bold; top: 22px;" align="center">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="debug" data-type="serverSettings.main_settings.debug" <%= serverSettings.main_settings.debug ? 'checked': '' %>>
+                        <span class="lever"></span>Log Debug Messages
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-field col s3" style="font-weight: bold; top: 22px; right: 10px;" align="center">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="removeFood" data-type="serverSettings.main_settings.removeFood" <%= serverSettings.main_settings.removeFood ? 'checked': '' %>>
+                        <span class="lever"></span>Remove Food Service
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s4">
+                <input id="socketPort" type="number" class="validate" value="<%= serverSettings.main_settings.socketPort %>" min="1" max="65535" >
+                <label class="active" for="socketPort">Socket Port Number</label>
+                <span class="helper-text" data-error="A number from 1 to 65535 is mandatory" data-success=""></span>
+            </div>
+
+            <div class="input-field col s3" style="font-weight: bold; top: 22px; right: 10px;" align="center">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="secureLogin" data-type="serverSettings.main_settings.secureLogin" <%= serverSettings.main_settings.secureLogin ? 'checked': '' %>>
+                        <span class="lever"></span>Use Secure Login
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-field col s3" style="font-weight: bold; top: 22px;" align="center">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="reportsLR" data-type="serverSettings.main_settings.reportsLR" <%= serverSettings.main_settings.reportsLR ? 'checked': '' %>>
+                        <span class="lever"></span>Print Reports Right to Left
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s4">
+                <label class="active">Tips Tender Code</label>
+                <select id="tips-tender-form-dropdown" required>
+                    <option value="0" <%= (serverSettings.main_settings.tipsTenderCode == 0 ? 'selected' : '') %>>Cash</option>
+                    <option value="1" <%= (serverSettings.main_settings.tipsTenderCode == 1 ? 'selected' : '') %>>XXX</option>
+                    <option value="2" <%= (serverSettings.main_settings.tipsTenderCode == 2 ? 'selected' : '') %>>XXX</option>
+                    <option value="3" <%= (serverSettings.main_settings.tipsTenderCode == 3 ? 'selected' : '') %>>XXX</option>
+                    <option value="4" <%= (serverSettings.main_settings.tipsTenderCode == 4 ? 'selected' : '') %>>XXX</option>
+                </select>
+            </div>
+
+            <div class="input-field col s4" style="font-weight: bold; top: 22px; right: 9px;" align="center">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="autoUpdate" data-type="serverSettings.main_settings.autoUpdate" <%= serverSettings.main_settings.autoUpdate ? 'checked': '' %>>
+                        <span class="lever"></span>Auto-Download &amp; Install Version Updates
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s4">
+                <label class="active">Database Driver</label>
+                <select id="database-driver-form-dropdown" required>
+                    <option value="0" <%= (serverSettings.main_settings.databaseDriver == 0 ? 'selected' : '') %>>Microsoft Access</option>
+                    <option value="1" <%= (serverSettings.main_settings.databaseDriver == 1 ? 'selected' : '') %>>SQL</option>
+                </select>
+            </div>
+
+            <div class="input-field col s4" style="font-weight: bold; top: 22px;" align="center">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="verifyOrder" data-type="serverSettings.main_settings.verifyOrder" <%= serverSettings.main_settings.verifyOrder ? 'checked': '' %>>
+                        <span class="lever"></span>Verify Order with Saved Orders
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-field col s4">
+                <input id="databasePath" type="text" class="validate" value="<%= serverSettings.main_settings.databasePath %>" >
+                <label class="active" for="databasePath">Database Path and File Name</label>
+                <span class="helper-text" data-error="This field is mandatory" data-success=""></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s4">
+
+            </div>
+
+            <div class="input-field col s3" style="font-weight: bold; top: 22px;" align="center">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="clearCustomerClose" data-type="serverSettings.main_settings.clearCustomerClose" <%= serverSettings.main_settings.clearCustomerClose ? 'checked': '' %>>
+                        <span class="lever"></span>Clear Customers on Closed Sales
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-field col s4">
+                <input id="backupFolder" type="text" class="validate" value="<%= serverSettings.main_settings.backupFolder %>" >
+                <label class="active" for="backupFolder">Databse Backup Folder</label>
+                <span class="helper-text" data-error="This field is mandatory" data-success=""></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s4">
+
+            </div>
+        
+            <div class="input-field col s3">
+
+            </div>
+
+            <div class="input-field col s4">
+                <input id="accessFolder" type="text" value="<%= serverSettings.main_settings.accessFolder %>" >
+                <label class="active" for="accessFolder">MS Access.exe Folder</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s4">
+                <label class="active">Tax Calculator Type</label>
+                <select id="tax-calc-form-dropdown" required>
+                    <option value="0" <%= (serverSettings.main_settings.taxCalc == 0 ? 'selected' : '') %>>Standard Taxes</option>
+                    <option value="1" <%= (serverSettings.main_settings.taxCalc == 1 ? 'selected' : '') %>>XXX</option>
+                </select>
+            </div>
+
+            <div class="input-field col s3" style="font-weight: bold; top: 22px;" align="center">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="carryoutTax" data-type="serverSettings.main_settings.carryoutTax" <%= serverSettings.main_settings.carryoutTax ? 'checked': '' %>>
+                        <span class="lever"></span>Carryout is Taxable
+                </div>
+            </div>    
+        </div>
+        <div class="save white lighten-4" align="right">
+            <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+        </div>
+    </form>
+</div>

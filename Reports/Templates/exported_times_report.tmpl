@@ -1,0 +1,61 @@
+<html {RightToLeft}>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+	<title>{Literal}Exported Times Report{/Literal}</title>
+	<link rel="stylesheet" href="css/font-awesome.min.css.gz">
+	<link rel="stylesheet" href="css/main.css.gz">
+	<link rel="stylesheet" href="css/accupos.css.gz">
+	
+	<style type="text/css">
+	body { font-family: Verdana, Geneva, sans-serif; color: #000000; font-size: 12px; font-weight: normal; }
+	</style>
+
+	</head>
+
+	<body class="with-side-menu theme-side-caesium-dark-caribbean">
+    {SentOnBlock}
+   
+    <table width="600" border="0" align="center" cellpadding="3" cellspacing="3">
+      <tr>
+        <td width="376" align="center" valign="middle"><b>{Literal}Report of times sent to accounting{/Literal}&nbsp; {SentOn}</b></td>
+      </tr>
+      <tr>
+        <td width="376" align="center" valign="middle">{Literal}created on{/Literal} {Now}</td>
+      </tr>
+    </table>
+
+      {EmployeeBlock}
+        <table width="100%" border="1" align="center" cellpadding="3" cellspacing="3" bordercolor="#C0C0C0" style="border-collapse: collapse">
+          <tr>
+            <td width="25%"><b>{Literal}Employee{/Literal}</b></td>
+            <td width="15%"><b>{Literal}Type{/Literal}</b></td>
+            <td width="25%"><b>{Literal}In{/Literal}</b></td>
+            <td width="25%"><b>{Literal}Out{/Literal}</b></td>
+            <td width="10%" align="middle"><b>{Literal}Hours{/Literal}</b></td>
+          </tr>
+
+          <tr>
+            <td colspan="4" align="left"><b>{EmployeeId}&nbsp;&nbsp;{EmployeeName}</b></td>
+            <td align="middle"><b>{Total}</b></td>
+          </tr>
+
+          {EmployeeDetailBlock}
+              <tr style="color: {textColor};">
+                <td>&nbsp;</td>
+                <td>{PayType}</td>
+                <td>{In}</td>
+                <td>{Out}</td>
+                <td align="middle">{Hours}</td>
+              </tr>
+          {/EmployeeDetailBlock}
+        </table>
+        <br>
+      {/EmployeeBlock}
+    {/SentOnBlock}
+    
+	</body>
+
+	{ClockDateFormat}HH:mm dd-MMM-yyyy{/ClockDateFormat}
+	
+</html>

@@ -1,0 +1,221 @@
+<div id-"rooms-wrapper">
+    <div class="row" style="padding-top: 10px;">
+        <form>
+            <div class="input-field col s4 offset-m3">
+                <select id ="key-set-selector">
+                    <% var count = 0 %>
+                    <% _.each(rooms, function(room) { %>
+                        <% if(count == 0) { %>
+                            <option value="<%= room %>" selected><%= room %></option>    
+                        <% } %>
+                        <% if (count != 0) { %>
+                            <option value="<%= room %>"><%= room %></option>  
+                        <% } %>
+                        <% count++ %>
+                    <% }); %>
+                </select>
+                <label>Rooms</label>           
+            </div>
+            <div class="col s12 m1">
+
+            </div>
+            <div class="col s12 m3">
+                <div class="save" style="padding-top: 20px;">
+                    <a href="javascript:void(0)" class="btn-large waves-effect waves-light green save-room-button">{Literal}Save{/Literal}</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col s12 m2" style="margin: 0px;">
+
+    </div>
+
+    <div class="row" style="padding-top: 10px; text-align: center;">
+        <div id="roomTableContainer" class="col s12 m12" style="padding-left: 10%; float: none;">
+            <div class="container-fluid">
+                <div class="box-typical box-typical-padding" style="">
+                    <div style="margin: 0px; display: inline-block; padding-right: 10%; overflow: auto;">
+                        <div class="scroll-x col-xs-12 col-sm-12 col-md-12" >
+                            <div style="display: inline-block; float: left; margin-left: 10px; margin-right: 10px; margin-top: 7px;"></div>
+                        </div>
+            
+                        <div class="scroll-x col-xs-12 col-sm-12 col-md-12" style="padding: 0px;">
+                            <div class="roomDisplay" style="width:100%; height: 480px; margin-top: 6px; margin-left:0px; background-color: #2b2b2b; display: inline-block;">
+                                <div class="col" id="droppable" style="position: absolute;" ></div>
+                            </div>
+
+                            <div id="addTableOptions" class="s12" style="display: none;">
+                                <div class="col s12 m4 offset-m3">
+                                    <div class="input-field">
+                                        <input id="addTableText" type="text" value="">
+                                        <label class="active" for="addTableText">{Literal}Table Name{/Literal}</label>
+                                    </div>
+                                </div>
+                                <div class="col s12 m4">
+                                    <a href="javascript:void(0)" class="waves-effect waves-light btn-large modal-trigger add-table-button">{Literal}Add Table{/Literal}</a>
+                                </div>
+                            </div>
+
+                            <div id="editTableOptions" class="s12" style="display: none;">
+                                <div class="col s12 m4 offset-m3">
+                                    <div class="input-field">
+                                        <input id="editTableText" type="text" value="">
+                                        <label class="active" for="addTableText">{Literal}Table Name{/Literal}</label>
+                                    </div>
+                                </div>
+                                <div class="s6 m1" style="font-size: 18px; padding-top: 20px;">
+                                    <a class="tooltipped" data-position="top" data-tooltip="{Literal}Deleting All Tables Will Delete a Room{/Literal}" style="color: red;" id="deleteTable" href="javascript:void(0)">{Literal}Delete{/Literal}</a>
+                                </div>
+                            </div>
+            
+                            <div style="width:800px; display: inline-block;  background-color: #eaeaea; padding: 0px; margin-top: 6px;"><!-- Left Pane START-->
+                                <div style="width: 100%; margin-bottom: 3px; text-align: left;">
+                                    <div class="col" id="col1" style="width: 100%;">
+                                        <div id="drag-list" class="drag-list">
+                                            <ul>
+                                                <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0px; border: none;">
+                                                <tr>
+                                                    <td width="12%" align="center" valign="middle">
+                                                        <li><span id="drag1" class="drag">
+                                                            <img id="drag1Image" src="img/Bar-1.png" width="42" height="30" /></span>
+                                                        </li>
+                                                    </td>
+                                                    <td width="12%" align="center" valign="middle">
+                                                        <li><span id="drag2" class="drag"  >
+                                                            <img id="drag2Image" src="img/BarL-1.png" width="42" height="30" /></span>
+                                                        </li>
+                                                    </td>
+                                                    <td width="12%" align="center" valign="middle">
+                                                        <li><span id="drag3" class="drag"  >
+                                                            <img id="drag3Image" src="img/BarR-1.png" width="42" height="30" /></span>
+                                                        </li>
+                                                    </td>
+                                                    <td width="12%" align="center" valign="middle">
+                                                        <li><span id="drag4" class="drag"  >
+                                                            <img id="drag4Image" src="img/Square-2.png"  width="30" height="52" /></span>
+                                                        </li>
+                                                    </td>
+                                                    <td width="12%" align="center" valign="middle">
+                                                        <li><span id="drag5" class="drag"  >
+                                                            <img id="drag5Image" src="img/Square-4.png" width="57" height="52" /></span>
+                                                        </li>
+                                                    </td>
+                                                    <td width="12%" align="center" valign="middle">
+                                                        <li><span id="drag6" class="drag"  >
+                                                            <img id="drag6Image" src="img/Rectangle-4.png" width="52" height="52" /></span>
+                                                        </li>
+                                                    </td>
+                                                </tr>
+                    
+                                                <tr>
+                                                    <td colspan="7" align="center" valign="middle">
+                                                        <table width="80%" align="left" border="0" cellpadding="0" cellspacing="0" style="margin: 0px; border: none;">
+                                                            <tr>
+                                                                <td width="20%" align="center" valign="middle">
+                                                                    <li><span id="drag7" class="drag"  >
+                                                                        <img id="drag7Image" src="img/Rectangle-6.png" width="69" height="52" /></span>
+                                                                    </li>
+                                                                </td>
+
+                                                                <td width="20%" align="center" valign="middle">
+                                                                    <li><span id="drag8" class="drag"  >
+                                                                        <img id="drag8Image" src="img/Oval-6.png" width="71" height="59" /></span>
+                                                                    </li>
+                                                                </td>
+                                                                <td width="20%" align="center" valign="middle">
+                                                                    <li><span id="drag9" class="drag"  >
+                                                                        <img id="drag9Image" src="img/Round-4.png" width="54" height="52" /></span>
+                                                                    </li>
+                                                                </td>
+                                                                <td width="20%" align="center" valign="middle">
+                                                                    <li><span id="drag10" class="drag"  >
+                                                                        <img id="drag10Image" src="img/Round-6.png" width="62" height="61" /></span>
+                                                                    </li>
+                                                                </td>
+                                                                <td width="20%" align="center" valign="middle">
+                                                                    <li><span id="drag11" class="drag"  >
+                                                                        <img id="drag11Image" src="img/Round-8.png" width="69" height="69" /></span>
+                                                                    </li>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>
+    
+<div id="pos-key-form-modal" class="modal modal-fixed-footer pos-key-form-modal" style="max-height: 100%">
+    
+</div>
+
+<div id="new-room-form-modal" class="modal modal-fixed-footer new-room-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <h4>{Literal}Create New Room{/Literal}</h4> 
+        <div class="row">
+            <div class="col s12 m6 offset-m3" style="padding-top: 50px;">
+                <div class="input-field">
+                    <input id="newRoomName" type="text" value="">
+                    <label class="active" for="newRoomName">{Literal}New Room Name{/Literal}: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-light left green btn-flat save-new-room-button">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat cancel-new-room-button">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large ap-blue">
+        <i class="large material-icons">format_line_spacing</i>
+    </a>
+    <ul>
+        <li><a id="editRoomName" class="btn-floating" style="background-color: #4B9CD6"><i class="material-icons tooltipped" data-position="left" data-tooltip="{Literal}Edit Room Name{/Literal}">mode_edit</i></a></li>
+        <li><a id="addRoomButton" class="btn-floating addRoomButton" style="background-color: #A4D391"><i class="material-icons tooltipped"  data-position="left" data-tooltip="{Literal}Add New Room{/Literal}">add</i></a></li>
+    </ul>
+</div>
+
+<div id="delete-room-modal" class="modal modal-fixed-footer" style="z-index: 100000;">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure you want to delete this room and its contents{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-room-button" class="modal-close waves-effect waves-green btn red left">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-tax-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div id="edit-room-name-modal" class="modal modal-fixed-footer edit-room-name-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <h4>{Literal}Change Room Name{/Literal}</h4> 
+        <div class="row">
+            <div class="col s12 m6 offset-m3" style="padding-top: 50px;">
+                <div class="input-field">
+                    <input id="roomName" type="text" value="">
+                    <label class="active" for="roomName">{Literal}Room Name{/Literal}: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-light left green btn-flat save-room-name-button">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect left waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

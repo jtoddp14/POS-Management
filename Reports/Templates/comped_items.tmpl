@@ -1,0 +1,160 @@
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+      -->
+    </style>
+
+    <title>{Literal}AccuPOS Comped Items Report{/Literal}</title>
+
+  </Head>
+  
+  <Body>
+    
+    <div align="center"><br>
+      <span class="size11"><strong>{Literal}Comped Items Report{/Literal}</strong></span><br>
+      <br>
+    </div>
+
+    <div align="center">
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+                {CompanyAddress1} {CompanyAddress2}<br>
+                {CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+            <div align="center"><span class="size11">        <span class="style4 style2"><strong>{Range}</strong></span> <br>
+                {Literal}Report was run on{/Literal}</span><span class="size11"> {DateRun}</span>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <hr align="center" width="630" size="1" noshade>
+    </div>
+      
+    <div align="center" style="text-align: center; font-weight: bold; font-size: 16px; color: blue;">
+      <p>{Literal}COMPS BY ITEMS{/Literal}</p>
+      <hr align="center" width="600" size="1" noshade>
+    </div>
+
+    {CompedItemTableBlock}
+    <div align="center">
+        <table style="border-collapse: collapse" bordercolor="#111111" border="0" cellpadding="0" cellspacing="0" width="600">
+          <tr valign="middle">
+              <td align="left" valign="middle" colspan="3">{Literal}Comp Reason:{/Literal} <strong>{CompedItemReason}</strong></td>
+          </tr>
+
+          <tr>
+            <td colspan="3" align="left" valign="middle" height="5">&nbsp;</td>
+          </tr>
+
+          <tr>
+            <td width="35%" align="left" valign="middle" style="font-weight: bold;">{Literal}Item Code:{/Literal}</td>
+            <td width="50%" align="left" valign="middle" style="font-weight: bold;">{Literal}Description:{/Literal}</td>
+            <td width="15%" align="right" valign="middle" style="font-weight: bold;">{Literal}Amount:{/Literal}</td>
+          </tr>
+
+          {CompedItemBlock}
+          <tr>
+            <td width="35%" align="left" valign="middle">{CompedItemId}</td>
+            <td width="50%" align="left" valign="middle">{CompedItemDesc}</td>
+            <td width="15%" align="right" valign="middle">{CompedItemAmount}</td>
+          </tr>
+
+          {/CompedItemBlock}
+
+          <tr>
+            <td colspan="3" align="left" valign="middle" height="5">&nbsp;</td>
+          </tr>
+
+          <tr valign="middle">
+            <td align="right" valign="middle" colspan="2" style="font-weight: bold;">{Literal}Comp Reason Total:{/Literal}</td>
+            <td align="right" valign="middle" style="font-weight: bold;">{CompedItemTotal}</td>
+          </tr>
+
+          <tr>
+            <td colspan="3" align="left" valign="middle"><hr align="center" width="100%" size="1" noshade></td>
+          </tr>
+        </table>
+    </div>
+    {/CompedItemTableBlock}
+
+    <div align="center" style="text-align: center; font-weight: bold; font-size: 16px; color: blue;">
+      <p>&nbsp;</p>
+      <p>{Literal}COMPS BY ITEM TYPES{/Literal}</p>
+      <hr align="center" width="600" size="1" noshade>
+    </div>
+
+    <div align="center">
+        <table style="border-collapse: collapse" border="0" cellpadding="0" cellspacing="0" width="600">
+          <tr>
+            <th width="400" align="left" valign="middle" style="font-weight: bold;">{Literal}Item Type{/Literal}</th>
+            <th width="200" align="right" valign="middle" style="font-weight: bold;">{Literal}Comped Amount{/Literal}</th>
+          </tr>
+
+          <tr>
+            <td colspan="2" align="left" valign="middle"><hr align="center" width="600" size="1" noshade></td>
+          </tr>
+
+          {CompedTypeBlock}
+          <tr>
+            <td width="400" align="left" valign="middle">{CompedType}</td>
+            <td width="200" align="right" valign="middle">{CompedTypeAmount}</td>
+          </tr>
+
+          <tr>
+            <td colspan="2" align="left" valign="middle"><hr align="center" width="600" size="1" noshade></td>
+          </tr>
+          {/CompedTypeBlock}
+
+        </table>
+    </div>
+
+    <hr align="center" width="630" size="1" noshade>
+    <div align="center"><span class="minitype">&nbsp;&nbsp;&nbsp;{Literal}Powered by AccuPOS Point Of Sale rev02{/Literal}</span></div>
+  </Body>
+</Html>
+
+{DateFormat}yyyy-MM-dd HH:mm{/DateFormat}
+{CurrencyFormat}$#####0.00;-#####0.00{/CurrencyFormat}
+{PriceFormat}#####0.0000;-#####0.0000{/PriceFormat}
+{QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+{Errors}

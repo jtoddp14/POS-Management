@@ -1,0 +1,81 @@
+<html {RightToLeft}>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+
+		<title>{Literal}Pay Period Report{/Literal}</title>
+		<link rel="stylesheet" href="css/font-awesome.min.css.gz">
+		<link rel="stylesheet" href="css/main.css.gz">
+		<link rel="stylesheet" href="css/accupos.css.gz">
+		
+		<style type="text/css">
+			body { font-family: Verdana, Geneva, sans-serif; color: #000000; font-size: 12px; font-weight: normal; }
+		</style>
+
+	</head>
+
+	<body>
+
+		<table width="95%" border="0" align="center" cellpadding="3" cellspacing="3">
+				<tr>
+					<td width="376" align="center" valign="middle"><b>{Literal}Pay Period Report{/Literal} {Literal}for{/Literal} {PeriodStart} {Literal}through{/Literal} {PeriodEnd}</td>
+				</tr>
+				<tr>
+					<td width="376" align="center" valign="middle">{Literal}created on{/Literal} {Now}</td>
+				</tr>
+				<tr>
+					<td align="center" valign="middle"><span style="color:red; font-size:16px; font-weight: bold;">{ErrorMessage}</span></td>
+				</tr>
+		</table>
+
+    {EmployeeBlock}
+    <br />
+    <table width="100%" border="1" align="center" cellpadding="3" cellspacing="3" bordercolor="#C0C0C0" style="border-collapse: collapse">
+        <tr>
+        <td><strong>{Literal}Employee/Type{/Literal}</strong></td>
+        <td width="15%"><strong>{Literal}IN{/Literal}</strong></td>
+        <td width="15%"><strong>{Literal}OUT{/Literal}</strong></td>
+        <td><strong>{Literal}HOURS{/Literal}</strong></td>
+        <td colspan="2" align="middle"><strong>{Literal}DAILY HOURS{/Literal}</strong></td>
+        <td colspan="2" align="middle"><strong>{Literal}WORK WEEK HOURS{/Literal}</strong></td>
+        <td colspan="2" align="middle"><strong>{Literal}PAY PERIOD HOURS{/Literal}</strong></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td align="middle"><strong>{Literal}Total{/Literal}</strong></td>
+        <td align="middle"><strong>{Literal}Over 8 Hrs{/Literal}</strong></td>
+        <td align="middle"><strong>{Literal}Total{/Literal}</strong></td>
+        <td align="middle"><strong>{Literal}Overtime{/Literal}</strong></td>
+        <td align="middle"><strong>{Literal}Total{/Literal}</strong></td>
+        <td align="middle"><strong>{Literal}Overtime{/Literal}</strong></td>
+      </tr>
+      
+      <tr>
+        <td colspan="10"><strong>({EmployeeId})&nbsp;&nbsp;{EmployeeName}</strong></td>
+      </tr>
+
+      {EmployeeDetailBlock}
+      <tr style="color: {textColor};">
+        <td>{PayType}</td>
+        <td>{In}</td>
+        <td>{Out}</td>
+        <td align="middle">{Hours}</td>
+        <td align="middle">{DailyTotal}</td>
+        <td align="middle">{DailyOvertime}</td>
+        <td align="middle">{WeeklyTotal}</td>
+        <td align="middle">{WeeklyOvertime}</td>
+        <td align="middle">{PayPeriodTotal}</td>
+        <td align="middle">{PayPeriodOvertime}</td>
+      </tr>
+      {/EmployeeDetailBlock}
+    </table>
+    <br>
+    {/EmployeeBlock}
+		
+	</body>
+
+	{ClockDateFormat}HH:mm dd-MMM-yyyy{/ClockDateFormat}
+
+</html>

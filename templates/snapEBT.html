@@ -1,0 +1,74 @@
+<div id="snap-ebt-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <div class="byItemTypeButton" style="padding-top: 22px;">
+            <div class="input-field col s12 m4">
+                <a href="#select-type-modal" class="waves-effect waves-light btn-large green modal-trigger select-item-type">{Literal}Add New Item Type{/Literal}</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <% _.each(snapEBT, function(snapEBT) { %>
+            <div class="col s12 m3 xl2">
+                <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light" style="background-color: #ffffff" data-id="<%= snapEBT.id %>" data-selected='0'>
+                    <div>
+                        <div class="row description truncate" style="position: relative; bottom: 8px; width: 150%; height: 48px; color: #3970b7;">
+                            {Literal}Type{/Literal}: <%= snapEBT.itemType %>
+                        </div>
+                    </div>
+                    <div class="edit" style="display: none">
+                        <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light red delete-no-partial-trigger"
+                            data-id="<%= snapEBT.id %>">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+    
+<div id="select-type-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;"> 
+            <h4>{Literal}Select Item Type{/Literal}</h4>
+        </div>
+        
+        <div class="row">
+            <% _.each(itemTypes, function(itemTypes) { %>
+            <div id="salesCards">
+                <div class="col s12 m4 xl4">
+                    <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light " style="background-color: #3970b7" data-id="<%= itemTypes.name %>" data-selected='0'>
+                        <div class="row description truncate" style="position: relative; right: -5px; height: 48px;">
+                            &nbsp;&nbsp;<%= itemTypes.name %>
+                        </div>
+                        <div class="edit" style="display: none">
+                            <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue choose-type-trigger"
+                                data-id="<%= itemTypes.name %>">
+                                <i class="material-icons">check</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-light btn-flat" onclick="hideSelectItemTypes()">{Literal}Cancel{/Literal}</a>
+        <input type="hidden" id="item-type-id" />
+    </div>
+</div>
+    
+<div id="delete-snap-ebt-modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this alternative Snap EBT{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+        <a href="javascript:void(0)" id="delete-snap-ebt-confirm" class="modal-close waves-effect waves-green btn red">{Literal}Delete{/Literal}</a>
+        <input type="hidden" />
+    </div>
+</div>

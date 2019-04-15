@@ -1,0 +1,212 @@
+<Html {RightToLeft}>
+<Html>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+    <!-- 
+    body
+    {
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+    }
+    .size11 {
+            font-size: 11px;
+    }
+    .minitype {font-size: 9px}
+    .greendis {
+            font-size: 11px;
+            color: 00ff00;
+    }
+    .redneg {
+            font-size: 11px;
+            color: #FF0000;
+    }
+    .blueinc {
+            font-size: 11px;
+            color: 0000FF;
+    }
+    .blackreg {
+            font-size: 11px;
+            color: #000000;
+    }
+    .style2 {font-size: 12px}
+
+    -->
+    </style>
+
+  <script src="js/Chart.js"></script>
+  
+  <script type="text/javascript">
+
+    var foodServiceChartData =
+    {
+      {FoodServiceChartData}
+    };
+
+    function loadCharts()
+    {
+        var ctx2 = document.getElementById("foodService-chart-area").getContext("2d");
+        window.barChart = new Chart(ctx2).Bar(foodServiceChartData);
+    }
+
+  </script>
+
+  
+  <title>{Literal}Food Service Statistics Report{/Literal}</title>
+
+  </Head>
+
+  <Body onLoad="loadCharts();">
+
+    <div align="center">
+      <br>
+        <span style="font-size: medium; font-weight: bold;">{Literal}Food Service Statistics Report{/Literal}</span><br>
+      <br>
+    </div>
+
+    <div align="center"><br>
+
+      <table width="660" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td align="center"><strong>{CompanyName}</strong><br>
+              {CompanyAddress1} {CompanyAddress2} {CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td align="center"><br>
+                    {Literal}Report was run on{/Literal} {DateRun}<br><br>
+            {Literal}Transactions from{/Literal} <strong>{StartTime}</strong> {Literal}through{/Literal} <strong>{EndTime}</strong>
+          </td>
+        </tr>
+        <tr>
+          <td align="center"><hr width="660" size="1"></td>
+        </tr>
+      </table>
+      
+      <table width="660" border="0" align="center" cellpadding="0" cellspacing="0">
+        
+        <tr>
+          <td colspan="6" valign="top" class="size11" height="10"></td>
+        </tr>
+
+        {ChartDataBlock}
+        <div align="left" id="divChartData">
+          <tr>
+            <td colspan="6" valign="top" align="left">
+
+              <div id="canvas-holder">
+                <canvas id="foodService-chart-area" width="630" height="300"/>
+              </div>
+              
+            </td>
+          </tr>
+        </div>
+        {/ChartDataBlock}
+
+      </table>
+
+      {LocationBlock}
+      <p>&nbsp;</p>
+      <div align="center">
+        <hr align="center" width="630" size="3" noshade>
+        {Literal}Location:{/Literal} <strong>{Location}</strong>
+        <hr align="center" width="630" size="3" noshade>
+      </div>
+
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="6" valign="top" class="size11" height="5">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Transaction Count:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{TransactionCount}</td>
+          <td colspan="4" valign="top" class="size11">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Guest Count:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{GuestCount} </td>
+          <td colspan="4" valign="top" class="size11">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Avg. Check Amount:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{AvgCheckAmount}</td>
+          <td colspan="4" valign="top" class="size11">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Avg. Guest Amount:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{AvgGuestAmount}</td>
+          <td colspan="4" valign="top" class="size11">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td colspan="6" valign="top" class="size11" height="5">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td width="30%" align="right" valign="top" class="size11"><strong>{Literal}Dine In Count:{/Literal}</strong></td>
+          <td width="15%" align="right" valign="top" class="size11">{DineInCount}</td>
+          <td width="09%" align="right" valign="top" class="size11">&nbsp;</td>
+          <td width="30%" align="right" valign="top" class="size11"><strong>{Literal}Take Out Count:{/Literal}</strong></td>
+          <td width="15%" align="right" valign="top" class="size11">{TakeOutCount}</td>
+          <td width="01%" align="right" valign="top" class="size11">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Dine In Amount:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{DineInTotal}</td>
+          <td align="right" valign="top" class="size11">&nbsp;</td>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Take Out Amount:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{TakeOutTotal}</td>
+          <td align="right" valign="top" class="size11">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Dine In % of Total:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{DineInPercent}</td>
+          <td align="left" valign="top" class="size11">%</td>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Take Out % of Total:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{TakeOutPercent}</td>
+          <td align="left" valign="top" class="size11">%</td>
+        </tr>
+
+        <tr>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Dine In % of Checks:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{DineInCheckPct}</td>
+          <td align="left" valign="top" class="size11">%</td>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Take Out % of Checks:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{TakeOutCheckPct}</td>
+          <td align="left" valign="top" class="size11">%</td>
+        </tr>
+
+        <tr>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Dine In % of Guests:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{DineInGuestPct}</td>
+          <td align="left" valign="top" class="size11">%</td>
+          <td align="right" valign="top" class="size11"><strong>{Literal}Take Out % of Guests:{/Literal}</strong></td>
+          <td align="right" valign="top" class="size11">{TakeOutGuestPct}</td>
+          <td align="left" valign="top" class="size11">%</td>
+        </tr>
+
+        <tr>
+          <td colspan="6" valign="top" class="size11">&nbsp;</td>
+        </tr>
+      </table>
+      {/LocationBlock}
+
+      <hr align="center" width="660" size="1">
+      <span class="minitype">Powered by AccuPOS Point of Sale - rev03
+    </div>
+
+  </Body>
+</Html>
+
+{DateFormat}MM/dd/yy HH:mm:ss{/DateFormat}
+{CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+{PriceFormat}#####0.00;-#####0.00{/PriceFormat}
+{QuantityFormat}#####0;-#####0{/QuantityFormat}
+{PercentFormat}#0.0;-#0.0{/PercentFormat}

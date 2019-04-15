@@ -1,0 +1,91 @@
+<div id="customers-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div class="row">
+        <div class="col s12">
+            <div class="col s12 m1">
+                <p style="top: 40px; font-size: 20px;"><strong>{Literal}Search{/Literal}:</strong></p>
+            </div>
+            <div class="col s12 m2">
+                <div class="input-field">
+                    <input id="searchText" type="text" maxlength="20">
+                    <label class="active" for="searchText">{Literal}Search Text{/Literal}</label>
+                </div>
+            </div> 
+            <div class="col s12 m1">
+                <p style="top: 40px; font-size: 20px;"><strong>{Literal}in{/Literal}</p>
+            </div>
+            <div class="input-field col s12 m3">
+                <select id="searchField">
+                    <option value="1"> {Literal}Customer Codes{/Literal}</option>
+                    <option value="2"> {Literal}Customer Names{/Literal}</option>
+                    <option value="3"> {Literal}Customer Phone Numbers{/Literal}</option>
+                    <option value="4"> {Literal}Customer Emails{/Literal}</option>
+                </select>
+                <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+            </div>
+            <div class="col s12 m5">
+                <div class="search">
+                    <a href="javascript:void(0)" class="btn btn-large waves-effect waves-light green search-customers-button">
+                        <i class="material-icons">search</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="customerBlock" class="row" style="display: none;">
+        <% _.each(customers, function(customers) { %>
+            <div class="col s12 m3 xl2">
+                <div class="card-panel card-panel-entity z-depth-1 black-text sequence-card hoverable white-text waves-effect waves-light" style="background-color: #ffffff" data-id="<%= customers.id %>" data-selected='0'>
+                    <div>
+                        <div class="row customerName truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                            {Literal}ID{/Literal}# <%= customers.id %>
+                        </div>
+                        <div class="row description truncate" style="color: #3970b7;" >
+                            <%= customers.last %>,
+                            <%= customers.first %>
+                        </div>
+                        <div class="row customerPhone truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                            {Literal}Phone{/Literal}:
+                            <%= customers.phone %>
+                        </div>
+                        <div class="row email truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                            {Literal}Email{/Literal}: 
+                            <%= customers.email %>
+                        </div>
+                    </div>
+                    <div class="edit" style="display: none">
+                        <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-customers-trigger"
+                            data-id="<%= customers.id %>">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<div id="paginationBlock" class ="col s3" align="center" style="display: none;">
+    <div>
+        <ul class="pagination" id="customer-pagination" data-current-page="1">
+            <li class="disabled hide-on-rtl" id="pagination-back">
+                <a href="javascript:void(0)">
+                    <i class="material-icons chevronArrow">chevron_left</i>
+                </a>
+            </li>
+            <li class="waves-effect hide-on-rtl" id="pagination-forward">
+                <a href="javascript:void(0)">
+                    <i class="material-icons chevronArrow">chevron_right</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+        
+<div id="customers-form-modal" class="modal modal-fixed-footer customers-form-modal" style="max-height: 100%">
+    
+</div>
+
+<a href="javascript:void(0)" id="add-customers-button" class="btn-floating btn-large waves-effect waves-light ap-blue z-depth-4 floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>

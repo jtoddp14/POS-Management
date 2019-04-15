@@ -1,0 +1,37 @@
+<div id="customer-terms-wrapper">
+    <div class="row">
+        <% _.each(customerTerms, function(customerTerm) { %>
+            <div class="col s12 m3 xl2">
+                <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light" style="background-color: #ffffff" data-id="<%= customerTerm.id %>" data-selected='0'>
+                    <div>
+                        <div class="row description truncate" style="color: #3970b7;">
+                            <%= customerTerm.terms %>
+                        </div>
+                    </div>
+                    <div class="row untilDue truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                        {Literal}Days until due{/Literal}:
+                        <%= customerTerm.discountDays %>
+                    </div>
+                    <div class="row minDays truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                        {Literal}Min days until due{/Literal}:
+                        <%= customerTerm.daysUntilDue %>
+                    </div>
+                    <div class="row dueDay truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                        {Literal}Due day of month{/Literal}:
+                        <%= customerTerm.dueDayOfMonth %>
+                    </div>
+                    <div class="edit" style="display: none">
+                        <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-customer-terms-trigger"
+                            data-id="<%= customerTerm.id %>">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+        
+<div id="customer-terms-form-modal" class="modal modal-fixed-footer customer-terms-form-modal" style="max-height: 100%">
+    
+</div>

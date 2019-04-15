@@ -1,0 +1,6 @@
+! ---- DO NOT UPDATE BEFORE READING ---- !
+
+In order for POS Keys to work on new management, I had to change Grid-Stacks css and JS files.
+This may cause updating grid-stack to break POS Keys
+
+Create a backup of this folder before updating and revert the changes using WINMerge

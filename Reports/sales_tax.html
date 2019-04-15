@@ -1,0 +1,568 @@
+<html>
+  <head>
+    <title>{Literal}Sales Taxes{/Literal}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="Cache-control" content="public">
+
+    <link href="css/manage.css.gz" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css.gz" rel="stylesheet">
+    <link href="css/style.css.gz" rel="stylesheet">
+    <script src="js/jquery-1.11.3.min.js.gz"></script>
+    <script src="js/included.js.gz"></script>
+    <script src="js/tooltip.js.gz"></script>
+
+    <link rel="stylesheet" href="css/font-awesome.min.css.gz">
+    <link rel="stylesheet" href="css/main.css.gz">
+    <link rel="stylesheet" href="css/accupos.css.gz">
+
+    <style type="text/css">
+
+      .box {
+        height: 519px;
+      }
+
+      .PopupEdit-content {
+        width: 400px;
+        min-height: 220px;
+      }
+
+      .PopupEdit2-content {
+        width: 400px;
+        min-height: 260px;
+      }
+
+      .PopupAdd-content {
+        width: 480px;
+        min-height:310px;
+      }
+
+      .PopupDelete-content {
+        width: 400px;
+        min-height: 160px;
+      }
+
+      .cornerarrow {background: url('images/image_sprites.png') no-repeat -43px -391px; width: 22px; height: 22px;}
+
+    </style>
+
+    <script language="javascript">
+
+			// Ignore Enter key press
+			$(document).keypress(
+					function(event){
+					 if (event.which == '13') 
+							event.preventDefault();
+			});		
+		
+      function showMethod(option)
+      {
+        document.getElementById('divOptionA').style.display='none';
+        document.getElementById('divOptionB').style.display='none';
+
+        document.getElementById('div'+option).style.display='inline-block';
+      }
+
+      function initialize()
+      {
+        document.getElementById('divOptionB').style.display='none';
+      }
+
+      function checkErrorMessage()
+      {
+        var errorMessage = document.getElementById('errorMessage');
+        if (errorMessage && errorMessage.value)
+          openPopupMessage();
+      }
+
+      function checkTaxCodeName()
+      {
+        if(document.getElementById("editTaxCodeName").value == "")
+        {
+          alert("Please enter a Tax Code Name, or click the Cancel button");
+          return false;
+        }
+        else
+        {<!-- SUBMIT CODE HERE -->
+          closeEditTaxCode(true);
+        }
+      }
+
+      function checkTaxAuthInfo()
+      {
+        if(document.getElementById("editTaxAuthId").value == "")
+        {
+          alert("Please enter a Tax Authority ID, or click the Cancel button");
+          return false;
+        }
+        else if (document.getElementById("editTaxAuthName").value == "")
+        {
+          alert("Please enter a Tax Authority Name, or click the Cancel button");
+          return false;
+        }
+        else
+        {<!-- SUBMIT CODE HERE -->
+          closeEditTaxAuth(true);
+        }
+      }
+
+      function checkNewTaxAuth()
+      {
+        if (document.getElementById('divOptionA').style.display == "")
+        {
+          if(document.getElementById("newTaxAuthId").value == "")
+          {
+            alert("Please enter a Tax Authority ID, or click the Cancel button");
+            return false;
+          }
+          else if (document.getElementById("newTaxAuthName").value == "")
+          {
+            alert("Please enter a Tax Authority Name, or click the Cancel button");
+            return false;
+          }
+          else
+          {<!-- SUBMIT CODE HERE -->
+            closePopupAdd(true);
+          }
+        }
+        else
+        {
+          if(document.getElementById("taxAuthName").value == "")
+          {
+            alert("Please choose a Tax Authority, or click the Cancel button");
+            return false;
+          }
+          else
+          {<!-- SUBMIT CODE HERE -->
+            closePopupAdd(true);
+          }
+        }
+      }
+
+    </script>
+  </head>
+
+  <body class="with-side-menu theme-side-caesium-dark-caribbean" onLoad="initialize();">
+
+    <iframe id="tooltips" src="tooltips.html" style="display: none;"></iframe>
+
+    <form method="post" id="mainMenu" action="main_menu.html" style="display: none;">
+      <input type="hidden" name="password" value="{Password}" />
+      <input type="hidden" name="selectedTab" value='Settings' />
+    </form>
+
+    <form method="post" id="salesTaxSubmit" action="sales_tax.html">
+
+      <div id="includedHeader"></div>
+      <div id="includedSidebarMenu" class="sidebar-menu"></div>
+
+      <div class="page-content subPage">
+        <div class="container-fluid">
+          <div class="box-typical box-typical-padding">
+            <input type="hidden" name="password" value="{Password}" />
+            <input type="hidden" id="selectedTaxCode" name="selectedTaxCode" />
+            <input type="hidden" id="selectedTaxAuth" name="selectedTaxAuth" />
+            <input type="hidden" id="submitAction" name="submitAction" />
+
+            <div class="col-xs-12 col-sm-12 col-md-12"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <div class="col-xs-12 hidden-sm hidden-md hidden-lg"><div class="page-title-row"><h4>{Literal}Sales Taxes{/Literal}</h4></div></div>
+              <div class="col-xs-6 col-sm-2 col-md-2"><div class="blue-small-btn" id="cancel-btn" onClick="showLoading(); document.getElementById('mainMenu').submit();"><i class="fa fa-ban"></i><br>{Literal}Cancel{/Literal}</div></div>
+              <div class="hidden-xs col-sm-8 col-md-8"><div class="page-title-row"><h4>{Literal}Sales Taxes{/Literal}</h4></div></div>
+              <div class="col-xs-6 col-sm-2 col-md-2"><div class="blue-small-btn" id="save-btn" onClick="document.getElementById('mainMenu').submit();"><i class="fa fa-check"></i><br>{Literal}Done{/Literal}</div></div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <input name="small-blue-btn" type="button" class="blue-small-btn" value="{Literal}Add a New Tax Code{/Literal}"  style="margin-left: 15px; margin-top: 10px; width: 20%;"onClick="editTaxCode(true, this);">
+            </div>
+
+            <div style="margin: 0px; display: inline-block; padding: 10px; width: 100%; overflow: auto;">
+              <div class="scroll-x col-xs-12 col-sm-12 col-md-12" style="min-width: 750px;">
+                <table width="100%" class="display-table">
+                  {TaxCodeBlock}
+                  <tr>
+                    <td colspan="2" align="left" valign="middle"><span style="color: #8e8d8d; font-weight: bold;">{Literal}Tax Code:{/Literal} </span>
+                      <input type="hidden" name="taxCodeId" id="{taxCodeId}" value="{taxCode}" />
+                      <strong>{taxCode}</strong> ({taxCodeRate}%)
+                    </td>
+                    <td width="387" align="right" valign="middle">
+                      <input name="addTaxAuth" id="{addTaxAuth}" type="button" class="blue-small-btn" style="width: 40%;" value="{Literal}Add a Tax Authority{/Literal}"  onClick="openPopupAdd(this);">
+                      <input name="edit" id="{editTaxCode}" type="button" class="blue-small-btn" value="{Literal}Edit{/Literal}" style="margin-left:15px; width: 70px;" onClick="editTaxCode(false, this);">
+                      <input name="delete" id="{deleteTaxCode}" type="button" class="grey-small-btn" value="{Literal}Delete{/Literal}" style="margin-left:15px;" onClick="deleteTaxCode(this);">
+                    </td>
+                  </tr>
+
+                  {TaxAuthBlock}
+                  <tr>
+                    <td width="57" align="right" valign="middle">
+                      <img class="cornerarrow" src="images/spacer.gif" width="22" height="22">
+                    </td>
+                    <td width="556" align="left" valign="middle"><span style="color: #8e8d8d; font-weight: bold;">{Literal}Tax Authority:{/Literal} </span>
+                      {taxAuthName} ({taxAuthRate}%) {glAccount}
+                    </td>
+                    <td align="right" valign="middle">
+                      <input name="blue-small-btn" id="{editTaxAuth}" type="button" class="blue-small-btn" value="{Literal}Edit{/Literal}" style="width:70px;" onClick="editTaxAuth(this);">
+                      <input name="grey-small-btn" id="{deleteTaxAuth}" type="button" class="grey-small-btn" value="{Literal}Delete{/Literal}" style="margin-left:15px;" onClick="deleteTaxAuth(this);">
+                      <input type="hidden" name="taxAuthIdId" id="{taxAuthIdId}" value="{taxAuthId}" />
+                      <input type="hidden" name="taxAuthNameId" id="{taxAuthNameId}" value="{taxAuthName}" />
+                      <input type="hidden" name="taxAuthRateId" id="{taxAuthRateId}" value="{taxAuthRate}" />
+                      <input type="hidden" name="taxAuthAcctId" id="{taxAuthAcctId}" value="{glAccountName}" />
+                    </td>
+                  </tr>
+                  {/TaxAuthBlock}
+
+                  {/TaxCodeBlock}
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="includedFooter"></div>
+
+      <!-- edit popup START-->
+      <div class="overlay is-hidden" id="editOverlay">
+        <div class="PopupEdit-content">
+
+          <p style="text-align: center;"><b>{Literal}Tax Code Name (ID):{/Literal}</b></p>
+          <p style="text-align: center;"><input name="editTaxCodeName" type="text" id="editTaxCodeName" style="height: 25px; width:100%; -webkit-appearance: none;" size="60"></p>
+
+
+
+          <p style="text-align: center;"><b>{Literal}Tax Code Description:{/Literal}</b></p>
+          <p style="text-align: center;"><input name="editTaxCodeDesc" type="text" id="editTaxCodeDesc" style="height: 25px; width:100%; -webkit-appearance: none;" size="60"></p>
+
+
+
+          <input name="cancel" type="button" class="grey-small-btn" value="{Literal}Cancel{/Literal}" style="float: left; margin-left: 10px;" onClick="closeEditTaxCode(false);">
+          <input name="save" type="button" class="blue-small-btn" value="{Literal}OK{/Literal}" style="float: right; margin-right: 10px; width: 70px;" onClick="checkTaxCodeName();">
+        </div>
+      </div>
+      <!-- edit popup END-->
+
+      <!-- edit2 popup START-->
+      <div class="overlay is-hidden" id="editOverlay2"><div class="PopupEdit2-content">
+          <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td colspan="2" align="center" valign="middle"><strong>{Literal}Edit Tax Authority{/Literal}</strong></td>
+            </tr>
+            <tr>
+              <td align="right" valign="middle">&nbsp;</td>
+              <td align="left" valign="middle">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="40%" align="right" valign="middle">{Literal}Tax Authority ID:{/Literal}&nbsp;</td>
+              <td width="60%" align="left" valign="middle"><input name="editTaxAuthId" type="text" id="editTaxAuthId" style="height: 25px; width:100%; text-align: left; -webkit-appearance: none;" size="60" readonly></td>
+            </tr>
+            <tr>
+              <td align="right" valign="middle">&nbsp;</td>
+              <td align="left" valign="middle">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="40%" align="right" valign="middle">{Literal}Tax Authority Name:{/Literal}&nbsp;</td>
+              <td width="60%" align="left" valign="middle"><input name="editTaxAuthName" type="text" id="editTaxAuthName" style="height: 25px; width:100%; text-align: left; -webkit-appearance: none;" size="60"></td>
+            </tr>
+            <tr>
+              <td align="right" valign="middle">&nbsp;</td>
+              <td align="left" valign="middle">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="right" valign="middle">{Literal}Rate:{/Literal}&nbsp;</td>
+              <td align="left" valign="middle"><input name="editTaxAuthRate" type="text" id="editTaxAuthRate" style="height: 25px; text-align: left; -webkit-appearance: none;" value="0.00" size="6" onKeyPress="return isValidKey(event, true);" onkeyup="return ignoreAlphaKeys(event, true);">%</td>
+            </tr>
+            <tr>
+              <td align="right" valign="middle">&nbsp;</td>
+              <td align="left" valign="middle">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="right" valign="middle">{Literal}GL Account:{/Literal}&nbsp;</td>
+              <td align="left" valign="middle"><input name="editTaxAuthAcct" type="text" id="editTaxAuthAcct" style="height: 25px; width:100%; text-align: left; -webkit-appearance: none;" value="{Literal}State Tax, State of Nevada{/Literal}" size="20"></td>
+            </tr>
+            <tr>
+              <td align="right" valign="middle">&nbsp;</td>
+              <td align="left" valign="middle">&nbsp;</td>
+            </tr>
+          </table>
+
+          <input name="cancel" type="button" class="grey-small-btn" value="{Literal}Cancel{/Literal}" style="float: left;" onClick="closeEditTaxAuth(false);">
+          <input name="save" type="button" class="blue-small-btn" value="{Literal}OK{/Literal}" style="float: right; width: 70px;" onClick="checkTaxAuthInfo();">
+        </div>
+      </div>
+      <!-- edit2 popup END-->
+
+      <!-- add popup START-->
+      <div class="overlay is-hidden" id="addOverlay">
+        <div class="PopupAdd-content">
+
+          <!-- add new -->
+          <a href="javascript:void(0);" class="blue-small-btn" style="width: 45%; display: inline-block; text-align: center; float: left;;" id="btnOptionA" onClick="return showMethod('OptionA');">{Literal}Create a New Tax Authority{/Literal}</a>
+
+          <a href="javascript:void(0);" class="blue-small-btn" style="width: 45%; display: inline-block; text-align: center; float: right;;" id="btnOptionB" onClick="return showMethod('OptionB');">{Literal}Use Existing Tax Authority{/Literal}</a>
+
+          <p style="margin-top: 40px;">&nbsp;</p>
+          <div id=divOptionA>
+
+            <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0">
+
+              <tr>
+                <td width="40%" align="right" valign="middle">{Literal}Tax Authority ID:{/Literal}&nbsp;</td>
+                <td width="60%" align="left" valign="middle"><input name="newTaxAuthId" id="newTaxAuthId" type="text" style="height: 25px; width:100%; text-align: left; -webkit-appearance: none;" size="60"></td>
+              </tr>
+
+              <tr>
+                <td colspan="2" align="right" valign="middle">&nbsp;</td>
+              </tr>
+
+              <tr>
+                <td width="40%" align="right" valign="middle">{Literal}Tax Authority Name:{/Literal}&nbsp;</td>
+                <td width="60%" align="left" valign="middle"><input name="newTaxAuthName" id="newTaxAuthName" type="text" style="height: 25px; width:100%; text-align: left; -webkit-appearance: none;" size="60">
+                </td>
+              </tr>
+
+              <tr>
+                <td colspan="2" align="right" valign="middle">&nbsp;</td>
+              </tr>
+
+              <tr>
+                <td align="right" valign="middle">{Literal}Rate:{/Literal}&nbsp;</td>
+                <td align="left" valign="middle"><input name="newTaxAuthRate" type="text" style="height: 25px; text-align: left; -webkit-appearance: none;" size="6" onKeyPress="return isValidKey(event, true);" onkeyup="return ignoreAlphaKeys(event, true);">%</td>
+              </tr>
+
+              <tr>
+                <td colspan="2" align="right" valign="middle">&nbsp;</td>
+              </tr>
+
+              <tr>
+                <td align="right" valign="middle">{Literal}GL Account:{/Literal}&nbsp;</td>
+                <td align="left" valign="middle"><input name="newTaxAuthAcct" type="text" style="height: 25px; width:100%; text-align: left; -webkit-appearance: none;" size="20"></td>
+              </tr>
+
+              <tr>
+                <td colspan="2" align="right" valign="middle">&nbsp;</td>
+              </tr>
+
+            </table>
+
+            <input name="cancel" type="button" class="grey-small-btn" value="{Literal}Cancel{/Literal}" style="float: left;" onClick="closePopupAdd(false);">
+            <input name="addTaxAuth" type="button" class="blue-small-btn" value="{Literal}OK{/Literal}" style="float: right; width: 70px;" onClick="checkNewTaxAuth();">
+          </div>
+
+          <!-- use existing -->
+          <div id=divOptionB style="display: none;">
+
+            <p style="margin-top: 20px;">&nbsp;</p>
+            <table width="460px" align="center" border="0" cellpadding="0" cellspacing="0">
+
+              <tr>
+                <td width="50%" align="right" valign="middle" style="font-weight: bold; margin-right: 10px; margin-top: 20px;">{Literal}Use this Tax Authority:{/Literal}</td>
+                <td width="50%" align="left" valign="middle">
+                  <select name="taxAuthName" id="taxAuthName" size="1" style="height: 25px; margin-left: 10px; width: 70%; -webkit-appearance: none;">
+                    {taxAuthOptions}
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="left" valign="middle">
+                  <input name="cancel2" type="button" class="grey-small-btn" value="{Literal}Cancel{/Literal}" style="float: left; margin-top: 80px;" onClick="closePopupAdd(false);">
+                </td>
+                <td align="right" valign="middle">
+                  <input name="addTaxAuth2" type="button" class="blue-small-btn" value="{Literal}OK{/Literal}" style="float: right; margin-top: 80px; width: 70px;" onClick="checkNewTaxAuth();">
+                </td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- add popup END-->
+
+      <!-- delete popup START-->
+      <div class="overlay is-hidden" id="deleteOverlay">
+        <div class="PopupDelete-content">
+          <p style="text-align: center;">{Literal}Are your sure you want to delete this Tax Code?{/Literal}</p>
+
+          <p style="text-align: center;">
+            <input name="deleteTaxCodeName" type="text" id="deleteTaxCodeName" readonly style="height: 25px; width:100%; font-weight: bold; border: none; text-align: center; -webkit-appearance: none;" size="60">
+          </p>
+
+          <input name="cancel" type="button" class="grey-small-btn" value="{Literal}Cancel{/Literal}" style="float: left; margin-left: 10px;" onClick="closeDeleteTaxCode(false);">
+          <input name="save" type="button" class="blue-small-btn" value="{Literal}Confirm Deletion{/Literal}" style="float: right; margin-right: 10px;" onClick="closeDeleteTaxCode(true);">
+        </div>
+      </div>
+      <!-- delete popup END-->
+
+      <!-- delete popup START-->
+      <div class="overlay is-hidden" id="deleteOverlay2">
+        <div class="PopupDelete-content">
+          <p style="text-align: center;">{Literal}Are your sure you want to delete this{/Literal}<br> {Literal}Tax Authority from this Tax Code?{/Literal}</p>
+
+          <p style="text-align: center;">
+            <input name="deleteTaxAuthName" type="text" id="deleteTaxAuthName" readonly style="height: 25px; width:100%; font-weight: bold; border: none; text-align: center; -webkit-appearance: none;" size="60">
+          </p>
+
+          <input name="cancel" type="button" class="grey-small-btn" value="{Literal}Cancel{/Literal}" style="float: left; margin-left: 10px;" onClick="closeDeleteTaxAuth(false);">
+          <input name="save" type="button" class="blue-small-btn" value="{Literal}Confirm Deletion{/Literal}" style="float: right; margin-right: 10px;" onClick="closeDeleteTaxAuth(true);">
+        </div>
+      </div>
+      <!-- delete popup END-->	
+
+      <script language="javascript">
+   
+        var editOverlay = document.getElementById('editOverlay');
+
+        function editTaxCode(newTaxCode, editBtn)
+        {
+          editOverlay.classList.remove("is-hidden");
+
+          var editBtnId = editBtn.id;
+          if (newTaxCode == false)
+          {
+            var taxCodeId = editBtnId.substr(11);
+            document.getElementById("selectedTaxCode").value = taxCodeId;
+
+            var taxCodeName = document.getElementById('taxCodeId' + taxCodeId).value;
+            document.getElementById("editTaxCodeName").value = taxCodeName;
+          }
+          else
+          {
+            document.getElementById("selectedTaxCode").value = -1;
+            document.getElementById("editTaxCodeName").value = "";
+          }
+
+          document.getElementById("editTaxCodeName").select();
+        }
+
+        function closeEditTaxCode(submit)
+        {
+          editOverlay.classList.add("is-hidden");
+
+          if (submit == true)
+          {
+            document.getElementById('submitAction').value = "saveTaxCode";
+            document.getElementById('salesTaxSubmit').submit();
+          }
+        }
+
+        var editOverlay2 = document.getElementById('editOverlay2');
+
+        function editTaxAuth(editBtn)
+        {
+          editOverlay2.classList.remove("is-hidden");
+
+          var editBtnId = editBtn.id;
+          var taxAuthValue = document.getElementById(editBtnId+"Id").value;
+          document.getElementById("editTaxAuthId").value = taxAuthValue;
+        
+          taxAuthValue = document.getElementById(editBtnId+"Name").value;
+          document.getElementById("editTaxAuthName").value = taxAuthValue;
+
+          taxAuthValue = document.getElementById(editBtnId+"Rate").value;
+          document.getElementById("editTaxAuthRate").value = taxAuthValue;
+
+          taxAuthValue = document.getElementById(editBtnId+"Acct").value;
+          document.getElementById("editTaxAuthAcct").value = taxAuthValue;
+        }
+
+        function closeEditTaxAuth(submit)
+        {
+          editOverlay2.classList.add("is-hidden");
+
+          if (submit == true)
+          {
+            document.getElementById('submitAction').value = "editTaxAuth";
+            document.getElementById('salesTaxSubmit').submit();
+          }
+        }
+
+        var addOverlay = document.getElementById('addOverlay');
+
+        function openPopupAdd(editBtn)
+        {
+          addOverlay.classList.remove("is-hidden");
+
+          var editBtnId = editBtn.id;
+          var taxCodeId = editBtnId.substr(10);
+          document.getElementById("selectedTaxCode").value = taxCodeId;
+
+          var taxCodeName = document.getElementById('taxCodeId' + taxCodeId).value;
+          document.getElementById("editTaxCodeName").value = taxCodeName;
+        }
+
+        function closePopupAdd(submit)
+        {
+          addOverlay.classList.add("is-hidden");
+
+          if (submit == true)
+          {
+            document.getElementById('submitAction').value = "addTaxAuth";
+            document.getElementById('salesTaxSubmit').submit();
+          }
+        }
+
+        var deleteOverlay = document.getElementById('deleteOverlay');
+
+        function deleteTaxCode(deleteBtn)
+        {
+          deleteOverlay.classList.remove("is-hidden");
+
+          var deleteBtnId = deleteBtn.id;
+          var taxCodeId = deleteBtnId.substr(13);
+          document.getElementById("selectedTaxCode").value = taxCodeId;
+
+          var taxCodeName = document.getElementById('taxCodeId' + taxCodeId).value;
+          document.getElementById("deleteTaxCodeName").value = taxCodeName;
+        }
+
+        function closeDeleteTaxCode(confirmDelete)
+        {
+          deleteOverlay.classList.add("is-hidden");
+
+          if (confirmDelete == true)
+          {
+            document.getElementById('submitAction').value = "deleteTaxCode";
+            document.getElementById('salesTaxSubmit').submit();
+          }
+        }
+
+        var deleteOverlay2 = document.getElementById('deleteOverlay2');
+
+        function deleteTaxAuth(deleteBtn)
+        {
+          deleteOverlay2.classList.remove("is-hidden");
+
+          var deleteBtnId = deleteBtn.id;
+          var taxAuthValue = document.getElementById(deleteBtnId+"Name").value;
+          document.getElementById("deleteTaxAuthName").value = taxAuthValue;
+        
+          var taxAuthNumber = deleteBtnId.substr(7, 1);
+          document.getElementById("selectedTaxAuth").value = taxAuthNumber;
+
+          var taxCodeId = deleteBtnId.substr(15);
+          document.getElementById("selectedTaxCode").value = taxCodeId;
+        }
+
+        function closeDeleteTaxAuth(confirmDelete)
+        {
+          deleteOverlay2.classList.add("is-hidden");
+
+          if (confirmDelete == true)
+          {
+            document.getElementById('submitAction').value = "deleteTaxAuth";
+            document.getElementById('salesTaxSubmit').submit();
+          }
+        }
+
+      </script>
+
+    </form>
+
+    <script src="js/tether.min.js.gz"></script>
+    <script src="js/bootstrap.min.js.gz"></script>
+    <script src="js/plugins.js.gz"></script>
+    <script src="js/app.js.gz"></script>
+
+  </body>
+</html>

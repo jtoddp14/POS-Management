@@ -1,0 +1,42 @@
+<div id="tender-types-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+        <div class="row">
+            <% _.each(tenderTypes, function(tenderTypes) { %>
+                <div class="col s12 m3 xl2">
+                    <div class="card-panel card-panel-entity z-depth-2 sequence-card hoverable white-text waves-effect waves-light <%= tenderTypes.cardStyleClass %>" style="background-color: #3970b7" data-id="<%= tenderTypes.id %>" data-selected='0'>
+                        <div>
+                            <div class="row description truncate" style="position: relative; right: 13px; bottom: 8px; width: 150%; height: 48px;">
+                                &nbsp;&nbsp;<%= tenderTypes.tenderName %>
+                            </div>
+                            <div class="row paymentType truncate">
+                                Type:
+                                <%= tenderTypes.paymentTypeName %>
+                            </div>
+                            <br>
+                            <div class="row glAccount truncate">
+                                GL:
+                                <%= tenderTypes.glAccount %>
+                            </div>
+                            <div class="row maxChange truncate">
+                                Max Change: $
+                                <%= tenderTypes.maxChange %>
+                            </div>
+                        </div>
+                        <div class="edit" style="display: none">
+                            <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-tender-types-trigger"
+                                data-id="<%= tenderTypes.id %>">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+        
+        <div id="tender-types-form-modal" class="modal modal-fixed-footer tender-types-form-modal" style="max-height: 100%">
+            
+        </div>
+        
+        <a href="javascript:void(0)" id="add-tender-types-button" class="btn-floating btn-large waves-effect waves-light green floating-action-button-fixed">
+            <i class="material-icons">add</i>
+        </a>

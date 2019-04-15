@@ -1,0 +1,110 @@
+<div id="units-of-measure-form-modal" class="modal modal-fixed-footer" style="max-height: 100%" <%= (App.rtl ? 'style="direction:rtl"' : '') %>></div>
+    <div class="modal-content">
+        <div id="units-of-measure-form-content">
+            <div style="padding-bottom: 50px">
+                <h4 style="font-size: 1.2rem">{Literal}Unit of Measure{/Literal}</h4>
+            </div>
+            <form>
+                <div class="firstRow">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="col s12 m4 offset-m2" style="padding-top: 25px">
+                                1. {Literal}When selling this item{/Literal}: 
+                            </div>
+
+                            <div class="col s12 m4">
+                                <div class="input-field" >
+                                    <input type="text" id="itemSearch1" class="autocomplete1" value="<%= unitsOfMeasure.code %>">
+                                    <label for="itemSearch" class="active"><i class="material-icons left">filter_list</i>{Literal}Search Item{/Literal}</label>  
+                                </div>
+                            </div>
+
+                            <div class="col s1" style="display: none;">
+                                <div class="input-field" >
+                                    <input type="text" id="id" value="unitsOfMeasure.code">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thirdRow">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="col s12 m4 offset-m2" style="padding-top: 25px">
+                                2. {Literal}With a stocking quantity of{/Literal}:
+                            </div>
+
+                            <div class="col s6 m2">
+                                <div class="input-field">
+                                    <label class="active" for="fraction-dropdown">{Literal}Fraction Helper{/Literal}</label>
+                                    <select id="fraction-dropdown" required>
+                                        <option value="0" <%= (unitsOfMeasure.quantity == 1 ? 'selected' : '') %>>1</option>
+                                        <option value="1" <%= (unitsOfMeasure.quantity == .5 ? 'selected' : '') %>>1/2</option>
+                                        <option value="2" <%= (unitsOfMeasure.quantity == .333 ? 'selected' : '') %>>1/3</option>
+                                        <option value="3" <%= (unitsOfMeasure.quantity == .25 ? 'selected' : '') %>>1/4</option>
+                                        <option value="4" <%= (unitsOfMeasure.quantity == .2 ? 'selected' : '') %>>1/5</option>
+                                        <option value="5" <%= (unitsOfMeasure.quantity == .1 ? 'selected' : '') %>>1/10</option>
+                                        <option value="6" <%= (unitsOfMeasure.quantity == .083 ? 'selected' : '') %>>1/12</option>
+                                        <option value="7" <%= (unitsOfMeasure.quantity == .066 ? 'selected' : '') %>>1/15</option>
+                                        <option value="8" <%= (unitsOfMeasure.quantity == .055 ? 'selected' : '') %>>1/18</option>
+                                        <option value="9" <%= (unitsOfMeasure.quantity == .0416 ? 'selected' : '') %>>1/24</option>
+                                        <option value="10" <%= (unitsOfMeasure.quantity == .0277 ? 'selected' : '') %>>1/36</option>
+                                        <option value="11" <%= (unitsOfMeasure.quantity == .0208 ? 'selected' : '') %>>1/48</option>
+                                        <option value="12" <%= (unitsOfMeasure.quantity == .0156 ? 'selected' : '') %>>1/64</option>
+                                    </select>
+                                </div>
+                            </div> 
+
+                            <div class="col s6 m2">
+                                <div class="input-field">
+                                    <input id="quantity" type="number" value="<%= unitsOfMeasure.quantity %>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="secondRow">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="col s12 m4 offset-m2" style="padding-top: 25px">
+                                3. {Literal}Take this item out of inventory{/Literal}:
+                            </div>
+
+                            <div class="col s12 m4">
+                                <div class="input-field" >
+                                    <input type="text" id="itemSearch2" class="autocomplete2" value="<%= unitsOfMeasure.stockingItem %>">
+                                    <label for="itemSearch" class="active"><i class="material-icons left">filter_list</i>{Literal}Search Item{/Literal}</label>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-units-of-measure-modal" class="waves-effect waves-light btn-flat red-text right modal-trigger delete-button">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>
+
+
+<div id="delete-units-of-measure-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+
+        <p>{Literal}Are you sure that you would like to remove this Unit of Measure{/Literal}?</p>
+
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-units-of-measure-confirm" class="modal-close waves-effect waves-green btn red left" data-units-of-measure-id="<%= unitsOfMeasure.id%>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-units-of-measure-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

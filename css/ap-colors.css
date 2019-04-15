@@ -1,0 +1,179 @@
+.ap-teal {
+    background-color: #11b5ae !important;
+    color: #fff !important;
+}
+
+.ap-teal-light {
+    background-color: #39c7c1 !important;
+    color: #fff !important;
+}
+
+.ap-blue {
+    background-color: #3970b7 !important;
+    color: #fff !important;
+}
+
+.ap-medium-blue {
+    background-color: #31619e !important;
+    color: #fff !important;
+}
+
+.ap-dark-blue {
+    background-color: #2c5487 !important;
+    color: #fff !important;
+}
+
+.ap-light-blue {
+    background-color: #5e8acc !important;   
+    color: #fff !important;
+}
+
+.ap-main-bg-grey {
+    background-color: #e6eef8 !important;
+    color: #fff !important;
+}
+
+.ap-alternate-card {
+    background-color: #dae3ed !important;
+    color: #fff !important;
+
+}
+
+.ap-green {
+    background-color: #00a651 !important;
+    color: #fff !important;
+}
+
+.ap-purple {
+    background-color: #8830b1 !important;
+    color: #fff !important;
+}
+
+.ap-light-purple {
+    background-color: #a156c4 !important;
+    color: #fff !important;
+}
+
+.ap-confirm-green {
+    background-color: #72b083 !important;
+    color: #fff !important;
+}
+
+.ap-gold {
+    background-color: #ecb613 !important;
+    color: #fff !important;
+}
+
+.ap-light-gold {
+    background-color: #ebc143 !important;
+    color: #fff !important;
+}
+
+.ap-gray {
+    background-color: #607d8b !important;
+    color: #fff !important;
+}
+
+.ap-light-gray {
+    background-color: #8097a2 !important;
+    color: #fff !important;
+}
+
+.ap-cancel-red {
+    background-color: #ac6065 !important;
+    color: #fff !important;
+}
+
+.ap-color-none {
+    background-color: rgba(0,  0,  0,  0) !important;
+    color: #fff !important;
+}
+
+/**
+text
+
+*/
+.ap-teal-text {
+    color: #11b5ae !important;
+}
+
+.ap-teal-light-text {
+    
+    color: #39c7c1 !important;
+}
+
+.ap-blue-text {
+    
+    color: #3970b7 !important;
+}
+
+.ap-medium-blue-text {
+    
+    color: #31619e !important;
+}
+
+.ap-dark-blue-text {
+    
+    color: #2c5487 !important;
+}
+
+.ap-light-blue-text {
+       
+    color: #5e8acc !important;
+}
+
+.ap-main-bg-grey-text {
+    
+    color: #e6eef8 !important;
+}
+
+.ap-alternate-card-text {
+    
+    color: #dae3ed !important;
+
+}
+
+.ap-green-text {
+    
+    color: #00a651 !important;
+}
+
+.ap-purple-text {
+    
+    color: #8830b1 !important;
+}
+
+.ap-light-purple-text {
+    
+    color: #a156c4 !important;
+}
+
+.ap-confirm-green-text {
+    
+    color: #fff !important;
+}
+
+.ap-gold-text {
+    
+    color: #ecb613 !important;
+}
+
+.ap-light-gold-text {
+    
+    color: #ebc143 !important;
+}
+
+.ap-gray-text {
+    
+    color: #607d8b !important;
+}
+
+.ap-light-gray-text {
+    
+    color: #8097a2 !important;
+}
+
+.ap-cancel-red-text {
+    
+    color: #ac6065 !important;
+}

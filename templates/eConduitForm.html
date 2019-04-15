@@ -1,0 +1,135 @@
+<div id="e-conduit-form-modal" class="modal modal-fixed-footer" style="max-height: 100%" <%= (App.rtl ? 'style="direction:rtl"' : '') %>></div>
+    <div class="modal-content">
+        <div id="e-conduit-form-content">
+            <div style="padding-bottom: 50px">
+                <h4 style="font-size: 1.2rem">{Literal}eConduit Terminal{/Literal}</h4>
+            </div>
+            <form>
+                <% if (eConduit.id == '') { %>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <input id="companyName" type="text" value="<%= eConduit.name %>"></input>
+                                    <label class="active" for="companyName">{Literal}Company Name{/Literal}</label>
+                                    <span class="helper-text" data-error="This field is required and cannot contain special characters" data-success=""></span>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <input id="contactName" type="text" value="<%= eConduit.contactName %>"></input>
+                                    <label for="contactName">{Literal}Contact Name{/Literal}</label>
+                                    <span class="helper-text" data-error="This field is required and cannot contain special characters" data-success=""></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="col s4">
+                                <div class="input-field">
+                                    <input id="address1" type="text" value="<%= eConduit.address1 %>"></input>
+                                    <label class="active" for="address1">{Literal}Street Address{/Literal}</label>
+                                    <span class="helper-text" data-error="This field is required and cannot contain special characters" data-success=""></span>
+                                </div>
+                            </div>
+                            <div class="col s4">
+                                <div class="input-field">
+                                    <input id="city" type="text" value="<%= eConduit.city %>"></input>
+                                    <label class="active" for="city">{Literal}City{/Literal}</label>
+                                    <span class="helper-text" data-error="This field is required and cannot contain special characters" data-success=""></span>
+                                </div>
+                            </div>
+                            <div class="col s2">
+                                <div class="input-field">
+                                    <input id="state" type="text" value="<%= eConduit.state %>"></input>
+                                    <label class="active" for="state">{Literal}State{/Literal}</label>
+                                    <span class="helper-text" data-error="This field is required and cannot contain special characters" data-success=""></span>
+                                </div>
+                            </div>
+                            <div class="col s2">
+                                <div class="input-field">
+                                    <input id="zip" type="number" value="<%= eConduit.zip %>"></input>
+                                    <label class="active" for="zip">{Literal}ZIP Code{/Literal}</label>
+                                    <span class="helper-text" data-error="This field is required and cannot contain special characters" data-success=""></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <input id="email" type="text" value="<%= eConduit.email %>"></input>
+                                    <label for="email">{Literal}Email Address{/Literal}</label>
+                                    <span class="helper-text" data-error="This field is required and cannot contain special characters" data-success=""></span>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <input id="phone" type="text" value="<%= eConduit.phone %>"></input>
+                                    <label class="active" for="phone">{Literal}Phone{/Literal}</label>
+                                    <span class="helper-text" data-error="This field is required and cannot contain special characters" data-success=""></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+
+                <div class="row">
+                    <div class="col s12">
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="terminalName" type="text" value="<%= eConduit.terminalName %>"></input>
+                                <label class="active" for="terminalName">{Literal}Terminal Name{/Literal}</label>
+                                <span class="helper-text" data-error="This field is required and cannot contain special characters" data-success=""></span>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <% if (eConduit.id == '') { %>
+                                <div class="input-field">
+                                    <input id="serialNumber" type="text" value="<%= eConduit.serialNumber %>"></input>
+                                    <label class="active" for="serialNumber">{Literal}Serial Number{/Literal}</label>
+                                    <span class="helper-text" data-error="This field is required and cannot contain special characters" data-success=""></span>
+                                </div>
+                            <% } %>
+                            <% if (eConduit.id != '') { %>
+                                <div class="input-field">
+                                    <input id="serialNumber" type="text" value="<%= eConduit.serialNumber %>" disabled></input>
+                                    <label class="active" for="serialNumber">{Literal}Serial Number{/Literal}</label>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    <div class="col s12 m1" style="display: none;">
+                        <div class="input-field">
+                            <input id="id" type="text" value="<%= eConduit.id %>" disabled>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-e-conduit-modal" class="btn-flat modal-trigger waves-effect waves-light red-text right delete-button ">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>
+
+
+<div id="delete-e-conduit-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this eConduit Terminal{/Literal}?</p>
+    </div>
+    <div class="modal-footer">        
+        <a href="javascript:void(0)" id="delete-e-conduit-confirm" class="modal-close waves-effect waves-light btn red left" data-e-conduit-id="<%= eConduit.id%>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-e-conduit-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

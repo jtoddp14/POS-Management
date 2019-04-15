@@ -1,0 +1,276 @@
+<div class="modal-content" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div style="padding-bottom: 50px">
+        <h4>{Literal}Item Details{/Literal}</h4>
+    </div>
+    <div class="row form-no-margin">
+       
+    </div> 
+    <form id="item_details1">
+        <div class="row form-no-margin">
+            <div id="productLine1" class="input-field col s12 m4" style="padding-bottom: 35px;">
+                <label class="active">{Literal}Select Product Line{/Literal}</label>
+                <select id="product-line-dropdown" required>
+                    <option value="Choose Product Line" selected>{Literal}Choose Product Line{/Literal}</option>
+                    <% _.each(productLine, function(productLine) { %>
+                    <option value="<%= productLine.id %>" <%= items.productLine == productLine.description ? 'selected' : '' %>><%= productLine.description %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <div class="input-field col s12 m3">
+                <input id="id" type="text" value="<%= items.id %>" class="validate" maxlength="50" disabled>
+                <label class="active" for="id">{Literal}Item Code{/Literal}</label>
+                <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+            </div>
+
+            <div class="input-field col s12 m3">
+                <input id="description" type="text" value="<%= items.description %>" class="validate" maxlength="30">
+                <label class="active" for="description">{Literal}Item Description{/Literal}</label>
+                <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+            </div>
+            <div id="price1" class="input-field col s12 m2" style="display: none">
+                <input id="secondPrice" type="number" value="<%= items.priceLevel1 %>" class="validate">
+                <label class="active" for="secondPrice">{Literal}Item Price{/Literal}</label>
+                <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+            </div>
+            <div id="price0" class="input-field col s12 m2">
+                <input id="price" type="number" value="<%= items.priceLevel1 %>" class="validate" max="999999">
+                <label class="active" for="price">{Literal}Item Price{/Literal}</label>
+                <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+            </div>
+        </div>
+        <div class="row form-no-margin">
+            <div class="input-field col s12 m4">
+                <label class="active">{Literal}Item Type{/Literal}</label>
+                <select id="item-type-dropdown" required>
+                    <option value="Create New Item Type" selected>{Literal}Create New Item Type{/Literal}</option>
+                    <% _.each(itemTypes, function(itemType) { %>
+                    <option value="<%= itemType.id %>" <%= items.type == itemType.name ? 'selected' : '' %>><%= itemType.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <div id="category2" class="input-field col s12 m4" >
+                <label class="active">{Literal}Item Category{/Literal}</label>
+                <select id="item-category-dropdown2" required>
+                    <option value="Create New Item Category" selected>{Literal}Create New Item Category{/Literal}</option>
+                    <% _.each(category, function(category) { %>
+                    <option value="<%= category.name %>" <%= items.category == category.name ? 'selected' : '' %>><%= category.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <div id="category1" class="input-field col s12 m4" style="display: none;">
+                <label class="active">{Literal}Item Category{/Literal}</label>
+                <select id="item-category-dropdown1" required>
+                    <option value="Create New Item Category" selected>{Literal}Create New Item Category{/Literal}</option>
+                    <% _.each(category, function(category) { %>
+                    <option value="<%= category.name %>" <%= items.category == category.name ? 'selected' : '' %>><%= category.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="input-field col s12 m4" style="padding-bottom: 50px;">
+                <label>
+                    <input type="checkbox" class="filled-in advanced">
+                    <span>{Literal}Advanced Item Setup{/Literal}</span>
+                </label>
+            </div>
+        </div>
+        <div class="row form-no-margin">
+            <% if (!App.serverInfo.isFoodService) { %>
+                <div id="availability1" class="input-field col s12 m4" style="padding-bottom: 35px; display: none">
+                    <label class="active">{Literal}Availability{/Literal}</label>
+                    <select id="availability-dropdown" required onchange="availableShow(this.value)">>
+                        <option value="0" <%= items.trackAvailableOption %>" <%= current === 0 ? 'selected' : '' %>>{Literal}No Warning{/Literal}</option>
+                        <option value="1" <%= items.trackAvailableOption %>" <%= current === 1 ? 'selected' : '' %>>{Literal}Warn at or below quantity of{/Literal}</option>
+                        <option value="2" <%= items.trackAvailableOption %>" <%= current === 2 ? 'selected' : '' %>>{Literal}No Sale when none available{/Literal}</option>
+                    </select>
+                </div>
+
+                <div id="available1" class="input-field col s12 m2" style="display: none;">
+                    <input id="available" type="number" value="<%= items.warnAvailableNumber %>">
+                    <label class="active" for="available">{Literal}Warn at{/Literal}</label>
+                </div>
+
+                <div id="quantity1" class="input-field col s12 m2" style="display: none">
+                    <input id="quantity" type="number" value="<%= items.onHand %>">
+                    <label class="active" for="quantity">{Literal}Quantity On Hand{/Literal}</label>
+                </div>
+            <% } %>
+
+            <% if(App.serverInfo.hasAccounting) { %>
+                <div id="salesAccount1" class="input-field col s12 m4" style="display: none">
+                    <label class="active">{Literal}Sales Account{/Literal}</label>
+                    <select id="sales-account-dropdown" required>
+                        <% var current = 0; %>
+
+                        <% _.each(salesAccounts, function(salesAccounts) { %>
+                        <option value="<%= salesAccounts.id %>" <%= items.salesAccount == salesAccounts.id ? 'selected' : '' %>><%= salesAccounts.name %></option>
+                        <% current++; %>
+                        <% }); %>
+                    </select>
+                </div>
+            <% } %>
+            <div id="altDescription1" class="input-field col s12 m4" style="display: none">
+                <input id="altDescription" type="text" value="<%= items.altDescription %>" class="validation" maxlength="50">
+                <label class="active" for="altDescription">{Literal}Alternative Description{/Literal}</label>
+                <span class="helper-text" data-error="This field contains invalid characters" data-success=""></span>
+            </div>
+            <% if(App.serverInfo.isFoodService) { %>
+                <div id="choiceGroup1" class="input-field col s12 m4" style="display: none">
+                    <label class="active">{Literal}Choice Group{/Literal}</label>
+                    <select id="choice-group-dropdown" required>
+                        <% _.each(choiceGroups, function(choiceGroups) { %>
+                        <option value="<%= items.choiceGroup %>" <%= items.choiceGroup == choiceGroups.id ? 'selected' : '' %>><%= choiceGroups.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+            <% } %>
+            <% if(App.serverInfo.hasVatTax) { %>
+                <div id="taxable1" class="input-field col s12 m4" style="margin-top:20px; display: none">
+                    <label class="active">{Literal}VAT Tax{/Literal}</label>
+                    <select id="vat-tax-dropdown">
+                        <% _.each(vatCode, function(vatCode) { %>
+                        <option value="<%= items.vatCode %>" <%= items.vatCode == vatCode.code ? 'selected' : '' %>><%= vatCode.code %></option>
+                        <% }); %>
+                    </select>
+                </div>
+            <% } %>
+        </div>
+        <div class="row form-no-margin">
+            <div id="price2" class="input-field col s12 m2 offset-m2" style="display: none">
+                <input id="priceLevel2" type="number" class="validate" value="<%= items.priceLevel2 %>">
+                <label class="active" for="priceLevel2">{Literal}Price Level 2{/Literal}</label>
+                <span class="helper-text" data-error="This field contains invalid characters" data-success=""></span>
+            </div>
+
+            <div id="price3" class="input-field col s12 m2" style="display: none">
+                <input id="priceLevel3" type="number" class="validate" value="<%= items.priceLevel3 %>">
+                <label class="active" for="priceLevel3">{Literal}Price Level 3{/Literal}</label>
+                <span class="helper-text" data-error="This field contains invalid characters" data-success=""></span>
+            </div>
+
+            <div id="price4" class="input-field col s12 m2"  style="display: none">
+                <input id="priceLevel4" type="number" class="validate" value="<%= items.priceLevel4 %>">
+                <label class="active" for="priceLevel4">{Literal}Price Level 4{/Literal}</label>
+                <span class="helper-text" data-error="This field contains invalid characters" data-success=""></span>
+            </div>
+
+            <div id="price5" class="input-field col s12 m2"  class="validate" style="display: none">
+                <input id="priceLevel5" type="number" value="<%= items.priceLevel5 %>">
+                <label class="active" for="priceLevel5">{Literal}Price Level 5{/Literal}</label>
+                <span class="helper-text" data-error="This field contains invalid characters" data-success=""></span>
+            </div>
+        </div>
+
+        <div class="row form-no-margin">
+            <div id="allowDiscount1" class="input-field col s12 m3 offset-m2" style="margin-top:25px; display: none">
+                <label>
+                    <input type="checkbox" class="allowDiscount filled-in" data-type="items.allowDiscount"<%= items.allowDiscount ? 'checked': '' %>>
+                    <span>{Literal}Allow Discount{/Literal}</span>
+                </label>
+            </div>
+
+            <div id="isStock1" class="input-field col s12 m3" style="margin-top:25px; display: none">
+                <label>
+                    <input type="checkbox" class="isStock filled-in" data-type="items.isStock"<%= items.isStock ? 'checked': '' %>>
+                    <span>{Literal}Track Stock{/Literal}</span>
+                </label>
+            </div>
+
+            <div id="inactive1" class="input-field col s12 m3" style="margin-top:25px; display: none">
+                <label>
+                    <input type="checkbox" class="inactive filled-in" data-type="items.inactive"<%= items.inactive ? 'checked': '' %>>
+                    <span>{Literal}Inactive{/Literal}</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="row form-no-margin">
+            <div id="scale1" class="input-field col s12 m3 offset-m2" style="margin-top:25px; display: none">
+                <label>
+                    <input type="checkbox" class="scale filled-in" data-type="items.scale"<%= items.scale ? 'checked': '' %>>
+                    <span>{Literal}Weighable Item{/Literal}</span>
+                </label>
+            </div>
+
+            <div id="noPartialQuantity1" class="input-field col s12 m3" style="margin-top:25px; display: none" >
+                <label>
+                    <input type="checkbox" class="noPartialQuantity filled-in" data-type="items.noPartialQuantity"<%= items.noPartialQuantity ? 'checked': '' %>>
+                    <span>{Literal}No Partial Quantity{/Literal}</span>
+                </label>
+            </div>
+
+            <div id="serialized1" class="input-field col s12 m3" style="margin-top:25px; display: none" >
+                <label>
+                    <input type="checkbox" class="serialized filled-in" data-type="items.serialized"<%= items.serialized ? 'checked': '' %>>
+                    <span>{Literal}Has Serial{/Literal} #</span>
+                </label>
+            </div>
+        </div>
+        <% if (!App.serverInfo.hasVatTax) {%>
+            <div class="row form-no-margin">
+                <div id="taxable2" class="input-field col s12 m3 offset-m2" style="margin-top:25px; display: none" >
+                    <label>
+                        <input type="checkbox" class="taxable filled-in" data-type="items.taxable"<%= items.taxable ? 'checked': '' %>>
+                        <span>{Literal}Taxable{/Literal}</span>
+                    </label>
+                </div>
+            </div>
+        <% } %>
+    </form>
+
+    <script>
+        function availableShow(value) {
+            var available = document.getElementById("available1");
+            if (value == 1) {
+                if (available.style.display === "none") {
+                    available.style.display = "block";
+                }
+            }
+            else {
+                available.style.display = "none";
+            }
+        }
+    </script>
+</div>
+
+<div id="item-type-form-modal" class="modal modal-fixed-footer item-type-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <h4>{Literal}Create New Item Type{/Literal}</h4> 
+        <div class="row">
+            <div class="col s12 m6 offset-m3" style="padding-top: 25px">
+                <div class="input-field">
+                    <input id="itemTypeName" type="text">
+                    <label class="active" for="itemTypeName">{Literal}New Item Type Name{/Literal}: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-light green btn-flat save-item-type-button left">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat cancel-item-type-button left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div id="item-category-form-modal" class="modal modal-fixed-footer item-category-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <h4>{Literal}Create New Item Category{/Literal}</h4> 
+        <div class="row">
+            <div class="col s12 m6 offset-m3" style="padding-top: 25px">
+                <div class="input-field">
+                    <input id="itemCategoryName" type="text">
+                    <label class="active" for="itemCategoryName">{Literal}New Item Category Name{/Literal}: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-light green btn-flat save-item-category-button left">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat cancel-item-category-button left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-add-button" style="margin-right: 5px;">{Literal}Save and Add Another{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-button" >{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>

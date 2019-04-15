@@ -1,0 +1,90 @@
+{
+  "_from": "muuri@^0.5.4",
+  "_id": "muuri@0.5.4",
+  "_inBundle": false,
+  "_integrity": "sha512-yddtNQ11C3us7ozbhNcXB2RsY1PwoZxwpefneAul2sXdD96Z16jjxUIekcvlejAqe6i2Qm0j+8n/LuUVrA0kMQ==",
+  "_location": "/muuri",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "muuri@^0.5.4",
+    "name": "muuri",
+    "escapedName": "muuri",
+    "rawSpec": "^0.5.4",
+    "saveSpec": null,
+    "fetchSpec": "^0.5.4"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/muuri/-/muuri-0.5.4.tgz",
+  "_shasum": "ee29ff78d21f55fc00625e841f8a5a705cf546e6",
+  "_spec": "muuri@^0.5.4",
+  "_where": "C:\\Users\\yuval\\workspace\\WM2.0",
+  "author": {
+    "name": "Niklas Rämö",
+    "email": "inramo@gmail.com",
+    "url": "https://github.com/niklasramo"
+  },
+  "bugs": {
+    "url": "https://github.com/haltu/muuri/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "hammerjs": "^2.0.0"
+  },
+  "deprecated": false,
+  "description": "Responsive, sortable, filterable and draggable grid layouts.",
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.0",
+    "gulp-header": "^1.8.8",
+    "gulp-rename": "^1.2.2",
+    "gulp-size": "^2.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.2.1",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-edge-launcher": "^0.4.1",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-qunit": "^1.2.1",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-sauce-launcher": "^1.1.0",
+    "karma-story-reporter": "^0.3.1",
+    "mezr": "^0.6.2",
+    "prosthetic-hand": "^1.3.1",
+    "qunitjs": "^2.4.0",
+    "rimraf": "^2.6.1",
+    "run-sequence": "^1.2.2",
+    "web-animations-js": "^2.3.1",
+    "yargs": "^8.0.2"
+  },
+  "files": [
+    "muuri.js",
+    "muuri.min.js"
+  ],
+  "homepage": "https://github.com/haltu/muuri",
+  "keywords": [
+    "grid",
+    "layout",
+    "bin-packing",
+    "filter",
+    "sort",
+    "drag"
+  ],
+  "license": "MIT",
+  "main": "muuri.js",
+  "name": "muuri",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/haltu/muuri.git"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "version": "0.5.4"
+}

@@ -1,0 +1,30 @@
+<div id="pay-types-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <% _.each(payTypes, function(payType) { %>
+            <div class="col s12 m3 xl2">
+                <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light " style="background-color: #ffffff" data-id="<%= payType.id %>" data-selected='0'>
+                    <div>
+                        <div class="row description truncate" style="color: #3970b7;">
+                            <%= parseInt(payType.id) + 1 %>: <%= payType.name %>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="edit" style="display: none">
+                        <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-pay-type-trigger"
+                            data-id="<%= payType.id %>">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+        
+<div id="pay-types-form-modal" class="modal modal-fixed-footer pay-types-form-modal" style="max-height: 100%">
+    
+</div>
+
+<a href="javascript:void(0)" id="add-pay-types-button" class="btn-floating btn-large waves-effect waves-light ap-blue z-depth-4 floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>

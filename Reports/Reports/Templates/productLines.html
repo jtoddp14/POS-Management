@@ -1,0 +1,167 @@
+<div id="product-line-container" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <form style="display:none">
+        <div class="row">
+            <div class="input-field col s12 m3">
+                <select id="item-type-filter">
+                    <option value="*">All</option>
+                </select>
+
+                <label>Select Item Type</label>
+            </div>
+        </div>
+    </form>
+    <div class="row" id="product-lines-wrapper">
+        <% _.each(productLines, function(productLine) { %>
+        <div class="col s12 m3 xl2">
+            <div class="card-panel card-panel-entity z-depth-2 sequence-card hoverable white-text <%= productLine.cardStyleClass %> waves-effect waves-light"
+                data-id="<%= productLine.id %>" data-selected='0'>
+                <div>
+                    <div class="row description truncate">
+                        <%= productLine.description %>
+                    </div>
+                    <div class="row type truncate">
+                        <%= productLine.type %>
+                    </div>
+                    <div class="row menu-page truncate">
+                        {Literal}Menu Page{/Literal}: <%= productLine.menuKeyPage %>
+                    </div>
+                    <div class="row taxable truncate">
+                        <%= (productLine.taxable) 
+                        ? 
+                        "{Literal}Taxable{/Literal}" : 
+                        "{Literal}Non-Taxable{/Literal}"
+                        %>
+                    </div>
+                </div>
+                <div class="edit" style="display: none">
+                    <a href="#product-line-form-modal" class="modal-trigger btn-floating btn-large waves-effect waves-light ap-dark-blue edit-product-line-trigger"
+                        data-id="<%= productLine.id %>">
+                        <i class="material-icons">edit</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>
+<div id="delete-product-line-modal" class="modal delete-modal">
+    <div class="modal-content">
+        <h4>Confirm Deletion</h4>
+        <p>Are you sure that you would like to remove this product line?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+        <a href="javascript:void(0)" id="delete-product-line-confirm" class="modal-close waves-effect waves-green btn red">Delete</a>
+        <input type="hidden" id="delete-product-line-id" />
+    </div>
+</div>
+
+<div id="product-line-form-modal" class="modal modal-fixed-footer" style="max-height: 100%">
+    <div class="modal-content">
+        <h4 style="font-size: 1.2rem">Edit/Create Product Line</h4>
+        <div id="product-line-form-content">
+            <form>
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <input id="description" placeholder="Enter product line description" type="text" class="validate">
+                        <label class="active" for="description">Product Line Description</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <select id="item-type">
+                            <option value="*" disabled selected>Select item type</option>
+                        </select>
+                        <label>Select Item Type</label>
+                    </div>
+
+                    <div class="input-field col s12 m6">
+                        <select id="item-category">
+                            <option value="*" disabled selected>Select item category</option>
+                        </select>
+                        <label>Select Item Category</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <select id="sales-account">
+                            <option value="*" disabled selected>Select sales account</option>
+                        </select>
+                        <label>Select Sales Account</label>
+                    </div>
+
+                    <div class="input-field col s12 m6">
+                        <select id="menu-page">
+                            <option value="*" disabled selected>Select menu page</option>
+                        </select>
+                        <label>Select Menu Page</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <select id="choice-page">
+                            <option value="*" disabled selected>Select choice group</option>
+                        </select>
+                        <label>Select Choice Page</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <select id="vat-group">
+                            <option value="*" selected>{Literal}Non-Taxable{/Literal}</option>
+                            <option value="1">US</option>
+                            <option value="1">CA</option>
+                        </select>
+                        <label>Select VAT Group</label>
+                    </div>
+                    <div class=" col s12 m6">
+                        <div class="row checkboxes">
+                            <div class="col s12">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" />
+                                        <span>Allow Discounts</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s12">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" />
+                                        <span>Scalable</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s12">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" />
+                                        <span>Stockable</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s12">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" />
+                                        <span>Serializable</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s12">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" />
+                                        <span>Partial</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#delete-product-line-modal" class="modal-trigger waves-effect waves-light btn red left delete-product-line-trigger">Delete</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-green btn green">Save</a>
+        <input type="hidden" id="update-product-line-id" />
+    </div>
+</div>
+
+<a href="#product-line-form-modal" class="modal-trigger btn-floating btn-large waves-effect waves-light green floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>

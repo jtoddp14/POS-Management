@@ -1,0 +1,204 @@
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+
+      -->
+    </style>
+
+    <script src="js/Chart.js"></script>
+
+    <script type="text/javascript">
+
+      var barChartData =
+        {
+        {BarChartData}
+      };
+
+      function loadCharts()
+      {
+        if (document.getElementById("divChartData").style.display == "inline-block")
+        {
+          var ctx = document.getElementById("discount-chart-area").getContext("2d");
+          window.barChart = new Chart(ctx).Bar(barChartData);
+        }
+      }
+
+    </script>
+
+    <title>{Literal}AccuPOS Discount Sales Report{/Literal}</title>
+
+  </Head>
+
+  <Body onLoad="loadCharts();">
+    <div align="center"><br>
+      <span class="size11"><strong>{Literal}Discount Sales Report{/Literal}</strong></span><br>
+      <br>
+    </div>
+    <div align="center">
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+                {CompanyAddress1} {CompanyAddress2}<br>
+                {CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span></div></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div align="center"><span class="size11">        <span class="style4 style2"><strong>{Range}</strong></span> <br>
+                {Literal}Report was run on{/Literal}</span><span class="size11"> {DateRun}</span></div></td>
+        </tr>
+      </table>
+    </div>
+
+    <div align="center">
+      <div align="center" id="divChartData" style="{ShowChartData}">
+        <hr align="center" width="630" size="1">
+        <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="630" align="center" valign="top" >
+
+              <div id="canvas-holder">
+                <canvas id="discount-chart-area" width="630" height="300"/>
+              </div>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <hr align="center" width="630" size="1">
+
+    {LocationBlock}
+    <p>&nbsp;</p>
+    <div align="center">
+      <hr align="center" width="630" size="3" noshade>
+      {Literal}Location:{/Literal} <strong>{Location}</strong>
+    </div>
+
+    <hr align="center" width="630" size="3" noshade>
+    <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="230"><img src="images/spacer.aci" height="10"></td>
+        <td width="200"><img src="images/spacer.aci" height="10"></td>
+        <td width="200"><img src="images/spacer.aci" height="10"></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top" class="size12"><strong>{Literal}Discount Type{/Literal}</strong></td>
+        <td align="right" valign="top" class="size12"><strong>{Literal}Items Discounted{/Literal}</strong></td>
+        <td align="right" valign="top" class="size12"><strong>{Literal}Discount Total{/Literal}</strong></td>
+      </tr>
+    </table>
+
+    <hr align="center" width="630" size="1" noshade>
+
+    {DiscountBlock}
+    <div align="center">
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="230" align="left" valign="top" class="size12">{Discount}</td>
+          <td width="200" align="right" valign="top" class="size12">{DiscountCount}</td>
+          <td width="200" align="right" valign="top" class="size12">{DiscountTotal}</td>
+        </tr>
+      </table>
+    </div>
+    {/DiscountBlock}
+
+    <div align="center">
+      <hr align="center" width="630" size="3" noshade>
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="630" valign="top" class="size12"></td>
+        </tr>
+        <tr>
+          <td valign="top" class="size12"><div align="right"><strong>{Literal}LOCATION TOTAL:{/Literal} {LocationTotal}</strong></div></td>
+        </tr>
+      </table>
+      <hr align="center" width="630" size="3" noshade>
+    </div>
+    {/LocationBlock}
+
+    <div align="center">
+      <div style="{ShowTotalBlock}">
+      <hr align="center" width="630" size="3" noshade>
+
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="75" height="10" valign="top" class="size12"></td>
+          <td width="155" height="10" valign="top" class="size12"></td>
+          <td width="200" height="10" valign="top" class="size12"></td>
+          <td width="200" height="10" valign="top" class="size12"></td>
+        </tr>
+      <tr>
+        <td align="left" valign="top" class="size12"><strong>{Literal}TOTALS:{/Literal}</strong></td>
+        <td align="right" valign="top" class="size12"><strong>{Literal}Type{/Literal}</strong></td>
+        <td align="right" valign="top" class="size12"><strong>{Literal}Items Discounted{/Literal}</strong></td>
+        <td align="right" valign="top" class="size12"><strong>{Literal}Totals{/Literal}</strong></td>
+      </tr>
+      </table>
+
+      <hr align="center" width="630" size="1" noshade>
+
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        {DiscountTotalBlock}
+        <tr>
+          <td width="230" align="right" valign="top" class="size12">{Discount}</td>
+          <td width="200" align="right" valign="top" class="size12">{DiscountQuantity}</td>
+          <td width="200" align="right" valign="top" class="size12">{DiscountTotal}</td>
+        </tr>
+        {/DiscountTotalBlock}
+      </table>
+      </div>
+    </div>
+
+    <div align="center">
+      <hr align="center" width="630" size="3" noshade>
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="630" height="10" valign="top" class="size12"></td>
+        </tr>
+        <tr>
+          <td valign="top" class="size12"><div align="right"><strong>{Literal}REPORT TOTAL:{/Literal} {ReportTotal}</strong></div></td>
+        </tr>
+      </table>
+      <hr align="center" width="630" size="3" noshade>
+    </div>
+
+    <div align="center"><span class="minitype">&nbsp;&nbsp;Powered by AccuPOS Point Of Sale&nbsp;rev02</span></div>
+  </Body>
+</Html>
+
+{DateFormat}MM-dd-yy HH:mm{/DateFormat}
+{CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+{QuantityFormat}#####0;-#####0{/QuantityFormat}

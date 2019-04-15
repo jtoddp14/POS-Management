@@ -1,0 +1,123 @@
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+        <!--
+        body {
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family: verdana, arial, sans-serif; background-position-y: center;
+        }
+        .size11 {
+            font-size: 11px;
+        }
+        .minitype {font-size: 9px;}
+        .greendis {
+            font-size: 11px;
+            color: 00ff00;
+        }
+        .redneg {
+            font-size: 11px;
+            color: #FF0000;
+        }
+        .blueinc {
+            font-size: 11px;
+            color: 0000FF;
+        }
+        .blackreg {
+            font-size: 11px;
+            color: #000000;
+        }
+        -->
+    </style>
+
+    <title>{Literal}AccuPOS Batch Summary Report{/Literal}</title>
+  </Head>
+
+    <Body>
+        <div align="center"><br>
+            <span class="size11"><strong>{Literal}Batch Summary Report{/Literal}</strong></span><br><br>
+        </div>
+
+        <hr align="center" width="630" size="2" noshade />
+
+        <div align="center">
+            <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="60%" align="right" style="border-bottom:1pt solid darkgray;">{MerchantName}</td>
+                    <td width="40%" align="right" style="border-bottom:1pt solid darkgray;">{Literal}Merchant Name:{/Literal}</td>
+                </tr>
+                <tr>
+                    <td align="right" style="border-bottom:1pt solid darkgray;">{MerchantID}</td>
+                    <td align="right" style="border-bottom:1pt solid darkgray;">{Literal}Merchant ID:{/Literal}</td>
+                </tr>
+                <tr>
+                    <td align="right" style="border-bottom:1pt solid darkgray;">{BatchDate}</td>
+                    <td align="right" style="border-bottom:1pt solid darkgray;">{Literal}Date:{/Literal}</td>
+                </tr>
+                <tr>
+                    <td align="right" style="border-bottom:1pt solid darkgray;">{BatchID}</td>
+                    <td align="right" style="border-bottom:1pt solid darkgray;">{Literal}Batch ID:{/Literal}</td>
+                </tr>
+
+                {CardNumberBlock}
+                    <tr>
+                        <td align="right" style="border-bottom:1pt solid darkgray;">{CardSapak}</td>
+                        <td align="right" style="border-bottom:1pt solid darkgray;">{CardType} {Literal}Number:{/Literal}</td>
+                    </tr>
+                {/CardNumberBlock}
+
+            </table>
+
+            <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td colspan="2" >&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="30%" align="right"><b>{TotalNumber}</b></td>
+                    <td width="30%" align="right"><b>{TotalAmount}</b></td>
+                    <td width="40%" align="right"><b>{Literal}Batch Summary Totals:{/Literal}</b></td>
+                </tr>
+            </table>
+
+            <hr align="center" width="630" size="2" noshade />
+            <hr align="center" width="630" size="2" noshade />
+
+            {CardTotalBlock}
+                <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td colspan="3">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" align="right">{TotalCardNumber}</td>
+                        <td width="30%" align="right">{TotalCardAmount}</td>
+                        <td width="40%" align="right">{Literal}Total{/Literal} {CardType}:</td>
+                    </tr>
+                </table>
+
+                <hr align="center" width="630" size="2" noshade />
+            {/CardTotalBlock}
+
+
+            <hr align="center" width="630" size="2" noshade />
+            <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td colspan="3">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="30%" align="right"><b>{SumTotalNumber}</b></td>
+                    <td width="30%" align="right"><b>{SumTotalAmount}</b></td>
+                    <td width="40%" align="right"><b>{Literal}Card Tender Totals:{/Literal}</b></td>
+                </tr>
+            </table>
+
+            <hr align="center" width="630" size="2" noshade>
+            <hr align="center" width="630" size="2" noshade>
+
+        </div>
+
+    </Body>
+</Html>
+

@@ -1,0 +1,214 @@
+<div class="modal-content" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <form id="customer_info">
+        <h4>Customer Details</h4> 
+        <div class="ap-card-title-text">
+            Page 1 of 3
+        </div>
+        <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white company-info-arrow-button2"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="id" type="text" value="<%= customers.id %>" class="validate" maxlength="20">
+                        <label class="active" for="id">Customer Code</label>
+                        <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="name" type="text" value="<%= customers.name %>" class="validate" maxlength="20">
+                        <label class="active" for="name">Name</label>
+                        <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="phone" type="number" value="<%= customers.phone %>">
+                        <label class="active" for="phone">Phone</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="email" type="text" value="<%= customers.email %>" maxlength="40">
+                        <label class="active" for="email">Email</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="address1" type="text" value="<%= customers.customer_info.address1 %>" maxlength="40">
+                        <label class="active" for="address1">Address</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="address2" type="text" value="<%= customers.customer_info.address2 %>" maxlength="40">
+                        <label class="active" for="address2">Address 2</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="city" type="text" value="<%= customers.customer_info.city %>" maxlength="40">
+                        <label class="active" for="city">City</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="state" type="text" value="<%= customers.customer_info.state %>" maxlength="20">
+                        <label class="active" for="state">State</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="zip" type="number" value="<%= customers.customer_info.zip %>">
+                        <label class="active" for="zip">ZIP</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form id="company_info" style="display: none;">
+        <h4>Customer Details</h4>
+        <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white customer-info-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a>
+        <div class="ap-card-title-text">
+            Page 2 of 3
+        </div>
+        <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white notes-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="companyName" type="text" value="<%= customers.company_info.companyName %>" maxlength="20">
+                        <label class="active" for="companyName">Company</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="fax" type="text" value="<%= customers.company_info.fax %>" maxlength="20">
+                        <label class="active" for="fax">Fax</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m4" style="margin-top:10px;" align="center">
+                    <div class="input-field">
+                        <div class="switch">
+                            <label>
+                                <input type="checkbox" class="taxable" data-type="customers.company_info.taxable"<%= customers.company_info.taxable ? 'checked': '' %>>
+                                <span class="lever"></span>Taxable
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="creditLimit" type="number" value="<%= customers.company_info.creditLimit %>" max= "9999.00">
+                        <label class="active" for="creditLimit">Credit Limit</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="discount" type="number" value="<%= customers.company_info.discount %>" max="100">
+                        <label class="active" for="fax">Discount %</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <label class="active">Tax Code</label>
+                        <select id="tax-form-dropdown" required>
+                            <% var current = 0; %>
+                            <% _.each(taxCodes, function(taxCode) { %>
+                            <option value="<%= taxCode.id %>" <%= current === 0 ? 'selected' : '' %>><%= taxCode.value %></option>
+                            <% current++; %>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="balance" type="number" value="<%= customers.company_info.balance %>" max= "9999.00">
+                        <label class="active" for="balance">Balance</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <label class="active" for="price-level-dropdown">Price Level</label>
+                        <select id="price-level-dropdown" required>
+                            <option value="0" <%= (customers.company_info.priceLevel == 0 ? 'selected' : '') %>>1</option>
+                            <option value="1" <%= (customers.company_info.priceLevel == 1 ? 'selected' : '') %>>2</option>
+                            <option value="2" <%= (customers.company_info.priceLevel == 2 ? 'selected' : '') %>>3</option>
+                            <option value="3" <%= (customers.company_info.priceLevel == 3 ? 'selected' : '') %>>4</option>
+                            <option value="4" <%= (customers.company_info.priceLevel == 4 ? 'selected' : '') %>>5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form id="customer_notes" style="display: none;">
+        <h4>Customer Details</h4> 
+        <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white company-info-arrow-button1"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a>
+        <div class="ap-card-title-text">
+            Page 3 of 3
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <textarea id="notes" class="materialize-textarea"><%= customers.customer_notes.notes %></textarea>
+                    <label class="active" for="notes">Notes</label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-customers-modal" class="waves-effect waves-light btn red left modal-trigger delete-button">Delete</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-green btn green save-button">Save</a>
+</div>
+
+
+<div id="delete-customers-modal" class="modal">
+    <div class="modal-content">
+        <h4>Confirm Deletion</h4>
+        <p>Are you sure that you would like to remove this customer?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+        <a href="javascript:void(0)" id="delete-customers-confirm" class="modal-close waves-effect waves-green btn red" data-customers-id="<%= customers.id %>">Delete</a>
+        <input type="hidden" id="delete-customers-id" />
+    </div>
+</div>

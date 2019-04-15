@@ -1,0 +1,41 @@
+<div class="row" id="sequence-tile-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div id="sequence-modal-preloader">
+        <div class="progress">
+            <div class="indeterminate blue"></div>
+        </div>
+    </div>
+    <% _.each(sequences, function(sequence) { %>
+        <div class="col s12 m4">
+            <div class="card-panel z-depth-1 sequence-card hoverable ap-blue white-text waves-effect waves-light" data-id="<%= sequence.id %>"
+                data-selected='0'>
+                <div class="card-panel-content">
+                    <div class="row sequence-title-badge">
+                        <%= sequence.id %>
+                            <div class="hash-badge">#</div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">{Literal}Seq{/Literal}. #
+                            <%= sequence.id %>
+                        </div>
+                        <div class="col s6 right-align">{Literal}Till{/Literal}
+                            <%= sequence.till %>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s3">{Literal}Start{/Literal}:</div>
+                        <div class="col s9 right-align">
+                            <%= moment(sequence.startTime).format('YYYY-MM-DD HH:mm') %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s3">{Literal}End{/Literal}:</div>
+                        <div class="col s9 right-align">
+                            <%= moment(sequence.endTime).format('YYYY-MM-DD HH:mm') %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+</div>

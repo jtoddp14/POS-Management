@@ -1,0 +1,241 @@
+<div class="modal-content" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <h4>Item Details</h4>
+    <div class="row form-no-margin">
+        <div class="input-field col s12" style="margin-top:10px;" align="center" >
+            <div class="switch">
+                <label>
+                    <input type="checkbox" class="advanced">
+                    <span class="lever"></span>Advanced Item Setup
+                </label>
+            </div>
+        </div>
+    </div> 
+    <form id="item_details1">
+        <div class="row form-no-margin">
+            <div class="input-field col s12 m4">
+                <input id="id" type="text" value="<%= items.id %>" class="validate" maxlength="50">
+                <label class="active" for="id">Item Code</label>
+                <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <input id="description" type="text" value="<%= items.description %>" class="validate" maxlength="50">
+                <label class="active" for="description">Item Description</label>
+                <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+            </div>
+            <div id="price0" class="input-field col s12 m4">
+                <input id="price" type="number" value="<%= items.price %>" class="validate">
+                <label class="active" for="price">Item Price</label>
+                <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+            </div>
+            <div id="category1" class="input-field col s12 m4" style="display: none">
+                <label class="active">Item Category</label>
+                <select id="item-category-dropdown" required>
+                    <% var current = 0; %>
+                    <% _.each(category, function(category) { %>
+                    <option value="<%= category.id %>" <%= current === 0 ? 'selected' : '' %>><%= category.name %></option>
+                    <% current++; %>
+                    <% }); %>
+                </select>
+            </div>
+        </div>
+        <div class="row form-no-margin">
+            <div id="productLine1" class="input-field col s12 m4" style="padding-bottom: 35px;">
+                <label class="active">Select Product Line</label>
+                <select id="product-line-dropdown" required>
+                    <% var current = 0; %>
+                    <% _.each(productLine, function(productLine) { %>
+                    <option value="<%= productLine.id %>" <%= current === 0 ? 'selected' : '' %>><%= productLine.description %></option>
+                    <% current++; %>
+                    <% }); %>
+                </select>
+            </div>
+            <div class="input-field col s12 m4">
+                <label class="active">Item Type</label>
+                <select id="item-type-dropdown" required>
+                    <% var current = 0; %>
+                    <% _.each(itemTypes, function(itemType) { %>
+                    <option value="<%= itemType.id %>" <%= current === 0 ? 'selected' : '' %>><%= itemType.name %></option>
+                    <% current++; %>
+                    <% }); %>
+                </select>
+            </div>
+            <div id="choiceGroup1" class="input-field col s12 m4" style="display: none">
+                <label class="active">Choice Group</label>
+                <select id="choice-group-dropdown" required>
+                    <% var current = 0; %>
+                    <% _.each(choiceGroups, function(choiceGroups) { %>
+                    <option value="<%= items.choiceGroup %>" <%= current === 0 ? 'selected' : '' %>><%= choiceGroups.value %></option>
+                    <% current++; %>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div id="salesAccount1" class="input-field col s12 m4" style="display: none">
+                <label class="active">Sales Account</label>
+                <select id="sales-account-dropdown" required>
+                    <% var current = 0; %>
+                    <% _.each(salesAccounts, function(salesAccounts) { %>
+                    <option value="<%= items.salesAccount %>" <%= current === 0 ? 'selected' : '' %>><%= salesAccounts.value %></option>
+                    <% current++; %>
+                    <% }); %>
+                </select>
+            </div>
+        </div>
+        <div class="row form-no-margin">
+            <div id="altDescription1" class="input-field col s12 m4" style="display: none">
+                <input id="altDescription" type="text" value="<%= items.altDescription %>" maxlength="50">
+                <label class="active" for="altDescription">Alternative Description</label>
+            </div>
+            <div id="availability1" class="input-field col s12 m4" style="padding-bottom: 35px; display: none">
+                <label class="active">Availability</label>
+                <select id="availability-dropdown" required onchange="availableShow(this.value)">>
+                    <option value="0" <%= items.availability %>" <%= current === 0 ? 'selected' : '' %>>No Warning</option>
+                    <option value="1" <%= items.availability %>" <%= current === 1 ? 'selected' : '' %>>Warn at or below quantity of </option>
+                    <option value="2" <%= items.availability %>" <%= current === 2 ? 'selected' : '' %>>No Sale when none available</option>
+                </select>
+            </div>
+
+            <div id="available1" class="input-field col s12 m2" style="display: none;">
+                <input id="available" type="number" value="<%= items.available %>">
+                <label class="active" for="available">Warn at</label>
+            </div>
+
+            <div id="quantity1" class="input-field col s12 m2" style="display: none">
+                <input id="quantity" type="number" value="<%= items.quantity %>">
+                <label class="active" for="quantity">Quantity Available</label>
+            </div>
+        </div>
+
+        <div class="row form-no-margin">
+            <div id="price1" class="input-field col s12 m2 offset-m1" style="display: none">
+                <input id="price" type="number" value="<%= items.price %>">
+                <label class="active" for="price">Price Level 1</label>
+                <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+            </div>
+
+            <div id="price2" class="input-field col s12 m2" style="display: none">
+                <input id="priceLevel2" type="number" value="<%= items.priceLevel2 %>">
+                <label class="active" for="priceLevel2">Price Level 2</label>
+            </div>
+
+            <div id="price3" class="input-field col s12 m2" style="display: none">
+                <input id="priceLevel3" type="number" value="<%= items.priceLevel3 %>">
+                <label class="active" for="priceLevel3">Price Level 3</label>
+            </div>
+
+            <div id="price4" class="input-field col s12 m2"  style="display: none">
+                <input id="priceLevel4" type="number" value="<%= items.priceLevel4 %>">
+                <label class="active" for="priceLevel4">Price Level 4</label>
+            </div>
+
+            <div id="price5" class="input-field col s12 m2"  style="display: none">
+                <input id="priceLevel5" type="number" value="<%= items.priceLevel5 %>">
+                <label class="active" for="priceLevel5">Price Level 5</label>
+            </div>
+        </div>
+
+        <div class="row form-no-margin">
+            <div id="allowDiscount1" class="input-field col s12 m3 offset-m2" style="margin-top:10px; display: none">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="allowDiscount" data-type="items.allowDiscount"<%= items.allowDiscount ? 'checked': '' %>>
+                        <span class="lever"></span>Allow Discount
+                    </label>
+                </div>
+            </div>
+
+            <div id="isStock1" class="input-field col s12 m3" style="margin-top:10px; display: none">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="isStock" data-type="items.isStock"<%= items.isStock ? 'checked': '' %>>
+                        <span class="lever"></span>Track Stock
+                    </label>
+                </div>
+            </div>
+
+            <div id="inactive1" class="input-field col s12 m3" style="margin-top:10px; display: none">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="inactive" data-type="items.inactive"<%= items.inactive ? 'checked': '' %>>
+                        <span class="lever"></span>Inactive
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-no-margin">
+            <div id="scale1" class="input-field col s12 m3 offset-m2" style="margin-top:10px; display: none">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="scale" data-type="items.scale"<%= items.scale ? 'checked': '' %>>
+                        <span class="lever"></span>Weighable
+                    </label>
+                </div>
+            </div>
+
+            <div id="noPartialQuantity1" class="input-field col s12 m3" style="margin-top:10px; display: none" >
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="noPartialQuantity" data-type="items.noPartialQuantity"<%= items.noPartialQuantity ? 'checked': '' %>>
+                        <span class="lever"></span>No Partial Quantity
+                    </label>
+                </div>
+            </div>
+
+            <div id="serialized1" class="input-field col s12 m3" style="margin-top:10px; display: none" >
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="serialized" data-type="items.serialized"<%= items.serialized ? 'checked': '' %>>
+                        <span class="lever"></span>Has Serial #
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-no-margin">
+            <div id="taxable1" class="input-field col s12 m4 offset-m2" style="margin-top:10px; display: none" >
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="taxable" data-type="items.taxable"<%= items.taxable ? 'checked': '' %>>
+                        <span class="lever"></span>Taxable
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <script>
+        function availableShow(value) {
+            var available = document.getElementById("available1");
+            if (value == 1) {
+                if (available.style.display === "none") {
+                    available.style.display = "block";
+                }
+            }
+            else {
+                available.style.display = "none";
+            }
+        }
+    </script>
+</div>
+
+<div class="modal-footer">
+    <!--<a href="#delete-items-modal" class="waves-effect waves-light btn red left modal-trigger delete-button">Delete</a>-->
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-green btn green save-button">Save</a>
+</div>
+
+
+<div id="delete-items-modal" class="modal">
+    <div class="modal-content">
+        <h4>Confirm Deletion</h4>
+        <p>Are you sure that you would like to remove this item?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+        <a href="javascript:void(0)" id="delete-items-confirm" class="modal-close waves-effect waves-green btn red" data-items-id="<%= items.id %>">Delete</a>
+        <input type="hidden" id="delete-items-id" />
+    </div>
+</div>

@@ -1,0 +1,200 @@
+<div class="row" style="padding-top: 10px;<%= (App.rtl ? 'direction:rtl' : '') %>">
+    <div class="col s12 ltr">
+
+        <div class="card ap-blue" >
+            <div class="card-content white-text" style="min-height: 388px">
+                <div class="row row-no-margin">
+                    <div class="col s12 preloader-col center-align" style="height: 100%;padding-top: 145px">
+                        <!-- preloader -->
+                        <div class="preloader-wrapper big active center-align">
+                                <div class="spinner-layer spinner-white-only">
+                                  <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                  </div><div class="gap-patch">
+                                    <div class="circle"></div>
+                                  </div><div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                  </div>
+                                </div>
+                            </div>
+                    <!-- preloader -->
+                    </div>
+                    <div class="col s12 chart-content" style="display: none">
+                        <span class="card-title">{Literal}Today's Sales{/Literal}<span class="no-data-message" style="display:none">({Literal}no sales data applicable{/Literal})</span></span>
+                        <div id="sales-line-chart-wrapper">
+                            <div id="sales-line-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-no-margin chart-content" style="display: none">
+                    <div class="col s12 m6 l6 xl6">
+                        <div id="sales-donut-chart">
+
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l6 xl6">
+                        <div id="sales-bar-chart">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 m4">
+        <div class="quicklink-card z-depth-2 white" style="margin-bottom: 10px">
+            <div class="quicklink-card-title ap-dark-blue valign-wrapper waves-effect waves-light">
+                <div class="row" style="height: 100%">
+                    <div class="col s1 valign-wrapper" style="height: 100%; padding-left: 15px">
+                        <i class="material-icons">close</i>
+                    </div>
+                    <div class="col s10 valign-wrapper" style="height: 100%">&nbsp; {Literal}X-Out Report{/Literal}</div>
+                </div>
+            </div>
+            <div class="quicklink-card-content" style="display: none">
+                <% if (noTillsWarning === true) { %>
+                <div class="no-tills-warning">
+                    {Literal}There are no tills with orders to display{/Literal}
+                </div>
+                <% } %>
+                <div class="ap-collection" data-type="x-out">
+                    <% _.each(tills, function(till) { %>
+                    <% if (typeof till.hasOrders !== 'undefined' && till.hasOrders === true) { %>
+                    <div class="ap-collection-item" data-id="<%= till.id %>">
+                        <div class="row" style="margin-bottom: 5px">
+                            <div class="col s6 till-name">
+                                {Literal}Till{/Literal} <%= till.name %>
+                            </div>
+                            <div class="col s6 right-align <%= till.ready === true ? 'ready' : 'open-orders' %>">
+                                <%= till.ready === true ? '{Literal}Ready{/Literal}' : '{Literal}Has open orders{/Literal}' %>
+                            </div>
+                            <div class="col s12 till-users">
+                                &nbsp;<%= till.users.join(', ') %>
+                            </div>
+                        </div>
+                    </div>
+                    <% }}); %>
+                </div>
+            </div>
+            <div class="quicklink-card-footer"  style="display: none">
+                <div class="row" style="margin-bottom: 2px">
+                    <div class="col s6"></div>
+                    <div class="col s6 right-align">
+                        <a class="waves-effect ap-confirm-green waves-light btn-small disabled generate-button" data-type="x-out">X-Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4">
+            <div class="quicklink-card z-depth-2 white" style="margin-bottom: 10px">
+                <div class="quicklink-card-title ap-dark-blue valign-wrapper waves-effect waves-light">
+                    <div class="row" style="height: 100%">
+                        <div class="col s1 valign-wrapper" style="height: 100%; padding-left: 15px;">
+                            <span class="right z-out-custom-icon" style="padding-left: 10px">Z</span>
+                        </div>
+                        <div class="col s10 valign-wrapper" style="height: 100%">&nbsp; {Literal}Z-Out Reset{/Literal}</div>
+                    </div>
+                </div>
+                <div class="quicklink-card-content" style="display: none">
+                    <% if (noTillsWarning === true) { %>
+                    <div class="no-tills-warning">
+                            {Literal}There are no tills with orders to display{/Literal}
+                    </div>
+                    <% } %>
+                    <div class="ap-collection" data-type="z-out">
+                        <% _.each(tills, function(till) { %>
+                        <% if (typeof till.hasOrders !== 'undefined' && till.hasOrders === true) { %>
+                            <div class="ap-collection-item <%= till.ready === true ? '' : 'ap-collection-item-disabled' %>" data-id="<%= till.id %>">
+                                <div class="row" style="margin-bottom: 5px">
+                                    <div class="col s6 till-name">
+                                        {Literal}Till{/Literal} <%= till.name %>
+                                    </div>
+                                    <div class="col s6 right-align <%= till.ready === true ? 'ready' : 'open-orders' %>">
+                                        <%= till.ready === true ? '{Literal}Ready{/Literal}' : '{Literal}Has open orders{/Literal}' %>
+                                    </div>
+                                    <div class="col s12 till-users">
+                                        &nbsp;<%= till.users.join(', ') %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }}); %>
+                    </div>
+                </div>
+                <div class="quicklink-card-footer" style="display: none">
+                    <div class="row" style="margin-bottom: 2px">
+                        <div class="col s12">
+                            <form>
+                                <div class="row">
+                                    <div class="input-field col s12" style="padding-left: 25px">
+                                        <input id="z-out-total-cash" placeholder="Enter total cash/checks" type="number" step="1.00" value="0.00" <%= noTillsWarning === true ? 'disabled' : 'checked' %>>
+                                        <label class="active" for="z-out-total-cash" style="padding-left: 15px;">{Literal}Total Cash/Checks{/Literal}</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col s6">
+                            <div class="switch">
+                                <label>
+                                    <input type="checkbox" id="z-out-show-graphs" <%= noTillsWarning === true ? 'disabled' : 'checked' %>>
+                                    <span class="lever"></span>{Literal}Show Graphs{/Literal}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col s6 right-align">
+                            <a class="waves-effect ap-confirm-green waves-light btn-small disabled generate-button" data-type="z-out">Z-Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+                <div class="quicklink-card z-depth-2 white" style="margin-bottom: 10px">
+                    <div class="quicklink-card-title ap-dark-blue valign-wrapper waves-effect waves-light">
+                        <div class="row" style="height: 100%">
+                            <div class="col s1 valign-wrapper" style="height: 100%; padding-left: 15px">
+                                <i class="material-icons">autorenew</i>
+                            </div>
+                            <div class="col s10 valign-wrapper" style="height: 100%">&nbsp; {Literal}Master Z-Out{/Literal}</div>
+                        </div>
+                    </div>
+                    <div class="quicklink-card-content" style="display: none">
+                        <% if (noTillsWarning === true) { %>
+                        <div class="no-tills-warning">
+                            {Literal}There are no tills with orders to display{/Literal}
+                        </div>
+                        <% } %>
+                        <div class="ap-collection master-z-till-list" data-type="master-z">
+                                <% _.each(tills, function(till) { %>
+                                <% if (typeof till.hasOrders !== 'undefined' && till.hasOrders === true) { %>
+                                    <div class="ap-collection-item <%= till.ready === true ? '' : 'ap-collection-item-disabled' %>" data-id="<%= till.id %>">
+                                        <div class="row" style="margin-bottom: 5px">
+                                            <div class="col s6 till-name">
+                                                {Literal}Till{/Literal} <%= till.name %>
+                                            </div>
+                                            <div class="col s6 right-align <%= till.ready === true ? 'ready' : 'open-orders' %>">
+                                                <%= till.ready === true ? '{Literal}Ready{/Literal}' : '{Literal}Has open orders{/Literal}' %>
+                                            </div>
+                                            <div class="col s12 till-users">
+                                                &nbsp;<%= till.users.join(', ') %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }}); %>
+                        </div>
+                    </div>
+                    <div class="quicklink-card-footer" style="display: none">
+                        <div class="row" style="margin-bottom: 2px">
+                            <div class="col s6"></div>
+                            <div class="col s6 right-align">
+                                <a class="waves-effect ap-confirm-green waves-light btn-small disabled generate-button" data-type="master-z">Z-Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12" id="embedded-report">
+
+            </div>
+</div>

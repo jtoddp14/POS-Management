@@ -1,0 +1,175 @@
+<html>
+  <head>
+    <title>{Literal}Customer Loyalty{/Literal}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="Cache-control" content="public">
+
+    <link href="css/manage.css.gz" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css.gz" rel="stylesheet">
+    <link href="css/style.css.gz" rel="stylesheet">
+    <script src="js/jquery-1.11.3.min.js.gz"></script>
+    <script src="js/included.js.gz"></script>
+    <script src="js/tooltip.js.gz"></script>
+
+    <link rel="stylesheet" href="css/font-awesome.min.css.gz">
+    <link rel="stylesheet" href="css/main.css.gz">
+    <link rel="stylesheet" href="css/accupos.css.gz">
+
+    <style type="text/css">
+
+      .PopupDelete-content {
+        width: 400px;
+        min-height: 180px;
+      }
+      
+    </style>
+
+    <script language="javascript">
+
+      function editLoyalty(editBtn)
+      {
+        var row = editBtn.parentNode.parentNode.rowIndex
+        //        document.getElementById('selectedEditRow').value = row;
+
+        var loyaltyNameId = "loyaltyName" + row;
+        document.getElementById('selectedLoyalty').value = document.getElementById(loyaltyNameId).value;
+
+        document.getElementById('loyaltyDetailsSubmit').submit();
+      }
+
+      function checkErrorMessage()
+      {
+        var errorMessage = document.getElementById('errorMessage');
+        if (errorMessage && errorMessage.value)
+          openPopupMessage();
+      }
+
+    </script>
+
+  </head>
+
+  <body class="with-side-menu theme-side-caesium-dark-caribbean" >
+
+    <iframe id="tooltips" src="tooltips.html" style="display: none;"></iframe>
+
+    <div id="includedHeader"></div>
+    <div id="includedSidebarMenu" class="sidebar-menu"></div>
+
+    <form method="post" id="mainMenu" action="main_menu.html#settings" style="display: none;">
+      <input type="hidden" name="password" value="{Password}" />
+    </form>
+
+    <form method="post" id="loyaltyDetailsSubmit" action="loyalty_details.html" name="loyaltyDetailsSubmit" style="display: none;">
+      <input type="hidden" name="password" value="{Password}" />
+      <input type="hidden" id="selectedLoyalty" name="selectedLoyalty" />
+      <input type="hidden" id="backPage" name="backPage" value="loyalty_list.html"/>
+    </form>
+
+    <form method="post" id="loyaltyListSubmit" action="loyalty_list.html" name="loyaltyListSubmit">
+      <input type="hidden" name="password" value="{Password}" />
+      <input type="hidden" id="selectedRow" name="selectedRow" />
+      <input type="hidden" id="submitAction" name="submitAction" />
+
+      <!-- errorMessage popup START-->
+      <div class="overlay is-hidden" id="messageOverlay">
+        <div class="PopupMessage-content">
+          <p style="text-align: center;"><b>{Literal}Error Message{/Literal}</b></p>
+          <p style="text-align: center;"> {ErrorMessage}
+            <input type="hidden" id="errorMessage" name="errorMessage" value="{ErrorMessage}" />
+          </p>
+          <p>&nbsp;</p>
+          <input name="save" type="submit" id="save-btn" value="{Literal}OK{/Literal}" style="float: right; margin-right: 10px;" onClick="closePopupMessage();">
+        </div>
+      </div>
+      <!-- errorMessage popup END-->
+
+      <!-- delete popup START-->
+      <div class="overlay is-hidden" id="deleteOverlay"><div class="PopupDelete-content">
+          <p style="text-align: center;">{Literal}Are you sure you want to delete this Loyalty?{/Literal}</p>
+
+          <p style="text-align: center;">
+            <input name="deleteLoyaltyName" type="text" id="deleteLoyaltyName" style="height: 25px; width:100%; border: none; -webkit-appearance: none; font-weight: bold; text-align: center;" size="60" readonly>
+          </p>
+
+          <p>&nbsp;</p>
+
+          <input name="cancel" type="button" class="grey-small-btn" value="{Literal}Cancel{/Literal}" style="float: left; margin-left: 10px;" onClick="closePopupDelete(false);">
+          <input name="save" type="button" id="save-btn" value="{Literal}Confirm Deletion{/Literal}" style="float: right; margin-right: 10px;" onClick="closePopupDelete(true);">
+        </div>
+      </div>
+      <!-- delete popup END-->
+
+      <div class="page-content subPage">
+        <div class="box-typical box-typical-padding">
+          <div class="container-fluid">
+            <div class="col-xs-12 col-sm-12 col-md-12"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <div class="col-xs-12 hidden-sm hidden-md hidden-lg"><div class="page-title-row"><h4>{Literal}Customer Loyalty{/Literal}</h4></div></div>
+              <div class="col-xs-6 col-sm-2 col-md-2"><div class="blue-small-btn" id="cancel-btn" onClick="showLoading(); document.getElementById('mainMenu').submit();"><i class="fa fa-ban"></i><br>{Literal}Cancel{/Literal}</div></div>
+              <div class="hidden-xs col-sm-8 col-md-8"><div class="page-title-row"><h4>{Literal}Customer Loyalty{/Literal}</h4></div></div>
+              <div class="col-xs-6 col-sm-2 col-md-2"><div class="blue-small-btn" id="save-btn" onClick="document.getElementById('mainMenu').submit();"><i class="fa fa-check"></i><br>{Literal}Done{/Literal}</div></div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <input name="small-blue-btn" type="button" class="blue-small-btn" value="{Literal}Add a New Loyalty{/Literal}" style="margin-left:15px; margin-top: 10px; margin-bottom: 10px; width: 20%" onClick="document.getElementById('loyaltyDetailsSubmit').submit();">
+            </div>
+
+            <div class="col-xs-4 col-sm-8 col-md-8"></div>
+            <div class="scroll-x col-xs-12 col-sm-12 col-md-12">
+              <table width="100%" class="display-table">
+                {LoyaltyBlock}
+                <input type="hidden" name="loyaltyName" id="{loyaltyNameId}" value="{loyaltyName}" />
+                <tr>
+                  <td width="35%" align="left" valign="middle"">&nbsp;</td>
+                  <td width="35%" align="left" valign="middle">{loyaltyName}</td>
+                  <td width="30%" align="left" valign="middle">
+                    <input name="edit" type="button" class="blue-small-btn" value="{Literal}Edit{/Literal}" style="width: 70px;" onClick="editLoyalty(this);">
+                    <input name="delete" type="button" class="grey-small-btn" value="{Literal}Delete{/Literal}" style="margin-left:20px;" onClick="openPopupDelete(this);">
+                  </td>
+                </tr>
+                {/LoyaltyBlock}
+              </table>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+
+
+      <script language="javascript">
+   
+        var deleteOverlay = document.getElementById('deleteOverlay');
+
+        function openPopupDelete(deleteBtn)
+        {
+          deleteOverlay.classList.remove("is-hidden");
+
+          var row = deleteBtn.parentNode.parentNode.rowIndex
+          var loyaltyName = "loyaltyName" + row;
+          document.getElementById("deleteLoyaltyName").value = document.getElementById(loyaltyName).value;
+          document.getElementById('selectedRow').value = row;
+        }
+
+        function closePopupDelete(confirmDelete)
+        {
+          deleteOverlay.classList.add("is-hidden");
+
+          if (confirmDelete == true)
+          {
+            document.getElementById('submitAction').value = "deleteLoyalty";
+            document.getElementById('loyaltyListSubmit').submit();
+          }
+        }
+
+      </script>
+
+      <div id="includedFooter"></div>
+      
+      <script src="js/tether.min.js.gz"></script>
+      <script src="js/bootstrap.min.js.gz"></script>
+      <script src="js/plugins.js.gz"></script>
+      <script src="js/app.js.gz"></script>
+
+  </body>
+</html>

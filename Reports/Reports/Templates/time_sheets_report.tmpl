@@ -1,0 +1,77 @@
+<html {RightToLeft}>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+
+		<title>{Literal}Time Sheets Report{/Literal}</title>
+		<link rel="stylesheet" href="css/font-awesome.min.css.gz">
+		<link rel="stylesheet" href="css/main.css.gz">
+		<link rel="stylesheet" href="css/accupos.css.gz">
+		
+		<style type="text/css">
+		body { font-family: Verdana, Geneva, sans-serif; color: #000000; font-size: 12px; font-weight: normal; }
+		P.breakhere {page-break-before: always}
+		</style>
+
+	</head>
+
+	<body>
+    
+    <table width="600" border="0" align="center" cellpadding="3" cellspacing="3">
+      <tr>
+        <td align="center" valign="middle"><span style="color:red; font-size:16px; font-weight: bold;">{ErrorMessage}</span></td>
+      </tr>
+    </table>
+
+		{EmployeeBlock}
+
+    <br/>
+    <table width="600" border="0" align="center" cellpadding="3" cellspacing="3">
+      <tr>
+        <td width="376" align="center" valign="middle"><b>{Literal}Time Sheet for{/Literal} {PeriodStart} {Literal}through{/Literal} {PeriodEnd}</b></td>
+      </tr>
+      <tr>
+        <td width="376" align="center" valign="middle">{Literal}created on{/Literal} {Now}</td>
+      </tr>
+    </table>
+
+    <table width="100%" border="1" align="center" cellpadding="3" cellspacing="3" bordercolor="#C0C0C0" style="border-collapse: collapse">
+      <tr>
+        <td><strong>{Literal}Employee/Type{/Literal}</strong></td>
+        <td><strong>{Literal}BREAK TYPE{/Literal}</strong></td>
+        <td><strong>{Literal}IN{/Literal}</strong></td>
+        <td><strong>{Literal}OUT{/Literal}</strong></td>
+        <td align="middle"><strong>{Literal}PAID HOURS{/Literal}</strong></td>
+        <td align="middle"><strong>{Literal}BREAK HOURS{/Literal}</strong></td>
+      </tr>
+      
+      <tr>
+        <td colspan="5"><strong>({EmployeeId})&nbsp;&nbsp;{EmployeeName}</strong></td>
+      </tr>
+
+      {EmployeeDetailBlock}
+				<tr style="color: {textColor};">
+          <td width="15%">{PayType}</td>
+          <td width="15%">{BreakType}</td>
+          <td width="25%">{In}</td>
+          <td width="25%">{Out}</td>
+          <td width="10%" align="middle">{Hours}</td>
+          <td width="10%" align="middle">{BreakHours}</td>
+        </tr>
+      {/EmployeeDetailBlock}
+
+      <tr>
+        <td COLSPAN="3" height="40">{Literal}Signature:{/Literal}</td>
+        <td align="right">{Literal}Total{/Literal}</td>
+        <td align="middle">{Total}</td>
+        <td align="middle">{BreakTotal}</td>
+      </tr>
+		</table>
+
+		<P CLASS="breakhere">
+		{/EmployeeBlock}
+	
+	</body>
+
+	{ClockDateFormat}HH:mm dd-MMM-yyyy{/ClockDateFormat}
+
+</html>

@@ -1,0 +1,150 @@
+<div id="items-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div class="row">
+        <div class="col s12 m2">
+            <div class="input-field">
+                <input id="searchText" type="text" maxlength="50">
+                <label class="active" for="searchText">Search Text</label>
+            </div>
+        </div> 
+        <div class="input-field col s10 m3">
+            <select id="searchField">
+                <option value="0"> Item Id </option>
+                <option value="1"> Description </option>
+                <option value="2"> Item Type </option>
+                <option value="3"> Alt Description </option>
+                <option value="4"> Choice Group </option>
+                <option value="5"> Price Level 1 </option>
+                <option value="6"> Price Level 2 </option>
+                <option value="7"> Price Level 3 </option>
+                <option value="8"> Price Level 4 </option>
+                <option value="9"> Price Level 5 </option>
+            </select>
+        </div>
+        <div class="col s2 m2">
+            <div class="search" style="padding-top: 20px;">
+                <a href="javascript:void(0)" class="btn waves-effect waves-light green search-items-button">
+                    <i class="material-icons">search</i>
+                </a>
+            </div>
+        </div>
+
+        <div class="optional">
+            <div class="input-field col s10 m3">
+                <label class="active">Optional Info Field</label>
+                <select id="optional1">
+                    <option value="0"> Discount </option>
+                    <option value="1"> Category </option>
+                    <option value="2"> Taxable </option>
+                    <option value="3"> Active/Inactive </option>
+                </select>
+            </div>
+        </div> 
+
+        <div class="col s2 m2">
+            <div class="optionalButton" style="padding-top: 20px;">
+                <a href="javascript:void(0)" class="btn waves-effect waves-light green optional-button">
+                    <i class="material-icons">format_list_bulleted</i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="sortBy" style="display: none;">
+            <div class="input-field col s10 m3 offset-m4" >
+                <label class="active">Filter By</label>
+                <select id="sortBy1">
+                    <option value="0"> Description A-Z </option>
+                    <option value="1"> Description Z-A </option>
+                    <option value="2"> Item Code A-Z </option>
+                    <option value="3"> Item Code Z-A </option>
+                </select>
+            </div>
+        </div> 
+
+        <div class="col s2 m3">
+            <div class="sortByButton" style="display: none">
+                <a href="javascript:void(0)" class="btn btn-large waves-effect waves-light green sort-by-button">
+                    <i class="material-icons">sort</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <% _.each(items, function(items) { %>
+            <div id ="itemCards">
+                <div class="col s12 m3 xl2">
+                    <div class="card-panel card-panel-entity z-depth-2 sequence-card hoverable white-text waves-effect waves-light <%= items.cardStyleClass %>" style="background-color: #3970b7" data-id="<%= items.id %>" data-selected='0'>
+                        <div>
+                            <div class="row description truncate" style="position: relative; right: 13px; bottom: 8px; height: 48px;">
+                                &nbsp;&nbsp;<%= items.description %>
+                            </div>
+                            <div class="row itemDescription truncate">
+                                Id:
+                                <%= items.id %>
+                            </div>
+                            <div class="row type truncate">
+                                Type:
+                                <%= items.itemTypeName %>
+                            </div>
+                            <div class="row price truncate">
+                                Price: $ 
+                                <%= items.price %>
+                            </div>
+                            <div class="row truncate">
+                                <div class="discount"  style="display: none">
+                                    Discount: 
+                                    <%= items.allowDiscount %>
+                                </div>
+                                <div class="category" style="display: none;">
+                                    Category: 
+                                    <%= items.categoryName %>
+                                </div>
+                                <div class="taxable" style="display: none;">
+                                    Taxable: 
+                                    <%= items.taxable %>
+                                </div>
+                                <div class="inactive" style="display: none;">
+                                    Inactive: 
+                                    <%= items.inactive %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit" style="display: none">
+                            <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-items-trigger"
+                                data-id="<%= items.id %>">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+            
+<div id="items-form-modal" class="modal modal-fixed-footer items-form-modal" style="max-height: 100%">
+    
+</div>
+
+<div class ="col s3" align="center">
+    <div>
+        <ul class="pagination" id="items-pagination" data-current-page="1">
+            <li class="disabled hide-on-rtl" id="pagination-back">
+                <a href="javascript:void(0)">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+            <li class="waves-effect hide-on-rtl" id="pagination-forward">
+                <a href="javascript:void(0)">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<a href="javascript:void(0)" id="add-items-button" class="btn-floating btn-large waves-effect waves-light green floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>

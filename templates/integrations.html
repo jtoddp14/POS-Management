@@ -1,0 +1,217 @@
+<div id="integrations-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <div class="col s12">
+            <div class="ap-card-content white z-depth-1" id="integrations-form" style="display: none;">
+                <div id="integrations-form-content">
+                    <form id="integrations" style="display: none;">
+                        <div class="ap-card-title ap-blue" style="height: 75px;">
+                            <p>{Literal}Accounting{/Literal} &amp; {Literal}Loyalty{/Literal}</p> 
+                            <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white cloud-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+                            <div class="ap-card-title-text">
+                                Page 1 of 2 
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col s12" style="padding-top: 15px;">
+                                <div class="col s12 m3 offset-m1" style="padding-top: 15px;">
+                                    <label>
+                                        <input id="hasAccounting" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.hasAccounting" <%= integrations.hasAccounting  ? 'checked': '' %> />
+                                        <span>{Literal}Has Accounting Integration{/Literal}</span>
+                                    </label>
+                                </div>
+
+                                <div id="accountingBlock1" style="display: none;"> 
+                                    <div class="col s12 m3">
+                                        <div class="input-field">
+                                            <input id="exportImportFolder" type="text" value="<%= integrations.exportImportFolder %>">
+                                            <label class="active" for="exportImportFolder">{Literal}Export/Import Folder{/Literal}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 m3">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Integrator Type{/Literal}</label>
+                                            <select id="integratorType" required>
+                                                <option value="0" <%= (integrations.integratorType == "Standard" ? 'selected' : '') %>>{Literal}Standard{/Literal}</option>
+                                                <option value="1" <%= (integrations.integratorType == "Quickbooks Online" ? 'selected' : '') %>>{Literal}Quickbooks Online{/Literal}</option>
+                                                <option value="2" <%= (integrations.integratorType == "Sage Live" ? 'selected' : '') %>>{Literal}Sage Live{/Literal}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="accountingBlock2" style="display: none;"> 
+                            <div class="row" style="padding-top: 15px; padding-bottom: 15px;">
+                                <div class="col s12">            
+                                    <div class="col s12 m3 offset-m1">
+                                        <label>
+                                            <input id="updateItemPrices" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.updateItemPrices" <%= integrations.updateItemPrices  ? 'checked': '' %> />
+                                            <span>{Literal}Update Item Prices{/Literal}</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div id="sageLiveBlock" style="display: none;">
+
+                                    </div>
+
+                                    <div id="qbBlock" style="display: none; padding-bottom: 15px;">
+                                        <div id="qbdesktopBlock" style="display: none;">
+                                            <div class="col s12 m3">
+                                                <label>
+                                                    <input id="skipItems" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.skipItems" <%= integrations.skipItems  ? 'checked': '' %> />
+                                                    <span>{Literal}Skip Items Over 20 Characters{/Literal}</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m3 ">
+                                            <label>
+                                                <input id="summarizeCash" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.summarizeCash" <%= integrations.summarizeCash  ? 'checked': '' %> />
+                                                <span>{Literal}Summarize All Cash Sales{/Literal}</span>
+                                            </label>
+                                        </div>
+                                        <div id="qboBlock" style="display: none;">
+                                            <div class="col s12 m3">
+                                                <label>
+                                                    <input id="updateItemTypesYesNo" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.updateItemTypesYesNo" <%= integrations.updateItemTypesYesNo  ? 'checked': '' %> />
+                                                    <span>{Literal}Update Item Types{/Literal}</span>
+                                                </label>
+                                            </div>
+                        
+                                            <div class="col s12 m3 offset-m1" style="padding-top: 25px;">
+                                                <label>
+                                                    <input id="useAutomatedTaxYesNo" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.useAutomatedTaxYesNo" <%= integrations.useAutomatedTaxYesNo  ? 'checked': '' %> />
+                                                    <span>{Literal}Use Automated Tax{/Literal}</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div> 
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12" style="padding-top: 15px;">
+                                <div class="col s12 m3 offset-m1" style="padding-top: 15px;">
+                                    <label>
+                                        <input id="hasComo" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.hasComo" <%= integrations.hasComo  ? 'checked': '' %> />
+                                        <span>{Literal}Has Como Loyalty{/Literal}</span>
+                                    </label>
+                                </div>
+
+                                <div id="comoBlock1" style="display: none;">
+                                    <div class="col s12 m3">
+                                        <div class="input-field">
+                                            <input id="location" type="text" value="<%= integrations.location %>">
+                                            <label class="active" for="location">{Literal}Location{/Literal}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 m3">
+                                        <div class="input-field">
+                                            <input id="accountingMerchantId" type="text" value="<%= integrations.accountingMerchantId %>">
+                                            <label class="active" for="accountingMerchantId">{Literal}Como Merchant ID{/Literal}</label>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                            </div>
+                        </div> 
+                        <div id="comoBlock2" style="display: none;">
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="col s12 m3 offset-m4">
+                                        <div class="input-field">
+                                            <label class="active">{Literal}Use Credits Or Points{/Literal}</label>
+                                            <select id="creditsOrPoints" required>
+                                                <option value="0" <%= (integrations.creditsOrPoints == "true" ? 'selected' : '') %>>{Literal}Points{/Literal}</option>
+                                                <option value="1" <%= (integrations.creditsOrPoints == "false" ? 'selected' : '') %>>{Literal}Credits{/Literal}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="save white lighten-4" align="left">
+                            <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                        </div>
+                    </form>
+
+                    <form id="cloud" style="display: none"> 
+                        <div class="ap-card-title ap-blue" style="height: 75px;">
+                            <p>{Literal}Cloud Sync, Ad2POS, Regional Server{/Literal}</p>
+                            <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white integration-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a>
+                            <div class="ap-card-title-text">
+                                {Literal}Page 2 of 2{/Literal}
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 15px;">
+                            <div class="col s12" style="padding-top: 15px;">
+                                <div class="col s12 m3 offset-m1">
+                                    <label>
+                                        <input id="accuposCloudSync" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.accuposCloudSync" <%= integrations.accuposCloudSync  ? 'checked': '' %> />
+                                        <span>{Literal}Has AccuPOS Cloud Sync{/Literal}</span>
+                                    </label>
+                                </div>
+                                <div id="cloudBlock" style="display: none;">
+                                    <div class="col s12 m3">
+                                        <label>
+                                            <input id="useOneConnection" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.useOneConnection" <%= integrations.useOneConnection  ? 'checked': '' %> />
+                                            <span>{Literal}Use One Connection{/Literal}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12" style="padding-top: 15px;">
+                                <div class="col s12 m3 offset-m1" style="padding-top: 15px;">
+                                    <label>
+                                        <input id="hasAd2POS" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.hasAd2POS" <%= integrations.hasAd2POS  ? 'checked': '' %> />
+                                        <span>{Literal}Has Ad2POS{/Literal}</span>
+                                    </label>
+                                </div>
+                            <div id="ad2posBlock" style="display: none;">
+                                <div class="col s12 m3">
+                                    <div class="input-field">
+                                        <input id="cloudMerchantId" type="text" value="<%= integrations.cloudMerchantId %>">
+                                        <label class="active" for="cloudMerchantId">{Literal}Ad2POS Merchant Id{/Literal}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-top: 15px;">
+                            <div class="col s12" style="padding-top: 15px;">
+                                <div class="col s12 m3 offset-m1">
+                                    <label>
+                                        <input id="hasRegional" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.hasRegional" <%= integrations.hasRegional  ? 'checked': '' %> />
+                                        <span>{Literal}Has Regional Server(s){/Literal}</span>
+                                    </label>
+                                </div>
+
+                                <div class="col s12 m3">
+                                    <label>
+                                        <input id="secure" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="integrations.secure" <%= integrations.secure  ? 'checked': '' %> />
+                                        <span>{Literal}Secure(https){/Literal}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="save white lighten-4" align="left">
+                            <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                        </div>
+                    </form>
+                </div>         
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="navigation-keys">
+    <a class="dot button waves-effect waves-light integrations-setup-button"></a>
+</div>

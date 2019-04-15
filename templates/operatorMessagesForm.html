@@ -1,0 +1,56 @@
+<div id="operator-message-form-modal" class="modal modal-fixed-footer" style="max-height: 100%" <%= (App.rtl ? 'style="direction:rtl"' : '') %>></div>
+    <div class="modal-content">
+        <div id="opertator-messages-form-content">
+            <div style="padding-bottom: 50px">
+                <h4 style="font-size: 1.2rem">{Literal}Operator Message Details{/Literal}</h4>
+            </div>
+            <form>
+                <div class="firstRow">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="col s1" style="display:none;">
+                                <div class="input-field">
+                                    <input id="id" type="text" value="<%= operatorMessages.id %>">
+                                </div>
+                            </div>
+
+                            <div class="input-field col s12 m6">
+                                <label class="active">{Literal}Item Type{/Literal}</label>
+                                <select id="item-type-dropdown" required>
+                                    <% _.each(itemTypes, function(itemType) { %>
+                                    <option value="<%= itemType.itemType %>" <%= operatorMessages.itemType == itemType.name ? 'selected' : '' %>><%= itemType.name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="input-field col s12 m6">
+                                <input id="message" type="text" value="<%= operatorMessages.message %>">
+                                <label class="active" for="message">{Literal}Message:{/Literal}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-operator-message-modal" class="waves-effect waves-light btn-flat red-text right modal-trigger delete-operator-message-button">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green save-button left">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+</div>
+    
+<div id="delete-operator-message-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this operator message{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-operator-message-confirm" class="modal-close waves-effect waves-green btn red left" data-tax-id="<%= operatorMessages.id%>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-operator-messages-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

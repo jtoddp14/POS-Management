@@ -1,0 +1,152 @@
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+      -->
+    </style>
+
+    <script src="js/Chart.js"></script>
+
+    <script type="text/javascript">
+
+      var barChartData =
+        {
+        {BarChartData}
+      };
+
+      function loadCharts()
+      {
+        if (document.getElementById("divChartData").style.display == "inline-block")
+        {
+          var ctx = document.getElementById("byUser-chart-area").getContext("2d");
+          window.barChart = new Chart(ctx).Bar(barChartData);
+        }
+      }
+
+    </script>
+
+    <title>{Literal}AccuPOS Sales by User Report{/Literal}</title>
+  </Head>
+
+  <Body onLoad="loadCharts();">
+    <div align="center"><br>
+      <span class="size11"><strong>{Literal}Sales by User Report{/Literal}</strong></span><br>
+      <br>
+    </div>
+
+    <div align="center">
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+                {CompanyAddress1} {CompanyAddress2}<br>
+                {CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span></div></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div align="center"><span class="size11">        <span class="style4 style2"><strong>{Range}</strong></span> <br>
+                {Literal}Report was run on{/Literal}</span><span class="size11"> {DateRun}</span></div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div align="center">
+      <div align="center" id="divChartData" style="{ShowChartData}">
+        <hr align="center" width="630" size="1">
+        <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="630" align="center" valign="top" >
+
+              <div id="canvas-holder">
+                <canvas id="byUser-chart-area" width="630" height="300"/>
+              </div>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <hr align="center" width="630" size="1">
+    <div align="center">
+
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><img src="images/spacer.aci" width="105" height="8"></td>
+          <td><img src="images/spacer.aci" width="105" height="8"></td>
+          <td><img src="images/spacer.aci" width="220" height="8"></td>
+          <td width="359"><img src="images/spacer.aci" width="200" height="8"></td>
+        </tr>
+
+        <tr>
+          <td width="106" valign="top" class="size11"></td>
+          <td width="105" valign="top" class="size11">
+            <div align="left"><strong>{Literal}User{/Literal}</strong>:</div></td>
+          <td width="220" valign="top" class="size11">
+
+            <div align="left"><strong>{Literal}User Total{/Literal}</strong>:</div></td>
+          <td width="200" valign="top" class="size11"><strong>{Literal}Percent of Total Sales:{/Literal}</strong></td>
+        </tr>
+      </table>
+      {UserBlock}
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="106"><img src="images/spacer.aci" width="105" height="2"></td>
+          <td width="110"><img src="images/spacer.aci" width="105" height="2"></td>
+          <td width="55"><img src="images/spacer.aci" width="220" height="2"></td>
+          <td width="359"><img src="images/spacer.aci" width="200" height="2"></td>
+        </tr>
+        <tr>
+          <td valign="top" class="size11"></td>
+          <td valign="top" class="size11"><div align="left">{User}</div></td>
+          <td valign="top" class="size11"><div align="left">{UserTotal}</div></td>
+          <td valign="top" class="size11">{UserPercent}
+            <div align="left"></div></td>
+        </tr>
+      </table>
+      {/UserBlock}
+    </div>
+
+    <p align="center"></p>
+    <hr align="center" width="630" size="1" noshade>
+    <div align="center"><span class="minitype">&nbsp;&nbsp;&nbsp;{Literal}Powered by AccuPOS Point Of Sale rev02{/Literal}</span>
+    </div>
+  </Body>
+</Html>
+
+{QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+{PriceFormat}#####0.00;-#####0.00{/PriceFormat}
+{CurrencyFormat}$#####0.00;-$#####0.00{/CurrencyFormat}
+{PercentFormat}##0.##%;-##0.##%{/PercentFormat}
+{Errors}

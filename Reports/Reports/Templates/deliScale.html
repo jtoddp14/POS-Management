@@ -1,0 +1,72 @@
+<div id="deli-scale-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div class="row">
+        <div class="ap-card-content white z-depth-2" id="deli-scale-form" style="display: none;">
+            <div id="deli-scale-form-content">
+                <form>
+                    <div class="ap-card-title ap-blue" style="height: 75px;">
+                        <p>Settings</p> 
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m4">
+                            <input id="prefix" type="text" value="<%= deliScale.prefix %>" maxLength="40">
+                            <label class="active" for="prefix">Prefix</label>
+                            <h8>Leave 'Prefix' blank to disable Embedded Barcodes.</8>
+                        </div>
+        
+                        <div class="input-field col s12 m4">
+                            <input id="itemLength" type="number" value="<%= deliScale.itemLength %>">
+                            <label class="active" for="itemLength">Item Length</label>
+                        </div>
+        
+                        <div class="input-field col s12 m4">
+                            <input id="priceLength" type="number" value="<%= deliScale.priceLength %>">
+                            <label class="active" for="priceLength">Price Length</label>
+                        </div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="input-field col s12 m4">
+                            <input id="itemStart" type="number" value="<%= deliScale.itemStart %>">
+                            <label class="active" for="itemStart">Item Start</label>
+                        </div>
+        
+                        <div class="input-field col s12 m4">
+                            <input id="priceStart" type="number" value="<%= deliScale.priceStart %>">
+                            <label class="active" for="priceStart">Price Start</label>
+                        </div>
+        
+                        <div class="input-field col s12 m4">
+                            <input id="priceDivisor" type="number" value="<%= deliScale.priceDivisor %>">
+                            <label class="active" for="priceDivisor">Price Divisor</label>
+                        </div>
+                    </div> 
+
+                    <div class="row">
+                        <div class="input-field col s12 m1">
+                            <p style="top: 40px; font-size: 20px;"><strong>Barcode Type: </p>
+                        </div>
+                        <div class="checkBoxes">
+                            <div class="input-field col s12 m4">
+                                <label>
+                                    <input type="checkbox" id="embeddedPrice" class="filled-in"/>
+                                    <span>Embedded Price</span>
+                                </label>
+                            </div>
+            
+                            <div class="input-field col s12 m4">
+                                <label>
+                                    <input type="checkbox" id="embeddedWeight" class="filled-in"/>
+                                    <span>Embedded Weight</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div> 
+            
+                    <div class="save white lighten-4" align="right">
+                        <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                    </div>
+                </form>
+            </div>       
+        </div>
+    </div>
+</div>

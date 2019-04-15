@@ -1,0 +1,94 @@
+<div id="tills-form-modal" class="modal modal-fixed-footer" style="max-height: 100%"></div>
+    <div class="modal-content">
+        <div id="tills-form-content">
+            <h5 style="font-size: 1.2rem">Till Details</h5>
+            <form>
+                <div>
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <div class="input-field">
+                                <input id="tillName" type="text" value="<%= tills.name %>" class="validate" maxlength="20" <%= (newTill === false ? 'disabled' : '') %>>
+                                <label class="active" for="tillName">Till Name</label>
+                                <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m4">
+                            <div class="input-field">
+                                <input id="startCash" type="number" value="<%= tills.cash %>" class="validate" max="99999">
+                                <label class="active" for="startCash">Starting  Cash</label>
+                                <span class="helper-text" data-error="A number from 0 to 99999 is mandatory" data-success=""></span>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m4">
+                            <div class="input-field">
+                                <input id="glDept" type="text" value="<%= tills.glDept %>">
+                                <label class="active" for="glDept">GL Department</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="switchOptions">
+                    <div class="row" style="padding-right: 25px;">
+                        <div class="col s12 m4">
+                            <div class="switch">
+                                <label>
+                                    <input type="checkbox" id="tenderOrders" data-type="tills.tenderOrders" <%= tills.tenderOrders ? 'checked': '' %> >
+                                    <span class="lever"></span>Tender Orders
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m4">
+                            <div class="switch">
+                                <label>
+                                    <input type="checkbox" id="openDrawer2" data-type="tills.openDrawer2" <%= tills.openDrawer2 ? 'checked': '' %> >
+                                    <span class="lever"></span>Open Second Drawer
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m4">
+                            <div class="switch">
+                                <label>
+                                    <input type="checkbox" id="autoZ" data-type="tills.autoZ" <%= tills.autoZ ? 'checked': '' %> >
+                                    <span class="lever"></span>Auto Z-Out
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timePick">
+                    <div class="row">
+                        <div class="input-field col s12 m4 offset-m8">
+                            <input type="text" class="timepicker" id="z-out-time-picker" placeholder="12:00 PM" value="<%= tills.zOutTime %>">
+                            <label  for="z-out-time-picker" class="active">Daily Z-Out Time</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>     
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-tills-modal" class="waves-effect waves-light btn red left modal-trigger delete-button">Delete</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green save-button">Save</a>
+</div>
+
+
+<div id="delete-tills-modal" class="modal">
+    <div class="modal-content">
+        <h4>Confirm Deletion</h4>
+        <p>Are you sure that you would like to remove this till?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+        <!--<a href="javascript:void(0)" id="delete-tills-confirm" class="modal-close waves-effect waves-green btn red" data-till-id="<%= tills.id%>">Delete</a>-->
+        <input type="hidden" id="delete-tills-id" />
+    </div>
+</div>

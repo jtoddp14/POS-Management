@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>AccuPOS Management</title>
+		<link rel="icon" type="images/png" href="img/favicon.ico">
+
+
+		<link type="text/css" href="css/fonts.css" rel="stylesheet" media="screen,projection">
+		<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+		<link rel="stylesheet" href="lib/materialize-css/dist/css/materialize.css">
+		<!--<link rel="stylesheet" href="lib/materialize-css-rtl/materialize.rtl.css" id="rtl-supprt-css" disabled="disabled">-->
+		<link href="lib/c3/c3.min.css" rel="stylesheet">
+		<link type="text/css" href="css/ap-colors.css" rel="stylesheet" media="screen,projection">
+		<link type="text/css" href="css/main.css" rel="stylesheet" media="screen,projection">
+
+		<link rel="stylesheet" href="lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+
+		<link rel="stylesheet" href="lib/gridstack/dist/gridstack.css">
+		<script src="lib/c3/c3.min.js"></script>
+		<script src="lib/d3/dist/d3.min.js" charset="utf-8"></script>
+
+		<script src="lib/moment/moment.js"></script>
+
+		<script src="lib/jquery/dist/jquery.min.js"></script>
+		<script src="lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+		<script type="text/javascript" src="lib/fullcalendar/dist/fullcalendar.js"></script>
+		<link rel="stylesheet" href="lib/fullcalendar/dist/fullcalendar.css" />
+
+		<script src="lib/underscore/underscore-min.js"></script>
+		<script src="lib/backbone/backbone-min.js"></script>
+		<script src="lib/crypto-js/crypto-js.js"></script>
+		<script src="lib/jquery-ui-dist/jquery-ui.min.js"></script>
+		<script src="lib/lodash/lodash.min.js"></script>
+		<script src="lib/gridstack/dist/gridstack.js"></script>
+		<script src="lib/gridstack/dist/gridstack.jQueryUI.js"></script>
+		<!--<script src="lib/gridstack/dist/gridstack.all.js"></script>-->
+		<script src="lib/materialize-css/dist/js/materialize.js"></script>
+		<script src="lib/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+
+		<script src="js/helpers.js"></script>
+		<!-- BackboneJS models -->
+		<script src="js/models/alternativeTaxes.js"></script>
+		<script src="js/models/backup.js"></script>
+		<script src="js/models/barcode.js"></script>
+		<script src="js/models/breaks.js"></script>
+		<script src="js/models/cardSetup.js"></script>
+		<script src="js/models/compReasons.js"></script>
+		<script src="js/models/companyInfo.js"></script>
+		<script src="js/models/customers.js"></script>
+		<script src="js/models/customerTerms.js"></script>
+		<script src="js/models/dashboard.js"></script>
+		<script src="js/models/deliScale.js"></script>
+		<script src="js/models/eConduit.js"></script>
+		<script src="js/models/employee.js"></script>
+		<script src="js/models/flexGroups.js"></script>
+		<script src="js/models/followOn.js"></script>
+		<script src="js/models/groupItems.js"></script>
+		<script src="js/models/integrations.js"></script>
+		<script src="js/models/inventory.js"></script>
+		<script src="js/models/inventoryAdjustments.js"></script>
+		<script src="js/models/items.js"></script>
+		<script src="js/models/logIn.js"></script>
+		<script src="js/models/noPartial.js"></script>
+		<script src="js/models/operatorMessages.js"></script>
+		<script src="js/models/payPeriods.js"></script>
+		<script src="js/models/payTypes.js"></script>
+		<script src="js/models/posKey.js"></script>
+		<script src="js/models/posUser.js"></script>
+		<script src="js/models/priceLevelTimes.js"></script>
+		<script src="js/models/productLine.js"></script>
+		<script src="js/models/receiptSettings.js"></script>
+		<script src="js/models/recipes.js"></script>
+		<script src="js/models/roomsTables.js"></script>
+		<script src="js/models/sales.js"></script>
+		<script src="js/models/salesTaxes.js"></script>
+		<script src="js/models/sequence.js"></script>
+		<script src="js/models/snapEBT.js"></script>
+		<script src="js/models/taxes.js"></script>
+		<script src="js/models/tenderTypes.js"></script>
+		<script src="js/models/tills.js"></script>
+		<script src="js/models/unitsOfMeasure.js"></script>
+		<script src="js/models/userGroup.js"></script>
+		<!-- BackboneJS collections -->
+		<script src="js/collections/alternativeTaxesCollection.js"></script>
+		<script src="js/collections/barcodeCollection.js"></script>
+		<script src="js/collections/breaksCollection.js"></script>
+		<script src="js/collections/compReasonsCollection.js"></script>
+		<script src="js/collections/customersCollection.js"></script>
+		<script src="js/collections/customerTermsCollection.js"></script>
+		<script src="js/collections/eConduitCollection.js"></script>
+		<script src="js/collections/employeeCollection.js"></script>
+		<script src="js/collections/flexGroupsCollection.js"></script>
+		<script src="js/collections/followOnCollection.js"></script>
+		<script src="js/collections/groupItemsCollection.js"></script>
+		<script src="js/collections/inventoryAdjustmentsCollection.js"></script>
+		<script src="js/collections/inventoryCollection.js"></script>
+		<script src="js/collections/itemsCollection.js"></script>
+		<script src="js/collections/noPartialCollection.js"></script>
+		<script src="js/collections/operatorMessagesCollection.js"></script>
+		<script src="js/collections/payPeriodsCollection.js"></script>
+		<script src="js/collections/payTypesCollection.js"></script>
+		<script src="js/collections/posKeyCollection.js"></script>
+		<script src="js/collections/posUserCollection.js"></script>
+		<script src="js/collections/productLineCollection.js"></script>
+		<script src="js/collections/priceLevelTimesCollection.js"></script>
+		<script src="js/collections/recipesCollection.js"></script>
+		<script src="js/collections/roomsTablesCollection.js"></script>
+		<script src="js/collections/salesCollection.js"></script>
+		<script src="js/collections/salesTaxesCollection.js"></script>
+		<script src="js/collections/sequenceCollection.js"></script>
+		<script src="js/collections/snapEBTCollection.js"></script>
+		<script src="js/collections/taxesCollection.js"></script>
+		<script src="js/collections/tenderTypesCollection.js"></script>
+		<script src="js/collections/tillsCollection.js"></script>
+		<script src="js/collections/unitsOfMeasureCollection.js"></script>
+		<script src="js/collections/userGroupCollection.js"></script>
+		<!-- BackboneJS views -->
+		<script src="js/views/advancedEmployees.js"></script>
+		<script src="js/views/advancedItems.js"></script>
+		<script src="js/views/advancedSettings.js"></script>
+		<script src="js/views/alternativeTaxes.js"></script>
+		<script src="js/views/alternativeTaxesForm.js"></script>
+		<script src="js/views/backupRestore.js"></script>
+		<script src="js/views/barcode.js"></script>
+		<script src="js/views/breaks.js"></script>
+		<script src="js/views/breaksForm.js"></script>
+		<script src="js/views/cardSetup.js"></script>
+		<script src="js/views/clearData.js"></script>
+		<script src="js/views/companyInfo.js"></script>
+		<script src="js/views/compReasons.js"></script>
+		<script src="js/views/compReasonsForm.js"></script>
+		<script src="js/views/customers.js"></script>
+		<script src="js/views/customersForm.js"></script>
+		<script src="js/views/customerTerms.js"></script>
+		<script src="js/views/customerTermsForm.js"></script>
+		<script src="js/views/dashboard.js"></script>
+		<script src="js/views/deliScale.js"></script>
+		<script src="js/views/eConduit.js"></script>
+		<script src="js/views/eConduitForm.js"></script>
+		<script src="js/views/employees.js"></script>
+		<script src="js/views/employeesForm.js"></script>
+		<script src="js/views/flexGroups.js"></script>
+		<script src="js/views/flexGroupsForm.js"></script>
+		<script src="js/views/followOn.js"></script>
+		<script src="js/views/followOnForm.js"></script>
+		<script src="js/views/groupItems.js"></script>
+		<script src="js/views/groupItemsForm.js"></script>
+		<script src="js/views/home.js"></script>
+		<script src="js/views/importExport.js"></script>
+		<script src="js/views/integrations.js"></script>
+		<script src="js/views/inventory.js"></script>
+		<script src="js/views/inventoryAdjustments.js"></script>
+		<script src="js/views/inventoryAdjustmentsForm.js"></script>
+		<script src="js/views/inventoryForm.js"></script>
+		<script src="js/views/items.js"></script>
+		<script src="js/views/itemsForm.js"></script>
+		<script src="js/views/logIn.js"></script>
+		<script src="js/views/noPartial.js"></script>
+		<script src="js/views/operatorMessages.js"></script>
+		<script src="js/views/operatorMessagesForm.js"></script>
+		<script src="js/views/payPeriods.js"></script>
+		<script src="js/views/payPeriodsForm.js"></script>
+		<script src="js/views/payTypes.js"></script>
+		<script src="js/views/payTypesForm.js"></script>
+		<script src="js/views/posKeyForm.js"></script>
+		<script src="js/views/posKeys.js"></script>
+		<script src="js/views/posUserForm.js"></script>
+		<script src="js/views/posUsers.js"></script>
+		<script src="js/views/priceLevelTimes.js"></script>
+		<script src="js/views/priceLevelTimesForm.js"></script>
+		<script src="js/views/productLineForm.js"></script>
+		<script src="js/views/productLines.js"></script>
+		<script src="js/views/receiptSettings.js"></script>
+		<script src="js/views/recipes.js"></script>
+		<script src="js/views/recipesForm.js"></script>
+		<script src="js/views/roomsTables.js"></script>
+		<script src="js/views/roomsTablesForm.js"></script>
+		<script src="js/views/reports.js"></script>
+		<script src="js/views/sales.js"></script>
+		<script src="js/views/salesForm.js"></script>
+		<script src="js/views/salesTaxes.js"></script>
+		<script src="js/views/salesTaxesForm.js"></script>
+		<script src="js/views/sequenceTiles.js"></script>
+		<script src="js/views/snapEBT.js"></script>
+		<script src="js/views/taxes.js"></script>
+		<script src="js/views/taxesForm.js"></script>
+		<script src="js/views/tenderTypes.js"></script>
+		<script src="js/views/tenderTypesForm.js"></script>
+		<script src="js/views/tills.js"></script>
+		<script src="js/views/tillsForm.js"></script>
+		<script src="js/views/unitsOfMeasure.js"></script>
+		<script src="js/views/unitsOfMeasureForm.js"></script>
+		<script src="js/views/userGroupForm.js"></script>
+		<script src="js/views/userGroups.js"></script>
+		<!-- BackboneJS app -->
+		<script src="js/app.js"></script>
+    </head>
+
+    <body>
+		<div id="global-wrapper">
+			<div id="top-shadow"></div>
+			<div class="wrapper">
+				<div>
+					<!-- Dropdown Structure -->
+					<ul id="dropdown1" class="dropdown-content">
+						<li>
+							<a href="#/">Support</a>
+						</li>
+						<li>
+							<a href="#/">Settings</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#/">Logout</a>
+						</li>
+					</ul>
+					<div class="navbar-fixed">
+						<nav class="white" role="navigation" style="left: 0px">
+							<div class="nav-wrapper">
+								<ul id="navbar-ul">
+									<li>
+										<div class="userView" id="logo-view">
+											<div id="logo-wrapper">
+												<img src="img/logo_big_blue.png" class="responsive-img" id="logo-img">
+												<img src="img/israCardLogInLogo.png" class="responsive-img" id="israSideNavImg" style="display: none; width: 90%;">
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="#" data-target="slide-out" class="sidenav-trigger button-collapse right blue-text darken-1">
+											<i class="material-icons">menu</i>
+										</a>
+									</li>
+								</ul>
+								<div class="col s6" id="breadcrumbs">
+									
+								</div>
+								<!--<div>
+									<a href="http://www.fastsupport.com" target="_blank" id="gtaIcon" class="blue-text darken-1 left">
+										<img src="img/ap-share-icon.png" class="responsive-img" >
+									</a>
+								</div>-->
+								<div id="optionsBar" style="position: relative; left: 100%; top: -105%; width: 150px">
+									<div>
+										<a href="javascript:void(0)" id="messageIcon" class=" left" onclick="openMessageModal()">
+											<i id="moreNavigationText2" class="material-icons ap-blue-text">headset_mic</i>
+										</a>
+									</div>
+									<div>
+										<a href="javascript:void(0)" id="supportIcon" class="left" onclick="openSupportModal()">
+											<i id="moreNavigationText2" class="material-icons ap-blue-text">email</i>
+										</a>
+									</div>
+									
+									<div id="gtaIcon" class="navigationDropdown">
+										<!-- trigger button -->
+										<i id="moreNavigationText" class="material-icons ap-blue-text">more_vert</i>
+									
+										<!-- dropdown menu -->
+										<ul class="navigationDropdown-content">
+											<li><a id="goFS" href="javascript:void(0)"><i style="float: left;" class="material-icons">crop_free</i>&nbsp;{Literal}Fullscreen{/Literal}</a></li>
+											<li><a href="javascript:void(0)"><i style="float: left;" class="material-icons">info_outline</i>&nbsp;{Literal}About{/Literal}</a></li>
+											<li><a href="#"><i style="float: left;" class="material-icons">arrow_back</i>&nbsp;{Literal}Log Out{/Literal}</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="support-modal" class="modal modal-fixed-footer" style="color: black;">
+								<div class="modal-content" style="color: black;">
+									<h3 style="font-size: 2.28em;">{Literal}Contact Support{/Literal}</h3>
+									<h5 style="font-size: 1.15em;">{Literal}Having an issue{/Literal}?</h5>
+									<br>
+									<h5 style="font-size: 1.15em; margin-top: 2.33em; margin-bottom: 2.33em;">{Literal}Email us by filling out this form{/Literal}, {Literal}and we will have a tech best suited to help contact you{/Literal}. {Literal}You can also call our support line using the phone number at the bottom{/Literal}.</h5>
+									<div class="row">
+										<div class="input-field col s6 m4">
+											<input id="contactName" placeholder="{Literal}Contact Name{/Literal}" type="text" style="border-bottom: ridge;">
+										</div>
+										<div class="input-field col s6 m4">
+											<input id="contactInfo" placeholder="{Literal}Email or Phone{/Literal} #" type="text" style="border-bottom: ridge;">
+										</div>
+									</div>
+									<div class="row">
+										<div class="input-field col s12">
+											<input id="contactMessage" placeholder="{Literal}Brief Description of Issue{/Literal}" type="text" style="border-bottom: ridge;">
+										</div>
+									</div>
+									<div class="row" style="text-align: center">
+										<u>{Literal}Reach us at {/Literal} 888-265-4767</u>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat" onclick="closeSupportModal()">{Literal}Cancel{/Literal}</a>
+									<a href="javascript:void(0)" class="modal-close waves-effect waves-green right btn green" onclick="saveSupportModal()">{Literal}Send{/Literal}</a>
+								</div>
+							</div>
+							<!-- popup Timeout START-->
+							<div id="log-out-modal" class="modal" style="display: none;">
+								<div class="modal-content PopupTimout-content PopupMessage-content" style="color: black;">
+									<div class="popup-text"><i class="material-icons black-text" style="font-size: 75px; text-align: center;">warning</i></div>
+									<div class="popup-text" style="color: black; text-align: center;">{Literal}Your session will expire in{/Literal}</div>
+									<div class="popup-text" style="text-align: center; font-weight: bold;"><div id="timeoutSeconds" style="display: inline; font-weight: bold;">60</div> {Literal}seconds.{/Literal}</div> 
+									<div>
+										<input id="autoLogOutButton" name="cancel" type="button" class="btn btn-rounded" value="{Literal}Keep Working{/Literal}" style="float: right; margin-right: 15px;" onClick="closePopupTimeout();">
+									</div>
+								</div>
+							</div>
+							<!-- popup Timeout END-->
+
+							<div id="compact-repair-modal" class="modal" style="display: none; width: 55% !important; height: 28% !important;">
+								<div class="modal-content" style="color: black;">
+									<div class="popup-text" style="color: black; text-align: center;">{Literal}Would you like to Compact and Repair your database?{/Literal}</div>
+									<div class="popup-text" style="color: black; text-align: center;">{Literal}It is recommended that you do not process sales during this time{/Literal}</div>
+									<div style="margin-top: 25px;">
+										<input id="autoLogOutButton" name="cancel" type="button" class="btn btn-rounded green" value="{Literal}Compact/Repair{/Literal}" style="float: left; margin-right: 15px;" onClick="compactRepairDB();">
+										<input id="autoLogOutButton" name="cancel" type="button" class="modal-close btn-flat" value="{Literal}Cancel{/Literal}" style="float: right; margin-right: 15px;" onClick="closeCompactModal();">
+									</div>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!--<a class="btn-floating btn-small waves-effect waves-light ap-light-blue" id="round-collapse-btn"><i class="material-icons">menu</i></a>-->
+			<ul id="slide-out" class="sidenav sidenav-fixed ap-medium-blue darken-1" style="display: none;">
+				<li>
+					<ul class="collapsible collapsible-accordion">
+						<li>
+							<a href="#/home" class="collapsible-header white-text waves-effect waves-light sidenav-close">
+								<i class="material-icons white-text">home</i>{Literal}Home{/Literal}
+							</a>
+							<div class="collapsible-body"></div>
+						</li>
+						<li id="dashboardSideNav" style="display: none;">
+							<a href="#/dashboard" class="collapsible-header white-text waves-effect waves-light sidenav-close">
+								<i class="material-icons white-text">airplay</i>{Literal}Dashboard{/Literal}
+							</a>
+						</li>
+						<li>
+							<a href="#/reports" class="collapsible-header white-text waves-effect waves-light sidenav-close">
+								<i class="material-icons white-text">equalizer</i>{Literal}Reports{/Literal}
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" class="collapsible-header white-text waves-effect waves-light">
+								<i class="material-icons white-text">shopping_basket</i>{Literal}Items{/Literal}
+								<i id="navBarArrow" class="dropdown-icon material-icons right white-text" style="margin-right:0; padding-right: 95px;">keyboard_arrow_left</i>
+							</a>
+							<div class="collapsible-body">
+								<ul class="ap-medium-blue">
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/items">
+										<i></i>{Literal}Items{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/product-lines">
+										<i></i>{Literal}Product Lines{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/advanced-items">
+										<i></i>{Literal}Advanced Items{/Literal}</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="javascript:void(0)" class="collapsible-header white-text waves-effect waves-light">
+								<i class="material-icons white-text">people_outline</i>{Literal}Users{/Literal}
+								<i class="dropdown-icon material-icons right white-text" id="navBarArrow" style="margin-right:0; padding-right: 95px;">keyboard_arrow_left</i>
+							</a>
+							<div class="collapsible-body">
+								<ul class="ap-medium-blue">
+									<div id="EmployeesBlock1">
+										<li>
+											<a class="white-text waves-effect waves-light sidenav-close" href="#/breaks">
+												<i></i>{Literal}Add/Edit Breaks{/Literal}</a>
+										</li>
+										<li>
+											<a class="white-text waves-effect waves-light sidenav-close" href="#/pay-types">
+												<i></i>{Literal}Add/Edit Pay Types{/Literal}</a>
+										</li>
+									</div>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/employees">
+											<i></i>{Literal}Employees{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/user-groups">
+											<i></i>{Literal}POS User Groups{/Literal}</a>
+									</li>
+									<div id="EmployeesBlock2">
+										<li>
+											<a class="white-text waves-effect waves-light sidenav-close" href="#/pay-period">
+												<i></i>{Literal}View/Edit Pay Periods{/Literal}</a>
+										</li>
+									</div>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="javascript:void(0)" class="collapsible-header collapsible-header white-text waves-effect waves-light">
+								<i class="material-icons white-text">fullscreen</i>{Literal}Screens Settings{/Literal}
+								<i class="dropdown-icon material-icons right white-text" id="navBarArrow"  style="margin-right:0; padding-right: 25px;">keyboard_arrow_left</i>
+							</a>
+							<div class="collapsible-body">
+								<ul class="ap-medium-blue">
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/pos-keys">
+											<i></i>{Literal}POS Keys{/Literal}</a>
+									</li>
+									<li id="rooms-and-tables-menu-item">
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/rooms-tables">
+											<i></i>{Literal}Rooms and Tables{/Literal}</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="javascript:void(0)" class="collapsible-header collapsible-header white-text waves-effect waves-light">
+								<i class="material-icons white-text">settings</i>{Literal}General Settings{/Literal}
+								<i class="dropdown-icon material-icons right white-text" id="navBarArrow"  style="margin-right:0; padding-right: 25px;">keyboard_arrow_left</i>
+							</a>
+							<div class="collapsible-body">
+								<ul class="ap-medium-blue">
+									<li id="CompReasonsBlock">
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/comp-reasons">
+											<i></i>{Literal}Comp Reasons{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/customers">
+											<i></i>{Literal}Customer Account{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/snap-ebt">
+											<i></i>{Literal}SNAP EBT{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/tender-types">
+											<i></i>{Literal}Tender Types{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/tills">
+											<i></i>{Literal}Tills{/Literal}</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li id="AccountingIndexBlock">
+							<a href="javascript:void(0)" class="collapsible-header collapsible-header white-text waves-effect waves-light">
+								<i class="material-icons white-text">account_balance</i>{Literal}Accounting{/Literal}
+								<i class="dropdown-icon material-icons right white-text" id="navBarArrow"  style="margin-right:0; padding-right: 25px;">keyboard_arrow_left</i>
+							</a>
+							<div class="collapsible-body">
+								<ul class="ap-medium-blue">
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/import-export">
+											<i></i>{Literal}Import/Export{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/customer-terms">
+											<i></i>{Literal}Customer Account Terms{/Literal}</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<li>
+							<a href="javascript:void(0)" class="collapsible-header collapsible-header white-text waves-effect waves-light">
+								<i class="material-icons white-text">tune</i>{Literal}Advanced Settings{/Literal}
+								<i class="dropdown-icon material-icons right white-text" id="navBarArrow"  style="margin-right:0; padding-right: 25px;">keyboard_arrow_left</i>
+							</a>
+							<div class="collapsible-body">
+								<ul class="ap-medium-blue">
+									<div id="TaxBlock1">
+										<li>
+											<a class="white-text waves-effect waves-light sidenav-close" href="#/alternative-taxes">
+												<i></i>{Literal}Alternative Taxes{/Literal}</a>
+										</li>
+									</div>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/backup-restore">
+											<i></i>{Literal}Backup / Restore{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/card-setup">
+											<i></i>{Literal}Cards{/Literal} &amp; {Literal}Merchant Setup{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/clear-data">
+											<i></i>{Literal}Clear Data{/Literal}</a>
+									</li>
+									<li id="compactBlock">
+										<a class="white-text waves-effect waves-light sidenav-close" href="javascript:void(0)" onClick="showCompactRepair();">
+											<i></i>{Literal}Compact Repair DB{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/company-info">
+											<i></i>{Literal}Company Information{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/deli-scale">
+											<i></i>{Literal}Deli Scales{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/e-conduit">
+											<i></i>{Literal}EConduit Terminal Setup{/Literal}</a>
+									</li>
+									<li id="integrationsBlock">
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/integrations">
+											<i></i>{Literal}Integrations{/Literal}</a>
+									</li>
+									<li>
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/receipt-settings">
+											<i></i>{Literal}Receipt Printing{/Literal}</a>
+									</li>
+									<div id="TaxBlock2">
+										<li>
+											<a class="white-text waves-effect waves-light sidenav-close" href="#/sales-taxes">
+												<i></i>{Literal}Sales Tax{/Literal}</a>
+										</li>
+									</div>
+									<li id="VatTaxBlock">
+										<a class="white-text waves-effect waves-light sidenav-close" href="#/taxes">
+											<i></i>{Literal}VAT Taxes{/Literal}</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<main id="main-tag" class="main">
+				
+			</main>
+		</div>
+		<div class="main-content"></div>
+        <script>
+            var OverlayTimeout = document.getElementById('OverlayTimeout');
+            function openPopupTimeout()
+            {
+                $('#log-out-modal').show();
+            }
+
+            function closePopupTimeout(confirmSubmit)
+            {
+                $('#log-out-modal').hide();
+            }
+            
+            var SESSION_TIMEOUT = 1000; 
+            var timeoutCounter = 0;
+            var sessionTimer = setInterval(checkSessionTime, 1000);
+
+            function checkSessionTime() 
+            {
+                timeoutCounter++;
+                if (timeoutCounter >= (SESSION_TIMEOUT-60))
+                {
+                    openPopupTimeout();
+                    $('#timeoutSeconds').html((SESSION_TIMEOUT-timeoutCounter));
+                }
+                
+                if (timeoutCounter >= SESSION_TIMEOUT) 
+                {
+                    clearTimeout(sessionTimer);
+                    window.location.href = "#/log-in";
+                    location.reload();
+                }
+            }
+
+            document.onclick = function() {
+                timeoutCounter = 0;
+            };
+
+            document.onkeypress = function() {
+                timeoutCounter = 0;
+            };
+            function openSupportModal() {
+				var supportModal = $('#support-modal').modal();
+        		supportModal.modal('open');
+            }
+    
+            function openMessageModal() {
+                alert('{Literal}This option is not yet implemented{/Literal}');
+            }
+
+            function closeSupportModal () {
+                $('#support-modal').hide();
+			}
+			
+			function showCompactRepair () {
+
+				var compactModal = $('#compact-repair-modal').modal();
+        		compactModal.modal('open');
+			}
+
+			function closeCompactModal () {
+				$('#compact-repair-modal').hide();
+			}
+    
+            function saveSupportModal () {
+                var contactName = document.getElementById("contactName").value;
+                var contactInfo = document.getElementById("contactInfo").value;
+                var contactMessage = document.getElementById("contactMessage").value;
+                var sessionToken = this.getCookie();
+                if (contactName == '' || contactInfo == '' || contactMessage == '' ) {
+                   alert('{Literal}All fields are required{/Literal}');
+                }
+                else {
+                    var updatedModel = {
+                        contactName: contactName,
+                        contactInfo: contactInfo,
+                        contactMessage: contactMessage
+                    }
+                    $.ajax({
+                        url: '/data/send-email',
+                        data: {
+                            contactName: (contactName),
+                            contactInfo: (contactInfo),
+                            contactMessage: (contactMessage),
+                            token: sessionToken
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        
+                        success: function (data) {
+                            alert('{Literal}Email sent successfully{/Literal}.');
+                            $('#support-modal').hide();
+                        },
+    
+                        error: function (e) {
+                            alert('{Literal}There was a problem sending email{/Literal}.');
+                        }
+                    });
+                }
+            }
+    
+            function getCookie () {
+                var nameEQ = "sessionCookie" + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+            }
+
+            var goFS = document.getElementById("goFS");
+            
+            goFS.addEventListener("click", function() {
+                toggleFullScreen();
+            }, false);
+
+            function toggleFullScreen() {
+                var doc = window.document;
+                var docEl = doc.documentElement;
+
+                var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+                var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+                if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+                    requestFullScreen.call(docEl);
+                }
+                else {
+                    cancelFullScreen.call(doc);
+                }
+			}
+			
+			function compactRepairDB () {
+				var sessionToken = this.getCookie();
+				$.ajax({
+					url: '/data/compact-repair-db',
+					data: {
+						token: sessionToken
+					},
+					dataType: 'json',
+					type: 'POST',
+
+					success: function (data) {
+						M.toast({ html: '{Literal}Succefully Compacted and Restored DB{/Literal}' });
+						$('#compact-repair-modal').hide();
+					},
+
+					error: function (e) {
+						if (e.status == 523) {
+							window.location.href = "#/log-in";
+							location.reload();
+						}
+						else if (e.responseJSON.hasAccess == false) {
+							M.toast({ html: '{Literal}An error has occured{/Literal}' });
+						}
+					}
+				});
+
+			}
+        </script>
+    </body>
+</html>

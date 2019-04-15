@@ -1,0 +1,131 @@
+<Html {RightToLeft}>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+
+      -->
+    </style>
+
+    <script src="js/Chart.js"></script>
+
+    <script type="text/javascript">
+
+      var compChartData =
+      [
+        {CompChartData}
+      ];
+
+      function loadCharts()
+      {
+        if (document.getElementById("divChartData1").style.display == "inline-block")
+        {
+          var ctx = document.getElementById("comp-chart-area").getContext("2d");
+          window.myPie1 = new Chart(ctx).Pie(compChartData);
+        }
+      }
+
+    </script>
+    
+  </head>
+
+  <title>{Literal}AccuPOS Comps Report{/Literal}</title>
+  
+  <Body onLoad="loadCharts();">
+    <div align="center"><br>
+      <span class="size11"><strong>{Literal}Comps Report{/Literal}</strong></span><br>
+      <br>
+    </div>
+
+    <div align="center">
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+                {CompanyAddress1} {CompanyAddress2}<br>
+                {CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+            <div align="center"><span class="size11">        <span class="style4 style2"><strong>{Range}</strong></span> <br>
+                Report was run on</span><span class="size11"> {DateRun}</span>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <hr align="center" width="630" size="1" noshade>
+    </div>
+
+    <div align="center">
+      <center>
+        <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+
+          <tr valign="middle">
+            <td align="" width="200" height="40"><strong>{Literal}Reason{/Literal}</strong></td>
+            <td align="right" width="100"><strong>{Literal}Total{/Literal}</strong></td>
+            <td align="center" width="300"></td>
+          </tr>
+
+          <tr>
+            <td colspan="3">
+
+              <table width="300" border="0" align="" cellpadding="0" cellspacing="0">
+                {CompTotalsBlock}
+                <tr>
+                  <td align="" width="200" height="30">{CompTotalReason}</td>
+                  <td align="right" width="100">{CompTotalAmount}</td>
+                </tr>
+                {/CompTotalsBlock}
+              </table>
+
+            </td>
+          </tr>
+
+        </table>
+      </center>
+    </div>
+    
+    <hr align="center" width="630" size="1" noshade>
+    <div align="center"><span class="minitype">&nbsp;&nbsp;&nbsp;{Literal}Powered by AccuPOS Point Of Sale rev04{/Literal}</span></div>
+  </Body>
+</Html>
+
+{DateFormat}yyyy-MM-dd HH:mm{/DateFormat}
+{CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+{PriceFormat}#####0.0000;-#####0.0000{/PriceFormat}
+{QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+{Errors}

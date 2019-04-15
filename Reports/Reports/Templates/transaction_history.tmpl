@@ -1,0 +1,467 @@
+{HeaderBlock}
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center 
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+      -->
+    </style>
+
+		<title>{Literal}Transaction History{/Literal}</title>
+		
+		<script type="text/javascript">
+		
+			var showItemCode = false;
+			
+			function showHideItemCode()
+			{
+				var itemCodes = document.getElementsByClassName('itemCodeDisplay')
+				if (!showItemCode)
+				{
+					showItemCode = true;
+					for (var i = 0; i < itemCodes.length; i ++) 
+					{
+						itemCodes[i].style.visibility = 'visible';
+					}
+				}
+				else
+				{
+					showItemCode = false;
+					for (var i = 0; i < itemCodes.length; i ++) 
+					{
+						itemCodes[i].style.visibility = 'hidden';
+					}
+				}
+			}
+		
+		</script>
+		
+		
+  </Head>
+		
+<Body>
+<div align="center"><br>
+<span class="size11"><strong> {Literal}AccuPOS Transaction History{/Literal}</strong></span><br>
+  <br>
+</div>
+<div align="center">
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+{CompanyAddress1} {CompanyAddress2}<br>
+{CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span></div></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><div align="center"><span class="size11"><strong>{Range}</strong> <br>
+        {Literal}Report was run on{/Literal}</span><span class="size11"> {DateRun}</span></div></td>
+    </tr>
+  </table>
+	<br>
+</div>
+	
+<div align="center">
+	<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+		<tr  class="size11">
+			<td width="66">Color Key:</td>
+			<td width="108" align="center" style="color: #009900"><strong>Below Retail</strong></td>
+			<td width="62" align="center" style="color: #FF0000"><strong>Void</strong></td>
+			<td width="111" align="center" style="color: #0000FF"><strong>Over Retail</strong></td>
+			<td width="55" align="center" style="color: #0000FF">&nbsp;</td>
+			<td width="160" align="center" style="color: #0000FF"><a href="javascript:void(0);" onclick="showHideItemCode();">Show / Hide Item Codes</a></td>
+		</tr>
+			
+			<tr>
+				<td colspan="6">
+					<hr width="630" size="1" align="center">
+					<hr width="630" size="1" align="center">
+				</td>
+			</tr>
+		
+	</table>
+	<br>
+</div>
+
+{/HeaderBlock}
+
+{TransactionBlock}
+<div align="center">
+	<div align="center">
+		<table width="661" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="95" valign="top" class="size11"><strong>{Literal}Trans:{/Literal} </strong>{TransactionNumber}</td>
+				<td width="105" valign="top" class="size11"><strong>{Literal}Invoice:{/Literal} </strong>{InvoiceNumber}</td>
+				<td width="75" valign="top" class="size11"><strong>{Literal}Till:{/Literal} </strong>{Till}</td>
+				<td width="105" valign="top" class="size11"><strong>{Literal}Sequence:{/Literal} </strong>{Sequence}</td>
+				<td width="155" valign="top" class="size11"><strong>{Literal}Date:{/Literal} </strong> {DateInvoiced}</td>
+				<td width="118" valign="top" class="size11"><strong>{Literal}Customer:{/Literal} </strong>{CustomerCode}</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div align="center">
+		<table width="661" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="6" style="height: 8px;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="114" valign="top" class="size11" align="left" ><strong>{Literal}Description{/Literal}</strong></td>
+				<td width="80" valign="top" class="size11" align="right"><strong>{Literal}Quantity{/Literal}</strong></td>
+				<td width="80" valign="top" class="size11" align="center" ><strong>{Literal}Price{/Literal}</strong></td>
+				<td width="80" valign="top" class="size11" align="center" ><strong>{Literal}Sub-Total{/Literal}</strong></td>
+				<td width="80" valign="top" class="size11" align="center" ><strong>{Literal}Tax{/Literal}</strong></td>
+				<td width="60" valign="top" class="size11" align="center" ><strong>{Literal}User{/Literal}</strong></td>
+			</tr>
+			
+			{LineItemsBlock}
+				<tr  {ExtentionColor} >
+					<td align="left" class="size11">{ItemDescription}</td>
+					<td align="right" class="size11">{Quantity}</td>
+					<td valign="top" class="size11" align="center">{Price}</td>
+					<td valign="top" class="size11" align="center">{Extention}</td>
+					<td valign="top" class="size11" align="center">{Taxable}</td>
+					<td valign="top" class="size11" align="center">{User}</td>
+				</tr>
+				<tr {ExtentionColor}>
+					<td colspan="6" valign="top" class="itemCodeDisplay" style="visibility: hidden;"><font size="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Item Code: </strong>{ItemCode}</font></td>
+				</tr> 
+			{/LineItemsBlock}
+			
+		</table>
+	</div>
+	
+	<div align="center">
+		<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="2" style="height: 2px;">&nbsp;</td>
+			</tr>
+
+			{TenderingBlock}
+				<tr>
+					<td valign="top" class="size11"><strong>{Literal}Tender Type{/Literal} </strong> {TenderDescription}</td>
+					<td valign="top" class="size11"><strong>{Literal}Tender Amount{/Literal}</strong> {TenderAmount}</td>
+				</tr>
+
+				{CardApprovalBlock}
+				<tr>
+					<td valign="top" class="size11"><strong>{Literal}Approval{/Literal}</strong> {TenderApproval}</td>
+					<td valign="top" class="size11"><strong>{Literal}Ref{/Literal}</strong> {TenderReference}</td>
+				</tr>
+				{/CardApprovalBlock}
+					
+				{ForeignCurrencyBlock}
+				<tr>
+					<td colspan="2" valign="top" class="size11"><strong>{CurrencyInfoLabel}</strong>&nbsp;{ForeignCurrencyInfo}</td>
+				</tr>
+				{/ForeignCurrencyBlock}
+			{/TenderingBlock}
+		</table>
+	</div>
+	
+	<div align="center">
+		<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="4 style="height: 8px;">&nbsp;</td>
+			</tr>
+			<tr {TransactionColor}>
+				<td width="165" valign="top" class="size11"><strong>{Literal}Taxable Total{/Literal} </strong>{TaxableTotal}</td>
+				<td width="150" valign="top" class="size11"><strong>{Literal}Non-Tax Total{/Literal}</strong> {NontaxableTotal}</td>
+				<td width="165" valign="top" class="size11"><strong>{Literal}Tax Total{/Literal}</strong> {TaxTotal}</td>
+				<td width="150" valign="top" class="size11"><strong>{Literal}Trans Total{/Literal} </strong>{TransactionTotal}</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<hr width="630" size="1" align="center">
+				</td>
+			</tr>
+		</table
+	</div>
+</div>
+{/TransactionBlock}
+
+
+{TransactionBlockUK}
+<div align="center">
+	<div align="center">
+		<table width="661" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="95" valign="top" class="size11"><strong>{Literal}Trans:{/Literal} </strong>{TransactionNumber}</td>
+				<td width="105" valign="top" class="size11"><strong>{Literal}Invoice:{/Literal} </strong>{InvoiceNumber}</td>
+				<td width="75" valign="top" class="size11"><strong>{Literal}Till:{/Literal} </strong>{Till}</td>
+				<td width="105" valign="top" class="size11"><strong>{Literal}Sequence:{/Literal} </strong>{Sequence}</td>
+				<td width="155" valign="top" class="size11"><strong>{Literal}Date:{/Literal} </strong> {DateInvoiced}</td>
+				<td width="118" valign="top" class="size11"><strong>{Literal}Customer:{/Literal} </strong>{CustomerCode}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div align="center">
+		<table width="661" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="8" style="height: 8px;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="149" valign="top" class="size11" ><strong>{Literal}Description{/Literal}</strong></td>
+				<td width="62" valign="top" class="size11" align="center"><strong>{Literal}Quantity{/Literal}</strong></td>
+				<td width="45" valign="top" class="size11" align="center"><strong>{Literal}Net Price{/Literal}</strong></td>
+				<td width="67" valign="top" class="size11" align="center"><strong>{Literal}Sub-Total{/Literal}</strong></td>
+				<td width="43" valign="top" class="size11" align="center"><strong>{Literal}User{/Literal}</strong></td>
+				<td width="80" valign="top" class="size11" align="center"><strong>{Literal}Gross Price{/Literal}</strong></td>
+				<td width="65" valign="top" class="size11" align="center"><strong>{Literal}VAT Code{/Literal}</strong></td>
+				<td width="80" valign="top" class="size11" align="center"><strong>{Literal}VAT{/Literal}</strong></td>
+			</tr>
+			
+			{LineItemsBlock}
+				<tr  {ExtentionColor} >
+					<td valign="top" class="size11"><div>{ItemDescription}</div></td>
+					<td valign="top" class="size11"><div align="center">{Quantity}</div></td>
+					<td valign="top" class="size11"><div align="center">{Price}</div></td>
+					<td valign="top" class="size11"><div align="center">{Extention}</div></td>
+					<td valign="top" class="size11"><div align="center">{User}</div></td>
+					<td valign="top" class="size11"><div align="center">{VatGross}</div></td>
+					<td valign="top" class="size11"><div align="center">{TaxCode}</div></td>
+					<td valign="top" class="size11"><div align="center">{VatTax1}</div></td>
+				</tr>
+				
+				<tr {ExtentionColor}>
+					<td colspan="8" valign="top" class="itemCodeDisplay" style="visibility: hidden;"><font size="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Item Code: </strong>{ItemCode}</font></td>
+				</tr> 
+			{/LineItemsBlock}
+			
+		</table>
+	</div>
+	
+  <div align="center">
+		<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="2" style="height: 2px;">&nbsp;</td>
+			</tr>
+			
+			{TenderingBlock}
+				<tr>
+					<td width="50%" valign="top" class="size11"><strong>{Literal}Tender Type{/Literal} </strong> {TenderDescription}</td>
+					<td width="50%" valign="top" class="size11"><strong>{Literal}Tender Amount{/Literal}</strong> {TenderAmount}</td>
+				</tr>
+
+				{CardApprovalBlock}
+				<tr>
+					<td width="50%" valign="top" class="size11"><strong>{Literal}Approval{/Literal}</strong> {TenderApproval}</td>
+					<td width="50%" valign="top" class="size11"><strong>{Literal}Ref{/Literal}</strong> {TenderReference}</td>
+				</tr>
+				{/CardApprovalBlock}
+					
+				{ForeignCurrencyBlock}
+				<tr>
+					<td colspan="2" width="100%" valign="top" class="size11"><strong>{CurrencyInfoLabel}</strong>&nbsp;{ForeignCurrencyInfo}</td>
+				</tr>
+				{/ForeignCurrencyBlock}
+			{/TenderingBlock}
+		</table>
+	</div>
+	
+  <div align="center">
+		<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="3" style="height: 8px;">&nbsp;</td>
+			</tr>
+			<tr {TransactionColor}>
+				<td width="200" valign="top" class="size11"><strong>{Literal}Items Total{/Literal} </strong>{TaxableTotal}</td>
+				<td width="200" valign="top" class="size11"><strong>{Literal}VAT Total{/Literal}</strong> {Vat1Total}</td>
+				<td width="200" valign="top" class="size11"><strong>{Literal}Trans Total{/Literal}</strong> {TransactionTotal}</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<hr width="630" size="1" align="center">
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+</div>
+{/TransactionBlockUK}
+
+{TransactionBlockCA}
+<div align="center">
+	<div align="center">
+		<table width="661" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="120" valign="top" class="size11"><strong>{Literal}Trans:{/Literal} </strong>{TransactionNumber}</td>
+				<td width="100" valign="top" class="size11"><strong>{Literal}Invoice:{/Literal} </strong>{InvoiceNumber}</td>
+				<td width="75" valign="top" class="size11"><strong>{Literal}Till:{/Literal} </strong>{Till}</td>
+				<td width="100" valign="top" class="size11"><strong>{Literal}Sequence:{/Literal} </strong>{Sequence}</td>
+				<td width="150" valign="top" class="size11"><strong>{Literal}Date:{/Literal} </strong> {DateInvoiced}</td>
+				<td width="118" valign="top" class="size11"><strong>{Literal}Customer:{/Literal} </strong>{CustomerCode}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div align="center">
+		<table width="661" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="8" style="height: 8px;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="159" valign="top" class="size11" align="left"><strong>{Literal}Description{/Literal}</strong></td>
+				<td width="61" valign="top" class="size11" align="center"><strong>{Literal}Quantity{/Literal}</strong></td>
+				<td width="45" valign="top" class="size11" align="center"><strong>{Literal}Price{/Literal}</strong></td>
+				<td width="66" valign="top" class="size11" align="center"><strong>{Literal}Sub-Total{/Literal}</strong></td>
+				<td width="43" valign="top" class="size11" align="center"><strong>{Literal}User{/Literal}</strong></td>
+				<td width="80" valign="top" class="size11" align="center"><strong>{Literal}VAT 1{/Literal}</strong></td>
+				<td width="63" valign="top" class="size11" align="center"><strong>{Literal}VAT 2{/Literal}</strong></td>
+				<td width="64" valign="top" class="size11" align="center"><strong>{Literal}VAT Code{/Literal}</strong></td>
+			</tr>
+			{LineItemsBlock}
+				<tr  {ExtentionColor} >
+					<td valign="top" class="size11"><div align="left">{ItemDescription}</div></td>
+					<td valign="top" class="size11"><div align="center">{Quantity}</div></td>
+					<td valign="top" class="size11"><div align="center">{Price}</div></td>
+					<td valign="top" class="size11"><div align="center">{Extention}</div></td>
+					<td valign="top" class="size11"><div align="center">{User}</div></td>
+					<td valign="top" class="size11" align="center">{VatTax1}</td>
+					<td valign="top" class="size11" align="center">{VatTax2}</td>
+					<td valign="top" class="size11" align="center">{TaxCode}</td>
+				</tr>
+				
+				<tr {ExtentionColor}>
+					<td colspan="8" valign="top" class="itemCodeDisplay" style="visibility: hidden;"><font size="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Item Code: </strong>{ItemCode}</font></td>
+				</tr> 
+			{/LineItemsBlock}
+		</table>
+	</div>
+
+	<div align="center">
+		<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="2" style="height: 2px;">&nbsp;</td>
+			</tr>
+			
+			{TenderingBlock}
+				<tr>
+					<td valign="top" class="size11">
+						<div align="center">
+							<strong>{Literal}Tender Type{/Literal} </strong> {TenderDescription}
+						</div>
+					</td>
+					<td valign="top" class="size11">
+						<div align="center">
+							<strong>{Literal}Tender Amount{/Literal}</strong> {TenderAmount}
+						</div>
+					</td>
+				</tr>
+
+				{CardApprovalBlock}
+				<tr>
+					<td valign="top" class="size11"><strong>{Literal}Approval{/Literal}</strong> {TenderApproval}</td>
+					<td valign="top" class="size11"><strong>{Literal}Ref{/Literal}</strong> {TenderReference}</td>
+				</tr>
+				{/CardApprovalBlock}
+					
+				{ForeignCurrencyBlock}
+				<tr>
+					<td colspan="2" valign="top" class="size11"><strong>{CurrencyInfoLabel}</strong>&nbsp;{ForeignCurrencyInfo}</td>
+				</tr>
+				{/ForeignCurrencyBlock}
+			{/TenderingBlock} 
+		</table>
+	</div>
+
+	<div align="center">
+		<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="5" style="height: 8px;">&nbsp;</td>
+			</tr>
+			<tr {TransactionColor}>
+				<td width="140" valign="top" class="size11"><strong>{Literal}Taxable Total{/Literal} </strong>{TaxableTotal}</td>
+				<td width="140" valign="top" class="size11"><strong>{Literal}Non-Tax Total{/Literal} </strong>{NontaxableTotal}</td>
+				<td width="133" valign="top" class="size11"><strong>{Literal}VAT 1 Total{/Literal}</strong> {Vat1Total}</td>
+				<td width="124" valign="top" class="size11"><strong>{Literal}VAT 2 Total{/Literal}</strong> {Vat2Total}</td>
+				<td width="124" valign="top" class="size11"><strong>{Literal}Trans Total{/Literal} </strong>{TransactionTotal}</td>
+			</tr>
+			<tr>
+				<td colspan="5">
+					<hr width="630" size="1" align="center">
+				</td>
+			</tr>
+		</table>
+	</div>
+		
+</div>
+{/TransactionBlockCA}
+
+
+{FooterBlock}
+	<div align="center">
+    <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="4">
+					<hr width="630" size="1" align="center">
+				</td>
+			</tr>
+      <tr>
+        <td><span class="size11"><strong>{Literal}Taxable Total{/Literal}</strong></span></td>
+        <td><span class="size11"><strong>{Literal}Nontaxable Total{/Literal}</strong></span></td>
+        <td><span class="size11"><strong>{Literal}Tax Total{/Literal}</strong></span></td>
+        <td><span class="size11"><strong>{Literal}Total{/Literal}</strong></span></td>
+      </tr>
+      <tr>
+        <td><span class="size11">{ReportTaxableTotal}</span></td>
+        <td><span class="size11">{ReportNontaxableTotal}</span></td>
+        <td><span class="size11">{ReportTaxTotal}</span></td>
+        <td><span class="size11">{ReportTotal}</span></td>
+      </tr>
+			<tr>
+				<td colspan="4">
+					<hr width="630" size="1" align="center">
+				</td>
+			</tr>
+    </table>
+	</div>
+	
+	<div align="center"><span class="minitype">&nbsp;&nbsp;&nbsp;{Literal}Powered by AccuPOS Point Of Sale rev04{/Literal}</span></div>
+</Body>
+</Html>
+
+{DateFormat}MM-dd-yy HH:mm{/DateFormat}
+{CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+{PriceFormat}###0.00;-###0.00{/PriceFormat}
+{QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+{Errors}
+{TaxableText}Yes{/TaxableText}
+{NontaxableText}No{/NontaxableText}
+
+{NegativeColor}style="color: #FF0000"{/NegativeColor}
+{PositiveColor}style="color: #000000"{/PositiveColor}
+{DiscountColor}style="color: #00FF00"{/DiscountColor}
+{IncreaseColor}style="color: #0000FF"{/IncreaseColor}
+
+{/FooterBlock}

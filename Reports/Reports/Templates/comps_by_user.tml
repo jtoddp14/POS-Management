@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+
+  {ReportStylesBlock}
+
+  <Worksheet ss:Name="Report">
+    <Table>
+
+      <Column ss:AutoFitWidth="0" ss:Width="25"/>
+      <Column ss:AutoFitWidth="0" ss:Width="225"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="25"/>
+
+      <Row>
+        <Cell ss:StyleID="reportTitle" ss:MergeAcross="4">
+          <Data ss:Type="String">{Literal}AccuPOS Comps by User Report{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="4">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="4">
+          <Data ss:Type="String">{CompanyName}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="4">
+          <Data ss:Type="String">{CompanyAddress1} {CompanyAddress2}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="4">
+          <Data ss:Type="String">{CompanyCity}, {CompanyState} {CompanyZip}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="4">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="4">
+          <Data ss:Type="String">{Range}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="4">
+          <Data ss:Type="String">{Literal}Report was run on{/Literal} {DateRun}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="4">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      {ServerBlock}
+        {CompReasonBlock}
+          <Row>
+            <Cell ss:Index="2">
+              <Data ss:Type="String">{Literal}Total for{/Literal} {CompReason}:</Data>
+            </Cell>
+            <Cell ss:StyleID="currencyRight" ss:Index="4">
+              <Data ss:Type="Number">{CompReasonTotal}</Data>
+            </Cell>
+          </Row>
+        {/CompReasonBlock}
+
+        <Row>
+          <Cell ss:StyleID="cellRightBold" ss:MergeAcross="2">
+            <Data ss:Type="String">{Literal}Server:{/Literal} {Server}</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRightBold">
+            <Data ss:Type="Number">{ServerTotal}</Data>
+          </Cell>
+        </Row>
+
+        <Row>
+          <Cell ss:StyleID="topBorder" ss:MergeAcross="4">
+            <Data ss:Type="String"></Data>
+          </Cell>
+        </Row>
+
+      {/ServerBlock}
+
+    </Table>
+
+    {DateFormat}MM-dd-yy HH:mm{/DateFormat}
+    {CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+    {PriceFormat}###0.00;-###0.00{/PriceFormat}
+    {QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}
+    {Errors}
+
+    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+      <PageSetup>
+        <Layout x:Orientation="Portrait"/>
+      </PageSetup>
+      <FitToPage/>
+      <Print>
+        <FitHeight>0</FitHeight>
+      </Print>
+    </WorksheetOptions>
+
+  </Worksheet>
+</Workbook>

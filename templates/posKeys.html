@@ -1,0 +1,1148 @@
+<div id="pos-key-wrapper" class="row" style="padding-top: 10px;">
+    <form>
+        <div class="input-field col s4 offset-m2">
+            <select id ="key-set-selector">
+                <option value="main">{Literal}MAIN{/Literal}</option> 
+                <% _.each(keySet, function(keySet) { %>
+                <option value="<%= keySet %>"><%= keySet %></option>    
+                <% }); %>
+            </select>
+            <label>Key Set</label>           
+        </div>
+        <div class="input-field col s4">
+            <select id ="page-selector">
+                <option value="" disabled>Select a Page</option>
+                <% var count = 0 %>
+                <% _.each(pages, function(page) { %>
+                    <% if (page == 'MAIN') { %> 
+                        <option value="<%= page %>" selected><%= page %></option>   
+                    <% } %> 
+                    <% if (count != 0) { %> 
+                        <option value="<%= page %>"><%= page %></option>   
+                    <% } %> 
+                    <% count++ %>
+                <% }); %>
+            </select>
+            <label>{Literal}Keys Page{/Literal}</label>
+        </div>
+        <div class="col s2">
+            <div id="pos-key-save-button" class="save" style="padding-top: 20px; float: left;">
+                <a href="javascript:void(0)" class="btn-large waves-effect waves-light green save-keys-button">{Literal}Save{/Literal}</a>
+            </div>
+        </div>
+    </form>
+    <div class="col s12 m2" style="margin: 0px;">
+
+    </div>
+    <div class="col s12 m8" style="margin: 0px; padding: 0px;">
+        <div id="grid-stack-container">
+            <div class="grid-stack" data-gs-width="7" data-gs-height="11">
+        
+            </div>
+        </div>
+    </div>   
+</div>
+
+<div class="floating-menu z-depth-4">
+    <div class="edited-button-name truncate"></div>
+    <a class="btn waves-effect waves-light btn-small blue edit-modal-trigger" href="javascript:void(0)">{Literal}Edit{/Literal}</a>
+    <a class="btn waves-effect waves-light btn-small red delete-modal-trigger" href="javascript:void(0)">{Literal}Delete{/Literal}</a>
+</div>
+
+<div id="pos-key-edit-modal" class="modal edit-modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;"> 
+            <h4>{Literal}Edit Menu Key{/Literal}</h4>
+        </div>
+
+        <div id="pageForm" style="display: none;">
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s6">
+                        <div class="input-field">
+                            <select id="page-form-selector" name="page-form-selector">
+                                <option value="" selected>Select a Page</option>
+                                <% _.each(pages, function(page) { %>
+                                    <option value="<%= page %>"><%= page %></option>   
+                                <% }); %>
+                            </select>
+                            <label >{Literal}Select Page{/Literal}</label>
+                        </div>
+                    </div>
+
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="pageButtonText" type="text"  value="" maxlength="50"></input>
+                            <label class="active" for="pageButtonText">{Literal}Button Text{/Literal}</label>
+                        </div>
+                    </div>
+
+                    <div class="col s1" style="display: none;">
+                        <div class="input-field">
+                            <input id="pageId" type="text"  value=""></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <form action="#">   
+                        <p>
+                            <label style="padding-left: 40px;">
+                                <input name="pageRadio" id="pageBlue" type="radio"/>
+                                <span><span class="color-box" style="background-color: #97CAEB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="pageRadio" id="pageGray" type="radio"/>
+                                <span><span class="color-box" style="background-color: #E2E3E2;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="pageRadio" id="pageGreen" type="radio"/>
+                                <span><span class="color-box" style="background-color: #A4D391;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="pageRadio" id="pageOrange" type="radio"/>
+                                <span><span class="color-box" style="background-color: #252525;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="pageRadio" id="pagePink" type="radio"/>
+                                <span><span class="color-box" style="background-color: #DEBEDB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="pageRadio" id="pagePurple" type="radio"/>
+                                <span><span class="color-box" style="background-color: #B4B3DF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="pageRadio" id="pageRed" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F1AFAF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="pageRadio" id="pageTeal" type="radio"/>
+                                <span><span class="color-box" style="background-color: #4ABD98;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="pageRadio" id="pageYellow" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F6F3B0;"></span></span>
+                            </label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="itemForm" style="display: none;">
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="itemButtonText" type="text"  value="" maxlength="50"></input>
+                            <label class="active" for="itemButtonText">{Literal}Button Text{/Literal}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s3">
+                        <label>
+                            <input type="checkbox" class="cr">
+                            <span>{Literal}This Button is Final{/Literal}</span>
+                        </label>
+                    </div>
+                    <div class="col s3">
+                        <label>
+                            <input type="checkbox" class="noRepeat" >
+                            <span>{Literal}No Repeat{/Literal}</span>
+                        </label>
+                    </div>
+
+                    <div class="col s1" style="display: none;">
+                        <div class="input-field">
+                            <input id="itemId" type="text"  value=""></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <form action="#">   
+                        <p>
+                            <label style="padding-left: 40px;">
+                                <input name="itemRadio" id="itemBlue" type="radio"/>
+                                <span><span class="color-box" style="background-color: #97CAEB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemRadio" id="itemGray" type="radio"/>
+                                <span><span class="color-box" style="background-color: #E2E3E2;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemRadio" id="itemGreen" type="radio"/>
+                                <span><span class="color-box" style="background-color: #A4D391;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemRadio" id="itemOrange" type="radio"/>
+                                <span><span class="color-box" style="background-color: #252525;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemRadio" id="itemPink" type="radio"/>
+                                <span><span class="color-box" style="background-color: #DEBEDB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemRadio" id="itemPurple" type="radio"/>
+                                <span><span class="color-box" style="background-color: #B4B3DF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemRadio" id="itemRed" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F1AFAF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemRadio" id="itemTeal" type="radio"/>
+                                <span><span class="color-box" style="background-color: #4ABD98;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemRadio" id="itemYellow" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F6F3B0;"></span></span>
+                            </label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="labelForm" style="display: none;">
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="labelButtonText" type="text"  value="" maxlength="50"></input>
+                            <label class="active" for="labelButtonText">{Literal}Button Label{/Literal}</label>
+                        </div>
+                    </div>
+
+                    <div class="col s1" style="display: none;">
+                        <div class="input-field">
+                            <input id="labelId" type="text"  value=""></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <form action="#">   
+                        <p>
+                            <label style="padding-left: 40px;">
+                                <input name="labelRadio" id="labelBlue" type="radio"/>
+                                <span><span class="color-box" style="background-color: #97CAEB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="labelRadio" id="labelGray" type="radio"/>
+                                <span><span class="color-box" style="background-color: #E2E3E2;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="labelRadio" id="labelGreen" type="radio"/>
+                                <span><span class="color-box" style="background-color: #A4D391;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="labelRadio" id="labelOrange" type="radio"/>
+                                <span><span class="color-box" style="background-color: #252525;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="labelRadio" id="labelPink" type="radio"/>
+                                <span><span class="color-box" style="background-color: #DEBEDB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="labelRadio" id="labelPurple" type="radio"/>
+                                <span><span class="color-box" style="background-color: #B4B3DF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="labelRadio" id="labelRed" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F1AFAF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="labelRadio" id="labelTeal" type="radio"/>
+                                <span><span class="color-box" style="background-color: #4ABD98;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="labelRadio" id="labelYellow" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F6F3B0;"></span></span>
+                            </label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="priceLevelForm" style="display: none;">
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s6">
+                        <div class="input-field">
+                            <select id ="price-level-selector">
+                                <option value="" selected>Select Price Level</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <label>{Literal}Select Price Level{/Literal}</label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="priceLevelButtonText" type="text"  value="" maxlength="50"></input>
+                            <label class="active" for="priceLevelButtonText">{Literal}Button Text{/Literal}</label>
+                        </div>
+                    </div>
+                    <div class="col s1" style="display: none;">
+                        <div class="input-field">
+                            <input id="priceLevelId" type="text"  value=""></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <form action="#">   
+                        <p>
+                            <label style="padding-left: 40px;">
+                                <input name="priceLevelRadio" id="priceLevelBlue" type="radio"/>
+                                <span><span class="color-box" style="background-color: #97CAEB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="priceLevelRadio" id="priceLevelGray" type="radio"/>
+                                <span><span class="color-box" style="background-color: #E2E3E2;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="priceLevelRadio" id="priceLevelGreen" type="radio"/>
+                                <span><span class="color-box" style="background-color: #A4D391;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="priceLevelRadio" id="priceLevelOrange" type="radio"/>
+                                <span><span class="color-box" style="background-color: #252525;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="priceLevelRadio" id="priceLevelPink" type="radio"/>
+                                <span><span class="color-box" style="background-color: #DEBEDB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="priceLevelRadio" id="priceLevelPurple" type="radio"/>
+                                <span><span class="color-box" style="background-color: #B4B3DF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="priceLevelRadio" id="priceLevelRed" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F1AFAF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="priceLevelRadio" id="priceLevelTeal" type="radio"/>
+                                <span><span class="color-box" style="background-color: #4ABD98;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="priceLevelRadio" id="priceLevelYellow" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F6F3B0;"></span></span>
+                            </label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="percentForm" style="display: none;">
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="percentButtonText" type="text"  value="" maxlength="50"></input>
+                            <label class="active" for="percentButtonText">{Literal}Button Text{/Literal}</label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="discountPercent" type="number" class="validate" value="" max="100"></input>
+                            <label class="active" for="discountPercent">{Literal}Reprise Discount %{/Literal}</label>
+                            <span class="helper-text" data-error="{Literal}A number 0 - 100 must be selected{/Literal}" data-success=""></span>
+                        </div>
+                    </div>
+                    <div class="col s1" style="display: none;">
+                        <div class="input-field">
+                            <input id="discountPercentId" type="text"  value=""></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <form action="#">   
+                        <p>
+                            <label style="padding-left: 40px;">
+                                <input name="percentRadio" id="percentBlue" type="radio"/>
+                                <span><span class="color-box" style="background-color: #97CAEB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="percentRadio" id="percentGray" type="radio"/>
+                                <span><span class="color-box" style="background-color: #E2E3E2;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="percentRadio" id="percentGreen" type="radio"/>
+                                <span><span class="color-box" style="background-color: #A4D391;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="percentRadio" id="percentOrange" type="radio"/>
+                                <span><span class="color-box" style="background-color: #252525;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="percentRadio" id="percentPink" type="radio"/>
+                                <span><span class="color-box" style="background-color: #DEBEDB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="percentRadio" id="percentPurple" type="radio"/>
+                                <span><span class="color-box" style="background-color: #B4B3DF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="percentRadio" id="percentRed" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F1AFAF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="percentRadio" id="percentTeal" type="radio"/>
+                                <span><span class="color-box" style="background-color: #4ABD98;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="percentRadio" id="percentYellow" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F6F3B0;"></span></span>
+                            </label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="itemDiscountForm" style="display: none;">
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="itemDiscountText" type="text"  value="" maxlength="50"></input>
+                            <label class="active" for="itemDiscountText">{Literal}Button Text{/Literal}</label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="itemDiscount" type="number" class="validate" value="" max="100"></input>
+                            <label class="active" for="itemDiscount">{Literal}Item Discount %{/Literal}</label>
+                            <span class="helper-text" data-error="{Literal}A number 0 - 100 must be selected{/Literal}" data-success=""></span>
+                        </div>
+                    </div>
+                    <div class="col s1" style="display: none;">
+                        <div class="input-field">
+                            <input id="itemDiscountId" type="text"  value=""></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <form action="#">   
+                        <p>
+                            <label style="padding-left: 40px;">
+                                <input name="itemDiscountRadio" id="itemDiscountBlue" type="radio"/>
+                                <span><span class="color-box" style="background-color: #97CAEB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemDiscountRadio" id="itemDiscountGray" type="radio"/>
+                                <span><span class="color-box" style="background-color: #E2E3E2;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemDiscountRadio" id="itemDiscountGreen" type="radio"/>
+                                <span><span class="color-box" style="background-color: #A4D391;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemDiscountRadio" id="itemDiscountOrange" type="radio"/>
+                                <span><span class="color-box" style="background-color: #252525;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemDiscountRadio" id="itemDiscountPink" type="radio"/>
+                                <span><span class="color-box" style="background-color: #DEBEDB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemDiscountRadio" id="itemDiscountPurple" type="radio"/>
+                                <span><span class="color-box" style="background-color: #B4B3DF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemDiscountRadio" id="itemDiscountRed" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F1AFAF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemDiscountRadio" id="itemDiscountTeal" type="radio"/>
+                                <span><span class="color-box" style="background-color: #4ABD98;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="itemDiscountRadio" id="itemDiscountYellow" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F6F3B0;"></span></span>
+                            </label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="keysetForm" style="display: none;">
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s6">
+                        <div class="input-field">
+                            <select id ="key-set-form-selector">
+                                    <option value="" selected>Select a Keyset</option>
+                                <% _.each(keySet, function(keyset) { %>
+                                    <option value="<%= keyset %>"><%= keyset %></option>   
+                                <% }); %>
+                            </select>
+                            <label >{Literal}Select Keyset{/Literal}</label>
+                        </div>
+                    </div>
+
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="editKeysetText" type="text"  value="" maxlength="50"></input>
+                            <label class="active" for="editKeysetText">{Literal}Button Text{/Literal}</label>
+                        </div>
+                    </div>
+                    <div class="col s1" style="display: none;">
+                        <div class="input-field">
+                            <input id="keySetId" type="text"  value=""></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <form action="#">   
+                        <p>
+                            <label style="padding-left: 40px;">
+                                <input name="keysetRadio" id="keysetBlue" type="radio"/>
+                                <span><span class="color-box" style="background-color: #97CAEB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="keysetRadio" id="keysetGray" type="radio"/>
+                                <span><span class="color-box" style="background-color: #E2E3E2;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="keysetRadio" id="keysetGreen" type="radio"/>
+                                <span><span class="color-box" style="background-color: #A4D391;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="keysetRadio" id="keysetOrange" type="radio"/>
+                                <span><span class="color-box" style="background-color: #252525;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="keysetRadio" id="keysetPink" type="radio"/>
+                                <span><span class="color-box" style="background-color: #DEBEDB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="keysetRadio" id="keysetPurple" type="radio"/>
+                                <span><span class="color-box" style="background-color: #B4B3DF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="keysetRadio" id="keysetRed" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F1AFAF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="keysetRadio" id="keysetTeal" type="radio"/>
+                                <span><span class="color-box" style="background-color: #4ABD98;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="keysetRadio" id="keysetYellow" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F6F3B0;"></span></span>
+                            </label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="tareForm" style="display: none;">
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="editTareWeight" type="number"  value=""></input>
+                            <label class="active" for="editTareWeight">{Literal}Tare Weight{/Literal}</label>
+                        </div>
+                    </div>
+
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="editTareText" type="text"  value="" maxlength="50"></input>
+                            <label class="active" for="editTareText">{Literal}Button Text{/Literal}</label>
+                        </div>
+                    </div>
+
+                    <div class="col s1" style="display: none;">
+                        <div class="input-field">
+                            <input id="tareId" type="text"  value=""></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <form action="#">   
+                        <p>
+                            <label style="padding-left: 40px;">
+                                <input name="tareRadio" id="tareBlue" type="radio"/>
+                                <span><span class="color-box" style="background-color: #97CAEB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="tareRadio" id="tareGray" type="radio"/>
+                                <span><span class="color-box" style="background-color: #E2E3E2;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="tareRadio" id="tareGreen" type="radio"/>
+                                <span><span class="color-box" style="background-color: #A4D391;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="tareRadio" id="tareOrange" type="radio"/>
+                                <span><span class="color-box" style="background-color: #252525;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="tareRadio" id="tarePink" type="radio"/>
+                                <span><span class="color-box" style="background-color: #DEBEDB;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="tareRadio" id="tarePurple" type="radio"/>
+                                <span><span class="color-box" style="background-color: #B4B3DF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="tareRadio" id="tareRed" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F1AFAF;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="tareRadio" id="tareTeal" type="radio"/>
+                                <span><span class="color-box" style="background-color: #4ABD98;"></span></span>
+                            </label>
+                            <label style="padding-left: 40px;">
+                                <input name="tareRadio" id="tareYellow" type="radio"/>
+                                <span><span class="color-box" style="background-color: #F6F3B0;"></span></span>
+                            </label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect left waves-green btn green save-key-button">{Literal}Done{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect left waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div id="pos-key-delete-modal" class="modal delete-modal">
+    <div class="modal-content">
+        <h4>{Literal}Delete Menu Key{/Literal}</h4>
+        <p>{Literal}Are you sure that you would like to delete this key?{/Literal}</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+        <a href="javascript:void(0)" id="deleteKey" class="modal-close waves-effect waves-green btn red">{Literal}Delete{/Literal}</a>
+    </div>
+</div>
+
+<div id="menu-page-form-modal" class="modal modal-fixed-footer menu-page-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <h4>{Literal}Create New Menu Page{/Literal}</h4> 
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <div class="input-field">
+                    <input id="menuPageName" type="text" maxlength="10">
+                    <label class="active" for="menuPageName">{Literal}New Item Menu Page{/Literal}: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light red btn-flat cancel-menu-page-button">{Literal}Cancel{/Literal}</a>
+        <a href="javascript:void(0)" class="waves-effect waves-light green btn-flat save-menu-page-button">{Literal}Save{/Literal}</a>
+    </div>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large ap-blue">
+        <i class="large material-icons">format_line_spacing</i>
+    </a>
+    <ul>
+        <li><a id="editPageName" class="btn-floating" style="background-color: #4B9CD6"><i class="material-icons tooltipped" data-position="left" data-tooltip="{Literal}Edit Page Name{/Literal}">mode_edit</i></a></li>
+        <li><a id="addKeyButton" class="btn-floating addKeyButton" style="background-color: #A4D391"><i class="material-icons tooltipped"  data-position="left" data-tooltip="{Literal}Add Menu Key{/Literal}">add</i></a></li>
+    </ul>
+</div>
+    
+<div id="delete-page-modal" class="modal modal-fixed-footer" style="z-index: 100000;">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure you want to delete this page and its contents{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-page-button" class="modal-close waves-effect waves-green btn red left">{Literal}Delete{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div id="edit-page-name-modal" class="modal modal-fixed-footer edit-page-name-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <h4>{Literal}Change Page Name{/Literal}</h4> 
+        <div class="row">
+            <div class="col s12 m6 offset-m3" style="padding-top: 50px;">
+                <div class="input-field">
+                    <input id="pageName" type="text" value="" maxlength="10">
+                    <label class="active" for="pageName">{Literal}Page Name{/Literal}: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-light left green btn-flat save-page-name-button">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect left waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div id="pos-key-form-modal" class="modal modal-fixed-footer" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content" <%= (App.rtl ? 'style="direction:rtl"' : '') %>
+        <form id="selectButton">
+            <h4>{Literal}Select Button Type{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 1 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div id="itemCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Item{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Add attached item to your invoice{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pageCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Page{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}This button will display the page attached to it{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="labelCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Label{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Used to label sections of items or a message on your page screes{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="priceLevelCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Price Level{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Changes all items on order to a different price level{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="saleDiscountCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 7px; bottom: 8px; height: 30px;">
+                                    {Literal}Sale Reprice Discount{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Changes the price of the total percentage instead of the items{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="itemDiscountCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 7px; bottom: 8px; height: 30px;">
+                                    {Literal}Item Discount{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Changes the price of the items percentage instead of the total{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="changeKeySetCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;{Literal}Change Key Set{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Change to display a specific Key Set{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tareCard">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Tare{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Zero out the scale weight to account for the weight of a container{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {Literal}{/Literal} <hr size=2>
+
+                <div id="addKeySetButton">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Add New Keyset{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Create a new keyset that can be used as an alternative from 'Main'{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="addPageButton">
+                    <div class="col s12 m3 xl2">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3970b7; max-height: 150px" >
+                            <div>
+                                <div class="row description" style="position: relative; right: 13px; bottom: 8px; height: 30px;">
+                                    &nbsp;&nbsp;{Literal}Add New Page{/Literal}
+                                </div>
+                                <div class="row">
+                                    {Literal}Create a new page to attach your menu keys to{/Literal}.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="new-key-set-modal" class="modal modal-fixed-footer new-key-set-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create New Key Set{/Literal}</h4> 
+            <div class="row">
+                <div class="col s12 m6 offset-m3" style="padding-top: 50px;">
+                    <div class="input-field">
+                        <input id="newKeySetName" type="text" value="" maxlength="10">
+                        <label class="active" for="newKeySetName">{Literal}New Keyset Name{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light left green btn-flat save-key-set-button1">{Literal}Save{/Literal}</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light left btn-flat cancel-key-set-button1">{Literal}Cancel{/Literal}</a>
+        </div>
+    </div>
+
+    <div id="new-page-form-modal" class="modal modal-fixed-footer new-page-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create New Page{/Literal}</h4> 
+            <div class="row">
+                <div class="col s12 m6 offset-m3" style="padding-top: 50px;">
+                    <div class="input-field">
+                        <input id="newPageName" type="text" value="" maxlength="10">
+                        <label class="active" for="newPageName">{Literal}New Page Name{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light left green btn-flat save-new-page-button">{Literal}Save{/Literal}</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light left btn-flat cancel-new-page-button">{Literal}Cancel{/Literal}</a>
+        </div>
+    </div>
+        
+
+    <div id="item-form-modal" class="modal modal-fixed-footer item-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Select Item{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field" >
+                        <input type="text" id="itemSearch" class="autocomplete">
+                        <label for="itemSearch"><i class="material-icons left">filter_list</i>{Literal}Search Item Description{/Literal}</label>  
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field" >
+                        <input type="text" id="itemText" maxlength="50">
+                        <label for="itemText" class="active">{Literal}Button Text{/Literal}</label>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light green btn-flat save-item-button left">{Literal}Save{/Literal}</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light btn-flat cancel-items-button left">{Literal}Cancel{/Literal}</a>
+        </div>
+    </div>
+
+    <div id="page-form-modal" class="modal modal-fixed-footer page-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create Page{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <% _.each(pages, function(pages) { %>
+                <div class="pagesCards" description-id="<%= pages %>">
+                    <div class="col s12 m4 xl4">
+                        <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable white-text waves-effect waves-light " style="background-color: #3970b7" data-id="<%= pages %>" data-selected='0' > 
+                            <div class="row description truncate" style="position: relative; right: 13px; bottom: 8px; height: 48px; ">
+                                &nbsp;&nbsp;<%=pages%>
+                            </div>
+                        </div>
+                        <div class="row itemDescription truncate">
+
+                        </div>
+                        <div class="row price truncate">
+
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="waves-effect waves-light btn-flat cancel-pages-button left">{Literal}Cancel{/Literal}</a>
+        </div>
+    </div>
+
+    <div id="label-form-modal" class="modal modal-fixed-footer label-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create Label{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div id ="labelCards">
+                    <div class="col s12 m6 offset-m3">
+                        <div class="input-field">
+                            <input id="label" type="text" maxlength="50">
+                            <label class="active" for="label">{Literal}Button Label{/Literal}: </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+                <a href="javascript:void(0)" class="modal-close waves-effect waves-light green btn-flat save-label-button left">{Literal}Save{/Literal}</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light btn-flat cancel-label-button left">{Literal}Cancel{/Literal}</a>
+        </div>
+    </div>
+
+    <div id="price-level-form-modal" class="modal modal-fixed-footer price-level-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Choose Price Level{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="priceLevelText" type="text" maxlength="50">
+                        <label class="active" for="priceLevelText">{Literal}Button Label{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <label class="active" for="price-level-dropdown">{Literal}Default Price Level{/Literal}</label>
+                        <select id="price-level-dropdown" required>
+                            <option value="0">1</option>
+                            <option value="1">2</option>
+                            <option value="2">3</option>
+                            <option value="3">4</option>
+                            <option value="4">5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light green btn-flat save-price-level-button left">{Literal}Save{/Literal}</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light btn-flat cancel-price-level-button left">{Literal}Cancel{/Literal}</a>
+        </div>
+    </div>
+
+    <div id="key-set-form-modal" class="modal modal-fixed-footer key-set-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Choose Key Set{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="keySetText" type="text" maxlength="50">
+                        <label class="active" for="keySetText">{Literal}Button Label{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <% if (keySet.length == 0) { keySet[0] = {name: "{Literal}Main{/Literal}"}  } %>
+                    <select id="change-key-set-select">
+                            <option value="chooseKeySet" selected disabled>{Literal}Choose Key Set{/Literal}</option>
+                        <% _.each(keySet, function(keyset) { %>
+                            <option value="<%= keyset.name %>"><%= keyset.name %></option>
+                        <% }); %>
+                    </select>
+                    <label>{Literal}Key Set{/Literal}</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+                <a href="javascript:void(0)" class="modal-close waves-effect waves-light green btn-flat save-key-set-button left">{Literal}Save{/Literal}</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light btn-flat cancel-key-set-button left">{Literal}Cancel{/Literal}</a>
+        </div>
+    </div>
+
+    <div id="tare-form-modal" class="modal modal-fixed-footer tare-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create Tare Button{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="tareText" type="text" maxlength="50">
+                        <label class="active" for="tareText">{Literal}Button Label{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="tareWeight" type="number">
+                        <label class="active" for="tareWeight">{Literal}Tare Weight{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+                <a href="javascript:void(0)" class="modal-close waves-effect waves-light green btn-flat save-tare-button left">{Literal}Save{/Literal}</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light btn-flat cancel-tare-button left">{Literal}Cancel{/Literal}</a>
+        </div>
+    </div>
+
+    <div id="sale-reprice-form-modal" class="modal modal-fixed-footer sale-reprice-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create Sale Reprice Discount{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="saleRepriceText" type="text" maxlength="50">
+                        <label class="active" for="saleRepriceText">{Literal}Button Label{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="saleRepricePercent" type="number">
+                        <label class="active" for="saleRepricePercent">{Literal}Reprice Discount {/Literal}%: </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light green btn-flat save-sale-reprice-button left">{Literal}Save{/Literal}</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light btn-flat cancel-sale-reprice-button left">{Literal}Cancel{/Literal}</a>
+        </div>
+    </div>
+
+    <div id="item-discount-form-modal" class="modal modal-fixed-footer item-discount-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+        <div class="modal-content">
+            <h4>{Literal}Create Item Discount{/Literal}</h4> 
+            <div class="ap-card-title-text">
+                {Literal}Page 2 of 2{/Literal}
+            </div>
+            <div class="row" style="padding-top: 50px;">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="itemDiscountTextForm" type="text" maxlength="50">
+                        <label class="active" for="itemDiscountTextForm">{Literal}Button Label{/Literal}: </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="input-field">
+                        <input id="itemDiscountPercent" type="number">
+                        <label class="active" for="itemDiscountPercent">{Literal}Discount {/Literal}%: </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-light green btn-flat save-item-discount-button left">{Literal}Save{/Literal}</a>
+            <a href="javascript:void(0)" class="waves-effect waves-light btn-flat cancel-item-discount-button left">{Literal}Cancel{/Literal}</a>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

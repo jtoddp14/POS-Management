@@ -1,0 +1,121 @@
+{HeaderBlock}
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+      -->
+    </style>
+
+		<title>{Literal}AccuPOS Stock Items Report{/Literal}</title>
+  </Head>
+		
+	<Body>
+    <div align="center"><br>
+      <span class="size11"><strong>{Literal}Stock Items List Report{/Literal}</strong></span><br>
+      <br>
+    </div>
+    <div align="center">
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+                {CompanyAddress1} {CompanyAddress2}<br>
+                {CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span></div></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><div align="center"><span class="size11">        {Literal}Report was run on{/Literal}</span><span class="size11"> {DateRun}</span></div></td>
+        </tr>
+      </table>
+    </div>
+    <hr align="center" width="630" size="2">
+    <div align="center">
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="3"><img src="images/spacer.aci" height="8"></td>
+        </tr>
+
+        <tr>
+          <td  valign="top" class="size11" style="margin-left: 15px; font-weight: bold;" width="188">
+            {Literal}Item ID:{/Literal}
+          </td>
+          <td  valign="top" class="size11" style="font-weight: bold;" width="290">
+            {Literal}Item Description:{/Literal}
+          </td>
+          <td  valign="top" class="size11"  style=" font-weight: bold; ">
+            {Literal}Quantity On Hand:{/Literal}
+          </td>
+        </tr>
+
+      </table>
+      {/HeaderBlock}
+
+      {ItemBlock}
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="4"><img src="images/spacer.aci" height="4"><hr align="center" width="630" size="1"></td>
+        </tr>
+
+        <tr>
+          <td width="30%" valign="top" class="size11">{ItemId}</td>
+          <td width="50%" valign="top" class="size11" >{ItemDescription}</td>
+          <td width="10%" valign="top" class="size11" style="text-align: center;">{ItemQuantityOnHand}</td>
+          <td width="10%" valign="top" class="size11">&nbsp;</td>
+        </tr>
+      </table>
+      {/ItemBlock}
+
+      {FooterBlock}
+      <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="4" valign="top" class="size11"><hr align="center" width="630" size="1"></td>
+        </tr>
+        <tr>
+          <td colspan="4"><img src="images/spacer.aci" height="4"></td>
+        </tr>
+        <tr>
+          <td colspan="4" valign="top" class="size11"><div align="right">{Literal}Total Number of Items:{/Literal} <strong>{ItemCount}</strong></div></td>
+        </tr>
+      </table>
+    </div>
+    <hr align="center" width="630" size="1" noshade>
+    <div align="center"><span class="minitype">&nbsp;&nbsp;&nbsp;{Literal}Powered by Point Of Sale rev04{/Literal}</span></div>
+  </Body>
+</Html>
+
+{DateFormat}yyyy-MM-dd HH:mm{/DateFormat}
+{PriceFormat}#####0.00##;-#####0.00##{/PriceFormat}
+{PercentFormat}#####0.####%;-#####0.####%{/PercentFormat}
+{QuantityFormat}#####0.###;-#####0.###{/QuantityFormat}
+{Errors}
+{/FooterBlock}

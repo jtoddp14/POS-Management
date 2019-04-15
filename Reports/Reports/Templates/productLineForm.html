@@ -1,0 +1,92 @@
+<form <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <input id="description" placeholder="Enter product line description" type="text" class="validate">
+            <label class="active" for="description">Product Line Description</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <select id="item-type">
+                <option value="*">All</option>
+            </select>
+            <label>Select Item Type</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <select id="item-category">
+                <option value="*">All</option>
+            </select>
+            <label>Select Item Category</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <select id="sales-account">
+                <option value="*">All</option>
+            </select>
+            <label>Select Sales Account</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <select id="menu-page">
+                <option value="*">All</option>
+            </select>
+            <label>Select Menu Page</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <select id="choice-page">
+                <option value="*">All</option>
+            </select>
+            <label>Select Choice Page</label>
+        </div>
+    </div>
+    <div class="row checkboxes">
+        <div class="col s12 m6">
+            <p>
+                <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Taxable</span>
+                </label>
+            </p>
+        </div>
+        <div class="col s12 m6">
+            <p>
+                <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Discountable</span>
+                </label>
+            </p>
+        </div>
+        <div class="col s12 m6">
+            <p>
+                <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Scalable</span>
+                </label>
+            </p>
+        </div>
+        <div class="col s12 m6">
+            <p>
+                <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Stockable</span>
+                </label>
+            </p>
+        </div>
+        <div class="col s12 m6">
+            <p>
+                <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Serializable</span>
+                </label>
+            </p>
+        </div>
+        <div class="col s12 m6">
+            <p>
+                <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Partial</span>
+                </label>
+            </p>
+        </div>
+    </div>
+</form>

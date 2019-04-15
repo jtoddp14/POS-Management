@@ -1,0 +1,91 @@
+<div id="user-groups-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <div class="col s12">
+            <div class="ap-card z-depth-1">
+                    <div class="ap-card-title ap-blue">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col s3">
+                                    <form class="select-group-form">
+                                        <div class="row" style="margin-bottom: 5px;">
+                                            <div class="input-field col s12  white-text white-drop-down">
+                                                <select id="user-group-selector">
+                                                    <% var current = 0; %>
+                                                    <% _.each(userGroups, function(currentUserGroup) { %>
+                                                        <option value="<%= currentUserGroup.id %>" <%= current === 0 ? 'selected' : '' %>><%= currentUserGroup.name %></option>
+                                                    <% current++; %>
+                                                    <% }); %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </form>
+                                    <div class="create-group-title" style="display: none; padding-top: 12px; padding-bottom: 20px">
+                                        {Literal}Create a New User Group{/Literal}
+                                    </div>
+                                    
+                                </div>
+                                <div class="col s4">
+                                    <form>
+                                        <div class="input-field col s12 white-text white-drop-down">
+                                            <select id="permission-type-selector">
+                                                <option value="management" selected>{Literal}Web Management Permissions{/Literal}</option>
+                                                <option value="pos">{Literal}Point of Sale Permissions{/Literal}</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ap-card-content white" id="user-group-form">
+
+                        </div>
+                        <div class="ap-card-footer grey lighten-4">
+                            <a class="waves-effect waves-light btn red <%= (App.rtl ? '' : '') %> delete-button">{Literal}Delete{/Literal}</a>
+                            <a class="waves-effect waves-light btn green <%= (App.rtl ? 'left' : 'right') %> update-button">{Literal}Update{/Literal}</a>
+                        </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light green floating-action-button-fixed add-user-group-button">
+    <i class="material-icons">add</i>
+</a>
+
+<div class="modal delete-modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <%if(App.rtl){%>
+           <p>האם אתה בטוח שברצונך למחוק קבוצת משתמשים זו?</p>
+        <%}%>
+        <%if(App.rtl != true){%>
+            <p>{Literal}Are you sure that you would like to delete this user group{/Literal}?</p>
+        <%}%>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+        <a href="javascript:void(0)" class="waves-effect waves-white btn red confirm-deletion">{Literal}Delete{/Literal}</a>
+    </div>
+</div>
+
+<div class="modal cancel-modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Cancellation{/Literal}</h6>
+        </div>
+        <%if(App.rtl){%>
+            <p>האם אתה בטוח שברצונך לבטל פעולה זו?</p>
+            <p>פעולה זו תבטל את השינויים שביצעת בקבוצה החדשה הזו.</p>
+        <%}%>
+        <%if(App.rtl != true){%>
+            <p>{Literal}Are you sure that you would like to cancel this action{/Literal}?</p>
+            <p>{Literal}This will ignore any changes you've made to this new group{/Literal}.</p>
+        <%}%>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+        <a href="javascript:void(0)" class="waves-effect waves-white btn red confirm-cancellation">{Literal}Confirm{/Literal}</a>
+    </div>
+</div>

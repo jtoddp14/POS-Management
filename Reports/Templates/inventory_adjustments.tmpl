@@ -1,0 +1,84 @@
+<html {RightToLeft}>
+  <head>
+		<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+		<meta http-equiv="Cache-control" content="public">
+		<meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+		
+		<title>{Literal}Inventory Adjustment Report{/Literal}</title>
+		<link rel="stylesheet" href="css/font-awesome.min.css.gz">
+		<link rel="stylesheet" href="css/main.css.gz">
+		<link rel="stylesheet" href="css/accupos.css.gz">
+		<style type="text/css">
+		<!--
+			body
+			{
+				background-color: #FFFFFF;
+				margin: 0;
+				padding: 0;
+				font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+			}
+
+			.textSize { font-size: 16px; }
+			.mediumTextSize { font-size: 22px; }
+			.largeTextSize { font-size: 30px; }
+		-->
+		</style>
+
+	</head>
+
+	<body>
+		<div align="center">
+
+			<div>
+				<h1>{Literal}Inventory Adjustment Report{/Literal}</h1>
+			</div>
+
+			<div>
+				<form>
+					<table border="1" cellpadding="5" style="width:80%">
+						<input type="hidden" name="password" value='{Password}' />
+						<input type="hidden" name="EditScreenName" value='adjust_inventory.html' />
+						<input type="hidden" name="CompletedScreenName" value='Tasks.html' />
+						<input type="hidden" name="FailedLoginScreenName" value='Login.html' />
+						<span style="color:red;"><strong>{ErrorMessage}</strong></span>
+									
+						</br></br>
+
+						<tr style="height: 30px;">
+							<th width="10%">{Literal}Session Name{/Literal}</th>
+							<th width="10%">{Literal}Item Code{/Literal}</th>
+							<th width="30%">{Literal}Item Description{/Literal}</th>
+							<th width="10%">{Literal}Quantity On Hand{/Literal}</th>
+							<th width="10%">{Literal}Current Count{/Literal}</th>
+						</tr>
+
+						{DataBlock}
+						<tr>
+								<td align="left">{AdjustmentSession.name}</td>
+								<td align="left">{InventoryItem.code}</td>
+								<td align="left">{Item.description}</td>
+								<td align="left">{Item.onHand}</td>
+								<td align="left">{InventoryItem.count}</td>
+						</tr>
+						{/DataBlock}
+							
+					</table>
+				</form>
+			</div>
+
+		</div>
+
+	</body>
+</html>
+{Objects}
+	{Object}
+	{ObjectName}AdjustmentSession{/ObjectName}
+	{SearchObject}
+		{SearchField}
+			{SearchFieldName}Id{/SearchFieldName}
+			{SearchOperator}By{/SearchOperator}
+			{SearchValue}ALL{/SearchValue}
+		{/SearchField}{/SearchObject}
+	{/Object}
+{/Objects}
+

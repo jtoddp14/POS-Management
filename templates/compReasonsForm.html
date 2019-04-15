@@ -1,0 +1,47 @@
+<div id="comp-reasons-form-modal" class="modal modal-fixed-footer" style="max-height: 100%" <%= (App.rtl ? 'style="direction:rtl"' : '') %>></div>
+    <div class="modal-content">
+        <div id="comp-reasons-form-content">
+            <div style="padding-bottom: 50px">
+                <h4 style="font-size: 1.2rem">{Literal}Comp Reason{/Literal}</h4>
+            </div>
+            <form>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input id="compReason" type="text"  value="<%= compReasons.compReason %>" class="materialize-textarea" maxlength="250"></input>
+                                <label class="active" for="compReason">{Literal}Comp Reason{/Literal}</label>
+                            </div>
+                        </div>
+                        <div class="col s12 m1" style="display: none;">
+                            <div class="input-field">
+                                <input id="id" type="text" value="<%= compReasons.id %>" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-comp-reason-modal" class="btn-flat modal-trigger waves-effect waves-light red-text right delete-button ">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-green btn green left save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>
+
+
+<div id="delete-comp-reason-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this Comp Reason{/Literal}?</p>
+    </div>
+    <div class="modal-footer">        
+        <a href="javascript:void(0)" id="delete-comp-reason-confirm" class="modal-close waves-effect waves-light btn red left" data-comp-reason-id="<%= compReasons.id%>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-comp-reason-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

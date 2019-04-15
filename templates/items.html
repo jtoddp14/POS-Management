@@ -1,0 +1,184 @@
+<div id="items-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div class="row">
+        <div class="col s12 m2">
+            <div class="input-field">
+                <input id="searchText" type="text" maxlength="50">
+                <label for="searchText">{Literal}Search Text{/Literal}</label>
+            </div>
+        </div> 
+        <div class="input-field col s10 m3">
+            <select id="searchField">
+                <option value="0"> {Literal}Description{/Literal} </option> 
+                <option value="1"> {Literal}Item Id{/Literal} </option>
+                <option value="2"> {Literal}Item Type{/Literal} </option>
+                <option value="3"> {Literal}Alt Description{/Literal} </option>
+                <option value="4"> {Literal}Category{/Literal} </option>
+            </select>
+        </div>
+        <div class="col s2 m2">
+            <div class="search" style="padding-top: 20px;" >
+                <a href="javascript:void(0)" class="btn waves-effect waves-light green search-items-button">
+                    <i class="material-icons">search</i>
+                </a>
+            </div>
+        </div>
+
+        <div class="optional">
+            <div id="optionalInputField" class="input-field col s10 m3" style="right: 8%">
+                <label class="active"> {Literal}Optional Info Field{/Literal} </label>
+                <select id="optional1">
+                    <option value="1"> {Literal}Category{/Literal} </option>
+                    <option value="2"> {Literal}Taxable{/Literal} </option>
+                    <option value="3"> {Literal}Active/Inactive{/Literal} </option>
+                    <option value="4"> {Literal}Has Serial #{/Literal} </option>
+                    <option value="5"> {Literal}Allow Discount{/Literal} </option>
+                    <option value="6"> {Literal}Price Level 2{/Literal} </option>
+                    <option value="7"> {Literal}Price Level 3{/Literal} </option>
+                    <option value="8"> {Literal}Price Level 4{/Literal} </option>
+                    <option value="9"> {Literal}Price Level 5{/Literal} </option>
+                    <option value="10"> {Literal}Tracks Stock{/Literal} </option>
+                    <option value="11"> {Literal}Scalable{/Literal} </option>
+                    <option value="12"> {Literal}No Partial Quantity{/Literal} </option>
+                </select>
+            </div>
+        </div> 
+
+        <div class="col s2 m2">
+            <div class="optionalButton" style="padding-top: 20px; margin-right: 70%">
+                <a href="javascript:void(0)" class="btn waves-effect waves-light green optional-button">
+                    <i class="material-icons">format_list_bulleted</i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="sortBy" style="display: none;">
+            <div class="input-field col s10 m3 offset-m4" >
+                <label class="active">{Literal}Filter By{/Literal}</label>
+                <select id="sortBy1">
+                    <option value="0"> {Literal}Description A-Z{/Literal} </option>
+                    <option value="1"> {Literal}Description Z-A{/Literal} </option>
+                    <option value="2"> {Literal}Item Code A-Z{/Literal} </option>
+                    <option value="3"> {Literal}Item Code Z-A{/Literal} </option>
+                </select>
+            </div>
+        </div> 
+
+        <div class="col s2 m3">
+            <div class="sortByButton" style="display: none; padding-top: 20px;">
+                <a href="javascript:void(0)" class="btn waves-effect waves-light green sort-by-button">
+                    <i class="material-icons">sort</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="itemBlock" class="row" style = "display: none;">
+        <% _.each(items, function(items) { %>
+            <div id = "itemCards">
+                <div class="col s12 m2 xl2">
+                    <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light <%= items.cardStyleClass %>" style="background-color: #ffffff" data-id="<%= items.id %>" data-selected='0'>
+                        <div>
+                            <div id="<%= items.id + 'ItemDescription'%>" class="row itemDescription truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                {Literal}ID#{/Literal} <%= items.id %>
+                            </div>
+                            <div id="<%= items.id + 'Description'%>" class="row description truncate" style="color: #3970b7; font-size: 1rem;">
+                                <%= items.description %>
+                            </div>
+                            <div id="<%= items.id + 'Type'%>" class="row truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                {Literal}Type:{/Literal}
+                                <%= items.type %>
+                            </div>
+                            <div id="<%= items.id + 'Price'%>" class="row truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                {Literal}Price:{/Literal}
+                                <%= items.priceLevel1 %>
+                            </div>
+                            <div class="row truncate">
+                                <div id="<%= items.id + 'Category'%>" class="category" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Category:{/Literal}
+                                    <%= items.categoryName %>
+                                </div>
+                                <div id="<%= items.id + 'Taxable'%>" class="taxable" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Taxable:{/Literal}
+                                    <%= items.taxable %>
+                                </div>
+                                <div class="inactive" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Inactive:{/Literal}
+                                    <%= items.inactive %>
+                                </div>
+                                <div id="<%= items.id + 'AllowDiscount'%>" class="allowDiscount" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Allow Discount:{/Literal}
+                                    <%= items.allowDiscount %>
+                                </div>
+                                <div id="<%= items.id + 'Price2'%>" class="price2" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Price Level 2:{/Literal}
+                                    $<%= items.priceLevel2 %>
+                                </div>
+                                <div id="<%= items.id + 'Price3'%>" class="price3" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Price Level 3:{/Literal}
+                                    $<%= items.priceLevel3 %>
+                                </div>
+                                <div id="<%= items.id + 'Price4'%>" class="price4" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Price Level 4:{/Literal}
+                                    $<%= items.priceLevel4 %>
+                                </div>
+                                <div id="<%= items.id + 'Price5'%>" class="price5" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Price Level 5:{/Literal}
+                                    $<%= items.priceLevel5 %>
+                                </div>
+                                <div id="<%= items.id + 'IsStock'%>"class="isStock" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Track Stock:{/Literal}
+                                    <%= items.isStock %>
+                                </div>
+                                <div id="<%= items.id + 'Scale'%>" class="scale" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Scalable:{/Literal}
+                                    <%= items.scale %>
+                                </div>
+                                <div id="<%= items.id + 'NoPartialQuantity'%>" class="noPartialQuantity" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}No Partial Quantity:{/Literal}
+                                    <%= items.noPartialQuantity %>
+                                </div>
+                                <div id="<%= items.id + 'Serialized'%>" class="serialized" style="display: none; font-size: .95rem; margin-bottom: 0px; color: gray;;">
+                                    {Literal}Has Serial #:{/Literal}
+                                    <%= items.serialized %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit" style="display: none">
+                            <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-items-trigger"
+                                data-id="<%= items.id %>">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+            
+<div id="items-form-modal" class="modal modal-fixed-footer items-form-modal" style="max-height: 100%">
+    
+</div>
+
+<div id="paginationBlock" class ="col s3" align="center" style="display: none;">
+    <div>
+        <ul class="pagination" id="items-pagination" data-current-page="1">
+            <li class="disabled hide-on-rtl" id="pagination-back">
+                <a href="javascript:void(0)">
+                    <i class="material-icons chevronArrow">chevron_left</i>
+                </a>
+            </li>
+            <li class="waves-effect hide-on-rtl" id="pagination-forward">
+                <a href="javascript:void(0)">
+                    <i class="material-icons chevronArrow">chevron_right</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<a href="javascript:void(0)" id="add-items-button" class="btn-floating btn-large waves-effect waves-light ap-blue z-depth-4 floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>

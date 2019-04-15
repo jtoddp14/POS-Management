@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+
+  {ReportStylesBlock}
+
+  <Worksheet ss:Name="Report">
+    <Table>
+
+      <Column ss:AutoFitWidth="0" ss:Width="25"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="100"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="25"/>
+
+      <Row>
+        <Cell ss:StyleID="reportTitle" ss:MergeAcross="6">
+          <Data ss:Type="String">{Literal}AccuPOS Active Sale Prices Report{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="6">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="6">
+          <Data ss:Type="String">{CompanyName}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="6">
+          <Data ss:Type="String">{CompanyAddress1} {CompanyAddress2}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="6">
+          <Data ss:Type="String">{CompanyCity}, {CompanyState} {CompanyZip}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="6">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="6">
+          <Data ss:Type="String">{Literal}Report was run on{/Literal} {DateRun}</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="6">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="itemLabel" ss:Index="2" ss:MergeAcross="1">
+          <Data ss:Type="String">{Literal}Description{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel" ss:Index="4">
+          <Data ss:Type="String">{Literal}Start{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">{Literal}End{/Literal}</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">{Literal}Discount{/Literal}</Data>
+        </Cell>
+      </Row>
+
+      {PriceBlock}
+        <Row>
+          <Cell ss:Index="2">
+            <Data ss:Type="String">{Description}</Data>
+          </Cell>
+          <Cell>
+            <Data ss:Type="String">{Name}</Data>
+          </Cell>
+          <Cell>
+            <Data ss:Type="String">{Start}</Data>
+          </Cell>
+          <Cell>
+            <Data ss:Type="String">{End}</Data>
+          </Cell>
+          <Cell>
+            <Data ss:Type="String">{Discount}</Data>
+          </Cell>
+        </Row>
+      {/PriceBlock}
+
+      <Row>
+        <Cell ss:StyleID="bottomBorder" ss:MergeAcross="6">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+    </Table>
+
+    {DateFormat}MM-dd-yy HH:mm{/DateFormat}
+    {PercentFormat}###0.00%;-###0.00%{/PercentFormat}
+    {PriceFormat}$###0.00;-$###0.00{/PriceFormat}
+    {QuantityFormat}##0.##;-##0.##{/QuantityFormat}
+    {OnItemDescription}Item Discount{/OnItemDescription}
+    {OnTypeDescription}Group Discount{/OnTypeDescription}
+
+    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+      <PageSetup>
+        <Layout x:Orientation="Portrait"/>
+      </PageSetup>
+      <FitToPage/>
+      <Print>
+        <FitHeight>0</FitHeight>
+      </Print>
+    </WorksheetOptions>
+
+  </Worksheet>
+</Workbook>

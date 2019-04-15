@@ -1,0 +1,185 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "c3@^0.5.4",
+        "scope": null,
+        "escapedName": "c3",
+        "name": "c3",
+        "rawSpec": "^0.5.4",
+        "spec": ">=0.5.4 <0.6.0",
+        "type": "range"
+      },
+      "/Users/yuvalherziger/workspace/wm"
+    ]
+  ],
+  "_from": "c3@>=0.5.4 <0.6.0",
+  "_id": "c3@0.5.4",
+  "_inCache": true,
+  "_location": "/c3",
+  "_nodeVersion": "8.9.4",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/c3_0.5.4_1524458301618_0.45619472607029676"
+  },
+  "_npmUser": {
+    "name": "kt3k",
+    "email": "stibium121@gmail.com"
+  },
+  "_npmVersion": "5.7.1",
+  "_phantomChildren": {
+    "d3-array": "1.2.1",
+    "d3-axis": "1.0.8",
+    "d3-brush": "1.0.4",
+    "d3-chord": "1.0.4",
+    "d3-collection": "1.0.4",
+    "d3-dispatch": "1.0.3",
+    "d3-drag": "1.2.1",
+    "d3-dsv": "1.0.8",
+    "d3-ease": "1.0.3",
+    "d3-force": "1.1.0",
+    "d3-format": "1.2.2",
+    "d3-geo": "1.9.1",
+    "d3-hierarchy": "1.1.5",
+    "d3-path": "1.0.5",
+    "d3-polygon": "1.0.3",
+    "d3-quadtree": "1.0.3",
+    "d3-queue": "3.0.7",
+    "d3-random": "1.1.0",
+    "d3-request": "1.0.6",
+    "d3-scale": "1.0.7",
+    "d3-selection": "1.3.0",
+    "d3-shape": "1.2.0",
+    "d3-time": "1.0.8",
+    "d3-time-format": "2.1.1",
+    "d3-timer": "1.0.7",
+    "d3-transition": "1.1.1",
+    "d3-voronoi": "1.1.2",
+    "d3-zoom": "1.7.1"
+  },
+  "_requested": {
+    "raw": "c3@^0.5.4",
+    "scope": null,
+    "escapedName": "c3",
+    "name": "c3",
+    "rawSpec": "^0.5.4",
+    "spec": ">=0.5.4 <0.6.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/c3/-/c3-0.5.4.tgz",
+  "_shasum": "f96b7c60e956db9afa51438b35c0d364a4a3b6fd",
+  "_shrinkwrap": null,
+  "_spec": "c3@^0.5.4",
+  "_where": "/Users/yuvalherziger/workspace/wm",
+  "authors": [
+    "Masayuki Tanaka",
+    "Ændrew Rininsland",
+    "Yoshiya Hinosawa"
+  ],
+  "bugs": {
+    "url": "https://github.com/c3js/c3/issues"
+  },
+  "dependencies": {
+    "d3": "^4.12.0"
+  },
+  "description": "D3-based reusable chart library",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browserify": "^16.0.0",
+    "clean-css-cli": "^4.1.3",
+    "codecov": "^3.0.0",
+    "gh-pages": "^1.1.0",
+    "jasmine-core": "^2.3.4",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.1.0",
+    "karma": "^2.0.0",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-coverage-istanbul-reporter": "^1.3.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-spec-reporter": "0.0.32",
+    "node-sass": "^4.5.3",
+    "node-static": "^0.7.9",
+    "nodemon": "^1.11.0",
+    "rollup": "^0.58.0",
+    "rollup-plugin-babel": "^3.0.3",
+    "uglify-js": "^3.0.15",
+    "watchify": "^3.9.0"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-+Ido5E9fAM6Tn+v7MI5VxYbQwCn59WxW+wMfWdgQ4PS3NZu/yG8EwiXW/ZB//kFUmLplEkWabE9kn1ckC6YZ/w==",
+    "shasum": "f96b7c60e956db9afa51438b35c0d364a4a3b6fd",
+    "tarball": "https://registry.npmjs.org/c3/-/c3-0.5.4.tgz",
+    "fileCount": 539,
+    "unpackedSize": 3922378,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa3WM+CRA9TVsSAnZWagAABf4QAI41dtUKGQ1Gq37deFod\nJWdEkTZ02RzAN10eIZhDXmCU1biTCvbg050RtHu8/ug67ki+F4IXrTnoRydl\nvTq3187NDKRJLxA4GvQmFReypZ8Z2Io8k9t7g7Hbeoom6hHs63J6Fy3OTD5z\nkQipLRvfaq56ED3LLOg9Dlk5VMfvxG0V8hxWujrbZOwfKel3UIH0U0/m9nTP\niLZKyUDIj8o4TQ07wncl0FPuwwZRRrkSpSfXyhe57UKM8GRVJ3bz12FHxEE1\nmd/RagBRBsrG6aiWVVXggi9rDMw5l7xXMHSNw13n2LC5glsNl4k/1IyZyuCt\nEAt0U4bkiQxveX9FfRO0bVmNLBUMkZ6lvcY4JPVurk93euUqO/LDefCBeB5l\n3GMWMQEnzsBZ5n8GzUd4yaEHIhJNSGvYUTzmO/BbUaZualEajhrKfKAdSjiH\nIthlOPjPT3N7xKaTuWFnl+gPmsdfn8ZLLZlpjMDK4zafGSdQaQf6j6Wl+pC1\ndQM8mCKc0aoyqVTOujR/iIeoHzpWFxj3m1eAmKAgvqbBNRMlB+kGGysDe7v9\nWnhDK/dDsJb70eY+HXezZy1OIv6YwJkgLqaOmFWR6rTFDzwkIqSKFzAshtWo\nl0KdsCjauY45lrpI52Q/QaqtofwobPzjJz/M80otWs2UAH/wCzBUl06n++MH\n0ds3\r\n=PVPz\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "gitHead": "84e03109d9a590f9c8ef687c03d751f666080c6f",
+  "greenkeeper": {
+    "ignore": [
+      "d3"
+    ]
+  },
+  "homepage": "https://github.com/c3js/c3#readme",
+  "keywords": [
+    "d3",
+    "chart",
+    "graph"
+  ],
+  "license": "MIT",
+  "main": "c3.js",
+  "maintainers": [
+    {
+      "name": "kt3k",
+      "email": "stibium121@gmail.com"
+    },
+    {
+      "name": "masayuki0812",
+      "email": "masayuki0812@mac.com"
+    }
+  ],
+  "name": "c3",
+  "nyc": {
+    "exclude": [
+      "src/polyfill.js",
+      "spec/"
+    ]
+  },
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/c3js/c3.git"
+  },
+  "scripts": {
+    "build": "npm run build:js && npm run build:css",
+    "build:css": "npm run build:css:sass && npm run build:css:min",
+    "build:css:min": "cleancss -o c3.min.css c3.css",
+    "build:css:sass": "node-sass src/scss/main.scss > c3.css",
+    "build:docs": "bundle exec middleman build",
+    "build:js": "npm run build:js:rollup && npm run build:js:uglify",
+    "build:js:rollup": "rollup -c > c3.js",
+    "build:js:uglify": "uglifyjs c3.js --compress --mangle --comments -o c3.min.js",
+    "codecov": "codecov",
+    "dist": "npm run build",
+    "docs": "bundle exec middleman",
+    "lint": "jshint --reporter=node_modules/jshint-stylish src/ spec/",
+    "publish-docs": "npm run build:docs && gh-pages -d build -m \"chore: update gh-pages [skip ci]\"",
+    "start": "static -p 8080 htdocs/",
+    "test": "npm run build && npm run lint && karma start karma.conf.js",
+    "test:only": "karma start karma.conf.js",
+    "watch": "nodemon -e js,scss --watch src -x 'npm run build:js:rollup && npm run build:css:sass'",
+    "watch:css": "nodemon -e scss --watch src -x 'npm run build:css:sass'",
+    "watch:docs": "bundle exec middleman",
+    "watch:js": "nodemon -e js --watch src --ignore src/scss -x 'npm run build:js:rollup'"
+  },
+  "version": "0.5.4"
+}

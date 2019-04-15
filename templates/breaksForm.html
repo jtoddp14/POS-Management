@@ -1,0 +1,69 @@
+<div class="modal-content">
+    <div style="padding-bottom: 50px">
+        <h4 style="font-size: 1.2rem">{Literal}Edit Break{/Literal}</h4>
+    </div>
+    <div id="breaks-form-content">
+        <form>
+            <div class="row">
+                <div class="input-field col s1" style="display: none;">
+                    <input id="id" type="text" value="<%= breaks.id %>">
+                </div>
+                    
+                <div class="input-field col s12 m6">
+                    <input id="type" type="text" class="validate" value="<%= breaks.type %>" required="" aria-required="true"  maxlength="50">
+                    <label class="active" for="type">{Literal}Break Type{/Literal}</label>
+                    <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+                </div>
+
+                <div class="col s3">
+                    <p>
+                        <label>
+                            <input id="isPaid" type="checkbox" <%= breaks.isPaid ? 'checked' : '' %> class="filled-in" />
+                            <span>{Literal}Paid Break{/Literal}</span>
+                        </label>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12 m4">
+                    <input id="breakTime" type="number" class="validate" value="<%= breaks.breakTime %>" required="" aria-required="true"  max="120">
+                    <label class="active" for="breakTime">{Literal}Break Time in Minutes{/Literal}</label>
+                    <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+                </div>
+
+                <div class="input-field col s12 m4">
+                    <input id="minimumTime" type="number" class="validate" value="<%= breaks.minimumTime %>" required="" aria-required="true"  max="120">
+                    <label class="active" for="minimumTime">{Literal}Minimum Break Time in Minutes{/Literal}</label>
+                    <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+                </div>
+
+                <div class="input-field col s12 m4">
+                    <input id="appliesAfter" type="number" class="validate" value="<%= breaks.appliesAfter %>" required="" aria-required="true"  max="120">
+                    <label class="active" for="appliesAfter">{Literal}Applies After X Minutes{/Literal}</label>
+                    <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-break-modal" class="waves-effect waves-light red-text right modal-trigger delete-button btn-flat">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green left save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light left btn-flat">{Literal}Cancel{/Literal}</a>
+</div>
+
+<div id="delete-break-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this break{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-break-confirm" class="waves-effect waves-green btn red left" data-break-id="<%= breaks.id %>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-break-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

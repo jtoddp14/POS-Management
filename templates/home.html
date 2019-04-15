@@ -1,0 +1,840 @@
+<div id="home-wrapper"style="padding-top: 10px;<%= (App.rtl ? 'direction:rtl' : '') %>">
+    <div class="row" style="padding-left: 16px;">
+        <h3 style="padding-left: 25px" id="dashboardHeader">{Literal}Dashboard{/Literal}</h3>
+        <h3 style="padding-left: 25px; display: none;" id="byHourHeader">{Literal}Sales by Hour{/Literal}</h3>
+        <h3 style="padding-left: 25px; display: none;" id="byUserHeader">{Literal}Sales by User{/Literal}</h3>
+        <h3 style="padding-left: 25px; display: none;" id="byCustomerHeader">{Literal}Sales by Customer{/Literal}</h3>
+        <h3 style="padding-left: 25px; display: none;" id="byCategoryHeader">{Literal}Sales by Item Category{/Literal}</h3>
+        <h3 style="padding-left: 25px; display: none;" id="resetReportHeader">{Literal}Reset Report{/Literal}</h3>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="col s12 m3">
+                <i id="reportType" class="medium material-icons ap-blue-text" style="vertical-align: middle;">sort</i>
+                <div class="input-field" style="display: inline-block; width: 85%;">
+                    <select id="report-type-filter" data-filter-class="conditional-report-filter">
+                        <option selected value="zOutSummary">{Literal}Summary Report{/Literal}</option>
+                        <option value="byHour">{Literal}By Hour{/Literal}</option>
+                        <option value="byUser">{Literal}By User{/Literal}</option>
+                        <option value="customerSummary">{Literal}By Customer Summary{/Literal}</option>
+                        <option value="itemCategory">{Literal}By Item Category{/Literal}</option>
+                        <option value="resetReport">{Literal}Reset Report{/Literal}</option>
+                    </select>
+                    <label>{Literal}Report Filter{/Literal}</label>
+                </div>
+            </div>
+            <div id="sequenceSearch" class="col s12 m3" style="display:none">
+                <div class="input-field" style="width: 85%;">
+                    <input type="text" id="reset-report-autocomplete" placeholder="{Literal}Enter Sequence #{/Literal}" class="autocomplete hide-filter" autocomplete="new-password" data-filter-class="conditional-report-filter" data-filter="resetReport">
+                    <label for="reset-report-autocomplete" class="active"><i class="material-icons left">filter_list</i>{Literal}Filter by Reset Report{/Literal}</label>
+                </div> 
+            </div>
+            <div id="dateRangeSelector" class="col s12 m3">
+                <i id="dateRangeIcon" class="medium material-icons ap-blue-text" style="vertical-align: middle;">date_range</i>
+                <div class="input-field" style="display: inline-block; width: 85%;">
+                    <select id="date-range-preset" data-filter-class="conditional-report-filter" data-filter="timeRange">
+                        <option value="">{Literal}Custom{/Literal}</option>
+                        <option selected value="today">{Literal}Today{/Literal}</option>
+                        <option value="yesterday">{Literal}Yesterday{/Literal}</option>
+                        <option value="previousWeek">{Literal}Last Week{/Literal}</option>
+                        <option value="thisWeek">{Literal}This Week{/Literal}</option>
+                        <option value="previousMonth">{Literal}Last Month{/Literal}</option>
+                        <option value="thisMonth">{Literal}This Month{/Literal}</option>
+                        <option value="previous3Months">{Literal}Last Quarter{/Literal}</option>
+                        <option value="this3Months">{Literal}This Quarter{/Literal}</option>
+                    </select>
+                    <label>{Literal}Date Range Preset{/Literal}</label>
+                </div>
+            </div>
+            <div id="tillSelector" class="col s12 m3">
+                <i id="computerIcon" class="medium material-icons ap-blue-text" style="vertical-align: middle;">computer</i>
+                <div class="input-field" style="display: inline-block; width: 85%;">
+                    <select id="till-dropdown" required>
+                        <option value="all">All Tills</option>
+                        <% _.each(tills, function(till) { %>
+                        <option value="<%= till.id %>"><%= till.name %></option>
+                        <% }); %>
+                    </select>
+                    <label>{Literal}Select Till{/Literal}</label>
+                </div>
+            </div>
+            <div class="col s12 m2" style="text-align: right;">
+                <a href="javascript:void(0)" class="waves-effect waves-light dropdown-trigger"  data-target='exportDropDown' style="color: black; padding-top: 6%; display: block;">
+                    <i class="medium material-icons" style="vertical-align: middle; color: #2c5487;">open_in_new</i>{Literal}Export Report{/Literal}
+                </a>
+                <ul id='exportDropDown' class='dropdown-content'>
+                    <li id="exportToExcel"><a href="javascript:void(0)">Export to Excel</a></li>
+                    <li id="emailReport"><a href="javascript:void(0)">Email Report</a></li>
+                  </ul>                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12" id="initialGraphs">
+            <span class="col s12 m4">
+                <div class="card white graphCard" style="height: 150px; border-top: solid #3754a0 4px;">
+                    <div class="row" style= "margin-left: 1.25rem;">
+                        <span style="display: inline-block; line-height: 32px; font-size: 1.5em;" ><u>{Literal}Sales Revenue{/Literal}</u>
+                            <span class = "firstDrop" style="display: none;">
+                                <a href="javascript:void(0)"><span class="material-icons" style="padding-left: 5px; color: gray; position: relative; top: 5px;">keyboard_arrow_down</span></a>
+                                <ul class="firstDrop-content">
+                                    <li><a href="javascript:void(0)">{Literal}Revenue{/Literal}</a></li>
+                                    <li><a href="javascript:void(0)">{Literal}Open orders{/Literal}</a></li>
+                                    <li><a href="javascript:void(0)">{Literal}Returns{/Literal}</a></li>
+                                    <li><a href="javascript:void(0)">{Literal}Discounts{/Literal}</a></li>
+                                </ul>
+                            </span>
+                            <input id="totalSales" type="text" disabled="disabled" style="color: black; padding-top: 10px; font-size: 1.5em; border-bottom: none" value="">
+                        </span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-content" style="display: none; color: black;">
+                            <div id="sales-line-chart-wrapper">
+                                <div id="sales-line-chart" style="color:black;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="border-bottom: .5px solid gray;">
+                    <a href="javascript:void(0)" id="firstSeeMore" class="waves-effect" style="display: flex; font-size: 1.25em; color: black;">Sales Details</a>
+                    <a class="dropDownArrowHome" style="float: right" href="javascript:void(0)"><span class="material-icons" style="color: gray; position: relative; top: -20px;">keyboard_arrow_down</span></a>
+                </div>
+                <div id="emailSummaryTable">
+                    <table id="itemTypeTable" class="table highlight" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>{Literal}Item Type{/Literal}</th>
+                                <th>{Literal}Qty{/Literal}</th>
+                                <th style="float:right">{Literal}Total Sales{/Literal}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr id="itemTypeTableHr" style="display: none;" size=2>
+
+
+                    
+                    <table id="discountTable" class="table highlight" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>{Literal}Discounts{/Literal}</th>
+                                <th style="float:right">{Literal}Total Sales{/Literal}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Comp Total</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Sales Discount Total</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Price Change Total</td>
+                                <td></td>
+                            </tr>
+                            <tr><td><br></td></tr>
+                            <tr>
+                                <td>Discounts Total</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </span>
+
+            <span class="col s12 m4">
+                <div class="card white graphCard" style="height: 150px; border-top: solid #3754a0 4px;">
+                    <div class="row" style= "margin-left: 1.25rem;">
+                        <span style="display: inline-block; line-height: 32px; font-size: 1.5em;" ><u>{Literal}Transactions{/Literal}</u>
+                            <input id="transactionCount" type="text" disabled="disabled" style="color: black; padding-top: 10px; font-size: 1.5em; border-bottom: none" value="">
+                        </span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-content" style="display: none">
+                            <div id="sales-bar-chart">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="border-bottom: .5px solid gray;">
+                    <a href="javascript:void(0)" id="secondSeeMore"  class="waves-effect"  style="display: flex; font-size: 1.25em; color: black;">Transaction Details</a>
+                    <a class="dropDownArrowHome" style="float: right" href="javascript:void(0)"><span class="material-icons" style="color: gray; position: relative; top: -20px;">keyboard_arrow_down</span></a>
+                </div>
+                <div id="transactionEmail">
+                    <table id="secondGraphTable" class="table highlight" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>{Literal}Transaction{/Literal}</th>
+                                <th style="float:right">{Literal}Count{/Literal}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No Sales Count </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Credit Transactions </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Debit Transactions </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Cash Transactions </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </span>
+
+            <span class="col s12 m4">
+                <div class="card white graphCard" style="height: 150px; border-top: solid #3754a0 4px;">
+                    <div class="row" style= "margin-left: 1.25rem;">
+                        <span style="display: inline-block; line-height: 32px; font-size: 1.5em;" ><u>{Literal}Top 5 Tender Types{/Literal}</u>   
+                            <input id="totalTender" type="text" disabled="disabled" style="color: black; padding-top: 10px; font-size: 1.5em; border-bottom: none" value="">
+                        </span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-content" style="display: none">
+                            <div id="sales-donut-chart">
+
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div style="border-bottom: .5px solid gray;">
+                    <a href="javascript:void(0)" id="thirdSeeMore"  class="waves-effect"  style="display: flex; font-size: 1.25em; color: black;">Tender Details</a>
+                    <a class="dropDownArrowHome" style="float: right" href="javascript:void(0)"><span class="material-icons" style="color: gray; position: relative; top: -20px;">keyboard_arrow_down</span></a>
+                </div>
+                <div id="tenderEmail">  
+                    <table id="thirdGraphTable" class="table highlight" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>{Literal}Tender{/Literal}</th>
+                                <th style="float:right">{Literal}Amount{/Literal}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Starting Cash</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Total Cash</td>
+                                <td></td>
+                            </tr>
+                            <tr><td><br></td></tr>
+                            
+                            <tr>
+                                <td>Payments On Account</td>
+                                <td><input id="paymentsOnAccount" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Cash Paid Out</td>
+                                <td><input id="cashPaidOut" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Net Cash</td>
+                                <td><input id="netCash" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr id="taxTableHr" style="display: none;" size=2>  
+                    <table id="taxTable" class="table highlight" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>{Literal}Tax Authority{/Literal}</th>
+                                <th style="float:right">{Literal}Amount{/Literal}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Taxable</td> 
+                                <td><input id="taxable" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Nontaxable</td>
+                                <td><input id="nonTaxable" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Tax Total</td>
+                                <td><input id="taxTotal" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr><td><br></td></tr>
+                            <tr>
+                                <td>Auto Gratuity Total</td>
+                                <td><input id="autoGratTotal" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Customer Payment Total</td>
+                                <td><input id="customerPayTotal" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr><td><br></td></tr>
+                            <tr>
+                                <td>Total</td>
+                                <td><input id="totalTaxAuthority" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </span>
+        </div>
+
+        <div class="col s12 m10" id="compReasonGraph" style="display: none; color: black; align-content: center; padding-left: 3.5%;">
+            <div class="card white graphCard" style="height: 150px; border-top: solid #3754a0 4px;">
+                <div class="row" style= "margin-left: 1.25rem;">
+                    <span style="display: inline-block; line-height: 32px; font-size: 1.5em;" ><u>{Literal}Total Transactions Comped{/Literal}</u>
+                        <input id="totalCompReasons" type="text" disabled="disabled" style="color: black; padding-top: 10px; font-size: 1.5em; border-bottom: none" value="">
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="chart-content" style="display: none; color: black;">
+                        <div id="comps-bar-chart-wrapper">
+                            <div id="comps-bar-chart" style="color:black;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="border-bottom: .5px solid gray; width: 25%">
+                <a href="javascript:void(0)" id="compSeeMore" class="waves-effect" style="display: flex; font-size: 1.25em; color: black;">Comp Details</a>
+                <a class="dropDownArrowHome" style="float: right" href="javascript:void(0)"><span class="material-icons" style="color: gray; position: relative; top: -20px;">keyboard_arrow_down</span></a>
+            </div>
+            <div style="width: 25%;">
+                <table id="compReasonTable" class="table highlight" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>{Literal}Comp Reason{/Literal}</th>
+                            <th style="float:right">{Literal}Total{/Literal}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="col s12 m12" id="salesByHourGraph" style="display: none; color: black; align-content: center; padding-left: 3.5%;">
+            <div class="card white graphCard" style="height: 150px; border-top: solid #3754a0 4px;">
+                <div class="row" style= "margin-left: 1.25rem;">
+                    <span style="display: inline-block; line-height: 32px; font-size: 1.5em;" ><u>{Literal}Top Sales Per Hour{/Literal}</u>
+                        <span class = "firstDrop">
+                            <a href="javascript:void(0)"><span class="material-icons" style="padding-left: 5px; color: gray; position: relative; top: 5px;">keyboard_arrow_down</span></a>
+                            <ul class="firstDrop-content">
+                                <li><a href="javascript:void(0)" id="byHourRevenue">{Literal}Revenue{/Literal}</a></li>
+                                <li><a href="javascript:void(0)" id="byHourQuantity">{Literal}Item Quantity{/Literal}</a></li>
+                            </ul>
+                        </span>
+                        <input id="totalSalesByHour" type="text" disabled="disabled" style="color: black; padding-top: 10px; font-size: 1.5em; border-bottom: none" value="">
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="chart-content" style="display: none; color: black;">
+                        <div id="sales-by-hour-bar-chart-wrapper">
+                            <div id="sales-by-hour-bar-chart" style="color:black;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="chart-content" style="display: none; color: black;">
+                        <div id="sales-by-hour-quantity-bar-chart-wrapper" style="display: none;">
+                            <div id="sales-by-hour-quantity-bar-chart" style="color:black;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="border-bottom: .5px solid gray; width: 50%">
+                <a href="javascript:void(0)" id="salesHourSeeMore" class="waves-effect" style="display: flex; font-size: 1.25em; color: black;">Sales by Hour Details</a>
+                <a class="dropDownArrowHome" style="float: right" href="javascript:void(0)"><span class="material-icons" style="color: gray; position: relative; top: -20px;">keyboard_arrow_down</span></a>
+            </div>
+            <div id="emailSalesHourTable" style="width: 50%;">
+                <table id="salesHourTable" class="table highlight" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>{Literal}Day{/Literal}</th>
+                            <th>{Literal}Hour{/Literal}</th>
+                            <th>{Literal}Total{/Literal}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col s12 m12" id="salesByCategory" style="display: none; color: black; align-content: center; padding-left: 3.5%;">
+            <div class="card white graphCard" style="height: 150px; border-top: solid #3754a0 4px;">
+                <div class="row" style= "margin-left: 1.25rem;">
+                    <span style="display: inline-block; line-height: 32px; font-size: 1.5em;" ><u>{Literal}Top 10 Item Categories{/Literal}</u>
+                        <input id="totalSalesCategory" type="text" disabled="disabled" style="color: black; padding-top: 10px; font-size: 1.5em; border-bottom: none" value="">
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="chart-content" style="display: none; color: black;">
+                        <div id="sales-by-category-pie-chart-wrapper">
+                            <div id="sales-by-category-pie-chart" style="color:black;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="border-bottom: .5px solid gray; width: 50%">
+                <a href="javascript:void(0)" id="salesByCategorySeeMore" class="waves-effect" style="display: flex; font-size: 1.25em; color: black;">Sales by Category Details</a>
+                <a class="dropDownArrowHome" style="float: right" href="javascript:void(0)"><span class="material-icons" style="color: gray; position: relative; top: -20px;">keyboard_arrow_down</span></a>
+            </div>
+            <div id="emailSalesByCategoryTable" style="width: 50%;">
+                <table id="salesByCategoryTable" class="table highlight" style="display: none;">
+
+                </table>
+            </div>
+        </div>
+
+        <div class="col s12 m12" id="salesByUser" style="display: none; color: black; align-content: center; padding-left: 3.5%;">
+            <div class="card white graphCard" style="height: 150px; border-top: solid #3754a0 4px;">
+                <div class="row" style= "margin-left: 1.25rem;">
+                    <span style="display: inline-block; line-height: 32px; font-size: 1.5em;" ><u>{Literal}Top 10 POS Users{/Literal}</u>
+                        <span class = "thirdDrop">
+                            <a href="javascript:void(0)"><span class="material-icons" style="padding-left: 5px; color: gray; position: relative; top: 5px;">keyboard_arrow_down</span></a>
+                            <ul class="thirdDrop-content">
+                                <li><a href="javascript:void(0)" id="userByRevenue">{Literal}By Revenue{/Literal}</a></li>
+                                <li><a href="javascript:void(0)" id="userByHour">{Literal}By Hour{/Literal}</a></li>
+                            </ul>
+                        </span> 
+                        <input id="totalSalesUser" type="text" disabled="disabled" style="color: black; padding-top: 10px; font-size: 1.5em; border-bottom: none" value="">
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="chart-content" style="display: none; color: black;">
+                        <div id="sales-by-user-pie-chart-wrapper">
+                            <div id="sales-by-user-pie-chart" style="color:black;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="border-bottom: .5px solid gray; width: 50%">
+                <a href="javascript:void(0)" id="salesByUserSeeMore" class="waves-effect" style="display: flex; font-size: 1.25em; color: black;">Sales by User Details</a>
+                <a class="dropDownArrowHome" style="float: right" href="javascript:void(0)"><span class="material-icons" style="color: gray; position: relative; top: -20px;">keyboard_arrow_down</span></a>
+            </div>
+            <div id="emailSalesUserTable" style="width: 50%;">
+                <table id="salesByUserTable" class="table highlight" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>{Literal}User{/Literal}</th>
+                            <th>{Literal}Total{/Literal}</th>
+                            <th>{Literal}Percent of Total Sales{/Literal}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col s12 m12" id="salesByCustomer" style="display: none; color: black; align-content: center; padding-left: 3.5%;">
+            <div class="card white graphCard" style="height: 150px; border-top: solid #3754a0 4px;">
+                <div class="row" style= "margin-left: 1.25rem;">
+                    <span style="display: inline-block; line-height: 32px; font-size: 1.5em;" ><u>{Literal}Top 10 Customers{/Literal}</u>
+                        <span class = "secondDrop">
+                            <a href="javascript:void(0)"><span class="material-icons" style="padding-left: 5px; color: gray; position: relative; top: 5px;">keyboard_arrow_down</span></a>
+                            <ul class="secondDrop-content">
+                                <li><a href="javascript:void(0)" id="showCashSales" style="width: 160px;">{Literal}Show Cash Sales{/Literal}</a></li>
+                                <li><a href="javascript:void(0)" id="hideCashSales" style="width: 160px;">{Literal}Hide Cash Sales{/Literal}</a></li>
+                            </ul>
+                        </span>
+                        <input id="totalSalesCustomer" type="text" disabled="disabled" style="color: black; padding-top: 10px; font-size: 1.5em; border-bottom: none" value="">
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="chart-content" style="display: none; color: black;">
+                        <div id="sales-by-customer-pie-chart-wrapper">
+                            <div id="sales-by-customer-pie-chart" style="color:black;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="border-bottom: .5px solid gray; width: 50%">
+                <a href="javascript:void(0)" id="salesByCustomerSeeMore" class="waves-effect" style="display: flex; font-size: 1.25em; color: black;">Sales by Customer Details</a>
+                <a class="dropDownArrowHome" style="float: right" href="javascript:void(0)"><span class="material-icons" style="color: gray; position: relative; top: -20px;">keyboard_arrow_down</span></a>
+            </div>
+            <div id="emailSalesCustomerTable" style="width: 50%;">
+                <table id="salesByCustomerTable" class="table highlight" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>{Literal}Customer Name{/Literal}</th>
+                            <th>{Literal}Customer Id{/Literal}</th>
+                            <th>{Literal}Taxable{/Literal}</th>
+                            <th>{Literal}Sub-Total{/Literal}</th>
+                            <th>{Literal}Total{/Literal}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <% if (App.serverInfo.isFoodService) { %>
+        <div class="col s12">
+            <span class="col s12 m6">
+                <div class="card white graphCard" style="height: 150px; border-top: solid #3754a0 4px;">
+                    <div class="row" style= "margin-left: 1.25rem;">
+                        <span style="display: inline-block; line-height: 32px; font-size: 1.5em;" ><u>{Literal}Tips{/Literal} </u>
+                            <input id="totalItems" type="text" disabled="disabled" style="color: black; padding-top: 10px; font-size: 1.5em; border-bottom: none" value=""></span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-content" style="display: none; color: black;">
+                            <div id="tips-bar-graph-wrapper">
+                                <div id="tips-bar-graph" style="color:black;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="border-bottom: .5px solid gray;">
+                    <a href="javascript:void(0)" id="fourthSeeMore" class="waves-effect" style="display: flex; font-size: 1.25em; color: black;">Tip Details</a>
+                    <a class="dropDownArrowHome" style="float: right" href="javascript:void(0)"><span class="material-icons" style="color: gray; position: relative; top: -20px;">keyboard_arrow_down</span></a>
+                </div>
+                <div id="emailFoodServiceGraph1" >
+                    <table id="fourthGraphTable" class="table highlight" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>{Literal}Tip Type{/Literal}</th>
+                                <th style="float:right">{Literal}Amount{/Literal}</th>
+                            </tr>
+                        </thead>
+        
+                        <tbody>
+                            <tr>
+                                <td>Credit Card Tips</td>
+                                <td><input id="ccTips" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>AutoGratuity</td>
+                                <td><input id="autoGratuity" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Other Tips</td>
+                                <td><input id="otherTips" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Total Tips</td>
+                                <td><input id="totalTips" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </span>
+            <span class="col s12 m6">
+                <div class="card white graphCard" style="height: 150px; border-top: solid #3754a0 4px;">
+                    <div class="row" style= "margin-left: 1.25rem;">
+                        <span style="display: inline-block; line-height: 32px; font-size: 1.5em;" ><u>{Literal}Dining Summary{/Literal}</u>
+                            <input id="totalItems" type="text" disabled="disabled" style="color: black; padding-top: 10px; font-size: 1.5em; border-bottom: none" value=""></span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-content" style="display: none; color: black;">
+                            <div id="dining-bar-graph-wrapper">
+                                <div id="dining-bar-graph" style="color:black;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="border-bottom: .5px solid gray;">
+                    <a href="javascript:void(0)" id="fifthSeeMore" class="waves-effect" style="display: flex; font-size: 1.25em; color: black;">Dining Summary Details</a>
+                    <a class="dropDownArrowHome" style="float: right" href="javascript:void(0)"><span class="material-icons" style="color: gray; position: relative; top: -20px;">keyboard_arrow_down</span></a>
+                </div>
+                <div id="emailFoodServiceGraph2">
+                    <table id="fifthGraphTable" class="table highlight" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>{Literal}Dining Type{/Literal}</th>
+                                <th style="float:right">{Literal}Percent{/Literal}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Dine-In % of Total</td>
+                                <td><input id="dineInTotal" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Dine-In % of Checks</td>
+                                <td><input id="dineInChecks" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Dine-In % of Guests</td>
+                                <td><input id="dineInGuests" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+
+                            <tr><td><br></td></tr>
+
+                            <tr>
+                                <td>Take-Out % of Total</td>
+                                <td><input id="takeOutTotal" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Take-Out % of Checks</td>
+                                <td><input id="takeOutChecks" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Take-Out % of Guests</td>
+                                <td><input id="takeOutGuests" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+
+                            <tr><td><br></td></tr>
+
+                            <tr>
+                                <td>Delivery % of Total</td>
+                                <td><input id="deliveryTotal" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Delivery % of Checks</td>
+                                <td><input id="deliveryChecks" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>Delivery % of Guests</td>
+                                <td><input id="deliveryGuests" type="text" disabled="disabled" style="color: black; border-bottom: none; height: 1rem; padding: 0; float: right; direction: RTL;" value=""></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </span>
+        <% } %>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-top: 10px;<%= (App.rtl ? 'direction:rtl' : '') %>">
+    <div class="col s12">
+        <div class="col s12 m4">
+            <div class="quicklink-card z-depth-1 white" style="margin-bottom: 10px">
+                <div class="quicklink-card-title ap-dark-blue valign-wrapper waves-effect waves-light">
+                    <div class="row" style="height: 100%">
+                        <div class="col s1 valign-wrapper" style="height: 100%; padding-left: 15px">
+                            <i class="material-icons">close</i>
+                        </div>
+                        <div class="col s10 valign-wrapper" style="height: 100%">&nbsp; {Literal}Shift Report{/Literal}</div>
+                    </div>
+                </div>
+                <div class="quicklink-card-content" style="display: none">
+                    <% if (noTillsWarning === true) { %>
+                    <div class="no-tills-warning">
+                        {Literal}There are no tills with orders to display{/Literal}
+                    </div>
+                    <% } %>
+                    <div class="ap-collection" data-type="x-out">
+                        <% _.each(tills, function(till) { %>
+                        <% if (typeof till.hasOrders !== 'undefined' && till.hasOrders === true) { %>
+                        <div class="ap-collection-item" data-id="<%= till.id %>">
+                            <div class="row" style="margin-bottom: 5px">
+                                <div class="col s6 till-name">
+                                    {Literal}Till{/Literal} <%= till.name %>
+                                </div>
+                                <div class="col s6 right-align <%= till.ready === true ? 'ready' : 'open-orders' %>">
+                                    <%= till.ready === true ? '{Literal}Ready{/Literal}' : '{Literal}Has open orders{/Literal}' %>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <% }}); %>
+                    </div>
+                </div>
+                <div class="quicklink-card-footer"  style="display: none">
+                    <div class="row" style="margin-bottom: 2px">
+                        <div class="col s6"></div>
+                        <div class="col s6 right-align">
+                            <a class="waves-effect ap-confirm-green waves-light btn-small disabled generate-button" data-type="x-out">X-Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+                <div class="quicklink-card z-depth-1 white" style="margin-bottom: 10px">
+                    <div class="quicklink-card-title ap-dark-blue valign-wrapper waves-effect waves-light">
+                        <div class="row" style="height: 100%">
+                            <div class="col s1 valign-wrapper" style="height: 100%; padding-left: 15px;">
+                                <span class="right z-out-custom-icon" style="padding-left: 10px">Z</span>
+                            </div>
+                            <div class="col s10 valign-wrapper" style="height: 100%">&nbsp; {Literal}Shift Reset{/Literal}</div>
+                        </div>
+                    </div>
+                    <div class="quicklink-card-content" style="display: none">
+                        <% if (noTillsWarning === true) { %>
+                        <div class="no-tills-warning">
+                                {Literal}There are no tills with orders to display{/Literal}
+                        </div>
+                        <% } %>
+                        <div class="ap-collection" data-type="z-out">
+                            <% _.each(tills, function(till) { %>
+                            <% if (typeof till.hasOrders !== 'undefined' && till.hasOrders === true) { %>
+                                <div class="ap-collection-item <%= till.ready === true ? '' : 'ap-collection-item-disabled' %>" data-id="<%= till.id %>">
+                                    <div class="row" style="margin-bottom: 5px">
+                                        <div class="col s6 till-name">
+                                            {Literal}Till{/Literal} <%= till.name %>
+                                        </div>
+                                        <div class="col s6 right-align <%= till.ready === true ? 'ready' : 'open-orders' %>">
+                                            <%= till.ready === true ? '{Literal}Ready{/Literal}' : '{Literal}Has open orders{/Literal}' %>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            <% }}); %>
+                        </div>
+                    </div>
+                    <div class="quicklink-card-footer" style="display: none">
+                        <div class="row" style="margin-bottom: 2px">
+                            <div class="col s12">
+                                <form>
+                                    <div class="row">
+                                        <div class="input-field col s12" style="padding-left: 25px">
+                                            <input id="z-out-total-cash" placeholder="Enter total cash/checks" type="number" step="1.00" value="0.00" <%= noTillsWarning === true ? 'disabled' : 'checked' %>>
+                                            <label class="active" for="z-out-total-cash" style="padding-left: 15px;">{Literal}Total Cash/Checks{/Literal}</label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col s6">
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" id="z-out-show-graphs" <%= noTillsWarning === true ? 'disabled' : 'checked' %>>
+                                        <span class="lever"></span>{Literal}Show Graphs{/Literal}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col s6 right-align">
+                                <a class="waves-effect ap-confirm-green waves-light btn-small disabled generate-button" data-type="z-out">Z-Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="quicklink-card z-depth-1 white" style="margin-bottom: 10px">
+                    <div class="quicklink-card-title ap-dark-blue valign-wrapper waves-effect waves-light">
+                        <div class="row" style="height: 100%">
+                            <div class="col s1 valign-wrapper" style="height: 100%; padding-left: 15px">
+                                <i class="material-icons">autorenew</i>
+                            </div>
+                            <div class="col s10 valign-wrapper" style="height: 100%">&nbsp; {Literal}Master Reset{/Literal}</div>
+                        </div>
+                    </div>
+                    <div class="quicklink-card-content" style="display: none">
+                        <% if (noTillsWarning === true) { %>
+                        <div class="no-tills-warning">
+                            {Literal}There are no tills with orders to display{/Literal}
+                        </div>
+                        <% } %>
+                        <div class="ap-collection master-z-till-list" data-type="master-z">
+                                <% _.each(tills, function(till) { %>
+                                <% if (typeof till.hasOrders !== 'undefined' && till.hasOrders === true) { %>
+                                    <div class="ap-collection-item <%= till.ready === true ? '' : 'ap-collection-item-disabled' %>" data-id="<%= till.id %>">
+                                        <div class="row" style="margin-bottom: 5px">
+                                            <div class="col s6 till-name">
+                                                {Literal}Till{/Literal} <%= till.name %>
+                                            </div>
+                                            <div class="col s6 right-align <%= till.ready === true ? 'ready' : 'open-orders' %>">
+                                                <%= till.ready === true ? '{Literal}Ready{/Literal}' : '{Literal}Has open orders{/Literal}' %>
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
+                            <% }}); %>
+                        </div>
+                    </div>
+                    <div class="quicklink-card-footer" style="display: none">
+                        <div class="row" style="margin-bottom: 2px">
+                            <div class="col s6"></div>
+                            <div class="col s6 right-align">
+                                <a class="waves-effect ap-confirm-green waves-light btn-small disabled generate-button" data-type="master-z">Z-Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col s12" id="embedded-report">
+
+        </div>
+    </div>
+</div>
+
+<div id="date-range-form-modal" class="modal modal-fixed-footer date-range-form-modal" style="min-height: 25%; min-width: 50%; z-index: 100000;">
+    <div class="modal-content">
+        <h4>{Literal}Choose Date Range{/Literal}</h4> 
+        <div class="row" style="padding-top: 50px;">
+            <div class="col s12 m6 offset-m3">
+                <div class="input-field">
+                    <input class="datepicker" id="fromDate" type="text">
+                    <label class="active" for="fromDate">{Literal}From Date{/Literal}</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <div class="input-field">
+                    <input class="datepicker" id="thruDate" type="text">
+                    <label class="active" for="thruDate">{Literal}Through Date{/Literal}: </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="waves-effect waves-light green btn-flat choose-date-range-button left">{Literal}Save{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>
+
+<div id="email-report-modal" class="modal modal-fixed-footer" style="display: none; width: 55% !important; height: 28% !important;">
+    <div class="modal-content" style="color: black;">
+        <h3 style="font-size: 2.28em;">{Literal}Email Report{/Literal}</h3>
+        <div class="row">
+            <div class="input-field col s12 m4 offset-m4">
+                <input id="emailInfo" placeholder="{Literal}Email{/Literal}" type="text" style="border-bottom: ridge;">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+        <a href="javascript:void(0)" id="sendEmailReport" class="waves-effect waves-green right btn green">{Literal}Send{/Literal}</a>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div id="barcode-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div class="row">
+        <div class="col s12 m2">
+            <div class="input-field">
+                <input id="searchText" type="text" maxlength="50">
+                <label for="searchText">{Literal}Search Text{/Literal}</label>
+            </div>
+        </div> 
+        <div class="input-field col s10 m3">
+            <select id="searchField">
+                <option value="0"> {Literal}Description{/Literal} </option> 
+                <option value="1"> {Literal}Item Id{/Literal} </option>
+                <option value="2"> {Literal}Item Type{/Literal} </option>
+                <option value="3"> {Literal}Alt Description{/Literal} </option>
+                <option value="4"> {Literal}Category{/Literal} </option>
+            </select>
+        </div>
+        <div class="col s2 m2">
+            <div class="search" style="padding-top: 20px;" >
+                <a href="javascript:void(0)" class="btn waves-effect waves-light green search-items-button">
+                    <i class="material-icons">search</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" id="notApproved">
+        {Literal}Search Results{/Literal} <hr size=2>
+        <div id="resultsBlock" class="row">
+
+        </div>
+    </div>
+
+    <div class="row" id="approved">
+        {Literal}Last Received{/Literal} <hr size=2>
+        <div id="barcodeBlock" class="row">
+            <% _.each(items, function(item) { %>
+                <% if(item.barcodeCount > 0 || 0 > item.barcodeCount) { %>
+                    <div id = "itemCards" class="card">
+                        <div class="col s12 m3">
+                            <div class="card card-panel z-depth-1 sequence-card hoverable waves-effect waves-light <%= items.cardStyleClass %>" style="background-color: #ffffff" data-id="<%= item.id %>" data-selected='0'>
+                                <div class="description truncate" style="color: #3970b7; font-size: 1rem; margin-bottom: 0px;">
+                                    <%= item.id %>
+                                </div>
+                                
+                                <div class="type truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                    {Literal}Description{/Literal}: <%= item.description %>
+                                </div>
+                
+                                <div class="type truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray; padding-bottom: 10px">
+                                    {Literal}Price{/Literal}: <%= item.price %>
+                                </div>
+
+                                <div class="card-action" style="padding: 0px 0px 0px 0px !important;">
+                                    <div class="input-field" style="margin-top: 0rem; margin-bottom: 0rem; width: 100%;">
+                                        <input id="print" data-id="<%= item.id %>" type="number" value="<%= item.barcodeCount %>" maxlength="50" class = "barCodeInput">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% }); %>
+        </div>
+    </div>
+</div>
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large ap-blue">
+        <i class="large material-icons">format_line_spacing</i>
+    </a>
+    <ul>
+        <li><a id="clearBarcodeCount" class="btn-floating" style="background-color: #EF486F"><i class="material-icons tooltipped" data-position="left" data-tooltip="{Literal}Clear Barcode Counts{/Literal}">clear</i></a></li>
+        <li><a id="saveBarcodeCounts" class="btn-floating" style="background-color: #A4D391"><i class="material-icons tooltipped"  data-position="left" data-tooltip="{Literal}Save Barcode Counts{/Literal}">save</i></a></li>
+    </ul>
+</div

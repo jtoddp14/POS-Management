@@ -1,0 +1,74 @@
+<div id="customers-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div class="row">
+        <div class="col s12">
+            <div class="col s12 m1">
+                <p style="top: 40px; font-size: 20px;"><strong>Search:</strong></p>
+            </div>
+            <div class="col s12 m2">
+                <div class="input-field">
+                    <input id="searchText" type="text" maxlength="20">
+                    <label class="active" for="searchText">Search Text</label>
+                </div>
+            </div> 
+            <div class="col s12 m1">
+                <p style="top: 40px; font-size: 20px;"><strong>in</p>
+            </div>
+            <div class="input-field col s12 m3">
+                <select id="searchField">
+                    <option value="1"> Customer Codes</option>
+                    <option value="2"> Customer Names</option>
+                    <option value="3"> Customer Phone Numbers</option>
+                    <option value="4"> Customer Emails</option>
+                </select>
+                <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+            </div>
+            <div class="col s12 m5">
+                <div class="search">
+                    <a href="javascript:void(0)" class="btn btn-large waves-effect waves-light green search-customers-button">
+                        <i class="material-icons">search</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <% _.each(customers, function(customers) { %>
+            <div class="col s12 m3 xl2">
+                <div class="card-panel card-panel-entity z-depth-2 sequence-card hoverable white-text waves-effect waves-light <%= customers.cardStyleClass %>" style="background-color: #3970b7" data-id="<%= customers.id %>" data-selected='0'>
+                    <div>
+                        <div class="row description truncate" style="position: relative; right: 13px; bottom: 8px; width: 150%; height: 48px;">
+                            &nbsp;&nbsp;<%= customers.id %>
+                        </div>
+                        <div class="row customerName truncate">
+                            Name:
+                            <%= customers.name %>
+                        </div>
+                        <div class="row customerPhone truncate">
+                            Phone:
+                            <%= customers.phone %>
+                        </div>
+                        <div class="row email truncate">
+                            Email: 
+                            <%= customers.email %>
+                        </div>
+                    </div>
+                    <div class="edit" style="display: none">
+                        <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-customers-trigger"
+                            data-id="<%= customers.id %>">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+        
+<div id="customers-form-modal" class="modal modal-fixed-footer customers-form-modal" style="max-height: 100%">
+    
+</div>
+
+<a href="javascript:void(0)" id="add-customers-button" class="btn-floating btn-large waves-effect waves-light green floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>

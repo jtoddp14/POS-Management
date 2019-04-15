@@ -1,0 +1,92 @@
+<div id="sales-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <% _.each(sales, function(sales) { %>
+            <div id ="salesCards">
+                <div class="col s12 m3 xl2">
+                    <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light" style="background-color: #ffffff;" data-id="<%= sales.id %>" data-selected='0'>
+                        <div>
+                            <%if (sales.item != "" ) {%>
+                                <div class="row description truncate" style="color: #3970b7;">
+                                    <%= sales.item %>
+                                </div>
+                                <div class="row type truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                    {Literal}Item{/Literal}
+                                </div>
+                            <%}%>
+                            <%if (sales.group != "" ) { %>
+                                <div class="row description truncate" style="color: #3970b7;">
+                                   <%= sales.group %>
+                                </div>
+                                <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                    {Literal}Type{/Literal}
+                                </div>
+                            <% }%>
+
+                            <% if (sales.discount != 0) { %>
+                                    <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                        {Literal}Sale Type: Percent Discount{/Literal}
+                                    </div>
+                            <% } %>
+
+                            <% if (sales.quantity != 0) { %>
+                                <% if (sales.forPrice != 0) { %>
+                                    <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                        {Literal}Sale Type: Item Quantity{/Literal}
+                                    </div>
+                                <% } %>
+                            <% } %>
+
+                            
+                            <% if (sales.quantityLevel != 0) { %>
+                                <% if (sales.quantityPrice != 0) { %>
+                                    <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                        {Literal}Sale Type: Quantity Price{/Literal}
+                                    </div>
+                                <% } %>
+                            <% } %>
+
+                            <% if (sales.initialQuantity != 0) { %>
+                                <% if (sales.nextDiscountPct != 0) { %>
+                                    <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                        {Literal}Sale Type: Quantity Price By Percent{/Literal}
+                                    </div>
+                                <% } %>
+                            <% } %>
+
+                            <% if (sales.initialQuantity != 0) { %>
+                                <% if (sales.nextDiscountPrice != 0) { %>
+                                    <div class="row item truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                        {Literal}Sale Type: Quantity Price By Price{/Literal}
+                                    </div>
+                                <% } %>
+                            <% } %>
+
+                            <div class="row dates truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                <% var showStartDate = new Date(sales.start) %>
+                                <% var showEndDate = new Date(sales.end) %>
+                                <%= showStartDate.toLocaleDateString() %> - <%= showEndDate.toLocaleDateString()%>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="edit" style="display: none">
+                            <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-sales-trigger"
+                                data-id="<%= sales.id %>">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+    <script></script>
+
+</div>
+            
+<div id="sales-form-modal" class="modal modal-fixed-footer sales-form-modal" style="max-height: 100%;">
+    
+</div>
+
+<a href="javascript:void(0)" id="add-sales-button" class="btn-floating btn-large waves-effect waves-light ap-blue z-depth-4 floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>

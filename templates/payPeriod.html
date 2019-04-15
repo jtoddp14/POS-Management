@@ -1,0 +1,144 @@
+<div id="pay-period-wrapper">  
+    <div class="row">
+        <!--<h3 style="padding-left: 15px">Pay Periods</h3>
+        <a id="listFormat" class="black-text waves-effect waves-light" href="javascript:void(0)">
+            <i class="material-icons black-text">format_list_bulleted</i>{Literal}List View{/Literal}</a>
+        <a id="calendarFormat" style="display: none;" class="black-text waves-effect waves-light" href="javascript:void(0)">
+                <i class="material-icons black-text">view_comfy</i>{Literal}Calendar View{/Literal}</a>-->
+    </div>
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="ui sixteen column">
+            <div id="calendar" style="background-color: white; padding: 15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="listView" style="display: none;">
+        <div class="row">
+            <div class="col s12 m12" style="max-height: 400px; overflow: auto">
+                <table class="table highlight responsive-table" id="payPeriodTable" >
+                    <thead>
+                        <tr>
+                            <th>{Literal}ID#{/Literal}</th>
+                            <th>{Literal}Accounting ID#{/Literal}</th>
+                            <th>{Literal}Employee Name{/Literal}</th>
+                            <th>{Literal}Clock In/Out{/Literal}</th>
+                            <th>{Literal}Pay Level{/Literal}</th>
+                            <th>{Literal}Hours{/Literal}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody style="cursor: pointer;">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>  
+
+<div id="pay-periods-form-modal" class="modal modal-fixed-footer pay-periods-form-modal" style="max-height: 100%">
+    
+</div>
+
+<div id="advance-pay-period-modal"class="modal modal-fixed-footer advance-pay-period-modal" style="max-height: 100%">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Advance Pay Period{/Literal}</h6>
+        </div>
+
+        <p style="text-align: center">{Literal}Pay period ends{/Literal}</p>
+        <p style="text-align: center; font-size: 1.5rem;">{Literal}<%= moment(payPeriodInfo.periodEnd).format('LL') %>{/Literal}</p>
+        <p style="text-align: center">{Literal}Advance the pay period to this date{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="cancel-advance-pay-period" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+        <a href="javascript:void(0)" id="advance-pay-period-confirm" class="modal-close waves-effect waves-green btn green">{Literal}Advance{/Literal}</a>
+        <input type="hidden" />
+    </div>
+</div>
+
+<div id="edit-pay-period-modal"class="modal modal-fixed-footer edit-pay-period-modal" style="max-height: 100%">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px">
+            <h4>{Literal}Pay Period Details{/Literal}</h4>
+        </div>
+        <div class="row">
+            <%
+                var periodEnd = new Date(payPeriodInfo.periodEnd); 
+                month = '' + (periodEnd.getMonth() + 1),
+                day = '' + periodEnd.getDate(),
+                year = periodEnd.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+                periodEnd = [year, month, day].join('-');
+                
+            %>
+            <div class="col s12 m6">
+                <label class="active" for="periodEnd">{Literal}Pay Period End Date{/Literal}</label>
+                <input class="datepicker" id="periodEnd" type="text" value="<%= periodEnd %>">
+                <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+            </div>
+            <div class="col s12 m6">
+                <label class="active" for="periodDuration">{Literal}Days in Pay Period{/Literal}</label>
+                <input id="periodDuration" type="number" class="validate" value="<%= payPeriodInfo.periodDuration %>" required="" aria-required="true">
+                <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="input-field">
+                    <label class="active">{Literal}Work Week Start Date{/Literal}</label>
+                    <select id="weekStartDay" required>
+                        <option value="0" <%= (payPeriodInfo.weekStartDay == "Monday" ? 'selected' : '') %>>{Literal}Monday{/Literal}</option>
+                        <option value="1" <%= (payPeriodInfo.weekStartDay == "Tuesday" ? 'selected' : '') %>>{Literal}Tuesday{/Literal}</option>
+                        <option value="2" <%= (payPeriodInfo.weekStartDay == "Wednesday" ? 'selected' : '') %>>{Literal}Wednesday{/Literal}</option>
+                        <option value="3" <%= (payPeriodInfo.weekStartDay == "Thursday" ? 'selected' : '') %>>{Literal}Thursday{/Literal}</option>
+                        <option value="4" <%= (payPeriodInfo.weekStartDay == "Friday" ? 'selected' : '') %>>{Literal}Friday{/Literal}</option>
+                        <option value="5" <%= (payPeriodInfo.weekStartDay == "Saturday" ? 'selected' : '') %>>{Literal}Saturday{/Literal}</option>
+                        <option value="6" <%= (payPeriodInfo.weekStartDay == "Sunday" ? 'selected' : '') %>>{Literal}Sunday{/Literal}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                <div class="input-field">
+                    <label class="active">{Literal}Work Week End Date{/Literal}</label>
+                    <select id="weekEndDay" required>
+                        <option value="0" <%= (payPeriodInfo.weekEndDay == "Monday" ? 'selected' : '') %>>{Literal}Monday{/Literal}</option>
+                        <option value="1" <%= (payPeriodInfo.weekEndDay == "Tuesday" ? 'selected' : '') %>>{Literal}Tuesday{/Literal}</option>
+                        <option value="2" <%= (payPeriodInfo.weekEndDay == "Wednesday" ? 'selected' : '') %>>{Literal}Wednesday{/Literal}</option>
+                        <option value="3" <%= (payPeriodInfo.weekEndDay == "Thursday" ? 'selected' : '') %>>{Literal}Thursday{/Literal}</option>
+                        <option value="4" <%= (payPeriodInfo.weekEndDay == "Friday" ? 'selected' : '') %>>{Literal}Friday{/Literal}</option>
+                        <option value="5" <%= (payPeriodInfo.weekEndDay == "Saturday" ? 'selected' : '') %>>{Literal}Saturday{/Literal}</option>
+                        <option value="6" <%= (payPeriodInfo.weekEndDay == "Sunday" ? 'selected' : '') %>>{Literal}Sunday{/Literal}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <label class="active" for="hoursBeforeOT">{Literal}Hours Before Overtime{/Literal}</label>
+                <input id="hoursBeforeOT" type="number" class="validate" value="<%= payPeriodInfo.hoursBeforeOT %>" required="" aria-required="true">
+                <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="cancel-pay-period-info" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+        <a href="javascript:void(0)" id="save-pay-period-info-confirm" class="modal-close waves-effect waves-green btn green">{Literal}Save{/Literal}</a>
+        <input type="hidden" />
+    </div>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large green">
+        <i class="large material-icons">format_line_spacing</i>
+    </a>
+    <ul>
+        <li><a id="advance-pay-period-button" class="btn-floating" style="background-color: #FFD167"><i class="material-icons tooltipped" data-position="left" data-tooltip="{Literal}Advance Pay Period{/Literal}">fast_forward</i></a></li>
+        <li><a id="edit-pay-period-button" class="btn-floating" style="background-color: #4B9CD6"><i class="material-icons tooltipped"  data-position="left" data-tooltip="{Literal}Edit Pay Period{/Literal}">mode_edit</i></a></li>
+    </ul>
+</div>

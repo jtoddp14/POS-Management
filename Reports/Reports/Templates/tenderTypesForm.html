@@ -1,0 +1,113 @@
+<div id="tender-types-form-modal" class="modal modal-fixed-footer" style="max-height: 100%"></div>
+    <div class="modal-content">
+        <div id="tender-types-form-content">
+            <h4 style="font-size: 1.2rem">Tender Type Details</h4>
+            <form>
+                <div class="firstRow">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="col s12 m4">
+                                <div class="input-field">
+                                    <input id="id" type="text" value="<%= tenderTypes.id %>" class="validate" maxlength="20">
+                                    <label class="active" for="id">Tender Code</label>
+                                    <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+                                </div>
+                            </div>
+
+                            <div class="col s12 m4">
+                                <div class="input-field">
+                                    <input id="tenderName" type="text" value="<%= tenderTypes.tenderName %>" class="validate" maxlength="20">
+                                    <label class="active" for="tenderTypesName">Tender Name</label>
+                                    <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+                                </div>
+                            </div>
+
+                            <div class="col s12 m4">
+                                <div class="input-field">
+                                    <input id="buttonText" type="text" value="<%= tenderTypes.buttonText %>" class="validate" maxlength="20">
+                                    <label class="active" for="buttonText">Button Text</label>
+                                    <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="secondRow">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="col s12 m4">
+                                <div class="input-field">
+                                    <input id="glAccount" type="text" value="<%= tenderTypes.glAccount %>" maxlength="20">
+                                    <label class="active" for="glAccount">GL Account</label>
+                                </div>
+                            </div>
+
+                            <div class="col s12 m4">
+                                <div class="input-field">
+                                    <label class="active">Payment Type</label>
+                                    <select id="payment-type-form-dropdown" required>
+                                        <% _.each(paymentTypes, function(paymentType) { %>
+                                        <option value="<%= paymentType.id %>" <%= (tenderTypes.paymentType === paymentType.id ? 'selected' : '') %>><%= paymentType.name %></option>    
+                                        <% }); %>
+                                        <!--<option value="0" <%= (tenderTypes.paymentType == 0 ? 'selected' : '') %>>Cash</option>
+                                        <option value="1" <%= (tenderTypes.paymentType == 1 ? 'selected' : '') %>>Credit Card (without capture)</option>
+                                        <option value="2" <%= (tenderTypes.paymentType == 2 ? 'selected' : '') %>>Credit Card (auto capture)</option>
+                                        <option value="3" <%= (tenderTypes.paymentType == 3 ? 'selected' : '') %>>Accounts Receivable</option>
+                                        <option value="4" <%= (tenderTypes.paymentType == 4 ? 'selected' : '') %>>Payment on Account</option>
+                                        <option value="5" <%= (tenderTypes.paymentType == 5 ? 'selected' : '') %>>Store Credit</option>
+                                        <option value="6" <%= (tenderTypes.paymentType == 6 ? 'selected' : '') %>>Debit Card (auto capture)</option>
+                                        <option value="7" <%= (tenderTypes.paymentType == 7 ? 'selected' : '') %>>Gift Cards</option>
+                                        <option value="8" <%= (tenderTypes.paymentType == 8 ? 'selected' : '') %>>Other</option>-->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col s12 m4">
+                                <div class="input-field">
+                                    <input id="maxChange" type="number" value="<%= tenderTypes.maxChange %>" class="validate" max="9999.99">
+                                    <label class="active" for="maxChange">Max Change Allowed</label>
+                                    <span class="helper-text" data-error="A number from 0.0 to 9999.00 is mandatory" data-success=""></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thirdRow">
+                    <div class="row" style="padding-right: 25px;">
+                        <div class="col s12">
+                            <div class="col s12 m4">
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox"  data-type="tenderTypes.openCash" <%= tenderTypes.openCash ? 'checked': '' %> >
+                                        <span class="lever"></span>Open Cash Drawer
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <div class="modal-footer">
+        <a href="#delete-tender-types-modal" class="waves-effect waves-light btn red left modal-trigger delete-button">Delete</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-green btn green save-button">Save</a>
+    </div>
+
+
+<div id="delete-tender-types-modal" class="modal">
+    <div class="modal-content">
+        <h4>Confirm Deletion</h4>
+        <p>Are you sure that you would like to remove this tender type?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+        <a href="javascript:void(0)" id="delete-tender-types-confirm" class="modal-close waves-effect waves-green btn red" data-tender-types-id="<%= tenderTypes.tenderName%>">Delete</a>
+        <input type="hidden" id="delete-tender-types-id" />
+    </div>
+</div>

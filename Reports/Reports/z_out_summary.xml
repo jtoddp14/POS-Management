@@ -1,0 +1,1018 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+
+    <Styles>
+    <Style ss:ID="Default" ss:Name="Normal">
+      <Alignment ss:Vertical="Bottom"/>
+      <Borders/>
+      <Font ss:FontName="Arial"/>
+      <Interior/>
+      <NumberFormat/>
+      <Protection/>
+    </Style>
+
+    <Style ss:ID="reportTitle">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Size="18" ss:Color="#FF0000" ss:Bold="1"/>
+      <Borders>
+        <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="tableTitle">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Size="14" ss:Color="#0000FF" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="transLabel">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#0000FF" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="transTotalLabel">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#800000" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="tenderLabel">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#006400" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="itemLabel">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#006400" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="itemLabelBottomBorder">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#006400" ss:Bold="1"/>
+      <Borders>
+        <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="itemLabelLeft">
+      <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#006400" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="reportLabel">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+      <Font ss:FontName="Arial" ss:Color="#800000" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="positiveColor">
+      <Font ss:FontName="Arial" ss:Color="#000000"/>
+    </Style>
+
+    <Style ss:ID="negativeColor">
+      <Font ss:FontName="Arial" ss:Color="#FF0000"/>
+    </Style>
+
+    <Style ss:ID="discountColor">
+      <Font ss:FontName="Arial" ss:Color="#00FF00"/>
+    </Style>
+
+    <Style ss:ID="increaseColor">
+      <Font ss:FontName="Arial" ss:Color="#0000FF"/>
+    </Style>
+
+    <Style ss:ID="currencyRight">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <NumberFormat ss:Format="Currency" />
+    </Style>
+
+    <Style ss:ID="currencyRightTopBorder">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <NumberFormat ss:Format="Currency" />
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="currencyRightBold">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <NumberFormat ss:Format="Currency" />
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="currencyCenter">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <NumberFormat ss:Format="Currency" />
+    </Style>
+
+    <Style ss:ID="currencyCenterBold">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <NumberFormat ss:Format="Currency" />
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="cellBold">
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="cellBoldTopBorder">
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="cellRight">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+    </Style>
+
+    <Style ss:ID="cellRightBold">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="cellCenter">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+    </Style>
+
+    <Style ss:ID="cellCenterTopBorder">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="cellCenterBold">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="boldBorder">
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="3"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="topBorder">
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="bottomBorder">
+      <Borders>
+        <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="topBorderBold">
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="bottomBorderBold">
+      <Borders>
+        <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+      </Borders>
+    </Style>
+  </Styles>
+
+
+  <Worksheet ss:Name="Report">
+    <Table>
+
+      <Column ss:AutoFitWidth="0" ss:Width="10"/>
+      <Column ss:AutoFitWidth="0" ss:Width="125"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="110"/>
+      <Column ss:AutoFitWidth="0" ss:Width="75"/>
+      <Column ss:AutoFitWidth="0" ss:Width="10"/>
+
+      
+      <Row>
+        <Cell ss:StyleID="reportTitle" ss:MergeAcross="7">
+          <Data ss:Type="String">AccuPOS Reset Summary Report for Till - קופה ראשית</Data>
+        </Cell>
+      </Row>
+      
+
+      
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="7">
+          <Data ss:Type="String">London Vapes!!</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="7">
+          <Data ss:Type="String">1422 Northwest Blvd 515631661</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="7">
+          <Data ss:Type="String">Columbus, Oh 43212</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenter" ss:MergeAcross="7">
+          <Data ss:Type="String">Report was run on March 20, 2019 11:43 AM</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellCenterBold" ss:MergeAcross="7">
+          <Data ss:Type="String">Transactions from  12/13/18 11:05:15  through  12/13/18 21:18:49</Data>
+        </Cell>
+      </Row>
+
+
+      // Tendering
+      <Row>
+        <Cell ss:StyleID="bottomBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="itemLabel" ss:Index="2">
+          <Data ss:Type="String">Tender Code</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel" ss:MergeAcross="1">
+          <Data ss:Type="String">Tender Name</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel" ss:Index="6">
+          <Data ss:Type="String">Amount</Data>
+        </Cell>
+      </Row>
+
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String"></Data>
+        </Cell>
+        <Cell ss:MergeAcross="1">
+          <Data ss:Type="String">מאסטרקארד</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">1400.00</Data>
+        </Cell>
+      </Row>
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String"></Data>
+        </Cell>
+        <Cell ss:MergeAcross="1">
+          <Data ss:Type="String">מזומן</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">1300.00</Data>
+        </Cell>
+      </Row>
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String"></Data>
+        </Cell>
+        <Cell ss:MergeAcross="1">
+          <Data ss:Type="String">המחאה</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">840.00</Data>
+        </Cell>
+      </Row>
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String"></Data>
+        </Cell>
+        <Cell ss:MergeAcross="1">
+          <Data ss:Type="String">ישראכרט</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">160.00</Data>
+        </Cell>
+      </Row>
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String"></Data>
+        </Cell>
+        <Cell ss:MergeAcross="1">
+          <Data ss:Type="String">וויזה</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">2682.00</Data>
+        </Cell>
+      </Row>
+      
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="cellRightBold" ss:Index="2" ss:MergeAcross="3">
+          <Data ss:Type="String">Tendering Total:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">6382.00</Data>
+        </Cell>
+      </Row>
+
+
+      <Row>
+        <Cell ss:StyleID="bottomBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="6">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      // Cash Totals for ZOut only
+      {CashBlock}
+      <Row>
+        <Cell ss:StyleID="cellBold" ss:Index="2">
+          <Data ss:Type="String">Starting Cash:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+        {TipDataBlock1}
+          <Cell ss:StyleID="cellRightBold" ss:MergeAcross="1">
+            <Data ss:Type="String">Credit Card Tips:</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight">
+            <Data ss:Type="Number">0.00</Data>
+          </Cell>
+        {/TipDataBlock1}
+      </Row>
+      <Row>
+        <Cell ss:StyleID="cellBold" ss:Index="2">
+          <Data ss:Type="String">Ending Cash:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+        {TipDataBlock2}
+          <Cell ss:StyleID="cellRightBold" ss:MergeAcross="1">
+            <Data ss:Type="String">AutoGratuity:</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight">
+            <Data ss:Type="Number">0.00</Data>
+          </Cell>
+        {/TipDataBlock2}
+      </Row>
+      <Row>
+        <Cell ss:StyleID="cellBold" ss:Index="2">
+          <Data ss:Type="String">Total Cash:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">2140.00</Data>
+        </Cell>
+        {TipDataBlock3}
+          <Cell ss:StyleID="cellRightBold" ss:MergeAcross="1">
+            <Data ss:Type="String">Other Tipos:</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight">
+            <Data ss:Type="Number">0.00</Data>
+          </Cell>
+        {/TipDataBlock3}
+      </Row>
+      <Row>
+        <Cell ss:StyleID="cellBold" ss:Index="2">
+          <Data ss:Type="String">Short Cash:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">-2140.00</Data>
+        </Cell>
+        {TipDataBlock4}
+          <Cell ss:StyleID="cellRightBold" ss:MergeAcross="1">
+            <Data ss:Type="String">Total Tips:</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight">
+            <Data ss:Type="Number">0.00</Data>
+          </Cell>
+        {/TipDataBlock4}
+      </Row>
+      {/CashBlock}
+
+      <Row>
+        <Cell ss:MergeAcross="6">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellBold" ss:Index="2">
+          <Data ss:Type="String">Payments on Accounts:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+
+      // Cash Payouts
+      <Row>
+        <Cell ss:StyleID="cellBold" ss:Index="2">
+          <Data ss:Type="String">Cash Paid Out:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+
+      // Items
+      <Row>
+        <Cell ss:StyleID="bottomBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="itemLabel" ss:Index="2">
+          <Data ss:Type="String">Item Type</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">Quantity</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">Total</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">Voids/Returns</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel">
+          <Data ss:Type="String">Amount</Data>
+        </Cell>
+      </Row>
+
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String">Atomizers</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">1.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">141.03</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">0.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String">Coils</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">34.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">371.79</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">0.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String">Mods</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">4.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">641.88</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">0.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String">Miscelaneos</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">4.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">200.86</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">0.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String">Juul Pods</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">1.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">59.83</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">0.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String">Sale Item</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">35.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">1898.29</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">0.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+      
+      <Row>
+        <Cell ss:Index="2">
+          <Data ss:Type="String">General</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">19.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">2505.00</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">0.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+      
+
+      <Row>
+        <Cell ss:StyleID="topBorder">
+          <Data ss:Type="String"></Data>
+        </Cell>
+        <Cell ss:StyleID="cellBoldTopBorder">
+          <Data ss:Type="String">Item Totals</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenterTopBorder">
+          <Data ss:Type="Number">98.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRightTopBorder">
+          <Data ss:Type="Number">5818.68</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenterTopBorder">
+          <Data ss:Type="Number">0.000</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRightTopBorder">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="1">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+
+      // Taxes
+      <Row>
+        <Cell ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="bottomBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      
+      <Row>
+        <Cell ss:StyleID="itemLabel" ss:Index="2" ss:MergeAcross="1">
+          <Data ss:Type="String">Tax Authority</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel" ss:Index="4" ss:MergeAcross="1">
+          <Data ss:Type="String">Authority Name</Data>
+        </Cell>
+        <Cell ss:StyleID="itemLabel" ss:Index="6">
+          <Data ss:Type="String">Amount</Data>
+        </Cell>
+      </Row>
+
+      
+
+      <Row>
+        <Cell ss:StyleID="topBorder">
+          <Data ss:Type="String"></Data>
+        </Cell>
+        <Cell ss:StyleID="cellBoldTopBorder" ss:MergeAcross="3">
+          <Data ss:Type="String">Taxes Total</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRightTopBorder" ss:Index="6">
+          <Data ss:Type="Number">563.32</Data>
+        </Cell>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="1">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellBold" ss:Index="2" ss:MergeAcross="3">
+          <Data ss:Type="String">Taxable</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">5818.68</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="cellBold" ss:Index="2" ss:MergeAcross="3">
+          <Data ss:Type="String">Nontaxable</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellBold" ss:Index="2" ss:MergeAcross="3">
+          <Data ss:Type="String">Tax</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">563.32</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellBold" ss:Index="2" ss:MergeAcross="3">
+          <Data ss:Type="String">Total</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">6382.00</Data>
+        </Cell>
+      </Row>
+      
+
+      
+
+      <Row>
+        <Cell ss:StyleID="bottomBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="itemLabel" ss:Index="2" ss:MergeAcross="3">
+          <Data ss:Type="String">DISCOUNTS</Data>
+        </Cell>
+      </Row>
+
+      
+        <Row>
+          <Cell  ss:StyleID="cellBold" ss:Index="2" ss:MergeAcross="3">
+            <Data ss:Type="String">Comp Total</Data>
+          </Cell>
+          <Cell ss:StyleID="currencyRight" ss:Index="6">
+            <Data ss:Type="Number">0.00</Data>
+          </Cell>
+        </Row>
+      
+
+      <Row>
+        <Cell  ss:StyleID="cellBold" ss:Index="2" ss:MergeAcross="3">
+          <Data ss:Type="String">Sales Discount Total</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellBold" ss:Index="2" ss:MergeAcross="3">
+          <Data ss:Type="String">Price Change Total</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">358.00</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellBold" ss:Index="2" ss:MergeAcross="3">
+          <Data ss:Type="String">Discounts Total</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight" ss:Index="6">
+          <Data ss:Type="Number">358.00</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="bottomBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+
+      // Counts
+      <Row>
+        <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">No Sale Count:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">0</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold" ss:MergeAcross="1">
+          <Data ss:Type="String">Credit Card Transactions:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">16</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">Transaction Count:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">27</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold" ss:MergeAcross="1">
+          <Data ss:Type="String">Debit Card Transactions:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="Number">0</Data>
+        </Cell>
+      </Row>
+
+      
+
+      <Row>
+        <Cell ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">Guest Count:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="Number">0</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+       <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">Avg. Check Amount:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">215.51</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+       <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">Avg. Guest Amount:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">Dine In Count:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="Number">27</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold" ss:MergeAcross="1">
+          <Data ss:Type="String">Take Out Count:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="Number">0</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold">
+          <Data ss:Type="String">Delivery Count:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="Number">0</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">Dine In Amount:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">5818.68</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold" ss:MergeAcross="1">
+          <Data ss:Type="String">Take Out Amount:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold">
+          <Data ss:Type="String">Delivery Amount:</Data>
+        </Cell>
+        <Cell ss:StyleID="currencyRight">
+          <Data ss:Type="Number">0.00</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">Dine In % of Total:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="String">100.0%</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold" ss:MergeAcross="1">
+          <Data ss:Type="String">Take Out % of Total:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="String">0.0%</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold">
+          <Data ss:Type="String">Delivery % of Total:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="String">0.0%</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">Dine In % of Checks:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="String">100.0%</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold" ss:MergeAcross="1">
+          <Data ss:Type="String">Take Out % of Checks:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="String">0.0%</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold">
+          <Data ss:Type="String">Delivery % of Checks:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="String">0.0%</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">Dine In % of Guests:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="String">0.0%</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold" ss:MergeAcross="1">
+          <Data ss:Type="String">Take Out % of Guests:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="String">0.0%</Data>
+        </Cell>
+        <Cell  ss:StyleID="cellRightBold">
+          <Data ss:Type="String">Delivery % of Guests:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellRight">
+          <Data ss:Type="String">0.0%</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell  ss:StyleID="cellRightBold" ss:Index="2">
+          <Data ss:Type="String">Sequence:</Data>
+        </Cell>
+        <Cell ss:StyleID="cellCenter">
+          <Data ss:Type="String">19</Data>
+        </Cell>
+      </Row>
+
+      <Row>
+        <Cell ss:StyleID="topBorder" ss:MergeAcross="7">
+          <Data ss:Type="String"></Data>
+        </Cell>
+      </Row>
+
+    </Table>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+      <PageSetup>
+        <Layout x:Orientation="Portrait"/>
+      </PageSetup>
+      <FitToPage/>
+      <Print>
+        <FitHeight>0</FitHeight>
+      </Print>
+    </WorksheetOptions>
+
+  </Worksheet>
+</Workbook>

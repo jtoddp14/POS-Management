@@ -1,0 +1,210 @@
+<div id="card-setup-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <div class="col s12">
+            <div class="ap-card-content white z-depth-1" id="card-setup-form" style="display: none;">
+                <div id="card-setup-form-content">
+                    <form id="card_setup" style="display: none;">
+                        <div class="ap-card-title ap-blue" style="height: 75px;">
+                            <p>{Literal}Merchant Services{/Literal}</p> 
+                            <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white gift-card-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+                            <div class="ap-card-title-text">
+                                Page 1 of 2 
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="col s12 m3 offset-m1">
+                                    <div class="input-field">
+                                        <label class="active">{Literal}Gateway{/Literal}</label>
+                                        <select id="ccGateway" required>
+                                            <option value="0" <%= (cardSetup.gateway == "Cynergy" ? 'selected' : '') %>>{Literal}Cynergy{/Literal}</option>
+                                            <option value="1" <%= (cardSetup.gateway == "Sterling" ? 'selected' : '') %>>{Literal}Sterling{/Literal}</option>
+                                            <option value="2" <%= (cardSetup.gateway == "Sage" ? 'selected' : '') %>>{Literal}Sage{/Literal}</option>
+                                            <option value="3" <%= (cardSetup.gateway == "Mercury" ? 'selected' : '') %>>{Literal}Mercury{/Literal}</option>
+                                            <option value="4" <%= (cardSetup.gateway == "MercuryMToken" ? 'selected' : '') %>>{Literal}MercuryMToken{/Literal}</option>
+                                            <option value="5" <%= (cardSetup.gateway == "TSYS" ? 'selected' : '') %>>{Literal}TSYS{/Literal}</option>
+                                            <option value="6" <%= (cardSetup.gateway == "SHVA" ? 'selected' : '') %>>{Literal}SHVA{/Literal}</option>
+                                            <option value="7" <%= (cardSetup.gateway == "SHVA (WS)" ? 'selected' : '') %>>{Literal}SHVA (WS){/Literal}</option>
+                                            <option value="8" <%= (cardSetup.gateway == "Demo" ? 'selected' : '') %>>{Literal}Demo{/Literal}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col s12 m3">
+                                    <div class="input-field">
+                                        <input id="email" type="text" value="<%= cardSetup.emailAddress %>" class="validate">
+                                        <label class="active" for="email">{Literal}Email Address{/Literal}</label>
+                                        <span class="helper-text" data-error="This field cannot contain special characters" data-success=""></span>
+                                    </div>
+                                </div>
+
+                                <div class="col s12 m3">
+                                    <div class="input-field">
+                                        <input id="ccPassword" type="password" class="validate">
+                                        <label class="active" for="ccPassword">{Literal}Merchant Password{/Literal}</label>
+                                        <span class="helper-text" data-error="This field cannot contain special characters" data-success=""></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="row" style="padding-bottom: 50px;">
+                            <div class="col s12">
+                                <div class="col s12 m3 offset-m1">
+                                    <label>
+                                        <input id="debugLog" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="cardSetup.debugLogging" <%= cardSetup.debugLogging  ? 'checked': '' %> />
+                                        <span>{Literal}Debug Logging{/Literal}</span>
+                                    </label>
+                                </div>
+                                <div class="col s12 m3">
+                                    <label>
+                                        <input id="processGratuities" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="cardSetup.processGratuities" <%= cardSetup.processGratuities  ? 'checked': '' %> />
+                                        <span>{Literal}Process Gratuities{/Literal}</span>
+                                    </label>
+                                </div>
+            
+                                <div class="col s12 m3">
+                                    <label>
+                                        <input id="processAuthorizations" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="cardSetup.processPostAuth" <%= cardSetup.processPostAuth  ? 'checked': '' %> />
+                                        <span>{Literal}Process Post Authorizations{/Literal}</span>
+                                    </label>
+                                </div>
+                            </div> 
+                        </div> 
+
+                        <div class="row" id="TSYSBlock" style="display: none;">
+                            <div class="col s12">
+                                <div class="col s12 m3 offset-m1">
+                                    <label>
+                                        <input id="isOpen247" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="cardSetup.isOpen247" <%= cardSetup.isOpen247  ? 'checked': '' %> />
+                                        <span>{Literal}Is Open 24/7{/Literal}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="SHVABlock" style="display: none;">
+                            <div class="col s12">
+                                <div class="col s12 m3 offset-m1">
+                                    <div class="input-field">
+                                        <input id="shvaDataPath" type="text" value="<%= cardSetup.shvaDataPath %>">
+                                        <label class="active" for="shvaDataPath">{Literal}SHVA Data Path{/Literal}</label>
+                                    </div>
+                                </div>
+                                <div class="col s12 m3">
+                                    <div class="input-field">
+                                        <input id="merchantUser" type="text" value="<%= cardSetup.merchantUser %>">
+                                        <label class="active" for="merchantUser">{Literal}Merchant User{/Literal}</label>
+                                    </div>
+                                </div>
+                                <div class="col s12 m3" style="padding-top: 10px;">
+                                    <label>
+                                        <input id="isShvaUSD" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="cardSetup.isShvaUSD" <%= cardSetup.isShvaUSD  ? 'checked': '' %> />
+                                        <span>{Literal}SHVA USD Currency{/Literal}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="save white lighten-4" align="left">
+                            <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                        </div>
+                    </form>
+
+                    <form id="gift_cards" style="display: none"> 
+                        <div class="ap-card-title ap-blue" style="height: 75px;">
+                            <p>{Literal}Gift Cards{/Literal}</p>
+                            <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white credit-setup-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a>
+                            <div class="ap-card-title-text">
+                                    {Literal}Page 2 of 2 {/Literal}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="col s12 m3 offset-m1">
+                                    <div class="input-field">
+                                        <label class="active">{Literal}Gift Card Gateway{/Literal}</label>
+                                        <select id="gcGateway" required>
+                                            <option value="0" <%= (cardSetup.giftGateway == "AccuPOS" ? 'selected' : '') %>>{Literal}AccuPOS{/Literal}</option>
+                                            <option value="1" <%= (cardSetup.giftGateway == "Cynergy" ? 'selected' : '') %>>{Literal}Cynergy{/Literal}</option>
+                                            <option value="2" <%= (cardSetup.giftGateway == "Sage" ? 'selected' : '') %>>{Literal}Sage{/Literal}</option>
+                                            <option value="3" <%= (cardSetup.giftGateway == "Mercury" ? 'selected' : '') %>>{Literal}Mercury{/Literal}</option>
+                                            <option value="4" <%= (cardSetup.giftGateway == "Heartland" ? 'selected' : '') %>>{Literal}Heartland{/Literal}</option>
+                                            <option value="5" <%= (cardSetup.giftGateway == "Demo" ? 'selected' : '') %>>{Literal}Demo{/Literal}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col s12 m3">
+                                    <div class="input-field">
+                                        <input id="gcPassword" type="password" class="validate">
+                                        <label class="active" for="gcPassword">{Literal}Gift Card Password{/Literal}</label>
+                                        <span class="helper-text" data-error="This field cannot contain special characters" data-success=""></span>
+                                    </div>
+                                </div>
+
+                                <div class="col s12 m3">
+                                    <div class="input-field">
+                                        <input id="gcId" type="text" value="<%= cardSetup.giftCardUserId %>" class="validate">
+                                        <label class="active" for="gcId">{Literal}Gift Card User ID{/Literal}</label>
+                                        <span class="helper-text" data-error="This field cannot contain special characters" data-success=""></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="col s12 m3 offset-m1">
+                                    <div class="input-field">
+                                        <input id="gcGroup" type="text" value="<%= cardSetup.giftCardGroup %>" class="validate">
+                                        <label class="active" for="gcGroup">{Literal}Gift Card Group{/Literal}</label>
+                                        <span class="helper-text" data-error="This field cannot contain special characters" data-success=""></span>
+                                    </div>
+                                </div>
+                                <div class="col s12 m3">
+                                    <div class="input-field">
+                                        <input id="roomChargeOutlet" type="text" value="<%= cardSetup.roomChargeOutlet %>">
+                                        <label class="active" for="roomChargeOutlet">{Literal}Room Charge Outlet Code{/Literal}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="HeartlandBlock" style="display: none;">
+                            <div class="col s12">
+                                <div class="col s12 m3 offset-m1">
+                                    <div class="input-field">
+                                        <input id="heartlandLicenseId" type="text" value="<%= cardSetup.heartlandLicenseId %>">
+                                        <label class="active" for="heartlandLicenseId">{Literal}License Id{/Literal}</label>
+                                    </div>
+                                </div>
+                                <div class="col s12 m3">
+                                    <div class="input-field">
+                                        <input id="heartlandSiteId" type="text" value="<%= cardSetup.heartlandSiteId %>">
+                                        <label class="active" for="heartlandSiteId">{Literal}Site Id{/Literal}</label>
+                                    </div>
+                                </div>
+                                <div class="col s12 m3">
+                                    <div class="input-field">
+                                        <input id="heartlandDeviceId" type="text" value="<%= cardSetup.heartlandDeviceId %>">
+                                        <label class="active" for="heartlandDeviceId">{Literal}Device Id{/Literal}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="save white lighten-4" align="left">
+                            <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                        </div>
+                    </form>
+                </div>         
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="navigation-keys">
+    <a class="dot button waves-effect waves-light card-setup-button"></a>
+</div>

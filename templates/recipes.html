@@ -1,0 +1,40 @@
+<div id="recipes-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <% _.each(recipes, function(recipes) { %>
+            <% if (recipes.description != "FlexGroup Item not in effect") { %>
+                <div class="col s12 m3 xl2">
+                    <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light" style="background-color: #ffffff" data-id="<%= recipes.id %>" data-selected='0'>
+                        <div>
+                            <div class="row price truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                {Literal}ID{/Literal}:
+                                <%= recipes.id%>
+                            </div>
+                            <div class="row description truncate" style="color: #3970b7;">
+                                <%= recipes.description %>
+                            </div>
+                            <div class="row price truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                                {Literal}# of Recipe Items{/Literal}:
+                                <%= recipes.detailItems.length %>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="edit" style="display: none">
+                            <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-recipes-trigger"
+                                data-id="<%= recipes.id %>">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% }); %>
+    </div>
+</div>
+
+<div id="recipes-form-modal" class="modal modal-fixed-footer recipes-form-modal" style="max-height: 100%">
+    
+</div>
+
+<a href="javascript:void(0)" id="add-recipes-button" class="btn-floating btn-large waves-effect waves-light ap-blue z-depth-4 floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>

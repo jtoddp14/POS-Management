@@ -1,0 +1,89 @@
+<div class="modal-content" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <h4 style="font-size: 1.2rem"><%= posUser.id === null ? 'Create New ' : 'Edit ' %>POS User</h4>
+    <div id="pos-user-form-content">
+        <form>
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <input id="username" placeholder="Enter user name" type="text" class="validate" value="<%= posUser.name %>" required="" aria-required="true">
+                    <label class="active" for="username">User name</label>
+                    <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+                </div>
+                <div class="input-field col s12 m6">
+                    <select id="user-group-form-dropdown" required>
+                        <option value="" disabled <%= (posUser.userGroupId == null ? 'selected' : '') %>>Select user group</option>
+                        <% _.each(userGroups, function(userGroup) { %>
+                            <option value="<%= userGroup.id %>" <%= (posUser.userGroupId == userGroup.id ? 'selected' : '') %>><%= userGroup.name %></option>
+                        <% }); %>
+                    </select>
+                    <label>User Group</label>
+                    <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                </div>
+
+                <div class="input-field col s12 m6">
+                    <select id="aut-till-form-dropdown">
+                        <option value="*" disabled <%= (posUser.autoTillId == null ? 'selected' : '') %>>Select auto till</option>
+                        <% _.each(tills, function(till) { %>
+                            <option value="<%= till.id %>" <%= (posUser.autoTillId == till.id ? 'selected' : '') %>><%= till.name %></option>
+                        <% }); %>
+                    </select>
+                    <label>Auto. Till</label>
+                    <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                </div>
+                <div class="input-field col s12 m6">
+                    <select id="idle-timeout-form-dropdown">
+                        <option value="0" <%= (posUser.idleTimeout == 0 ? 'selected' : '') %>>Never</option>
+                        <option value="5" <%= (posUser.idleTimeout == 5 ? 'selected' : '') %>>5 Seconds</option>
+                        <option value="10" <%= (posUser.idleTimeout == 10 ? 'selected' : '') %>>10 Seconds</option>
+                        <option value="30" <%= (posUser.idleTimeout == 30 ? 'selected' : '') %>>30 Seconds</option>
+                        <option value="60" <%= (posUser.idleTimeout == 60 ? 'selected' : '') %>>1 Minute</option>
+                        <option value="120" <%= (posUser.idleTimeout == 120 ? 'selected' : '') %>>2 Minutes</option>
+                    </select>
+                    <label>Idle Timeout</label>
+                    <span class="helper-text" data-error="This drop-down is mandatory" data-success=""></span>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="password-reset" placeholder="<%= posUser.id === null ? 'Enter password' : 'Enter new password' %>" type="password" class="validate" value="">
+                    <label class="active" for="passwor-reset"><%= posUser.id === null ? 'Password' : 'Reset Password' %></label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <div class="row checkboxes">
+                    <% if (isFoodService === true) { %>
+                        <div class="col s6">
+                            <p>
+                                <label>
+                                    <input type="checkbox" <%= posUser.isServer ? 'checked' : '' %> class="filled-in" />
+                                    <span>Server</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col s6">
+                            <p>
+                                <label>
+                                    <input type="checkbox" <%= posUser.isDriver ? 'checked' : '' %> class="filled-in" />
+                                    <span>Driver</span>
+                                </label>
+                            </p>
+                        </div>
+                    <% } else { %>
+                        <div class="col s6">
+                            <p>
+                                <label>
+                                    <input type="checkbox" <%= posUser.isSalesRep ? 'checked' : '' %> class="filled-in" />
+                                    <span>Sales Representative</span>
+                                </label>
+                            </p>
+                        </div> 
+                    <% } %>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <a href="javascript:void(0)" class="waves-effect waves-light btn red left delete-product-line-trigger">Delete</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-green btn green">Save</a>
+    <input type="hidden" id="update-product-line-id" />
+</div>

@@ -1,0 +1,173 @@
+  <Styles>
+    <Style ss:ID="Default" ss:Name="Normal">
+      <Alignment ss:Vertical="Bottom"/>
+      <Borders/>
+      <Font ss:FontName="Arial"/>
+      <Interior/>
+      <NumberFormat/>
+      <Protection/>
+    </Style>
+
+    <Style ss:ID="reportTitle">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Size="18" ss:Color="#FF0000" ss:Bold="1"/>
+      <Borders>
+        <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="tableTitle">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Size="14" ss:Color="#0000FF" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="transLabel">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#0000FF" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="transTotalLabel">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#800000" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="tenderLabel">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#006400" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="itemLabel">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#006400" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="itemLabelBottomBorder">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#006400" ss:Bold="1"/>
+      <Borders>
+        <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="itemLabelLeft">
+      <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Color="#006400" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="reportLabel">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+      <Font ss:FontName="Arial" ss:Color="#800000" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="positiveColor">
+      <Font ss:FontName="Arial" ss:Color="#000000"/>
+    </Style>
+
+    <Style ss:ID="negativeColor">
+      <Font ss:FontName="Arial" ss:Color="#FF0000"/>
+    </Style>
+
+    <Style ss:ID="discountColor">
+      <Font ss:FontName="Arial" ss:Color="#00FF00"/>
+    </Style>
+
+    <Style ss:ID="increaseColor">
+      <Font ss:FontName="Arial" ss:Color="#0000FF"/>
+    </Style>
+
+    <Style ss:ID="currencyRight">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <NumberFormat ss:Format="Currency" />
+    </Style>
+
+    <Style ss:ID="currencyRightTopBorder">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <NumberFormat ss:Format="Currency" />
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="currencyRightBold">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <NumberFormat ss:Format="Currency" />
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="currencyCenter">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <NumberFormat ss:Format="Currency" />
+    </Style>
+
+    <Style ss:ID="currencyCenterBold">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <NumberFormat ss:Format="Currency" />
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="cellBold">
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="cellBoldTopBorder">
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="cellRight">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+    </Style>
+
+    <Style ss:ID="cellRightBold">
+      <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="cellCenter">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+    </Style>
+
+    <Style ss:ID="cellCenterTopBorder">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="cellCenterBold">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+      <Font ss:FontName="Arial" ss:Bold="1"/>
+    </Style>
+
+    <Style ss:ID="boldBorder">
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="3"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="topBorder">
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="bottomBorder">
+      <Borders>
+        <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="topBorderBold">
+      <Borders>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+      </Borders>
+    </Style>
+
+    <Style ss:ID="bottomBorderBold">
+      <Borders>
+        <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+      </Borders>
+    </Style>
+  </Styles>

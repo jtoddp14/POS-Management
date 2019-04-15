@@ -1,0 +1,294 @@
+      <div class="row" style="margin-bottom: 0px; padding-left: 30px; padding-right: 30px">
+            <div class="input-field col s12 m3" style="display: none;">
+                <input id="id"  type="text" value="<%= userGroup.id %>">
+            </div>
+        <div class="input-field col s12 m3" style="margin-bottom: 0px; padding-right: 28px">
+            <input id="username" placeholder="{Literal}Enter user group name{/Literal}" type="text" class="validate" value="<%= userGroup.name %>" required=""
+                aria-required="true">
+            <label class="active" for="username">{Literal}Enter user group name{/Literal}</label>
+            <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+        </div>
+    </div>
+    <div class="row management-switches">
+        <div class="col s12">
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="accuShiftManagement" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.accushiftManagement.allowed" <%= userGroup.managementPermissions.accushiftManagement.allowed ? 'checked': '' %> >
+                    <span>{Literal}AccuShift Management{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="addDeleteItems" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.addDeleteItems.allowed" <%= userGroup.managementPermissions.addDeleteItems.allowed ? 'checked': '' %> >
+                    <span>{Literal}Add/Delete Items{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">     
+                <label>
+                    <input id="addEditCashTills" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.addEditCashTills.allowed" <%= userGroup.managementPermissions.addEditCashTills.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Add/Edit Cash Tills{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="addEditTaxingAuthorities" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.addEditTaxingAuthorities.allowed" <%= userGroup.managementPermissions.addEditTaxingAuthorities.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Add/Edit Taxing Authorities{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="addEditUserGroups" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.addEditUserGroups.allowed" <%= userGroup.managementPermissions.addEditUserGroups.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Add/Edit User Groups{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="addEditUsers" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.addEditUsers.allowed" <%= userGroup.managementPermissions.addEditUsers.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Add/Edit Users{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="adjustInventory" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.adjustInventory.allowed" <%= userGroup.managementPermissions.adjustInventory.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Adjust Inventory{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="cardsMerchantSetup" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.cardsMerchantSetup.allowed" <%= userGroup.managementPermissions.cardsMerchantSetup.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Cards Merchant Setup{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="changeCurrencyConversionRate" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.changeCurrencyConversionRate.allowed" <%= userGroup.managementPermissions.changeCurrencyConversionRate.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Change Currency Conversion Rate{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="mgmtChangeCustomerInformation" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.changeCustomerInformation.allowed" <%= userGroup.managementPermissions.changeCustomerInformation.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Change Customer Information{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="changeItems" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.changeItems.allowed" <%= userGroup.managementPermissions.changeItems.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Change Items{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="changeSystemSettings" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.changeSystemSettings.allowed" <%= userGroup.managementPermissions.changeSystemSettings.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Change System Settings{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="clearCashTills" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.clearCashTills.allowed" <%= userGroup.managementPermissions.clearCashTills.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Clear Cash Tills{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="clearDataFiles" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.clearDataFiles.allowed" <%= userGroup.managementPermissions.clearDataFiles.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Clear Data Files{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="exportFiles" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.exportFiles.allowed" <%= userGroup.managementPermissions.exportFiles.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Export Files{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="foodServiceComps" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.foodServiceComps.allowed" <%= userGroup.managementPermissions.foodServiceComps.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Food Service Comps{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="importFiles" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.importFiles.allowed" <%= userGroup.managementPermissions.importFiles.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Import Files{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3" <%= (!App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="isracardDashboard" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.isracardDashboard.allowed" <%= userGroup.managementPermissions.isracardDashboard.allowed  ? 'checked': '' %> >
+                    <span>{Literal}View Dashboard{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="manage" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.manage.allowed" <%= userGroup.managementPermissions.manage.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Manage{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="mgmtReadCashTills" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.readCashTills.allowed" <%= userGroup.managementPermissions.readCashTills.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Read Cash Tills{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="receiveInventory" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.receiveInventory.allowed" <%= userGroup.managementPermissions.receiveInventory.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Receive Inventory{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="mgmtResetCashTills" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.resetCashTills.allowed" <%= userGroup.managementPermissions.resetCashTills.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Reset Cash Tills{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="mgmtResetCurrentTill" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.resetCurrentTill.allowed" <%= userGroup.managementPermissions.resetCurrentTill.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Reset Current Till{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="mgmtAddEditTaxingAuthorities" type="checkbox" class="permission-checkbox filled-in" data-type="managementPermissions.addEditTaxingAuthorities.allowed" <%= userGroup.managementPermissions.addEditTaxingAuthorities.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Add/Edit Taxing Authorities{/Literal}</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row pos-switches" style="display: none">
+        <div class="col s12">
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="posAddEditTaxingAuthorities" type="checkbox" class="permission-checkbox filled-in" data-type="posPermissions.addRemoveTax.allowed" <%= userGroup.posPermissions.addRemoveTax.allowed  ? 'checked': '' %> >
+                    <span>{Literal}Add/Edit Taxing Authorities{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="allowSplittingChecks" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.allowSplittingChecks.allowed" <%= userGroup.posPermissions.allowSplittingChecks.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Allow Splitting Checks{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="cancelSales" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.cancelSales.allowed" <%= userGroup.posPermissions.cancelSales.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Cancel Sales{/Literal}</span>
+                </label>
+            </div>
+
+            <div class="col s12 m3">
+                <label>
+                    <input id="posChangePrices" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.changePrices.allowed" <%= userGroup.posPermissions.changePrices.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Change Prices{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <% if(App.serverInfo.foodService) {%>
+                    <label>
+                        <input id="posChangeServer" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.changeServer.allowed" <%= userGroup.posPermissions.changeServer.allowed  ? 'checked': '' %> />
+                        <span>{Literal}Change Server{/Literal}</span>
+                    </label>
+                <% } %>
+                <% if(!App.serverInfo.foodService) {%>
+                    <label>
+                        <input id="posChangeSalesRep" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.changeSalesRep.allowed" <%= userGroup.posPermissions.changeSalesRep.allowed  ? 'checked': '' %> />
+                        <span>{Literal}Change Sales Reps{/Literal}</span>
+                    </label>
+                <% } %>    
+            </div>
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="editReopenedOrders" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.editReopenedOrders.allowed" <%= userGroup.posPermissions.editReopenedOrders.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Edit Reopened Orders{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="exitPointOfSaleProgram" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.exitPointOfSaleProgram.allowed" <%= userGroup.posPermissions.exitPointOfSaleProgram.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Exit Point of Sale Program{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="loadAllOrders" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.loadAllOrders.allowed" <%= userGroup.posPermissions.loadAllOrders.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Load All Orders{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="logInTillInUse" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.logInTillInUse.allowed" <%= userGroup.posPermissions.logInTillInUse.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Login Till in Use{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="makeRefund" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.makeRefund.allowed" <%= userGroup.posPermissions.makeRefund.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Make Refund{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="makeReturns" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.makeReturns.allowed" <%= userGroup.posPermissions.makeReturns.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Make Returns{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="makeSales" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.makeSales.allowed" <%= userGroup.posPermissions.makeSales.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Make Sales{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="makeVoids" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.makeVoids.allowed" <%= userGroup.posPermissions.makeVoids.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Make Voids{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="noSale" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.noSale.allowed" <%= userGroup.posPermissions.noSale.allowed  ? 'checked': '' %> />
+                    <span>{Literal}No Sale{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="overrideCreditLimit" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.overrideCreditLimit.allowed" <%= userGroup.posPermissions.overrideCreditLimit.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Override Credit Limit{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3" <%= (App.israCardBuild ? 'style="display: none"' : '') %>>
+                <label>
+                    <input id="overrideRequiredGuestCount" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.overrideRequiredGuestCount.allowed" <%= userGroup.posPermissions.overrideRequiredGuestCount.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Override Required Guest Count{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="posReadCashTills" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.readCashTills.allowed" <%= userGroup.posPermissions.readCashTills.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Read Cash Tills{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="reopenClosedSales" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.reopenClosedSales.allowed" <%= userGroup.posPermissions.reopenClosedSales.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Reopen Closed Sales{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="posResetCashTills" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.resetCashTills.allowed" <%= userGroup.posPermissions.resetCashTills.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Reset Cash Tills{/Literal}</span>
+                </label>
+            </div>
+            <div class="col s12 m3">
+                <label>
+                    <input id="posResetCurrentTill" type="checkbox" class="permission-checkbox filled-in" class="filled-in" data-type="posPermissions.resetCurrentTill.allowed" <%= userGroup.posPermissions.resetCurrentTill.allowed  ? 'checked': '' %> />
+                    <span>{Literal}Reset Current Till{/Literal}</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+

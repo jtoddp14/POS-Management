@@ -1,0 +1,146 @@
+{HeaderBlock}
+<Html {RightToLeft}>
+  <Head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CharacterSet}" >
+
+    <style type="text/css">
+      <!--
+      body {
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-style:normal; font-variant:normal; font-weight:normal; font-size:80%; font-family:verdana, arial, sans-serif; background-position-y:center
+      }
+      .size11 {
+        font-size: 11px;
+      }
+      .minitype {font-size: 9px}
+      .greendis {
+        font-size: 11px;
+        color: 00ff00;
+      }
+      .redneg {
+        font-size: 11px;
+        color: #FF0000;
+      }
+      .blueinc {
+        font-size: 11px;
+        color: 0000FF;
+      }
+      .blackreg {
+        font-size: 11px;
+        color: #000000;
+      }
+
+      -->
+    </style>
+
+		<title>{Literal}AccuPOS Credit Card Transaction Report{/Literal}</title>
+  </Head>
+		
+<Body>
+<div align="center"><br>
+<span class="blackbold"> {Literal}Credit Card Transaction Report{/Literal} </span><br>
+  <br>
+</div>
+<div align="center">
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><div align="center"><span class="size11"><strong>{CompanyName}</strong></span><span class="size11"><br>
+{CompanyAddress1} {CompanyAddress2}<br>
+{CompanyCity}, {CompanyState}&nbsp;{CompanyZip}</span></div></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><div align="center"><span class="blackbold blackreg">{Range}</span><span class="blackreg"> {Literal}Report was run on{/Literal}</span><span class="blackbold blackreg"> {DateRun}</span></div></td>
+    </tr>
+  </table>
+</div>
+{/HeaderBlock}
+
+{TransactionBlock}
+<p align="center" class="blackreg"></p>
+<hr align="center" width="630" size="1" noshade>
+<table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="30%"><span class="blackreg">&nbsp;</span></td>
+    <td width="30%"><span class="blackreg">&nbsp;</span></td>
+    <td width="35%"><span class="blackreg">&nbsp;</span></td>
+    <td width="25%"><span class="blackreg">&nbsp;</span></td>
+  </tr>
+  <tr>
+    <td valign="top"><span class="blackreg"><strong>{Literal}Trans:{/Literal} </strong>{TransactionNumber}</span></td>
+    <td valign="top"><span class="blackreg"><strong>{Literal}Invoice:{/Literal} </strong>{InvoiceNumber}</span></td>
+    <td valign="top"><span class="blackreg"><strong>{Literal}Date:{/Literal} </strong> {DateInvoiced}</span></td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+</table>
+<div align="center"><br>
+  {TenderingBlock}
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="12%"><span class="blackreg"><img src="images/spacer.aci" height="2"></span></td>
+      <td width="10%"><span class="blackreg"><img src="images/spacer.aci" height="2"></span></td>
+      <td width="08%"><span class="blackreg"><img src="images/spacer.aci" height="2"></span></td>
+      <td width="10%"><span class="blackreg"><img src="images/spacer.aci" height="2"></span></td>
+      <td width="14%"><span class="blackreg"><img src="images/spacer.aci" height="2"></span></td>
+      <td width="10%"><span class="blackreg"><img src="images/spacer.aci" height="2"></span></td>
+      <td width="10%"><span class="blackreg"><img src="images/spacer.aci" height="2"></span></td>
+      <td width="14%"><span class="blackreg"><img src="images/spacer.aci" height="2"></span></td>
+      <td width="12%"><span class="blackreg"><img src="images/spacer.aci" height="2"></span></td>
+    </tr>
+    <tr {TenderingColor}>
+      <td valign="top" class="size11"><div align="right"><strong>{Literal}Approval:{/Literal}</strong></div></td>
+      <td valign="top" class="size11"><div align="left">&nbsp;&nbsp;{TenderApproval}</div></td>
+			
+      <td valign="top" class="size11"><div align="right"><strong>{Literal}Ref:{/Literal}</strong></div></td>
+      <td valign="top" class="size11"><div align="left">&nbsp;&nbsp;{TenderReference}</div></td>
+			
+      <td valign="top" class="size11"><div align="right"><strong>{Literal}Card Last 4:{/Literal}</strong></div></td>
+      <td valign="top" class="size11"><div align="left">&nbsp;&nbsp;{TenderCardNumber}</div></td>
+			
+      <td valign="top" class="size11"><div align="right"><strong>{Literal}Type:{/Literal}</strong></div></td>
+      <td valign="top" class="size11"><div align="left">&nbsp;&nbsp;{TenderDescription}</div></td>
+
+      <td valign="top" class="size11"><div align="right">{TenderAmount}</div></td>
+    </tr>
+  </table>
+{/TenderingBlock}
+{/TransactionBlock}
+
+{FooterBlock}
+<hr align="center" width="630" size="1" style="margin-top: 20px;">
+<div align="center"><span class="blackreg">{Errors}</span>
+    <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><span class="blackbold">{Literal}Taxable Total:{/Literal}</span></td>
+        <td><span class="blackbold">{Literal}Nontaxable Total:{/Literal}</span></td>
+        <td><span class="blackbold">{Literal}Tax Total:{/Literal}</span></td>
+        <td><span class="blackbold">{Literal}Total:{/Literal}</span></td>
+      </tr>
+      <tr {TransactionColor}>
+        <td><span class="size11">{ReportTaxableTotal}</span></td>
+        <td><span class="size11">{ReportNontaxableTotal}</span></td>
+        <td><span class="size11">{ReportTaxTotal}</td>
+        <td><span class="size11">{ReportTotal}</td>
+      </tr>
+    </table>
+</div>
+<hr align="center" width="630" size="1" noshade>
+<div align="center"><span class="minitype">&nbsp;Powered by AccuPOS Point Of Sale&nbsp;rev04</span></div>
+</Body>
+</Html>
+{DateFormat}MM-dd-yy HH:mm{/DateFormat}
+{CurrencyFormat}#####0.00;-#####0.00{/CurrencyFormat}
+{PriceFormat}###0.00;-###0.00{/PriceFormat}
+{QuantityFormat}#####0.000;-#####0.000{/QuantityFormat}<br>
+{Errors}<br>
+{TaxableText}Yes{/TaxableText}<br>
+{NontaxableText}No{/NontaxableText}
+{NegativeColor}style="color: #FF0000"{/NegativeColor}
+{PositiveColor}style="color: #000000"{/PositiveColor}
+{DiscountColor}style="color: #00FF00"{/DiscountColor}
+{IncreaseColor}style="color: #0000FF"{/IncreaseColor}
+{/FooterBlock}

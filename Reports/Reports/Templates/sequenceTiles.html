@@ -1,0 +1,40 @@
+<div class="row" id="sequence-tile-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div id="sequence-modal-preloader">
+        <div class="progress">
+            <div class="indeterminate blue"></div>
+        </div>
+    </div>
+    <% _.each(sequences, function(sequence) { %>
+        <div class="col s12 m4">
+            <div class="card-panel z-depth-2 sequence-card hoverable ap-blue white-text waves-effect waves-light" data-id="<%= sequence.id %>"
+                data-selected='0'>
+                <div class="card-panel-content">
+                    <div class="row sequence-title-badge">
+                        <%= sequence.id %>
+                            <div class="hash-badge">#</div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">Seq. #
+                            <%= sequence.id %>
+                        </div>
+                        <div class="col s6 right-align">Till
+                            <%= sequence.till %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s3">Start:</div>
+                        <div class="col s9 right-align">
+                            <%= sequence.startTime %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s3">End:</div>
+                        <div class="col s9 right-align">
+                            <%= sequence.endTime %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+</div>

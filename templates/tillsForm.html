@@ -1,0 +1,97 @@
+<div id="tills-form-modal" class="modal modal-fixed-footer" style="max-height: 100%" <%= (App.rtl ? 'style="direction:rtl"' : '') %>></div>
+        <div id="tills-form-content">
+            <div style="padding-bottom: 100px">
+                <h4 style="font-size: 1.2rem">{Literal}Till Details{/Literal}</h4>
+            </div>
+            <form>
+                <div class="row">
+                    <div class="col s12">                
+                        <div class="col s12 m4">
+                            <div class="input-field">
+                                <input id="tillName" type="text" value="<%= tills.name %>" class="validate" maxlength="20" <%= (newTill === false ? 'disabled' : '') %>>
+                                <label class="active" for="tillName">{Literal}Till Name{/Literal}</label>
+                                <span class="helper-text" data-error="This field can't be empty or contain special characters" data-success=""></span>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m4">
+                            <div class="input-field">
+                                <input id="startCash" type="number" value="<%= tills.cash %>" class="validate" max="99999">
+                                <label class="active" for="startCash">{Literal}Starting Cash{/Literal}</label>
+                                <span class="helper-text" data-error="A number from 0 to 99999 is mandatory" data-success=""></span>
+                            </div>
+                        </div>
+
+                        <!--<div class="col s12 m4">
+                            <div class="input-field">
+                                <input id="glDept" type="text" value="<%= tills.glDept %>">
+                                <label class="active" for="glDept">{Literal}GL Department{/Literal}</label>
+                            </div>
+                        </div>-->
+
+                        <div class="timePick">
+                            <div class="input-field col s12 m4">
+                                <input type="text" class="timepicker" id="z-out-time-picker" placeholder="12:00 PM" value="<%= tills.zOutTime %>">
+                                <label  for="z-out-time-picker" class="active">{Literal}Daily Z-Out Time{/Literal}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="row checkboxes">
+                            <div class="col s12 m3" style="padding-left: 50px;">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" id="tenderOrders" data-type="tills.tenderOrders" <%= tills.tenderOrders ? 'checked': '' %> >
+                                        <span >{Literal}Open Sales Only{/Literal}</span>
+                                    </label>
+                                </p>
+                            </div>
+
+                            <div class="col s12 m3" style="padding-left: 50px;">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" id="openDrawer2" data-type="tills.openDrawer2" <%= tills.openDrawer2 ? 'checked': '' %> >
+                                        <span>{Literal}Open Second Drawer{/Literal}</span>
+                                    </label>
+                                </p>
+                            </div>
+
+                            <div class="col s12 m3" style="padding-left: 50px;">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" id="autoZ" data-type="tills.autoZ" <%= tills.autoZ ? 'checked': '' %> >
+                                        <span>{Literal}Auto Z-Out{/Literal}</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>     
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-tills-modal" class="waves-effect waves-light btn-flat red-text right modal-trigger delete-button">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green left btn green save-button">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect left waves-light btn-flat">{Literal}Cancel{/Literal}</a>
+</div>
+
+
+<div id="delete-tills-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this till{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-tills-confirm" class="modal-close waves-effect waves-green btn red left" data-till-id="<%= tills.id%>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-tills-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

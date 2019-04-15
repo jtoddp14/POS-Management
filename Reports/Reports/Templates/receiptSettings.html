@@ -1,0 +1,268 @@
+<div id="receipt-settings-wrapper" style="display: none;<%= (App.rtl ? 'direction:rtl' : '') %>">
+    <div class="row">
+        <div class="col s12">
+            <div class="ap-card-content white z-depth-2" id="receipt-settings-form">
+                    <div id="receipt-settings-form-content">
+                            <form id="receipt_info" style="display: none;">
+                                <div class="ap-card-title ap-blue" style="height: 75px;">
+                                    <p>Receipt Info</p> 
+                                    <div class="ap-card-title-text">
+                                        Page 1 of 3 
+                                    </div>
+                                    <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white email-receipts-arrow-button2"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+                                </div>
+                        
+                                <div class="row ap-field-row">
+                                    
+                                        <div class="input-field col s12 m4">
+                                            <input id="companyName" type="text" value="<%= receiptSettings.receipt_info.name %>" class="validate" maxlength="40">
+                                            <label for="companyName">Company Name</label>
+                                            <span class="helper-text" data-error="This field is mandatory" data-success=""></span>
+                                        </div>
+                        
+                                        <div class="input-field col s12 m4">
+                                            <input id="city" value="<%= receiptSettings.receipt_info.city %>" type="text" class="validate" maxlength="40">
+                                            <label for="city">City</label>
+                                            <span class="helper-text" data-error="This field is mandatory" data-success=""></span>
+                                        </div>
+                        
+                                        <div class="input-field col s12 m4">
+                                            <input id="email" value="<%= receiptSettings.receipt_info.emailOrWebsite %>" type="email" maxlength="40">
+                                            <label for="email">Email or Website (optional)</label>
+                                        </div>
+                                    
+                                </div>
+                        
+                                <div class="row ap-field-row">
+                                        <div class="input-field col s12 m4">
+                                            <input id="address1" value="<%= receiptSettings.receipt_info.addressLine1 %>" type="text" class="validate" maxlength="40">
+                                            <label for="adress1">Address 1</label>
+                                            <span class="helper-text" data-error="This field is mandatory" data-success=""></span>
+                                        </div>
+                                        <div class="input-field col s12 m2">
+                                            <input id="state" value="<%= receiptSettings.receipt_info.stateOrProvince %>" type="text" class="validate" maxlength="20">
+                                            <label for="state">State</label>
+                                            <span class="helper-text" data-error="This field is mandatory" data-success=""></span>
+                                        </div>
+                        
+                                        <div class="input-field col s12 m2">
+                                            <input id="zip" value="<%= receiptSettings.receipt_info.zipCode %>" type="text" class="validate" maxlength="10">
+                                            <label for="city">ZIP Code</label>
+                                            <span class="helper-text" data-error="This field is mandatory" data-success=""></span>
+                                        </div>
+                                        <div class="input-field col s12 m4">
+                                            <% var today = moment().hours(17).minutes(00); %>
+                                            <select id="datetimeformat">
+                                                <option value="" disabled>Choose one option</option>
+                                                <option value="MM-dd-yy HH:mm" <%= (receiptSettings.receipt_info.dateTimeFormat === 'MM-dd-yy HH:mm' ? 'selected' : '') %> ><%= today.format("MM-DD-YY HH:mm") %></option>
+                                                <option value="MM/dd/yy HH:mm" <%= (receiptSettings.receipt_info.dateTimeFormat === 'MM/dd/yy HH:mm' ? 'selected' : '') %> ><%= today.format("MM/DD/YY HH:mm") %></option>
+                                                <option value="MMM dd,yyyy hh:mm a" <%= (receiptSettings.receipt_info.dateTimeFormat === 'MMM dd,yyyy hh:mm a' ? 'selected' : '') %> ><%= today.format("MMM DD, YYYY hh:mm a") %></option>
+                                                <option value="dd-MM-yy HH:mm" <%= (receiptSettings.receipt_info.dateTimeFormat === 'dd-MM-yy HH:mm' ? 'selected' : '') %> ><%= today.format("DD-MM-YY HH:mm") %></option>
+                                                <option value="dd-MM-yyyy HH:mm" <%= (receiptSettings.receipt_info.dateTimeFormat === 'dd-MM-yyyy HH:mm' ? 'selected' : '') %> ><%= today.format("DD-MM-YYYY HH:mm") %></option>
+                                                <option value="yyyy-MM-dd HH:mm" <%= (receiptSettings.receipt_info.dateTimeFormat === 'yyyy-MM-dd HH:mm' ? 'selected' : '') %> ><%= today.format("YYYY-MM-DD HH:mm") %></option>
+                                                <option value="yyyy/MM/dd HH:mm" <%= (receiptSettings.receipt_info.dateTimeFormat === 'yyyy/MM/dd HH:mm' ? 'selected' : '') %> ><%= today.format("YYYY/MM/DD HH:mm") %></option>
+                                            </select>
+                                            <label>Date/Time Format</label>
+                                        </div>
+                                    
+                                </div>
+                        
+                                <div class="row ap-field-row">
+                                    <div class="input-field col s12 m4">
+                                        <input id="adress2"  value="<%= receiptSettings.receipt_info.addressLine2 %>" type="text" maxlength="40">
+                                        <label for="adress2">Address 2</label>
+                                    </div>
+                                    <div class="input-field col s12 m4">
+                                        <input id="telephone" value="<%= receiptSettings.receipt_info.telephone %>" type="text" class="validate" maxlength="20">
+                                        <label for="telephone">Telephone Number</label>
+                                        <span class="helper-text" data-error="This field is mandatory" data-success=""></span>
+                                    </div>
+                                    <div class="input-field col s12 m4">
+                                        <input id="fax" value="<%= receiptSettings.receipt_info.faxNumber %>" type="text" maxlength="20">
+                                        <label for="fax">Fax (optional)</label>
+                                    </div>
+                                </div>
+                                <div class="row ap-field-row">
+                                        <div class="input-field col s12 m4">
+                                            <textarea id="invoiceMessage" class="materialize-textarea" value="<%= receiptSettings.receipt_info.invoiceMessage %>"><%= receiptSettings.receipt_info.invoiceMessage %></textarea>
+                                            <label for="invoiceMessage">Invoice Message at Bottom</label>
+                                        </div>
+                                        <div class="input-field col s12 m4">
+                                            <textarea id="savingMessage" class="materialize-textarea" value="<%= receiptSettings.receipt_info.savingMessage %>"><%= receiptSettings.receipt_info.savingMessage %></textarea>
+                                            <label for="savingMessage">Saving Message</label>
+                                        </div>
+                                        <div class="input-field col s12 m4">
+                                            <div class="switch">
+                                                <label>
+                                                    <input type="checkbox" id="printItemDescriptionAndSku" <input type="checkbox" data-type="receiptSettings.receipt_info.printItemDescriptionAndSku" <%= receiptSettings.receipt_info.printItemDescriptionAndSku ? 'checked': '' %>>
+                                                    <span class="lever"></span>Print Item Description <b>and</b> SKU Number
+                                                </label>
+                                            </div>
+                                        </div>
+                                </div>
+                        
+                                <div class="save white lighten-4" align="right">
+                                    <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                                </div>
+                            </form>
+                        
+                            <form id="email_receipts" style="display: none;">
+                                <div class="ap-card-title ap-blue" style="height: 75px;">
+                                    <p>Email Receipts</p> 
+                                    <div class="ap-card-title-text">
+                                        Page 2 of 3 
+                                    </div>
+                                    <a class="arrow-nav-right btn-floating btn-medium waves-effect waves-light white customer-info-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_right</i></a>
+                                    <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white receipt-info-arrow-button"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a>
+                                </div>
+                        
+                                <div class="row ap-field-row">
+                                    
+                                        <div class="input-field col s12 m4" style="margin-top:20px; padding-bottom:50px;" align="center">
+                                            <div class="switch">
+                                                <label>
+                                                    <input type="checkbox" id="offerEmail" <input type="checkbox" data-type="receiptSettings.email_receipts.offerEmail" <%= receiptSettings.email_receipts.offerEmail ? 'checked': '' %>>
+                                                    <span class="lever"></span>Offer Email Receipts
+                                                </label>
+                                            </div>
+                                        </div>
+                        
+                        
+                                        <div class="input-field col s12 m4 offer-email-receipt">
+                                            <input id="emailServer" type="text" value="<%= receiptSettings.email_receipts.emailServer %>" maxlength="40">
+                                            <label for="emailServer">Email SMTP Server</label>
+                                            Examples: smtp.live.com for Outlook, smtp.gmail.com for Gmail, smtp.mail.yahoo.com for Yahoo
+                                        </div>
+                        
+                                        <div class="input-field col s12 m4 offer-email-receipt">
+                                            <input id="emailAccount" value="<%= receiptSettings.email_receipts.emailAccount %>" type="text" maxlength="40">
+                                            <label for="emailAccount">Email Account </label>
+                                            The email address, such as info@mybusiness.com
+                                        </div>
+                                    
+                                </div>
+                        
+                                <div class="row ap-field-row offer-email-receipt">
+                                    <div class="col s12">
+                                        <div class="col s12 m4">
+                                        
+                                        </div>
+                        
+                                        <div class="col s12 m4">
+                                            <div class="input-field">
+                                                <input id="emailPort" value="<%= receiptSettings.email_receipts.emailPort %>" type="text" maxlength="10">
+                                                <label for="emailPort">SMTP Server Port</label>
+                                                Examples: 587 for Outlook, 465 for Gmail, 465 for Yahoo Mail
+                                            </div>
+                                        </div>
+                        
+                                        <div class="col s12 m4">
+                                            <div class="input-field">
+                                                <input id="emailPassword" value="<%= receiptSettings.email_receipts.emailPassword %>" type="password">
+                                                <label for="emailPassword">Email Password</label>
+                                                Your email password
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="row ap-field-row offer-email-receipt">
+                                    <div class="col s12">
+                                        <div class="col s12 m4">
+                                        
+                                        </div>
+                        
+                                        <div class="col s12 m4">
+                                            
+                                        </div>
+                        
+                                        <div class="col s12 m4" align="right">
+                                            <div class="input-field">
+                                                <input id="emailSubject" value="<%= receiptSettings.email_receipts.emailSubject %>" type="text" maxlength="30">
+                                                <label for="emailSubject">Email Subject</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="save white lighten-4" align="right">
+                                    <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                                </div>
+                            </form>
+                        
+                            <form id="customer_info" style="display: none;">
+                                <div class="ap-card-title ap-blue" style="height: 75px;">
+                                    <p>Customer Info</p> 
+                                    <div class="ap-card-title-text">
+                                        Page 3 of 3 
+                                    </div>
+                                    <a class="arrow-nav-left btn-floating btn-medium waves-effect waves-light white email-receipts-arrow-button1"><i class="large material-icons icon-blue">keyboard_arrow_left</i></a>
+                                </div>
+                        
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="col s12 m4">
+                                            <div class="switch">
+                                                <label>
+                                                    <input type="checkbox" id="customerName" <input type="checkbox" data-type="receiptSettings.customer_info.customerName" <%= receiptSettings.customer_info.customerName ? 'checked': '' %>>
+                                                    <span class="lever"></span>Show Customer's Name
+                                                </label>
+                                            </div>
+                                        </div>
+                        
+                                        <div class="col s12 m4">
+                                            <div class="switch">
+                                                <label>
+                                                    <input type="checkbox" id="customerContact" <input type="checkbox" data-type="receiptSettings.customer_info.customerContact" <%= receiptSettings.customer_info.customerContact ? 'checked': '' %>>
+                                                    <span class="lever"></span>Show Customer's Contact
+                                                </label>
+                                            </div>
+                                        </div>
+                        
+                                        <div class="col s12 m4">
+                                            <div class="switch">
+                                                <label>
+                                                    <input type="checkbox" id="customerPhone" <input type="checkbox" data-type="receiptSettings.customer_info.customerPhone" <%= receiptSettings.customer_info.customerPhone ? 'checked': '' %>>
+                                                    <span class="lever"></span>Show Customer's Phone Number
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="row ap-field-row">
+                                    <div class="col s12">
+                                        <div class="col s12 m4">
+                                            <div class="switch">
+                                                <label>
+                                                    <input type="checkbox" id="customerCompName" <input type="checkbox" data-type="receiptSettings.customer_info.customerCompanyName" <%= receiptSettings.customer_info.customerCompanyName ? 'checked': '' %>>
+                                                    <span class="lever"></span>Show Customer's Company Name
+                                                </label>
+                                            </div>
+                                        </div>
+                        
+                                        <div class="col s12 m4">
+                                            <div class="switch">
+                                                <label>
+                                                    <input type="checkbox" id="customerAddress" <input type="checkbox" data-type="receiptSettings.customer_info.customerAddress" <%= receiptSettings.customer_info.customerAddress ? 'checked': '' %>>
+                                                    <span class="lever"></span>Show Customer's Address
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="save white lighten-4" align="right">
+                                    <a class="waves-effect waves-light btn green save-button">{Literal}Save Changes{/Literal}</a>
+                                </div>
+                            </form>
+                        </div>
+                        
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="navigation-keys" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <a class="button waves-effect waves-light receipt-info-button"></a>
+</div>

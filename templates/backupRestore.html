@@ -1,0 +1,79 @@
+<div id="backup-restore-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %>>
+    <div class="row">
+        <div class="col s12">
+            <div class="ap-card-content white z-depth-1" id="backup-restore-form">
+                <div id="backup-restore-form-content">
+                    <form>
+                        <div class="ap-card-title ap-blue" style="height: 75px;">
+                            <p>{Literal}Backup or Restore your Database{/Literal}</p> 
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 m6">
+                                {Literal}Last Backup was made on{/Literal}: 
+                                <div class="input-field inline" > 
+                                    <%if (backups != undefined) {%>
+                                        <input disabled type="text" value="<%= backups.lastBackupDate %>">
+                                    <%}%>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 m6">
+                                {Literal}Remind me to backup after{/Literal}: 
+                                <div class="input-field inline input-field-small">
+                                    <%if (backups != undefined) {%>
+                                        <input id="remindMe" type="text" value="<%= backups.nextBackupDays %>">
+                                    <%}%>
+                                </div>
+                                {Literal}days{/Literal}
+                            </div>
+                        </div>
+
+                        <div class="row"> 
+                            <div class="col s12 m6">
+                                {Literal}Backing up saves all of your AccuPOS data to a file for later reference{/Literal}.
+                            </div>
+
+                            <div class="col s12 m6">
+                                {Literal}Restoring should only be done on the advice of AccuPOS Tech Support{/Literal}.
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m3 offset-m1">
+                                <a class="waves-effect waves-light btn-large ap-blue backup">{Literal}Backup{/Literal}</a>
+                            </div>
+                            <div class="col s12 m3 offset-m3">
+                                <a class="waves-effect waves-light btn-large ap-blue restore" >{Literal}Restore{/Literal}</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="backup-modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px">
+            <h7>{Literal}Choose Backup{/Literal}</h7>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <label class="active">{Literal}Choose Backup{/Literal}</label>
+                <select id="choose-backup-dropdown" required>
+                    <%if (backups.fileList[0] != undefined) {%>
+                        <% var current = 0; %>
+                        <% for (var current = backups.fileList.length - 1; current > 0; current--) {%>
+                                <option  value="<%= backups.fileList[current].fileName %>"><%= backups.fileList[current].fileName %></option>
+                        <% } %>
+                    <%}%>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="restore-confirm" class="modal-close waves-effect waves-green left btn red">{Literal}Restore{/Literal}</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left ">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

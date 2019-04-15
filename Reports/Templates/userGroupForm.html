@@ -1,0 +1,415 @@
+
+    <div class="row" style="margin-bottom: 0px; padding-left: 30px; padding-right: 30px">
+        <div class="input-field col s12 m3" style="margin-bottom: 0px; padding-right: 28px">
+            <input id="username" placeholder="Enter user group name" type="text" class="validate" value="<%= userGroup.name %>" required=""
+                aria-required="true">
+            <label class="active" for="username">Enter User Group Name</label>
+            <span class="helper-text" data-error="This field can't be empty" data-success=""></span>
+        </div>
+    </div>
+    <div class="row management-switches">
+        <div class="col s12 m4">
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.accuShiftManagement" <%= userGroup.managementPermissions.accuShiftManagement ? 'checked': '' %> >
+                        <span class="lever"></span>AccuShift Management
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.addDeleteItems" <%= userGroup.managementPermissions.addDeleteItems ? 'checked': '' %> >
+                        <span class="lever"></span>Add/Delete Items
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.addEditCashTills" <%= userGroup.managementPermissions.addEditCashTills ? 'checked': '' %> >
+                        <span class="lever"></span>Add/Edit Cash Tills
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.addEditTaxingAuthorities" <%= userGroup.managementPermissions.addEditTaxingAuthorities ? 'checked': '' %> >
+                        <span class="lever"></span>Add/Edit Taxing Authorities
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.addEditUserGroups" <%= userGroup.managementPermissions.addEditUserGroups ? 'checked': '' %> >
+                        <span class="lever"></span>Add/Edit User Groups
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.addEditUsers" <%= userGroup.managementPermissions.addEditUsers ? 'checked': '' %> >
+                        <span class="lever"></span>Add/Edit Users
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.adjustInventory" <%= userGroup.managementPermissions.adjustInventory ? 'checked': '' %> >
+                        <span class="lever"></span>Adjust Inventory
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.cardsMerchantSetup" <%= userGroup.managementPermissions.cardsMerchantSetup ? 'checked': '' %> >
+                        <span class="lever"></span>Cards Merchant Setup
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.changeCurrencyConversionRate" <%= userGroup.managementPermissions.changeCurrencyConversionRate ? 'checked': '' %> >
+                        <span class="lever"></span>Change Currency Conversion Rate
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.changeCustomerInformation" <%= userGroup.managementPermissions.changeCustomerInformation ? 'checked': '' %> >
+                        <span class="lever"></span>Change Customer Information
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.changeItems" <%= userGroup.managementPermissions.changeItems ? 'checked': '' %> >
+                        <span class="lever"></span>Change Items
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.changePrices" <%= userGroup.managementPermissions.changePrices ? 'checked': '' %> >
+                        <span class="lever"></span>Change Prices
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.changeServer" <%= userGroup.managementPermissions.changeServer ? 'checked': '' %> >
+                        <span class="lever"></span>Change Server
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.changeSystemSettings" <%= userGroup.managementPermissions.changeSystemSettings ? 'checked': '' %> >
+                        <span class="lever"></span>Change System Settings
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.clearCashTills" <%= userGroup.managementPermissions.clearCashTills ? 'checked': '' %> >
+                        <span class="lever"></span>Clear Cash Tills
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.clearDataFiles" <%= userGroup.managementPermissions.clearDataFiles ? 'checked': '' %> >
+                        <span class="lever"></span>Clear Data Files
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.exportFiles" <%= userGroup.managementPermissions.exportFiles ? 'checked': '' %> >
+                        <span class="lever"></span>Export Files
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.foodServiceComps" <%= userGroup.managementPermissions.foodServiceComps ? 'checked': '' %> >
+                        <span class="lever"></span>Food Service Comps
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.importFiles" <%= userGroup.managementPermissions.importFiles ? 'checked': '' %> >
+                        <span class="lever"></span>Import Files
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.manage" <%= userGroup.managementPermissions.manage ? 'checked': '' %> >
+                        <span class="lever"></span>Manage
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.readCashTills" <%= userGroup.managementPermissions.readCashTills ? 'checked': '' %> >
+                        <span class="lever"></span>Read Cash Tills
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.receiveInventory" <%= userGroup.managementPermissions.receiveInventory ? 'checked': '' %> >
+                        <span class="lever"></span>Receive Inventory
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.resetCashTills" <%= userGroup.managementPermissions.resetCashTills ? 'checked': '' %> >
+                        <span class="lever"></span>Reset Cash Tills
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.resetCurrentTill" <%= userGroup.managementPermissions.resetCurrentTill ? 'checked': '' %> >
+                        <span class="lever"></span>Reset Current Till
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.settleCreditCardBatches" <%= userGroup.managementPermissions.settleCreditCardBatches ? 'checked': '' %> >
+                        <span class="lever"></span>Settle Credit Card Batches
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.accuShiftManagement" <%= userGroup.posPermissions.accuShiftManagement ? 'checked': '' %> />
+                        <span class="lever"></span>AccuShift Management
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pos-switches" style="display: none">
+        <div class="col s12 m4">
+
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.allowSplittingChecks" <%= userGroup.posPermissions.allowSplittingChecks ? 'checked': '' %> />
+                        <span class="lever"></span>Allow Splitting Checks
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.cancelSales" <%= userGroup.posPermissions.cancelSales ? 'checked': '' %> />
+                        <span class="lever"></span>Cancel Sales
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" data-type="managementPermissions.addEditTaxingAuthorities" <%= userGroup.managementPermissions.addEditTaxingAuthorities ? 'checked': '' %> >
+                        <span class="lever"></span>Add/Edit Taxing Authorities
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.changeCustomerInformation" <%= userGroup.posPermissions.changeCustomerInformation ? 'checked': '' %> />
+                        <span class="lever"></span>Change Customer Information
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.changePrices" <%= userGroup.posPermissions.changePrices ? 'checked': '' %> />
+                        <span class="lever"></span>Change Prices
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.changeServer" <%= userGroup.posPermissions.changeServer ? 'checked': '' %> />
+                        <span class="lever"></span>Change Server
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.editReopenedOrders" <%= userGroup.posPermissions.editReopenedOrders ? 'checked': '' %> />
+                        <span class="lever"></span>Edit Reopened Orders
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.editPointOfSaleProgram" <%= userGroup.posPermissions.editPointOfSaleProgram ? 'checked': '' %> />
+                        <span class="lever"></span>Edit Point of Sale Program
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.exitPointOfSaleProgram" <%= userGroup.posPermissions.exitPointOfSaleProgram ? 'checked': '' %> />
+                        <span class="lever"></span>Exit Point of Sale Program
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.loadAllOrders" <%= userGroup.posPermissions.loadAllOrders ? 'checked': '' %> />
+                        <span class="lever"></span>Load All Orders
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.logInTillInUse" <%= userGroup.posPermissions.logInTillInUse ? 'checked': '' %> />
+                        <span class="lever"></span>Login Till in Use
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.makeRefund" <%= userGroup.posPermissions.makeRefund ? 'checked': '' %> />
+                        <span class="lever"></span>Make Refund
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.makeReturns" <%= userGroup.posPermissions.makeReturns ? 'checked': '' %> />
+                        <span class="lever"></span>Make Returns
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.makeSales" <%= userGroup.posPermissions.makeSales ? 'checked': '' %> />
+                        <span class="lever"></span>Make Sales
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.makeVoids" <%= userGroup.posPermissions.makeVoids ? 'checked': '' %> />
+                        <span class="lever"></span>Make Voids
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.noSale" <%= userGroup.posPermissions.noSale ? 'checked': '' %> />
+                        <span class="lever"></span>No Sale
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.overrideCreditLimit" <%= userGroup.posPermissions.overrideCreditLimit ? 'checked': '' %> />
+                        <span class="lever"></span>Override Credit Limit
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.overrideRequiredGuestCount" <%= userGroup.posPermissions.overrideRequiredGuestCount ? 'checked': '' %> />
+                        <span class="lever"></span>Override Required Guest Count
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+
+
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.readCashTills" <%= userGroup.posPermissions.readCashTills ? 'checked': '' %> />
+                        <span class="lever"></span>Read Cash Tills
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.reopenClosedSales" <%= userGroup.posPermissions.reopenClosedSales ? 'checked': '' %> />
+                        <span class="lever"></span>Reopen Closed Sales
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.resetCashTills" <%= userGroup.posPermissions.resetCashTills ? 'checked': '' %> />
+                        <span class="lever"></span>Reset Cash Tills
+                    </label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" class="permission-checkbox" class="filled-in" data-type="posPermissions.resetCurrentTill" <%= userGroup.posPermissions.resetCurrentTill ? 'checked': '' %> />
+                        <span class="lever"></span>Reset Current Till
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

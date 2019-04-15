@@ -1,0 +1,353 @@
+<div id="reports-wrapper" class="row report-card" style="padding-top: 15px; margin-bottom: 0px;<%= (App.rtl ? 'direction:rtl' : '') %>">
+    <div class="col s12">
+        <div class="quicklink-card z-depth-1 white" style="margin-bottom: 10px; margin-top: 10px; border:none;">
+            <div class="quicklink-card-content">
+                <form>
+                    <div class="row" style="margin-bottom: 5px">
+                        <div class="col s12 m4 report-form-col">
+                            <div class="row" style="margin-bottom: 0px">
+                                <div class="input-field col s12 report-field-column">
+                                    <select class="validate" id="report-category">
+                                        <option value="" disabled selected>{Literal}Select a Category{/Literal}</option>
+                                        <option value="general">{Literal}General Reports{/Literal}</option>
+                                        <option value="transactions">{Literal}Transactions{/Literal}</option>
+                                        <option value="sales">{Literal}Sales{/Literal}</option>
+                                        <option value="list">{Literal}List{/Literal}</option>
+                                        <option value="inventory">{Literal}Inventory{/Literal}</option>
+                                    </select>
+                                    <label><i class="material-icons left">menu</i>{Literal}Report Category{/Literal}</label>
+                                    <span class="helper-text" data-error="A report category has to be selected" data-success></span>
+                                </div>
+                                <div class="input-field col s12 report-field-column">
+                                    <select class="validate" id="report-type" disabled>
+                                        <option value="" disabled selected>{Literal}Select a Type{/Literal}</option>
+                                    </select>
+                                    <label><i class="material-icons left">show_chart</i>{Literal}Report Type{/Literal}</label>
+                                    <span class="helper-text" data-error="A report type has to be selected" data-success></span>
+                                </div>
+                                <div id="viewByBlock">
+                                    <div class="input-field col s12" style="margin-top: 0px">
+                                        <label>
+                                            <input name="group1" disabled type="radio" checked class="report-by-selector with-gap" value="by-date-time" id="by-date-time-radio-button" data-filter-class="conditional-report-filter" data-filter="timeRange" />
+                                            <span>{Literal}View by Time Range{/Literal}</span>
+                                        </label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <label>
+                                            <input name="group1" disabled type="radio" class="report-by-selector with-gap" value="by-sequence" id="by-sequence-radio-button" data-filter-class="conditional-report-filter" data-filter="sequence" />
+                                            <span>{Literal}View by Sequence{/Literal}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="margin-top: 60px; display:none; margin-bottom:10px">
+                                    <select id="date-range-preset" data-filter-class="conditional-report-filter" data-filter="timeRange" disabled>
+                                        <option value="">{Literal}Custom{/Literal}</option>
+                                        <option value="0">{Literal}Today{/Literal}</option>
+                                        <option value="7">{Literal}Previous Week{/Literal}</option>
+                                        <option value="30">{Literal}Previous Month{/Literal}</option>
+                                        <option value="90">{Literal}Previous 3 Months{/Literal}</option>
+                                    </select>
+                                    <label>{Literal}Date Range Preset{/Literal}</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col s12 m4 report-form-col" id="by-time-fields">
+                            <div class="row" style="margin-bottom: 0;">
+                                <div class="input-field col s12 m6 report-field-column" style="display: none">
+                                    <input id="report-start-time" disabled type="text" class="validate hide-filter" data-filter-class="conditional-report-filter" data-filter="timeRange">
+                                    <label for="report-start-time"><i class="material-icons left">date_range</i>{Literal}Start Date{/Literal}</label>
+                                    <span class="helper-text" data-error="This field can't be empty" data-success></span>
+                                </div>
+                                <div class="input-field col s12 m6 report-field-column" style="display: none">
+                                        <input id="report-end-time" disabled type="text" class="validate hide-filter" data-filter-class="conditional-report-filter" data-filter="timeRange">
+                                        <label for="report-end-time"><i class="material-icons left">date_range</i>{Literal}End Date{/Literal}</label>
+                                        <span class="helper-text" data-error="This field can't be empty" data-success></span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 0;">
+                                <div class="input-field col s12 m6 report-field-column" style="display:none">
+                                    <input id="report-start-timepicker" class="hide-filter" disabled type="text" data-filter-class="conditional-report-filter" data-filter="timeRange">
+                                    <label for="report-start-timepicker"><i class="material-icons left">access_time</i>{Literal}Start Time{/Literal}</label>
+                                    <span class="helper-text" data-error="This field can't be empty" data-success></span>
+                                </div>
+                                <div class="input-field col s12 m6 report-field-column" style="display:none">
+                                    <input id="report-end-timepicker" class="hide-filter" disabled type="text" data-filter-class="conditional-report-filter" data-filter="timeRange">
+                                    <label for="report-end-timepicker"><i class="material-icons left">access_time</i>{Literal}End Time{/Literal}</label>
+                                    <span class="helper-text" data-error="This field can't be empty" data-success></span>
+                                </div>
+                            </div>
+                            <div class="input-field col s12 report-field-column" id="items-autocomplete-placeholder" style="display:none;padding-left:0; padding-right:0">
+                                    <!--<input type="text" id="item-search-autocomplete" placeholder="{Literal}Start typing to search{/Literal}" class="chips chips-autocomplete hide-filter" data-filter-class="conditional-report-filter" data-filter="item">
+                                    <label for="item-search-autocomplete" class="active"><i class="material-icons left">filter_list</i>Filter by Item</label>-->
+                                    <div class="chips chips-autocomplete hide-filter" id="item-search-autocomplete" data-filter-class="conditional-report-filter" data-filter="item"></div>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="display:none">
+                                    <input type="text" id="reset-report-autocomplete" placeholder="{Literal}Enter Sequence #{/Literal}" class="autocomplete hide-filter" data-filter-class="conditional-report-filter" data-filter="resetReport">
+                                    <label for="reset-report-autocomplete" class="active"><i class="material-icons left">filter_list</i>{Literal}Filter by Reset Report{/Literal}</label>
+                                </div>
+                                <div class="input-field col s6 report-field-column" style="display:none">
+                                    <input type="number" id="amount-range-from" class="hide-filter" data-filter-class="conditional-report-filter" data-filter="amountRange">
+                                    <label for="amount-range-from" style="font-size: 0.75rem"><i class="material-icons left" tyle="font-size: 0.75rem">filter_list</i>{Literal}From Amount{/Literal}</label>
+                                </div>
+                                <div class="input-field col s6 report-field-column" style="display:none">
+                                    <input type="number" id="amount-range-to" class="hide-filter" data-filter-class="conditional-report-filter" data-filter="amountRange">
+                                    <label for="amount-range-to" style="font-size: 0.75rem"><i class="material-icons left" tyle="font-size: 0.75rem">filter_list</i>{Literal}To Amount{/Literal}</label>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="display:none">
+                                    <input type="text" id="user-search-autocomplete" placeholder="{Literal}Start typing to search{/Literal}" class="hide-filter" data-filter-class="conditional-report-filter" data-filter="user">
+                                    <label for="user-search-autocomplete" class="active"><i class="material-icons left">filter_list</i>{Literal}Filter by User{/Literal}</label>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="display:none">
+                                    <input type="text" id="customer-search-autocomplete" placeholder="{Literal}Start typing to search{/Literal}" class="hide-filter" data-filter-class="conditional-report-filter" data-filter="customer">
+                                    <label for="customer-search-autocomplete" class="active"><i class="material-icons left">filter_list</i>{Literal}Filter by Customer{/Literal}</label>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="display:none">
+                                    <input type="text" id="item-type-search-autocomplete" placeholder="{Literal}Start typing to search{/Literal}" class="hide-filter" data-filter-class="conditional-report-filter" data-filter="itemType">
+                                    <label for="item-type-search-autocomplete" class="active"><i class="material-icons left">filter_list</i>{Literal}Filter by Item Type{/Literal}</label>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="display:none">
+                                    <input type="text" id="item-category-search-autocomplete" placeholder="{Literal}Start typing to search{/Literal}" class="hide-filter" data-filter-class="conditional-report-filter" data-filter="itemCategory">
+                                    <label for="item-category-search-autocomplete" class="active"><i class="material-icons left">filter_list</i>{Literal}Filter by Item Category{/Literal}</label>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="display:none">
+                                    <input type="text" id="customer-type-search-autocomplete" placeholder="{Literal}Start typing to search{/Literal}" class="hide-filter" data-filter-class="conditional-report-filter" data-filter="customerType">
+                                    <label for="customer-type-search-autocomplete" class="active"><i class="material-icons left">filter_list</i>{Literal}Filter by Customer Type{/Literal}</label>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="display:none">
+                                    <input type="text" id="adjustment-session-search-autocomplete" placeholder="{Literal}Start typing to search{/Literal}" class="hide-filter" data-filter-class="conditional-report-filter" data-filter="adjustmentSession">
+                                    <label for="adjustment-session-search-autocomplete" class="active"><i class="material-icons left">filter_list</i>{Literal}Filter by Adjustment Session{/Literal}</label>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="display:none">
+                                    <a href="javascript:void(0)" id="signatures-modal-trigger" class="waves-effect waves-light btn-small ap-blue hide-filter" data-filter-class="conditional-report-filter" data-filter="signatures"><i class="material-icons left">filter_list</i>{Literal}Filter by Receipt{/Literal}</a>
+                                    <span>
+                                    <div class="preloader-wrapper small right signature-modal-trigger-preloader">
+                                            <div class="spinner-layer spinner-blue-only">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </span>
+                                    <div data-filter-class="conditional-report-filter" class="selected-signature-text" data-filter="signatures">
+
+                                    </div>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="display:none">
+                                    <div class="switch" style="padding-bottom: 10px;">
+                                        <label>
+                                            <input type="checkbox" class="whole-day hide-filter form-switch" id="whole-day-time" checked data-filter-class="conditional-report-filter" data-filter="timeRange">
+                                            <span class="lever"></span>{Literal}Whole day{/Literal}
+                                        </label>
+                                    </div>
+
+                                    <div class="switch" style="display:none">
+                                        <label>
+                                            <input type="checkbox" class="hide-filter form-switch form-switch-settings" id="export-to-xlsx" data-filter-class="conditional-report-filter" data-filter="exportToExcel">
+                                            <span class="lever"></span>{Literal}Export to Excel{/Literal}
+                                        </label>
+                                    </div>
+                                    <div class="switch" style="display:none">
+                                        <label>
+                                            <input type="checkbox" checked class="hide-filter form-switch form-switch-settings" id="show-graphs" data-filter-class="conditional-report-filter" data-filter="showGraphs">
+                                            <span class="lever"></span>{Literal}Show Graphs{/Literal}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-field col s12 report-field-column" style="display:none">
+                                    <!--<div class="switch">
+                                        <label>
+                                            <input type="checkbox" checked class="hide-filter form-switch" id="show-graphs" data-filter-class="conditional-report-filter" data-filter="showGraphs">
+                                            <span class="lever"></span>Show Graphs
+                                        </label>
+                                    </div>-->
+                                </div>
+                            
+                        </div>
+                        <div class="col s12 m4 report-form-col" style="display: none" id="by-sequence-fields">
+                            <div class="row">
+                                <div class="col s12 report-field-column" style="padding-top:25px">
+                                    <a href="#sequence-modal" id="sequence-modal-trigger" class="waves-effect waves-light btn-small modal-trigger ap-blue" data-filter-class="conditional-report-filter" data-filter="sequence"><i class="material-icons left">filter_list</i>Change Sequence...</a>
+                                </div>
+                                <div class="col s12 report-field-column" style="padding-top:25px">
+                                    <span id="selected-sequence" data-value=""></span>
+                                    <span class="ap-validation-error-msg" id="sequence-error-msg" style="display: none">A sequence has to be selected</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 report-form-col">
+                            <div class="row">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="quicklink-card-footer">
+                <div class="row" style="margin-bottom: 2px">
+                    <div class="col s12 right-align">
+                        <a class="waves-effect ap-confirm-green waves-light btn-small run-report">{Literal}Run Report{/Literal}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Structure -->
+<div id="signatures-modal" class="modal bottom-sheet modal-fixed-footer" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <div style="padding-bottom: 50px">
+                    <h4>Select Order Receipt</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 blue-text">
+                <i class="material-icons left">info</i>Showing receipts within the time range you've selected
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m7" style="max-height: 400px; overflow: auto">
+                <table class="highlight">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Employee</th>
+                            <th>Transaction</th>
+                            <th>Amount</th>
+                            <th>Reference</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s12 m5">
+                <div class="signature-img-wrapper" style="padding-top: 45px">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="signature-dismiss" class="waves-effect waves-light btn red">Cancel</a>
+        <a href="javascript:void(0)" class="waves-effect waves-light btn green" id="signature-ok">Done</a>
+        <input type="hidden" id="selected-receipt" value="" />
+    </div>
+</div>
+
+<div id="sequence-modal" class="modal bottom-sheet modal-fixed-footer" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s6">
+                <div style="padding-bottom: 50px">
+                    <h4>Select Sequence</h4>
+                </div>
+            </div>
+            <div class="col s6">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s3" id="sequences-filters">
+                <div>
+                    <ul class="pagination" id="sequence-pagination" style="display: none" data-current-page="1">
+                        <li class="disabled" id="pagination-back">
+                            <a href="javascript:void(0)">
+                                <i class="material-icons">chevron_left</i>
+                            </a>
+                        </li>
+                        <li class="waves-effect" id="pagination-forward">
+                            <a href="javascript:void(0)">
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="*" selected>All Tills</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="300">300</option>
+                            </select>
+                            <label>Select Till</label>
+                        </div>
+                    </div>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="filter-sequences-by-time" type="radio" checked />
+                            <span>All</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="filter-sequences-by-time" type="radio" />
+                            <span>Today</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="filter-sequences-by-time" type="radio" />
+                            <span>Yesterday</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="filter-sequences-by-time" type="radio" />
+                            <span>Last Week</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="filter-sequences-by-time" type="radio" />
+                            <span>Last Month</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="filter-sequences-by-time" type="radio" />
+                            <span>Last Year</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+            <div class="col s9" id="sequences-wrapper">
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn red">Cancel</a>
+        <a href="javascript:void(0)" class="waves-effect waves-light btn green" id="sequence-modal-accept">Done</a>
+        <input type="hidden" id="selected-sequence" value="" />
+    </div>
+</div>
+<div class="preloader-template" style="display: none;<%= (App.rtl ? 'direction:rtl' : '') %>">
+    <div class="preloader-wrapper small">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>

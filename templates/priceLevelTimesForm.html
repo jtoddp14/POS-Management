@@ -1,0 +1,107 @@
+<div id="price-level-times-form-modal" class="modal modal-fixed-footer" style="max-height: 100%" <%= (App.rtl ? 'style="direction:rtl"' : '') %>></div>
+    <div class="modal-content">
+        <div id="price-level-times-form-content">
+            <div style="padding-bottom: 50px">
+                <h4 style="font-size: 1.2rem">{Literal}Price Level Time{/Literal}</h4>
+            </div>
+            <form>
+                <div class="row" style="padding-bottom: 50px;">
+                    <div class="col s12">
+                        <div class="col s1" style="display:none;">
+                            <div class="input-field">
+                                <input id="id" type="text" value="<%= priceLevelTimes.id %>">
+                            </div>
+                        </div>
+
+                        <div class="input-field col s12 m4">
+                            <label class="active">{Literal}Price Level{/Literal}</label>
+                            <select id="price-level-dropdown" required>
+                                <option value="1" <%= (priceLevelTimes.priceLevel == "1" ? 'selected' : '') %>>1</option>
+                                <option value="2" <%= (priceLevelTimes.priceLevel == "2" ? 'selected' : '') %>>2</option>
+                                <option value="3" <%= (priceLevelTimes.priceLevel == "3" ? 'selected' : '') %>>3</option>
+                                <option value="4" <%= (priceLevelTimes.priceLevel == "4" ? 'selected' : '') %>>4</option>
+                                <option value="5" <%= (priceLevelTimes.priceLevel == "5" ? 'selected' : '') %>>5</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field col s12 m4">
+                            <input class="timepicker" id="start" type="text" value="<%= priceLevelTimes.priceStart %>">
+                            <label class="active" for="start">{Literal}Start Time{/Literal}</label>
+                        </div>
+            
+                        <div class="input-field col s12 m4">
+                            <input class="timepicker" id="end" type="text" value="<%= priceLevelTimes.priceEnd %>">
+                            <label class="active" for="end">{Literal}End Time{/Literal}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="input-field col s1 inline input-field-checkbox">
+                            <label>
+                                <input id="mon" type="checkbox" class="filled-in" data-type="priceLevelTimes.monday"<%= priceLevelTimes.monday ? 'checked': '' %>>
+                                <span>{Literal}MON{/Literal}</span>
+                            </label>
+                        </div>
+                        <div class="input-field col s1 inline input-field-checkbox">
+                            <label>
+                                <input id="tue" type="checkbox" class="filled-in" data-type="priceLevelTimes.tuesday"<%= priceLevelTimes.tuesday ? 'checked': '' %>>
+                                <span>{Literal}TUE{/Literal}</span>
+                            </label>
+                        </div>
+                        <div class="input-field col s1 inline input-field-checkbox">
+                            <label>
+                                <input id="wed" type="checkbox" class="filled-in" data-type="priceLevelTimes.wednesday"<%= priceLevelTimes.wednesday ? 'checked': '' %>>
+                                <span>{Literal}WED{/Literal}</span>
+                            </label>
+                        </div>
+                        <div class="input-field col s1 inline input-field-checkbox">
+                            <label>
+                                <input id="thu" type="checkbox" class="filled-in" data-type="priceLevelTimes.thursday"<%= priceLevelTimes.thursday ? 'checked': '' %>>
+                                <span>{Literal}THU{/Literal}</span>
+                            </label>
+                        </div>
+                        <div class="input-field col s1  inline input-field-checkbox">
+                            <label>
+                                <input id="fri" type="checkbox" class="filled-in" data-type="priceLevelTimes.friday"<%= priceLevelTimes.friday ? 'checked': '' %>>
+                                <span>{Literal}FRI{/Literal}</span>
+                            </label>
+                        </div>
+                        <div class="input-field col s1 inline input-field-checkbox">
+                            <label>
+                                <input id="sat" type="checkbox" class="filled-in" data-type="priceLevelTimes.saturday"<%= priceLevelTimes.saturday ? 'checked': '' %>>
+                                <span>{Literal}SAT{/Literal}</span>
+                            </label>
+                        </div>
+                        <div class="input-field col s1 inline input-field-checkbox">
+                            <label>
+                                <input id="sun" type="checkbox" class="filled-in" data-type="priceLevelTimes.sunday"<%= priceLevelTimes.sunday ? 'checked': '' %>>
+                                <span>{Literal}SUN{/Literal}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#delete-price-level-time-modal" class="waves-effect waves-light btn-flat red-text right modal-trigger delete-price-level-time-button">{Literal}Delete{/Literal}</a>
+    <a href="javascript:void(0)" class="waves-effect waves-green btn green save-button left">{Literal}Save{/Literal}</a>
+    <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+</div>
+    
+<div id="delete-price-level-time-modal" class="modal">
+    <div class="modal-content">
+        <div style="padding-bottom: 50px;">
+            <h6>{Literal}Confirm Deletion{/Literal}</h6>
+        </div>
+        <p>{Literal}Are you sure that you would like to remove this price level time{/Literal}?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" id="delete-price-level-time-confirm" class="modal-close waves-effect waves-green btn red left" data-tax-id="<%= priceLevelTimes.id%>">{Literal}Delete{/Literal}</a>
+        <input type="hidden" id="delete-price-level-times-id" />
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat left">{Literal}Cancel{/Literal}</a>
+    </div>
+</div>

@@ -1,0 +1,233 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "plotly.js@^1.37.1",
+        "scope": null,
+        "escapedName": "plotly.js",
+        "name": "plotly.js",
+        "rawSpec": "^1.37.1",
+        "spec": ">=1.37.1 <2.0.0",
+        "type": "range"
+      },
+      "/Users/yuvalherziger/workspace/wm"
+    ]
+  ],
+  "_from": "plotly.js@>=1.37.1 <2.0.0",
+  "_id": "plotly.js@1.37.1",
+  "_inCache": true,
+  "_location": "/plotly.js",
+  "_nodeVersion": "8.11.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/plotly.js_1.37.1_1525290526814_0.6546814914457815"
+  },
+  "_npmUser": {
+    "name": "etpinard",
+    "email": "etienne.t.pinard@gmail.com"
+  },
+  "_npmVersion": "5.8.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "plotly.js@^1.37.1",
+    "scope": null,
+    "escapedName": "plotly.js",
+    "name": "plotly.js",
+    "rawSpec": "^1.37.1",
+    "spec": ">=1.37.1 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/plotly.js/-/plotly.js-1.37.1.tgz",
+  "_shasum": "c6f17d8c01353b25fbf41904282c054953a86c8d",
+  "_shrinkwrap": null,
+  "_spec": "plotly.js@^1.37.1",
+  "_where": "/Users/yuvalherziger/workspace/wm",
+  "author": {
+    "name": "Plotly, Inc."
+  },
+  "browserify": {
+    "transform": [
+      "glslify"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/plotly/plotly.js/issues"
+  },
+  "dependencies": {
+    "3d-view": "^2.0.0",
+    "@plotly/d3-sankey": "^0.5.0",
+    "alpha-shape": "^1.0.0",
+    "array-range": "^1.0.1",
+    "bubleify": "^1.0.0",
+    "canvas-fit": "^1.5.0",
+    "color-normalize": "^1.0.3",
+    "color-rgba": "^2.0.0",
+    "convex-hull": "^1.0.3",
+    "country-regex": "^1.1.0",
+    "d3": "^3.5.12",
+    "d3-force": "^1.0.6",
+    "delaunay-triangulate": "^1.1.6",
+    "es6-promise": "^3.0.2",
+    "fast-isnumeric": "^1.1.1",
+    "font-atlas-sdf": "^1.3.3",
+    "gl-contour2d": "^1.1.4",
+    "gl-error3d": "^1.0.7",
+    "gl-heatmap2d": "^1.0.4",
+    "gl-line3d": "^1.1.2",
+    "gl-mat4": "^1.1.2",
+    "gl-mesh3d": "^2.0.0",
+    "gl-plot2d": "^1.3.1",
+    "gl-plot3d": "^1.5.5",
+    "gl-pointcloud2d": "^1.0.1",
+    "gl-scatter3d": "^1.0.11",
+    "gl-select-box": "^1.0.2",
+    "gl-spikes2d": "^1.0.1",
+    "gl-surface3d": "^1.3.4",
+    "glslify": "^6.1.1",
+    "has-hover": "^1.0.1",
+    "has-passive-events": "^1.0.0",
+    "mapbox-gl": "0.44.1",
+    "matrix-camera-controller": "^2.1.3",
+    "mouse-change": "^1.4.0",
+    "mouse-event-offset": "^3.0.2",
+    "mouse-wheel": "^1.0.2",
+    "ndarray": "^1.0.18",
+    "ndarray-fill": "^1.0.2",
+    "ndarray-homography": "^1.0.0",
+    "ndarray-ops": "^1.2.2",
+    "point-cluster": "^3.1.4",
+    "polybooljs": "^1.2.0",
+    "regl": "^1.3.1",
+    "regl-error2d": "^2.0.5",
+    "regl-line2d": "^3.0.9",
+    "regl-scatter2d": "^3.0.4",
+    "regl-splom": "^1.0.3",
+    "right-now": "^1.0.0",
+    "robust-orientation": "^1.1.3",
+    "sane-topojson": "^2.0.0",
+    "strongly-connected-components": "^1.0.1",
+    "superscript-text": "^1.0.0",
+    "svg-path-sdf": "^1.1.1",
+    "tinycolor2": "^1.3.0",
+    "topojson-client": "^2.1.0",
+    "webgl-context": "^2.2.0",
+    "world-calendars": "^1.0.3"
+  },
+  "description": "The open source javascript graphing library that powers plotly",
+  "devDependencies": {
+    "brfs": "^1.4.4",
+    "browserify": "^15.2.0",
+    "browserify-transform-tools": "^1.7.0",
+    "check-node-version": "^3.2.0",
+    "deep-equal": "^1.0.1",
+    "ecstatic": "^3.2.0",
+    "eslint": "^4.18.0",
+    "falafel": "^2.0.0",
+    "fs-extra": "^2.0.0",
+    "fuse.js": "^3.2.0",
+    "glob": "^7.0.0",
+    "gzip-size": "^4.1.0",
+    "image-size": "^0.6.2",
+    "into-stream": "^3.1.0",
+    "jasmine-core": "^2.99.1",
+    "jsdom": "^11.6.2",
+    "karma": "^2.0.0",
+    "karma-browserify": "^5.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.0.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-jasmine-spec-tags": "^1.0.1",
+    "karma-spec-reporter": "0.0.32",
+    "karma-verbose-reporter": "0.0.6",
+    "madge": "^3.0.1",
+    "minify-stream": "^1.1.0",
+    "minimist": "^1.2.0",
+    "node-sass": "^4.7.2",
+    "npm-link-check": "^2.0.0",
+    "open": "0.0.5",
+    "prepend-file": "^1.3.1",
+    "prettysize": "1.1.0",
+    "read-last-lines": "^1.1.0",
+    "requirejs": "^2.3.1",
+    "run-series": "^1.1.4",
+    "through2": "^2.0.3",
+    "true-case-path": "^1.0.2",
+    "watchify": "^3.10.0",
+    "xml2js": "^0.4.16"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-1y/oQnx9HIoie3Y4B6zfn42suL6IOUwyUN3oPKD8+Cyg7gZ/+tZrT8y4uAsY4YDsgp3BGFOqlBhZt9FtVh3rew==",
+    "shasum": "c6f17d8c01353b25fbf41904282c054953a86c8d",
+    "tarball": "https://registry.npmjs.org/plotly.js/-/plotly.js-1.37.1.tgz",
+    "fileCount": 880,
+    "unpackedSize": 56177484,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6hYgCRA9TVsSAnZWagAA5ZcP/j0A/0LA1a+qBznK3v5J\nWOfXmbnOSR7BSmGu/QH4P5gHgdl136Vk+OxVcZrQacrmRDKfWIr9r590530I\nXNlF5nzqoVjburdH3ihkQCjioZyw9oeupNN7QPck4H6kdbJc818VZb6zosDC\nlXB/GZhFoSBoclwgGrPhsZ8aPz3RbF4J3mOoS5ZB251eW8LMOOvtRdK+3Wnd\nuyoxv6fS9iws+OWCciYATNwVQRRmJLr6BmIQlkRl6//Db01W62UBELqdxJb9\n34uEULEsE7RkkHvuz4GWqCSo2O/nGAHT0tyPHJ2XPeGOTSTSIm2mMvZnQMBc\np3LIYXxQKbbVDBh68EUWPPFfF5MUNUNTeEEMWIYSQvfVMEc5/lPKt7kOyzrS\ngADUIgWBTzidmhFol0BerK3KAgdujscNGzefXNib2hA+H36Pl0PT1jZNIcxl\nQHmfUQ/GSSsiE/uhXW9C3n1pXW5KJHdts+ZGDnJew6buSum1AATa0e+BCa9O\nAj6DyjOGQogE9yLFLRIrQc3siFWBRzXFg+78VmD0oWWWTwSsKtLfh3ktnXjm\nRM9YYQQgLrU+0tYJKPSFXKsjMiIUqMUVbChyitfSOxJSnxmWnPiTkoQ16g+f\nmp7kJ5eAUKfP7unakr8a/niQuZ1nClposjjVqx6PTe24K0AScJQYIRm187nI\nxvCB\r\n=dO2P\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "gitHead": "398eeb3e5f3ef697609235d47d7ad78cada79cac",
+  "homepage": "https://github.com/plotly/plotly.js#readme",
+  "keywords": [
+    "graphing",
+    "plotting",
+    "data",
+    "visualization",
+    "plotly"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "maintainers": [
+    {
+      "name": "alexcjohnson",
+      "email": "alex@plot.ly"
+    },
+    {
+      "name": "etpinard",
+      "email": "etienne.t.pinard@gmail.com"
+    },
+    {
+      "name": "mdtusz",
+      "email": "mdtusz@gmail.com"
+    }
+  ],
+  "name": "plotly.js",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plotly/plotly.js.git"
+  },
+  "scripts": {
+    "baseline": "node tasks/baseline.js",
+    "build": "npm run preprocess && npm run find-strings && npm run bundle && npm run header && npm run stats",
+    "bundle": "node tasks/bundle.js",
+    "cibuild": "npm run preprocess && node tasks/cibundle.js",
+    "docker": "node tasks/docker.js",
+    "find-strings": "node tasks/find_locale_strings.js",
+    "header": "node tasks/header.js",
+    "lint": "eslint --version && eslint .",
+    "lint-fix": "eslint . --fix || true",
+    "postversion": "node -e \"console.log('Version bumped and committed. If ok, run: git push && git push --tags')\"",
+    "preprocess": "node tasks/preprocess.js",
+    "pretest": "node tasks/pretest.js",
+    "preversion": "check-node-version --node 8 --npm 5 && npm-link-check && npm ls --prod",
+    "start": "npm run start-test_dashboard",
+    "start-image_viewer": "node devtools/image_viewer/server.js",
+    "start-test_dashboard": "node devtools/test_dashboard/server.js",
+    "stats": "node tasks/stats.js",
+    "test": "npm run test-jasmine && npm run test-bundle && npm run test-image && npm run test-image-gl2d && npm run test-syntax && npm run lint",
+    "test-bundle": "node tasks/test_bundle.js",
+    "test-export": "node tasks/test_export.js",
+    "test-image": "node tasks/test_image.js",
+    "test-image-gl2d": "node tasks/test_image.js gl2d_* --queue",
+    "test-jasmine": "karma start test/jasmine/karma.conf.js",
+    "test-syntax": "node tasks/test_syntax.js && npm run find-strings -- --no-output",
+    "version": "npm run build && git add -A dist src build",
+    "watch": "node tasks/watch.js"
+  },
+  "version": "1.37.1",
+  "webpack": "./dist/plotly.js"
+}

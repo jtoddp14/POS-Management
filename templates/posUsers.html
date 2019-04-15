@@ -1,0 +1,63 @@
+<div id="pos-users-wrapper" <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <form>
+        <div class="row">
+            <div class="input-field col s12 m3">
+                <select id="user-group-filter">
+                    <option value="*">{Literal}All Groups{/Literal}</option>
+                </select>
+
+                <label>{Literal}Filter by User Group{/Literal}</label>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <% _.each(posUsers, function(posUser) { %>
+            <div class="col s12 m3 xl2">
+                <div class="card-panel card-panel-entity z-depth-1 sequence-card hoverable waves-effect waves-light white"
+                    data-id="<%= posUser.id %>" data-selected='0' style="padding-top: 5px !important;">
+                    <div>
+                        <div class="row type truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                            <%= posUser.group %>
+                        </div>
+                        <div class="row description truncate" style="color: #3970b7;">
+                            <%= posUser.id %>
+                        </div>
+
+                        <div class="row till truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;">
+                            {Literal}Till{/Literal}:
+                            <%= posUser.till %>
+                            <% if (posUser.isDriver && isFoodService ) { %>
+                            <span class="right">
+                                <i class="material-icons tooltipped" data-position="bottom" data-tooltip="Driver">directions_car</i><!--Driver-->
+                            </span>
+                            <% } %>
+                        </div>
+                        <div class="row taxable truncate" style="font-size: .95rem; margin-bottom: 0px; color: gray;"> 
+                            {Literal}T/O{/Literal}:
+                            <%= posUser.logOutTime == 0 ? '{Literal}Never{/Literal}' : posUser.logOutTime %>
+                            <!--    <% if (posUser.isServer && isFoodService) { %>
+                                <span class="right">
+                                    <i class="material-icons tooltipped" data-position="bottom" data-tooltip="Server">room_service</i><!--Server-->
+                            <!--</span>
+                                <% } %> -->
+                        </div>
+                    </div>
+                    <div class="edit" style="display: none">
+                        <a href="javascript:void(0)" class="btn-floating btn-large waves-effect waves-light ap-dark-blue edit-pos-user-trigger"
+                            data-id="<%= posUser.id %>">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<div id="pos-user-form-modal" class="modal modal-fixed-footer pos-user-form-modal" style="max-height: 100%">
+    
+</div>
+
+<a href="javascript:void(0)" id="add-user-button" class="btn-floating btn-large waves-effect waves-light green z-depth-4 floating-action-button-fixed">
+    <i class="material-icons">add</i>
+</a>

@@ -1,0 +1,63 @@
+{
+  "_from": "aesutil",
+  "_id": "aesutil@0.1.1",
+  "_inBundle": false,
+  "_integrity": "sha1-auS0eR9lm2DR54bITipHzf4erS4=",
+  "_location": "/aesutil",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "aesutil",
+    "name": "aesutil",
+    "escapedName": "aesutil",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/aesutil/-/aesutil-0.1.1.tgz",
+  "_shasum": "6ae4b4791f659b60d1e786c84e2a47cdfe1ead2e",
+  "_spec": "aesutil",
+  "_where": "C:\\Users\\jeremiah.page\\Desktop\\Company Info - Updated\\web-management-v2.0",
+  "author": {
+    "name": "Lomachuk Igor"
+  },
+  "bugs": {
+    "url": "https://github.com/lomaka1313/AesUtil/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "npm i --save aesutil",
+  "engines": {
+    "node": "^4.4.0"
+  },
+  "homepage": "https://github.com/lomaka1313/AesUtil#readme",
+  "license": "MIT",
+  "main": "aes.js",
+  "name": "aesutil",
+  "repository": {
+    "type": "github",
+    "url": "git+https://github.com/lomaka1313/AesUtil.git"
+  },
+  "version": "0.1.1",
+  "warnings": [
+    {
+      "code": "ENOTSUP",
+      "required": {
+        "node": "^4.4.0"
+      },
+      "pkgid": "aesutil@0.1.1"
+    },
+    {
+      "code": "ENOTSUP",
+      "required": {
+        "node": "^4.4.0"
+      },
+      "pkgid": "aesutil@0.1.1"
+    }
+  ]
+}

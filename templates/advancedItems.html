@@ -1,0 +1,93 @@
+<div class="row"  <%= (App.rtl ? 'style="direction:rtl"' : '') %> >
+    <div id="advancedCards">
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m3">
+                    <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3754A0;  min-height: 25px; max-height: 170px;" href="#/sales">
+                        <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;">local_offer</i>
+                        <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Sales{/Literal} &amp; {Literal}Promotions{/Literal}</p>
+                    </a>
+                </div>
+
+                <div class="col s12 m3">
+                    <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #EF486F;  min-height: 25px; max-height: 170px;" href="#/group-items">
+                        <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;">pages</i>
+                        <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Group Items{/Literal}<br></p>
+                    </a>
+                </div>
+
+                <div class="col s12 m3">
+                    <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #FFD167;  min-height: 25px; max-height: 170px;" href="#/inventory">
+                        <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;" align="center">assignment_returned</i>
+                        <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Receive Inventory{/Literal}</p>
+                    </a>
+                </div>
+
+                <div class="col s12 m3">
+                    <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #4ABD98;  min-height: 25px; max-height: 170px;" href="#/inventory-adjustments">
+                        <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;">assignment_turned_in</i>
+                        <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Adjust Inventory{/Literal}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m3">
+                    <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #252525;  min-height: 25px; max-height: 170px;" href="#/follow-on">
+                        <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;">share</i>
+                        <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Follow On Items{/Literal}</p>
+                    </a>
+                </div>
+                <div class="col s12 m3">
+                    <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #4B9CD6;  min-height: 25px; max-height: 170px;" href="#/price-level-times">
+                        <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;">access_time</i>
+                        <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Price Level Times{/Literal}</p>
+                    </a>
+                </div>
+                <div class="col s12 m3">
+                    <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #DEBEDB;  min-height: 25px; max-height: 167px;" href="#/no-partial">
+                        <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;">signal_cellular_no_sim</i>
+                        <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}No Partial Quantities{/Literal}</p>
+                    </a>
+                </div>
+                <div class="col s12 m3">
+                    <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #A4D391;  min-height: 25px; max-height: 167px;" href="#/operator-messages">
+                        <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;">chat_bubble_outline</i>
+                        <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Operator Messages{/Literal}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m3">
+                    <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #4ABD98;  min-height: 25px; max-height: 170px;" href="#/barcode">
+                        <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center; transform: rotate(-90deg);">line_weight</i>
+                        <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Barcode Labels{/Literal}</p>
+                    </a>
+                </div>
+                <% if (App.serverInfo.isFoodService) { %>
+                    <div class="col s12 m3">
+                        <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #3754A0;  min-height: 25px; max-height: 170px;" href="#/units-of-measure">
+                            <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;">exposure</i>
+                            <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Units of Measure{/Literal}</p>
+                        </a>
+                    </div>
+                    <div class="col s12 m3">
+                        <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #EF486F;  min-height: 25px; max-height: 170px;" href="#/flex-groups">
+                            <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;">pie_chart_outlined</i>
+                            <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Flex Groups{/Literal}</p>
+                        </a>
+                    </div>
+                    <div class="col s12 m3">
+                        <a class="card-panel z-depth-1 sequence-card hoverable white-text waves-effect waves-light" style="background-color: #FFD167;  min-height: 25px; max-height: 170px;" href="#/recipes">
+                            <i class="material-icons" style="display: flex; font-size: 48px; justify-content: center;">cake</i>
+                            <p style="font-size: 20px; font-weight: bold;" align="center">{Literal}Recipe Items{/Literal}</p>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
